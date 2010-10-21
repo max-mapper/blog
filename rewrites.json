@@ -1,0 +1,34 @@
+[
+  {
+    "to": "favicon.ico",
+    "from": "favicon.ico"
+  },
+  {
+    "to": "style/*",
+    "from": "style/*"
+  },
+  {
+    "to": "lib/*",
+    "from": "lib/*"
+  },
+  {
+    "to": "script/*",
+    "from": "script/*"
+  },
+  {
+    "to": "videos/*",
+    "from": "videos/*"
+  },
+  {
+    "to": "images/*",
+    "from": "images/*"
+  },
+  {
+    "to": "vendor/*",
+    "from": "vendor/*"
+  },
+  {
+    "to": "pages/index.html",
+    "from": ""
+  }
+]

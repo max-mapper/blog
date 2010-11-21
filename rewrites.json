@@ -30,5 +30,13 @@
   {
     "to": "pages/index.html",
     "from": ""
+  },
+  {
+    "to": "../../",
+    "from": "/blog"
+  },
+  {
+    "to": "../../*",
+    "from": "blog/*"
   }
 ]

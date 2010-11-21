@@ -1,16 +1,15 @@
+function render(data, target) {
+  var container = $("#" + target + "s");
+  var template = $('#' + target + '-template').text();
+  container.append(Mustache.to_html(template, data));
+}
+
 $(function() {
-  $('#nav').tabs();
-  var tabs;
-  $.address.init(function(event) {
-      tabs = $('#blognav').tabs({
-          select: $('#blognav ul:first a').index($('a[rel=address:' + event.value + ']')),
-          remote: true
-      }).css('display', 'block');
-  }).change(function(event) {
-      var selection = $('a[rel=address:' + event.value + ']');
-      tabs.tabs('select', selection.attr('href'));
-      $.address.title($.address.title().split(' | ')[0] + ' | ' + selection.text());
-  });
+  $.couch.db('blog').view("blog/nav", {success: function(data) {
+    $.each(data.rows, function(i, data) {
+      render($.extend(data.value, {id: data.id}), "blognav-post");
+    })
+  }})
 });
 
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -4,7 +4,9 @@
       Max Ogden
     </title>
     <link href="/style/style.css" media="screen" rel="stylesheet" type="text/css" />
-    <script src="http://code.jquery.com/jquery-1.4.3.min.js" type="text/javascript"></script>
+    <script src="/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="/script/jquery.couch.js" type="text/javascript"></script>
+    <script src="/script/mustache.js" type="text/javascript"></script>
     <script src="/script/blog.js" type="text/javascript"></script>
   </head>
   <body>
@@ -27,23 +29,23 @@
           </p>
         </div>
         <div id="nav">
-          <ul>
-            <li>
-              <a href="#blog" rel="address:/" title="Blog">
+          <ul class="navitems">
+            <li class='navitem'>
+              <a class='navlink' navhref="#blog" rel="address:/" title="Blog">
                 <span>
                   Blog
                 </span>
               </a>
             </li>
-            <li>
-              <a href="#projects" title="Projects">
+            <li class='navitem'>
+              <a class='navlink' href="#projects" title="Projects">
                 <span>
                   Projects
                 </span>
               </a>
             </li>
-            <li>
-              <a href="#contact" title="Contact">
+            <li class='navitem'>
+              <a class='navlink' href="#contact" title="Contact">
                 <span>
                   Contact
                 </span>
@@ -53,80 +55,13 @@
         </div>
       </div>
     </div>
-    <div class="ui-tabs" id="content">
+    <div id="content">
       <div id="blog">
         <div id="blognav">
-          <ul class="posts">
-            <li>
-              <a href="/2009/08/09/setting-up-rad.html" rel="address:/2009-08-09-setting-up-rad.html" title="20090809setting-up-rad">
-                <h6>
-                  Setting up RAD (Ruby Arduino Development)
-                </h6>
-                <h5>
-                  Aug 09 2009
-                </h5>
-              </a>
-            </li>
-            <li>
-              <a href="/2010/02/26/permavisible-iphone-navigation-with-jqtouch.html" rel="address:/2010-02-26-permavisible-iphone-navigation-with-jqtouch.html" title="20100226permavisible-iphone-navigation-with-jqtouch">
-                <h6>
-                  Floating iPhone Navbar With jqTouch
-                </h6>
-                <h5>
-                  Feb 26 2010
-                </h5>
-              </a>
-            </li>
-            <li>
-              <a href="/2010/03/23/converting-shapefiles-to-google-maps.html" rel="address:/2010-03-23-converting-shapefiles-to-google-maps.html" title="20100323converting-shapefiles-to-google-maps">
-                <h6>
-                  Converting Shapefiles to Google Maps
-                </h6>
-                <h5>
-                  Mar 23 2010
-                </h5>
-              </a>
-            </li>
-            <li>
-              <a href="/2010/04/01/extconf-rb_and_homebrew.html" rel="address:/2010-04-01-extconf-rb_and_homebrew.html" title="20100401extconf-rb_and_homebrew">
-                <h6>
-                  extconf.rb and Homebrew
-                </h6>
-                <h5>
-                  Apr 01 2010
-                </h5>
-              </a>
-            </li>
-            <li>
-              <a href="/2010/04/08/colorizing-terminal-and-irb.html" rel="address:/2010-04-08-colorizing-terminal-and-irb.html" title="20100408colorizing-terminal-and-irb">
-                <h6>
-                  Colorizing IRB and Terminal
-                </h6>
-                <h5>
-                  Apr 08 2010
-                </h5>
-              </a>
-            </li>
-            <li>
-              <a href="/2010/08/14/loading-shapefiles-into-geocouch.html" rel="address:/2010-08-14-loading-shapefiles-into-geocouch.html" title="20100814loading-shapefiles-into-geocouch">
-                <h6>
-                  Loading Shapefiles into GeoCouch
-                </h6>
-                <h5>
-                  Aug 14 2010
-                </h5>
-              </a>
-            </li>
+          <ul id="blognav-posts">
           </ul>
         </div>
-        <div class="ui-tabs" id="blogposts">
-          <div id="20090809setting-up-rad"></div>
-          <div id="20100226permavisible-iphone-navigation-with-jqtouch"></div>
-          <div id="20100323converting-shapefiles-to-google-maps"></div>
-          <div id="20100401extconf-rb_and_homebrew"></div>
-          <div id="20100408colorizing-terminal-and-irb"></div>
-          <div id="20100814loading-shapefiles-into-geocouch"></div>
-          <!-- <div id="20100825cartspdx-available-free-for-iphone"></div> -->
+        <div id="blogposts">
         </div>
       </div>
       <div id="projects">
@@ -196,5 +131,18 @@
         </div>
       </div>
     </div>
+    <script id="blognav-post-template" type='text/mustache'>
+      <li class="blognav-item">
+        <a href="#{{id}}">
+          <h6>{{title}}</h6>
+          <h5>{{date}}</h5>
+        </a>
+      </li>
+    </script>
+    <script id="blogpost-template" type='text/mustache'>
+      <h6 class="blogtitle">{{title}}</h6>
+      <h3>{{date}}</h3>
+      {{{post}}}
+    </script>
   </body>
 </html>

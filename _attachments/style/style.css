@@ -48,7 +48,7 @@ h6.blognav:hover { color: #FFB901; }
 
 #contactinfo { padding: 10px 10px 20px 50px; font-weight: 200; letter-spacing: 0.03em; }
 
-#about, #projects, #contact { background-color: #e4ffe6; color: #000; font-size: 25px; margin-left: auto; margin-right: auto; padding: 10px 10px 10px; width: 1000px; }
+#about, #projects, #contact { display: none; background-color: #e4ffe6; color: #000; font-size: 25px; margin-left: auto; margin-right: auto; padding: 10px 10px 10px; width: 1000px; }
 
 #about { font-size: 20px; }
 
@@ -74,6 +74,37 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
 
 #nav { position: absolute; top: 100px; right: 0px; }
 #nav span { font-family: "Klavika Light", Helvetica; font-weight: 300; letter-spacing: 0.5px; font-size: 16px; }
+
+.navitems {
+  list-style: none outside none;
+  position: relative;
+  margin: 0 15px 0 0;
+  padding: 0;
+  width: 300px;
+}
+
+.navitem {
+  border-bottom: 5px solid #FFB901 !important;
+  padding-bottom: 1px;
+  border-bottom-width: 0 !important;
+  float: right;
+  margin: 0 0.2em -1px 0;
+  padding: 0;
+  position: relative;
+  list-style: none outside none;
+}
+
+.navlink {
+  cursor: text;
+  color: #FFFFFF;
+  float: left;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0.25em 1em;
+  text-decoration: none;
+}
+
+
 
 .project { float: left; width: 150px; height: 150px; text-align: bottom; margin: 0px 20px 20px 20px; }
 .project img { border: 2px solid #ccc; height: 150px; }

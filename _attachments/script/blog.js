@@ -4,12 +4,29 @@ function render(data, target) {
   container.append(Mustache.to_html(template, data));
 }
 
+var blog = $.sammy(function() {
+  this.get('#/', function() {
+    var article = $('.blognav-link:first').attr('href');
+    this.redirect(article);
+  })
+
+  this.get('#:id', function() {
+    $.couch.db('blog').openDoc(this.params['id'], {success: function(data){
+      $('#blogposts').html('');
+      render(data, 'blogpost');
+    }})
+    
+  });
+});
+
 $(function() {
   $.couch.db('blog').view("blog/nav", {success: function(data) {
     $.each(data.rows, function(i, data) {
       render($.extend(data.value, {id: data.id}), "blognav-post");
     })
+    blog.run('#/');
   }})
+  
 });
 
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

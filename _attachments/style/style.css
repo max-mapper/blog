@@ -8,7 +8,7 @@ span { margin: 0px; padding: 0px; }
 
 a { color: #FFB901; text-decoration: none; font-weight: bold; }
 
-#blogposts { margin: 0px 0px 0px 260px; padding: 0px 0px 10px 0px; }
+#blogposts { overflow: auto;margin: 0px 0px 0px 260px; padding: 0px 0px 10px 0px; }
 #blogposts p { font-size: 14px; }
 #blogposts .video { float: left; width: 192px; padding-right: 50px; }
 #blogposts .video p { font-size: 10px; }
@@ -70,6 +70,8 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
 #blognav ul { font-size: 12px; }
 #blognav li { width: 248px !important; float: left; margin-bottom: 5px; }
 
+#blognav-posts {list-style:none outside none; position:relative;margin:0 15px 0 0; padding:0; width:300px;}
+
 #contact img { border: 3px solid #000; float: right; display: block; outline: 1px solid #ddd; width: 220px ; height: 163px; }
 
 #nav { position: absolute; top: 100px; right: 0px; }
@@ -102,6 +104,15 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
   font-weight: 400;
   padding: 0.25em 1em;
   text-decoration: none;
+}
+
+.blognav-link {
+  color:#FFFFFF;
+  float:left;
+  font-size:14px;
+  font-weight:400;
+  padding:0.25em 1em;
+  text-decoration:none;
 }
 
 

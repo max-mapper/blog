@@ -8,7 +8,7 @@ span { margin: 0px; padding: 0px; }
 
 a { color: #FFB901; text-decoration: none; font-weight: bold; }
 
-#blogposts { overflow: auto;margin: 0px 0px 0px 260px; padding: 0px 0px 10px 0px; }
+#blogposts { overflow: auto; margin: 0px; padding: 0 1.5em 1em 2em; }
 #blogposts p { font-size: 14px; }
 #blogposts .video { float: left; width: 192px; padding-right: 50px; }
 #blogposts .video p { font-size: 10px; }
@@ -66,11 +66,11 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
 #blog pre strong { font-weight: normal; color: #fff; }
 #blog pre a:link, #blog pre a:visited { border: 0; }
 
-#blognav { background: #e4ffe6; float: left; width: 248px !important; padding: 0px 0px 0px 0px; clear: bottom; }
+#blognav { background: #e4ffe6; float: left; padding: 0px 0px 0px 0px; clear: bottom; }
 #blognav ul { font-size: 12px; }
-#blognav li { width: 248px !important; float: left; margin-bottom: 5px; }
+#blognav li { width: 234px !important; float: left; margin-bottom: 5px; }
 
-#blognav-posts {list-style:none outside none; position:relative;margin:0 15px 0 0; padding:0; width:300px;}
+#blognav-posts {list-style:none outside none; position:relative;margin:0 15px 0 0; padding:0; width:234px; overflow: auto;}
 
 #contact img { border: 3px solid #000; float: right; display: block; outline: 1px solid #ddd; width: 220px ; height: 163px; }
 

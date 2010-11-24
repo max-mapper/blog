@@ -1,7 +1,8 @@
-function render(data, target) {
+function render(data, target, callback) {
   var container = $("#" + target + "s");
   var template = $('#' + target + '-template').text();
   container.append(Mustache.to_html(template, data));
+  if (callback) callback.call(this, container);
 }
 
 var blog = $.sammy(function() {
@@ -13,7 +14,15 @@ var blog = $.sammy(function() {
   this.get('#:id', function() {
     $.couch.db('blog').openDoc(this.params['id'], {success: function(data){
       $('#blogposts').html('');
-      render(data, 'blogpost');
+      render(data, 'blogpost', function(container) {
+        $('#blognav').css({'height': container.height()});
+        var jsp = $('#blognav').data('jsp');
+        if (jsp) {
+          jsp.reinitialise();
+        } else {
+          $('#blognav').jScrollPane();
+        }        
+      });
     }})
     
   });

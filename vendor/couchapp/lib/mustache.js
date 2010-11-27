@@ -1,4 +1,10 @@
 /*
+ * CommonJS-compatible mustache.js module
+ *
+ * See http://github.com/janl/mustache.js for more info.
+ */
+
+/*
   mustache.js — Logic-less templates in JavaScript
 
   See http://mustache.github.com/ for more info.
@@ -244,12 +250,11 @@ var Mustache = function() {
     */
     escape: function(s) {
       s = String(s === null ? "" : s);
-      return s.replace(/&(?!\w+;)|["'<>\\]/g, function(s) {
+      return s.replace(/&(?!\w+;)|["<>\\]/g, function(s) {
         switch(s) {
         case "&": return "&amp;";
         case "\\": return "\\\\";
-        case '"': return '&quot;';
-        case "'": return '&#39;';
+        case '"': return '\"';
         case "<": return "&lt;";
         case ">": return "&gt;";
         default: return s;
@@ -320,6 +325,15 @@ var Mustache = function() {
       if(!send_fun) {
         return renderer.buffer.join("\n");
       }
+    },
+    escape : function(text) {
+      return new Renderer().escape(text);
     }
   });
 }();
+
+exports.name = Mustache.name;
+exports.version = Mustache.version;
+
+exports.to_html = Mustache.to_html;
+exports.escape = Mustache.escape;

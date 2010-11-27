@@ -32,6 +32,10 @@
     "from": ""
   },
   {
+    "to": "_list/feed/posts",
+    "from": "feed.atom"
+  },
+  {
     "to": "../../",
     "from": "/blog"
   },

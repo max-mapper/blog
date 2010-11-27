@@ -8,7 +8,7 @@ span { margin: 0px; padding: 0px; }
 
 a { color: #FFB901; text-decoration: none; font-weight: bold; }
 
-#blogposts { overflow: auto; margin: 0px; padding: 0 1.5em 1em 2em; }
+#blogposts { overflow: auto; margin: 0px; padding: 0 1.5em 1em 2em; width: 700px;}
 #blogposts p { font-size: 14px; }
 #blogposts .video { float: left; width: 192px; padding-right: 50px; }
 #blogposts .video p { font-size: 10px; }

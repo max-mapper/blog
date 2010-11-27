@@ -6,16 +6,29 @@ function render(data, target, callback) {
   if (callback) callback.call(this, container);
 }
 
+function switchNav(current) {
+  var nav = $('#' + current);
+  nav.siblings().hide();
+  nav.show();
+}
+
 var blog = $.sammy(function() {
   this.get('#/', function() {
+    this.redirect('#/blog');
+  })
+
+  this.get('#/blog', function() {
+    switchNav('blog');
     var article = $('.blognav-link:first').attr('href');
     this.redirect(article);
   })
-
-  this.get('#/:nav', function() {
-    var nav = $('#' + this.params['nav']);
-    nav.siblings().hide();
-    nav.show();
+  
+  this.get('#/projects', function() {
+    switchNav('projects');
+  })
+  
+  this.get('#/contact', function() {
+    switchNav('contact');
   })
 
   this.get('#/blog/:id', function() {
@@ -36,12 +49,29 @@ var blog = $.sammy(function() {
 });
 
 $(function() {
+  
   $.couch.db('blog').view("blog/nav", {descending: true, success: function(data) {
     $.each(data.rows, function(i, data) {
       render($.extend(data.value, {id: data.id}), "blognav-post");
     })
     blog.run('#/');
   }})
+  
+  $.ajax({
+    url: "http://github.com/api/v2/json/repos/show/maxogden",
+    dataType: 'jsonp',
+    success: function(data){
+      data.repositories.sort(function(a, b) {
+         var A = a.pushed_at;
+         var B = b.pushed_at;
+         return (A > B) ? -1 : (A < B) ? 1 : 0;
+      })
+      $.each(data.repositories, function(i, repository) {        
+        render(repository, "list-project");
+      })
+    }
+  });
+  
 });
 
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

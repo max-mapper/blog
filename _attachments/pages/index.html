@@ -11,6 +11,7 @@
     <script src="/script/mustache.js" type="text/javascript"></script>
     <script src="/script/jquery.mousewheel.js" type="text/javascript"></script>
 		<script src="/script/jquery.jscrollpane.min.js" type="text/javascript"></script>
+    <script src="/script/hi.js" type="text/javascript"></script>
     <script src="/script/blog.js" type="text/javascript"></script>
   </head>
   <body>
@@ -83,31 +84,8 @@
             <div class="scrollContainer">
               <div class="panel" id="web">
                 <img alt="Ftang! Player" class="ftangthumb" src="/images/ftang.png" />
-                <ul>
-                  <li>
-                    <a href="http://pdxapi.com">
-                      PDX API
-                    </a>
-                    <span>
-                      JSON access to geographic data from Portland regional governments and communities.
-                    </span>
-                  </li>
-                  <li>
-                    <a href="http://foodcartpages.com">
-                      CartsPDX -
-                    </a>
-                    <span>
-                      Free, open source and open data iPhone app for finding food carts and trucks in Portland, OR
-                    </span>
-                  </li>
-                  <li>
-                    <a href="http://doesthismonkeylookfunnytoyou.com">
-                      Ftang! Player -
-                    </a>
-                    <span>
-                      Web jukebox powered by Sinatra + jQuery jPlayer
-                    </span>
-                  </li>
+                <ul id="list-projects">
+                  
                 </ul>
                 <a href="http://github.com/maxogden">
                   <span>
@@ -147,6 +125,16 @@
       <h6 class="blogtitle">{{title}}</h6>
       <h3>{{date}}</h3>
       {{{post}}}
+    </script>
+    <script id="list-project-template" type='text/mustache'>
+      <li>
+        <a href="{{url}}">
+          {{name}}
+        </a>
+        <span>
+          {{description}}
+        </span>
+      </li>
     </script>
   </body>
 </html>

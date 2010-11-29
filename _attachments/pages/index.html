@@ -7,6 +7,7 @@
     <link href="/style/jquery.jscrollpane.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="/script/jquery-1.4.4.min.js" type="text/javascript"></script>
     <script src="/_utils/script/jquery.couch.js" type="text/javascript"></script>
+    <script src="/script/md5.js" type="text/javascript"></script>
     <script src="/script/sammy-0.6.2.min.js" type="text/javascript"></script>
     <script src="/script/mustache.js" type="text/javascript"></script>
     <script src="/script/jquery.mousewheel.js" type="text/javascript"></script>
@@ -68,6 +69,8 @@
         </div>
         <div id="blogposts">
         </div>
+        <div id="comments">
+        </div>
       </div>
       <div id="projects">
         <div id="slider">
@@ -85,7 +88,6 @@
               <div class="panel" id="web">
                 <img alt="Ftang! Player" class="ftangthumb" src="/images/ftang.png" />
                 <ul id="list-projects">
-                  
                 </ul>
                 <a href="http://github.com/maxogden">
                   <span>
@@ -135,6 +137,39 @@
           {{description}}
         </span>
       </li>
+    </script>
+    <script id="comment-template" type='text/mustache'>
+      <h3>Comments</h3>
+      <ul>
+        {{#comments}}
+        <li>
+          <div class="avatar">
+            {{#gravatar_url}}<img src="{{gravatar_url}}"/>{{/gravatar_url}}
+            <div class="name">
+              {{by}}
+            </div>
+          </div>
+          <p>{{{comment}}}</p>
+          <em><span class="date">{{at}}</span></em>
+          <div class="clear"></div>
+        </li>
+        {{/comments}}
+      </ul>
+      <form id="add-comment">
+        <h4>New comment</h4>
+
+        <label for="user">Name (optional)</label>
+        <input type="text" name="by" value="" /><br />
+
+        <label for="emailaddress">Email (for gravatar, optional):</label>
+        <input type="text" name="gravatar_url" value="" /><br />
+
+        <label for="comment">Comment:</label>
+        <textarea name="comment" rows="4" cols="60"></textarea>
+        
+        <input type="hidden" name="topic" value="{{topic}}">
+        <p><input type="submit" value="Save Comment"></p>
+      </form>
     </script>
   </body>
 </html>

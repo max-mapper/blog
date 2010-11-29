@@ -163,3 +163,101 @@ ul.navigation a:focus { outline: none; }
 p .inline { margin: 0px 10px 0px 0px; clear: none; display: inline; float: left; }
 
 .highlight { float: left; }
+
+#comments input[type=submit] {
+  margin-top: 2px;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.25);
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  background: #222 url('/images/button-overlay.png') repeat-x;
+  display: inline-block;
+  padding: 2px 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  float: right;
+}
+#comments input[type=submit]:hover {
+  background-color: #111;
+}
+
+#comments form {
+  padding: 10px 10px 25px;
+  margin:10px;
+  background-color:#F8F8FF;
+  border: 1px solid #b1b1b1;
+}
+
+#comments {
+  margin:4px 4px 4px 250px;
+  padding:4px;
+}
+
+#comments p {
+  margin-bottom:4px;
+}
+
+#comments li {
+  margin:4px;
+  padding:4px 8px;
+  background:#F8F8FF;
+  border: 1px solid #b1b1b1;
+  
+}
+
+#comments ul li {
+  list-style-type: none;
+}
+
+#comments label{
+  float: left;
+  width: 200px;
+  font-weight: bold;
+}
+
+#comments input {
+  width: 180px;
+  margin-bottom: 5px;
+}
+
+#comments textarea {
+  margin-bottom: 5px;
+  width: 490px;
+  height: 150px;
+}
+
+#comments br {
+  clear: left;
+}
+
+div.avatar {
+  padding:2px;
+  padding-bottom:0;
+  margin-right:10px;
+  float:left;
+  font-size:0.78em;
+  text-align: center;
+}
+
+div.avatar .name {
+  padding-top:2px;
+}
+
+div.avatar img {
+  margin:0 auto;
+  padding:0;
+  width : 30px;
+  height : 30px;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}

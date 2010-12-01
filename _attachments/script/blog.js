@@ -60,11 +60,12 @@ function loadComments(post) {
       var comments = {
         topic : post,
         comments : data.rows.map(function(r) {
+          var comment = "<p>" + r.value.comment.replace(/\n/g, "</p><p>") + "</p>"
           return {
             gravatar_url : r.value.gravatar_url,
             by : r.value.by,
             at : prettyDate(r.key[1]),
-            comment : r.value.comment
+            comment : comment
           }
         })
       }

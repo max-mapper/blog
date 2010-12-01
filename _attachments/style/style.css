@@ -203,12 +203,13 @@ p .inline { margin: 0px 10px 0px 0px; clear: none; display: inline; float: left;
 }
 
 #comments p {
-  margin-bottom:4px;
+  padding: 0px 0px 3px;
+  margin: 0;
 }
 
 #comments li {
   margin:4px;
-  padding:4px 8px;
+  padding:8px;
   background:#F8F8FF;
   border: 1px solid #b1b1b1;
   
@@ -239,6 +240,9 @@ p .inline { margin: 0px 10px 0px 0px; clear: none; display: inline; float: left;
   clear: left;
 }
 
+#comments .date {
+  font-size: 11px;
+}
 div.avatar {
   padding:2px;
   padding-bottom:0;
@@ -260,4 +264,20 @@ div.avatar img {
   position: relative;
   top: 3px;
   left: 3px;
+}
+
+.image {
+  margin-bottom: 24px;
+}
+
+.caption {
+  float: right;
+  font-style: italic;
+  font-size: 11px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.subscribe {
+  padding: 1em;
 }

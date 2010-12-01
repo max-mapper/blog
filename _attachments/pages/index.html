@@ -12,7 +12,6 @@
     <script src="/script/mustache.js" type="text/javascript"></script>
     <script src="/script/jquery.mousewheel.js" type="text/javascript"></script>
 		<script src="/script/jquery.jscrollpane.min.js" type="text/javascript"></script>
-    <script src="/script/hi.js" type="text/javascript"></script>
     <script src="/script/blog.js" type="text/javascript"></script>
   </head>
   <body>
@@ -66,6 +65,7 @@
         <div id="blognav">
           <ul id="blognav-posts">
           </ul>
+          <span class="subscribe"><a href='http://www.maxogden.com/feed.atom'>Subscribe with Atom</a></span>
         </div>
         <div id="blogposts">
         </div>
@@ -149,8 +149,8 @@
               {{by}}
             </div>
           </div>
-          <p>{{{comment}}}</p>
-          <em><span class="date">{{at}}</span></em>
+          {{{comment}}}
+          <em><span class="date">posted {{at}}</span></em>
           <div class="clear"></div>
         </li>
         {{/comments}}

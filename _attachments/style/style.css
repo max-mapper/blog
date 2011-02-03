@@ -1,6 +1,24 @@
 @import "/style/blueprint/reset.css";
 @import "/style/blueprint/typography.css";
 @import "/style/blueprint/grid.css";
+@import url("http://github.com/mbostock/d3/raw/841f35456831192fd008222c8ae15b6738acace9/lib/colorbrewer/colorbrewer.css");
+
+svg {
+  display: block;
+}
+
+path {
+  fill:rgb(228,255,230);
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #000;
+  display: none;
+  pointer-events: none;
+}
 
 body { background: #13140f; padding-top: 30px; height: auto; }
 
@@ -39,14 +57,17 @@ h6.blognav:hover { color: #FFB901; }
 
 #info { color: #fff; float: left; font-size: 20px; height: 120px; padding: 1px 10px 0px; margin: 0px; width: 720px; }
 
+#infobg {width: 730px; height: 115px;}
 #infobg img { height: auto; width: 735px; }
 
-#info h1 { font-family: "Museo 500", Helvetica; color: #000; color: #fff; font-size: 45px; line-height: 35px; font-weight: 300; }
+#info h1 { font-family: "Museo 500", Helvetica; color: #000; font-size: 45px; line-height: 35px; font-weight: 300; }
 
-#title { position: absolute; top: 1.65em; padding: 0px 0px 0px 10px; line-height: 0px; }
+#title { text-align: right; color: black; position: absolute; top: 1.65em; padding: 0px 0px 0px 10px; line-height: 0px; }
 #title p { font-family: "Museo 300", Helvetica; padding: 0px; margin: 0px; font-weight: 200; letter-spacing: 0.05em; }
 
-#contactinfo { padding: 10px 10px 20px 50px; font-weight: 200; letter-spacing: 0.03em; }
+#contactinfo { text-align: right; padding: 10px 10px 20px 50px; font-weight: 200; letter-spacing: 0.03em; }
+#contactinfo a {display: block;}
+.smaller {font-size: 14px; line-height: 25px;}
 
 #about, #projects, #contact { display: none; background-color: #e4ffe6; color: #000; font-size: 25px; margin-left: auto; margin-right: auto; padding: 10px 10px 10px; width: 1000px; }
 
@@ -82,7 +103,7 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
   position: relative;
   margin: 0 15px 0 0;
   padding: 0;
-  width: 300px;
+  width: 320px;
 }
 
 .navitem {
@@ -98,13 +119,16 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
 
 .navlink {
   cursor: text;
-  color: #FFFFFF;
+  color: #000;
   float: left;
   font-size: 14px;
   font-weight: 400;
   padding: 0.25em 1em;
   text-decoration: none;
 }
+
+.navlink:hover { color: #FFB901; }
+
 
 .blognav-link {
   color:#FFFFFF;

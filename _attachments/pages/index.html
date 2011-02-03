@@ -13,24 +13,26 @@
     <script src="/script/jquery.mousewheel.js" type="text/javascript"></script>
 		<script src="/script/jquery.jscrollpane.min.js" type="text/javascript"></script>
     <script src="/script/blog.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/script/d3.min.js"></script>
+    <script type="text/javascript" src="/script/voronoi.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div id="logo">
-        <div id="logofit">
-          <img alt="logo" src="/images/logo.png" />
+        <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+        <div id="voronoi">
         </div>
       </div>
       <div id="info">
         <div id="infobg">
-          <img alt="logo" src="/images/infobg.png" />
+          <!-- <img alt="logo" src="/images/infobg.png" /> -->
         </div>
         <div id="title">
           <h1>
             Max Ogden
           </h1>
           <p>
-            web developer in portland oregon
+            open web developer
           </p>
         </div>
         <div id="nav">
@@ -56,6 +58,13 @@
                 </span>
               </a>
             </li>
+            <!-- <li class='navitem'>
+              <a class='navlink' href="#/wiki" title="Contact">
+                <span>
+                  Wiki
+                </span>
+              </a>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -78,7 +87,7 @@
             <ul class="navigation">
               <li>
                 <a class="selected" href="#web">
-                  Recent Projects
+                  Recent Projects <span class="smaller">(ordered by most recently worked on)</span>
                 </a>
               </li>
             </ul>
@@ -89,31 +98,35 @@
                 <img alt="Ftang! Player" class="ftangthumb" src="/images/ftang.png" />
                 <ul id="list-projects">
                 </ul>
-                <a href="http://github.com/maxogden">
-                  <span>
-                    View all of my projects on
-                    <img class="githublogo" src="/images/github.png" />
-                  </span>
-                </a>
-              </div>
+                <p>
+                  <a href="http://github.com/maxogden">
+                    <span>
+                      View all of my projects on
+                      <img class="githublogo" src="/images/github.png" />
+                    </span>
+                  </a>
+                </p>
+                <p>
+                  Here's me playing drums with a robot:
+                  <iframe src="http://player.vimeo.com/video/13273818" width="400" height="225" frameborder="0"></iframe>                  
+                </p>
+              </div>              
             </div>
+          </div>
+        </div>        
+      </div>
+      <div id="contact">
+        <div id="contactinfo">          
+          <div id="hcard-Max-Ogden" class="vcard">
+            <img style="float:left; margin-right:4px" src="http://www.maxogden.com/images/max.png" alt="photo of " class="photo"/>
+            <a class="url fn" href="http://www.maxogden.com">Max Ogden</a>
+            <a class="email" href="mailto:max@maxogden.com">max@maxogden.com</a>
+            <a class="url" href="http://twitter.com/maxogden">@maxogden</a>
+            <div class="tel">503 869 3861</div>
           </div>
         </div>
       </div>
-      <div id="contact">
-        <div id="contactinfo">
-          <img src="/images/max.png" />
-          email: max@maxogden.com
-          <br />
-          twitter:
-          <a href="http://www.twitter.com/maxogden">
-            @maxogden
-          </a>
-          <br />
-          phone: 503 869 3861
-          <br />
-        </div>
-      </div>
+      <div id="wiki"></div>
     </div>
     <script id="blognav-post-template" type='text/mustache'>
       <li class="blognav-item">

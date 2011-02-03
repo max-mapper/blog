@@ -15,7 +15,6 @@ $.fn.serializeObject = function() {
 };
 
 function prettyDate(time){
-
 	var date = new Date(time.replace(/-/g,"/").replace("T", " ").replace("Z", " +0000").replace(/(\d*\:\d*:\d*)\.\d*/g,"$1")),
 		diff = (((new Date()).getTime() - date.getTime()) / 1000),
 		day_diff = Math.floor(diff / 86400);
@@ -32,8 +31,6 @@ function prettyDate(time){
 		day_diff < 21 && day_diff + " days ago" ||
 		day_diff < 45 && Math.ceil( day_diff / 7 ) + " weeks ago" ||
     time;
-    // day_diff < 730 && Math.ceil( day_diff / 31 ) + " months ago" ||
-    // Math.ceil( day_diff / 365 ) + " years ago";
 };
 
 
@@ -115,6 +112,10 @@ var blog = $.sammy(function() {
   this.get('#/contact', function() {
     switchNav('contact');
   })
+  
+  this.get('#/wiki', function() {
+    switchNav('wiki');
+  })
 
   this.get('#/blog/:id', function() {
     var id = this.params['id'];
@@ -165,8 +166,43 @@ $(function() {
     e.preventDefault();
     saveComment($(e.target));
   })
-  
-  
+
+  // for voronoi visualization
+  var w = 250,
+      h = 115;
+
+  var vertices = d3.range(20).map(function(d) {
+    return [Math.random() * w, Math.random() * h];
+  });
+
+  var svg = d3.select("#voronoi")
+    .append("svg:svg")
+      .attr("width", w)
+      .attr("height", h)
+      .attr("class", "BlYl")
+      .on("mousemove", update);
+
+  svg.selectAll("path")
+      .data(voronoi(vertices))
+    .enter("svg:path")
+      .attr("class", function(d, i) { return i ? "q" + (i % 9) + "-9" : null; })
+      .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+
+  svg.selectAll("circle")
+      .data(vertices.slice(1))
+    .enter("svg:circle")
+      .attr("transform", function(d) { return "translate(" + d + ")"; })
+      .attr("r", 2);
+
+  function update() {
+    vertices[0] = d3.svg.mouse(this);
+    svg.selectAll("path")
+        .data(voronoi(vertices)
+        .map(function(d) { return "M" + d.join("L") + "Z"; }))
+        .filter(function(d) { return this.getAttribute("d") != d; })
+        .attr("d", function(d) { return d; });
+  }
+
 });
 
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

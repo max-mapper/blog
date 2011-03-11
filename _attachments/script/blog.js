@@ -119,7 +119,9 @@ var blog = $.sammy(function() {
 
   this.get('#/blog', function() {
     switchNav('blog');
-    var article = $('.blognav-link:first').attr('href');
+    var firstPost = $('.blognav-link:first');
+    var article = firstPost.attr('href');
+    firstPost.click();
     this.redirect(article);
   })
   
@@ -185,6 +187,11 @@ $(function() {
   $('#add-comment').live('submit', function(e) {
     e.preventDefault();
     saveComment($(e.target));
+  })
+  
+  $('.blognav-link').live('click', function() {
+    $('.blognav-link.active').removeClass('active');
+    $(this).addClass('active');
   })
   
   makeASweetVoronoiTesselation('#voronoi');

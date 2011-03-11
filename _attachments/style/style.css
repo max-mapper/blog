@@ -3,6 +3,12 @@
 @import "/style/blueprint/grid.css";
 @import url("http://github.com/mbostock/d3/raw/841f35456831192fd008222c8ae15b6738acace9/lib/colorbrewer/colorbrewer.css");
 
+@media only screen and (max-width: 480px),  only screen and (max-device-width: 480px), only screen and (max-device-width: 800px){
+  #nav {top: 10px !important;}
+  .navlink span {font-size: 24px !important;}
+  .navitems {width: 100px !important;}
+}
+
 svg {
   display: block;
 }
@@ -41,6 +47,10 @@ h5 { color: #999; font-size: 14px; margin-bottom: 0px; font-weight: normal; }
 h3 { margin-bottom: 0px; color: #777; padding: 0px 0px 10px 0px; }
 
 h6.blognav:hover { color: #FFB901; }
+
+.blognav-link:hover h6, .blognav-link.active h6 {color: #000;}
+
+#blognav:active, #blognav:focus { outline-style: none; -moz-outline-style:none; }
 
 #caption { bottom: 0px; font-size: 18px; left: 220px; position: absolute; }
 

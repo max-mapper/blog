@@ -1,8 +1,8 @@
 function(head, req) {
 
-  var path = require("vendor/couchapp/lib/path").init(req);
-  var Atom = require("vendor/couchapp/lib/atom");
-  var Mustache = require("vendor/couchapp/lib/mustache");
+  var path = require("vendor/path").init(req);
+  var Atom = require("vendor/atom");
+  var Mustache = require("vendor/mustache");
   
   var indexPath = path.list('feed','posts',{descending:true, limit:10});
   var feedPath = path.list('feed','posts',{descending:true, limit:10});

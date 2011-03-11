@@ -14,26 +14,6 @@ $.fn.serializeObject = function() {
     return o;
 };
 
-function prettyDate(time){
-	var date = new Date(time.replace(/-/g,"/").replace("T", " ").replace("Z", " +0000").replace(/(\d*\:\d*:\d*)\.\d*/g,"$1")),
-		diff = (((new Date()).getTime() - date.getTime()) / 1000),
-		day_diff = Math.floor(diff / 86400);
-
-  if (isNaN(day_diff)) return time;
-
-	return day_diff < 1 && (
-			diff < 60 && "just now" ||
-			diff < 120 && "1 minute ago" ||
-			diff < 3600 && Math.floor( diff / 60 ) + " minutes ago" ||
-			diff < 7200 && "1 hour ago" ||
-			diff < 86400 && Math.floor( diff / 3600 ) + " hours ago") ||
-		day_diff == 1 && "yesterday" ||
-		day_diff < 21 && day_diff + " days ago" ||
-		day_diff < 45 && Math.ceil( day_diff / 7 ) + " weeks ago" ||
-    time;
-};
-
-
 function render(data, target, callback) {
   if (data.date) data.date = new Date(data.date).toDateString();
   var container = $("#" + target + "s");
@@ -61,12 +41,13 @@ function loadComments(post) {
           return {
             gravatar_url : r.value.gravatar_url,
             by : r.value.by,
-            at : prettyDate(r.key[1]),
+            date : r.key[1],
             comment : comment
           }
         })
       }
       render(comments, 'comment');
+      $('.date').timeago();
     }
   })
 }
@@ -92,6 +73,43 @@ function saveComment(form) {
 
 function gravatarFor(email) {
   return 'http://www.gravatar.com/avatar/' + hex_md5(email) + '.jpg?s=40&d=identicon';
+}
+
+function makeASweetVoronoiTesselation(selector) {
+  var w = 250,
+      h = 115;
+
+  var vertices = d3.range(20).map(function(d) {
+    return [Math.random() * w, Math.random() * h];
+  });
+
+  var svg = d3.select(selector)
+    .append("svg:svg")
+      .attr("width", w)
+      .attr("height", h)
+      .attr("class", "BlYl")
+      .on("mousemove", update);
+
+  svg.selectAll("path")
+      .data(voronoi(vertices))
+    .enter("svg:path")
+      .attr("class", function(d, i) { return i ? "q" + (i % 9) + "-9" : null; })
+      .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+
+  svg.selectAll("circle")
+      .data(vertices.slice(1))
+    .enter("svg:circle")
+      .attr("transform", function(d) { return "translate(" + d + ")"; })
+      .attr("r", 2);
+
+  function update() {
+    vertices[0] = d3.svg.mouse(this);
+    svg.selectAll("path")
+        .data(voronoi(vertices)
+        .map(function(d) { return "M" + d.join("L") + "Z"; }))
+        .filter(function(d) { return this.getAttribute("d") != d; })
+        .attr("d", function(d) { return d; });
+  }
 }
 
 var blog = $.sammy(function() {
@@ -131,6 +149,7 @@ var blog = $.sammy(function() {
           $('#blognav').jScrollPane();
         }
         $('#blogposts').data('id', id);
+        $('.blogpost-date').timeago();
         loadComments(id);
       });
     }})
@@ -143,6 +162,7 @@ $(function() {
   $.couch.db('blog').view("blog/nav", {descending: true, success: function(data) {
     $.each(data.rows, function(i, data) {
       render($.extend(data.value, {id: data.id}), "blognav-post");
+      $('.blognav-date').timeago();
     })
     blog.run('#/');
   }})
@@ -166,42 +186,8 @@ $(function() {
     e.preventDefault();
     saveComment($(e.target));
   })
-
-  // for voronoi visualization
-  var w = 250,
-      h = 115;
-
-  var vertices = d3.range(20).map(function(d) {
-    return [Math.random() * w, Math.random() * h];
-  });
-
-  var svg = d3.select("#voronoi")
-    .append("svg:svg")
-      .attr("width", w)
-      .attr("height", h)
-      .attr("class", "BlYl")
-      .on("mousemove", update);
-
-  svg.selectAll("path")
-      .data(voronoi(vertices))
-    .enter("svg:path")
-      .attr("class", function(d, i) { return i ? "q" + (i % 9) + "-9" : null; })
-      .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
-
-  svg.selectAll("circle")
-      .data(vertices.slice(1))
-    .enter("svg:circle")
-      .attr("transform", function(d) { return "translate(" + d + ")"; })
-      .attr("r", 2);
-
-  function update() {
-    vertices[0] = d3.svg.mouse(this);
-    svg.selectAll("path")
-        .data(voronoi(vertices)
-        .map(function(d) { return "M" + d.join("L") + "Z"; }))
-        .filter(function(d) { return this.getAttribute("d") != d; })
-        .attr("d", function(d) { return d; });
-  }
+  
+  makeASweetVoronoiTesselation('#voronoi');
 
 });
 

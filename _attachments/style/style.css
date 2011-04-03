@@ -36,6 +36,7 @@ a { color: #FFB901; text-decoration: none; font-weight: bold; }
 #blogposts p { font-size: 14px; }
 #blogposts .video { float: left; width: 192px; padding-right: 50px; }
 #blogposts .video p { font-size: 10px; }
+#blogposts ul { font-size: 14px; }
 
 .inline {float: left;}
 

@@ -32,11 +32,13 @@ span { margin: 0px; padding: 0px; }
 
 a { color: #FFB901; text-decoration: none; font-weight: bold; }
 
-#blogposts { overflow: auto; margin: 0px; padding: 0 1.5em 1em 2em; width: 700px;}
+#blogposts { overflow: auto; margin: 0px; padding: 0 1.5em 1em 2em; width: 66%; position: relative;}
 #blogposts p { font-size: 14px; }
 #blogposts .video { float: left; width: 192px; padding-right: 50px; }
 #blogposts .video p { font-size: 10px; }
 #blogposts ul { font-size: 14px; }
+
+.vimeo { width: 650px; height: 357.5px;}
 
 .inline {float: left;}
 
@@ -106,7 +108,7 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
 
 #contact img { border: 3px solid #000; float: right; display: block; outline: 1px solid #ddd; width: 220px ; height: 163px; }
 
-#nav { position: absolute; top: 100px; right: 0px; }
+#nav { position: absolute; top: 100px; right: 0px; width: 50%;}
 #nav span { font-family: "Klavika Light", Helvetica; font-weight: 300; letter-spacing: 0.5px; font-size: 16px; }
 
 .navitems {
@@ -114,7 +116,6 @@ pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consola
   position: relative;
   margin: 0 15px 0 0;
   padding: 0;
-  width: 320px;
 }
 
 .navitem {

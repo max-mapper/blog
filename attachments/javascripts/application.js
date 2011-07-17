@@ -6,19 +6,21 @@ var DocumentBrowser = Backbone.View.extend({
     var that = this;
   },
   
-  load: function(username) {
+  load: function(username, options) {
+    if (!options) var options = {};
     var that = this;
-    graph.fetch({"type": "/type/document", "creator": "/user/"+username}, function(err, g) {
+    graph.fetch({"type": "/type/document", "creator": "/user/" + username, "subjects|=": ["/attribute/c94d170416f21a768f17a61d8a93b561"]}, function(err, g) {
       if (err) return alert('An error occured during fetching the documents');
       that.render();
-    });
+      if (options.loadNewest) $('.load-document:first').click();
+    });    
   },
   
   render: function() {
     var that = this;
     
     // TODO: use this.options.query here
-    var documents = graph.find({'type': "/type/document"})
+    that.documents = graph.find({'type': "/type/document", "subjects|=": ["/attribute/c94d170416f21a768f17a61d8a93b561"]});
     
     var DESC_BY_UPDATED_AT = function(item1, item2) {
       var v1 = item1.value.get('updated_at'),
@@ -26,13 +28,11 @@ var DocumentBrowser = Backbone.View.extend({
       return v1 === v2 ? 0 : (v1 > v2 ? -1 : 1);
     };
     
-    documents = documents.sort(DESC_BY_UPDATED_AT);
+    that.documents = that.documents.sort(DESC_BY_UPDATED_AT);
     $(this.el).html(_.tpl('document_browser', {
-      documents: documents,
+      documents: that.documents,
       username: "maxogden"
-    }));
-    
-    $('.load-document:first').click();
+    }));    
   }
 });
 
@@ -66,14 +66,13 @@ var Document = Backbone.View.extend({
           that.username = username;
           that.docname = docname;
           that.render();
-          app.browser.render(); // Re-render browser
           // Jump to node?
           that.scrollTo(node);
         }
       });
     }
   },
-  
+
   scrollTo: function(arg) {
     if (!arg) return;
     var offset = arg.currentTarget ? $('#'+$(arg.currentTarget).attr('node')).offset()
@@ -164,22 +163,28 @@ var Application = Backbone.View.extend({
 
 var ApplicationController = Backbone.Controller.extend({
   routes: {
-    ':username': 'load',
-    ':username/:docname': 'load',
-    ':username/:docname/:node': 'load'
+    ':page': 'load',
+    ':page/:docname': 'load',
+    ':page/:docname/:node': 'load'
   },
 
   initialize: function() {
     
   },
   
-  load: function(username, docname, node) {
-    if (!username) username = 'maxogden';
-    if (docname) {
-      app.browser.load(username);
-      app.document.load(username, docname, node);
+  load: function(page, docname, node) {
+    var username = 'maxogden';
+    if (!page) var page = "blog";
+    if (page === "blog") {
+      if (docname) {
+        app.browser.load(username);
+        app.document.load(username, docname, node);
+      } else {
+        app.browser.load(username, {loadNewest: true});
+      }
     } else {
-      app.browser.load(username);
+      $(app.browser.el).html("");
+      app.document.load(username, page);
     }
   }
 });

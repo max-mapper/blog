@@ -114,13 +114,32 @@ div {
   color: #383D3D;
   font-size: 24px;
   overflow: auto;
+  position: relative;
   padding: 40px 0;
 }
 
 #header .title { float: right; width: 720px; }
+#header .subtitle { float: right; width: 720px; margin: 5px 0px; font-size: 20px; }
+
 #header .channel { float: left; }
 
+#navigation {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 35px;
+  cursor: pointer;
+  background: #D5D6D2;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
 
+#navigation .toggle { float: left; min-width: 35px; height: 35px; }
+#navigation .toggle:hover, #navigation .toggle.active { background: rgba(0,0,0, 0.1); }
+#navigation .navitem { margin: 0px 10px }
 /* Main */
 
 #wrapper {  }

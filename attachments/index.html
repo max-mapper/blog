@@ -13,7 +13,7 @@
   <script type="text/x-handlebars-template" name="document_browser">
     <div id="documents">
         <% documents.each(function(doc) { %>
-          <a class="load-document" href="<%= doc.get('creator')._id.split('/')[2] %>/<%= doc.get('name') %>" document="<%= doc._id %>"  user="<%= doc.get('creator')._id.split('/')[2] %>" name="<%= doc.get('name') %>">
+          <a class="load-document" href="blog/<%= doc.get('name') %>" document="<%= doc._id %>"  user="<%= doc.get('creator')._id.split('/')[2] %>" name="<%= doc.get('name') %>">
             <div class="document<%= "/user/"+app.document.username === doc.get('creator')._id && app.document.docname === doc.get('name') ? " active": "" %>">
               <div class="published"><%= doc.get('published_on') ? _.date(doc.get('published_on')) : "Unpublished" %></div>
               <div class="title"><%= doc.get('title') %></div>
@@ -62,11 +62,29 @@
   
   <div id="container">
     <div id="header">
-      <div class="title">Max Ogden | Posts</div>
+      <div class="title">Max Ogden | <a href="http://tantek.com/2010/281/b1/what-is-the-open-web">Open Web</a> developer</div>
+      <div class="subtitle"></div>
       <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
       <div id="voronoi">
       </div>
       <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="#blog">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="#projects">projects</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="#contact">contact</a>
+          </div>
+        </div>
+      </div>
     </div>
     
     <div id="wrapper">

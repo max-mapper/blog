@@ -34,7 +34,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-img { border: none; }
+img { border: none; margin: 20px 0px 0px 0px }
 
 body { 
   margin: 0; padding: 0;

@@ -142,7 +142,7 @@ var Application = Backbone.View.extend({
     
     that.browser = new DocumentBrowser({
       el: '#browser',
-      query: {'type': '/type/document', 'published_on!=': null}
+      query: {'type': '/type/document', 'created_at!=': null}
     });
     
     // Init document

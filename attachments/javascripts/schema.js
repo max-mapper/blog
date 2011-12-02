@@ -340,7 +340,7 @@ var schema = {
         "type": "date",
         "required": true
       },
-      "published_on": {
+      "created_at": {
         "name": "Publication Date",
         "unique": true,
         "type": "date"

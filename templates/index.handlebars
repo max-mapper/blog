@@ -65,7 +65,10 @@
         </div>
       </div>
       <div id="document">
-        {{{index.selected.html}}}
+        {{#if index.selected}}{{{index.selected.html}}}
+        {{else}}
+          Loading posts... try refreshing in a moment. If <a href="http://substance.io/maxogden/contact.html">this</a> page is down then ping me on twitter (@maxogden).
+        {{/if}}
       </div>
     </div>
     <br class="clear"/>

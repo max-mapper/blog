@@ -30,6 +30,7 @@ function generateTimestamps(posts) {
 
 blog.route('/', function (req, resp) {
   function finish(data) {
+    if (data.index.posts.length === 0) return
     data.index.posts[0].active = "active"
     data.index.posts = generateTimestamps(data.index.posts)
     data.index.selected = data.index.posts[0]
@@ -73,7 +74,7 @@ blog.nav = []
 
 function updatePosts(cb) {
   syncHelpers.getPublishedPosts('maxogden', function(err, data) {
-    if (err) return eb(err)
+    if (err && cb) return cb(err)
     blog.posts = data.posts
     blog.nav = data.nav
     if (cb) cb(false)

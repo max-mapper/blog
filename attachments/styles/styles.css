@@ -29,6 +29,8 @@
 /* Common styles
 -------------------------------------------------------------------------------*/
 
+#document .author { display: none} 
+
 html {
   margin: 0; padding: 0; 
   -webkit-font-smoothing: antialiased;
@@ -109,19 +111,21 @@ div {
 
 /* Header */
 
-#header {
+.header { margin-bottom: 40px; padding-top: 10px !important; font-size: 24px !important; }
+
+#header, .header {
   font-family: 'HelveticaNeue-Light';
   color: #383D3D;
   font-size: 24px;
   overflow: auto;
   position: relative;
-  padding: 40px 0;
+  padding: 0;
 }
 
-#header .title { float: right; width: 720px; }
-#header .subtitle { float: right; width: 720px; margin: 5px 0px; font-size: 20px; }
+#header .title, .header .title { float: right; width: 720px; }
+#header .subtitle, .header .title { float: right; width: 720px; margin: 5px 0px; font-size: 20px; }
 
-#header .channel { float: left; }
+#header .channel, .header .channel { float: left; }
 
 #navigation {
   position: absolute;

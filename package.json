@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "subdomain": "maxogden",
+  "domains": [
+    "maxogden.com"
+  ],
+  "bundleDependencies": [
+    "async",
+    "filed",
+    "logref",
+    "request",
+    "morestreams",
+    "rewriter",
+    "routes",
+    "socket.io",
+    "stoopid",
+    "tako",
+    "underscore"
+  ],
+  "version": "0.0.1",
+  "scripts": {
+    "start": "run.js"
+  },
+  "engines": {
+    "node": "v0.6.x"
+  }
+}

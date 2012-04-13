@@ -10,6 +10,8 @@
     "logref",
     "request",
     "morestreams",
+    "deep-extend",
+    "timeago",
     "rewriter",
     "routes",
     "socket.io",
@@ -17,7 +19,7 @@
     "tako",
     "underscore"
   ],
-  "version": "0.0.1",
+  "version": "0.0.1-5",
   "scripts": {
     "start": "run.js"
   },

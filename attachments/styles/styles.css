@@ -148,6 +148,8 @@ div {
 
 #wrapper {  }
 
+.caption { font-style: italic; }
+
 /* Browser */
 
 #browser { float: left; width: 330px; }

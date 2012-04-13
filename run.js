@@ -39,6 +39,13 @@ blog.route('/', function (req, resp) {
 .methods('GET')
 ;
 
+blog.route('/update', function (req, resp) {
+  updatePosts(function(err) {
+    if (err) return resp.end(err)
+    resp.end('updated')
+  })
+}).methods('POST')
+
 blog.route('/:id', function (req, resp) {
   function finish(data) {
     _.each(data.index.posts, function(p) {
@@ -58,14 +65,21 @@ blog.route('/:id', function (req, resp) {
 .methods('GET')
 ;
 
-
 blog.route('/*').files(path.resolve(__dirname, 'attachments'))
 
 console.log('fetching blog posts...')
-syncHelpers.getPublishedPosts('maxogden', function(err, data) {
-  if (err) return console.error(err)
-  blog.posts = data.posts
-  blog.nav = data.nav
-  
-  blog.httpServer.listen(80, function () { console.log("running blog on " + 80) })
-})
+blog.posts = []
+blog.nav = []
+
+function updatePosts(cb) {
+  syncHelpers.getPublishedPosts('maxogden', function(err, data) {
+    if (err) return eb(err)
+    blog.posts = data.posts
+    blog.nav = data.nav
+    if (cb) cb(false)
+  })
+}
+
+updatePosts()
+
+blog.httpServer.listen(8000, function () { console.log("running blog on " + 8000) })

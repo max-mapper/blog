@@ -29,7 +29,7 @@
 /* Common styles
 -------------------------------------------------------------------------------*/
 
-#document .author { display: none} 
+#document .author { display: none }
 
 html {
   margin: 0; padding: 0; 
@@ -246,9 +246,7 @@ code, pre {
 }
 
 code {
-  padding: 0px 3px;
   background: white;
-  border: 1px solid #DDD;
   zoom: 1;
 }
 

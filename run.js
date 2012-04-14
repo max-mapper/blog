@@ -2,6 +2,7 @@ var logging = require('logref')
 var stoopid = require('stoopid')
 var path = require('path')
 var tako = require('tako')
+var fs = require('fs')
 var _ = require('underscore')
 var deepExtend = require('deep-extend')
 var timeago = require('timeago')
@@ -68,7 +69,6 @@ blog.route('/:id', function (req, resp) {
 
 blog.route('/*').files(path.resolve(__dirname, 'attachments'))
 
-console.log('fetching blog posts...')
 blog.posts = []
 blog.nav = []
 
@@ -77,10 +77,13 @@ function updatePosts(cb) {
     if (err && cb) return cb(err)
     blog.posts = data.posts
     blog.nav = data.nav
+    fs.writeFileSync('./posts.json', JSON.stringify(data))
     if (cb) cb(false)
   })
 }
 
-updatePosts()
+var data = JSON.parse(fs.readFileSync('./posts.json'))
+blog.posts = data.posts
+blog.nav = data.nav
 
 blog.httpServer.listen(8000, function () { console.log("running blog on " + 8000) })

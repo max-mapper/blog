@@ -6,6 +6,8 @@ var fs = require('fs')
 var _ = require('underscore')
 var deepExtend = require('deep-extend')
 var timeago = require('timeago')
+var jstoxml = require('jstoxml')
+var entities = require('entities')
 var syncHelpers = require('./sync-helpers')
 
 logging.stdout()
@@ -48,6 +50,10 @@ blog.route('/update', function (req, resp) {
   })
 }).methods('POST')
 
+blog.route('/rss', function (req, resp) { resp.end(generateFeed()) })
+blog.route('/rss/:keyword', function (req, resp) { resp.end(generateFeed(req.route.params['keyword'])) })
+
+
 blog.route('/:id', function (req, resp) {
   function finish(data) {
     _.each(data.index.posts, function(p) {
@@ -80,6 +86,45 @@ function updatePosts(cb) {
     fs.writeFileSync('./posts.json', JSON.stringify(data))
     if (cb) cb(false)
   })
+}
+
+function generateFeed(keyword) {
+  var channel = [
+    {title: 'Max Ogden Blogotronz'},
+    {description: 'Personal blog of the computer nerd named Max Ogden'},
+    {link: 'maxogden.com'},
+    {lastBuildDate: function() {
+      return new Date()
+    }},
+    {pubDate: function() {
+      return new Date()
+    }},
+    {language: 'en'}
+  ]
+  
+  _.each(blog.posts, function(post) {
+    if (keyword && !post.html.match(keyword)) return
+    channel.push({
+      item: {
+        title: post.title,
+        link: "http://maxogden.com/" + post.name,
+        description: entities.encode(post.html),
+        pubDate: function() {
+          return new Date(post.published_on)
+        }
+      }
+    })
+  })
+  
+  return jstoxml.toXML({
+    _name: 'rss',
+    _attrs: {
+      version: '2.0'
+    },
+    _content: {
+      channel: channel
+    }
+  }, {header: true, indent: '  '})
 }
 
 var data = JSON.parse(fs.readFileSync('./posts.json'))

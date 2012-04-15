@@ -17,7 +17,9 @@
     "socket.io",
     "stoopid",
     "tako",
-    "underscore"
+    "underscore",
+    "jstoxml",
+    "entities"
   ],
   "version": "0.0.1-9",
   "scripts": {

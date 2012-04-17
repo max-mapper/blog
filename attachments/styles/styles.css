@@ -111,7 +111,7 @@ div {
 
 /* Header */
 
-.header { margin-bottom: 40px; padding-top: 10px !important; font-size: 24px !important; }
+.header { margin-bottom: 20px; padding-top: 10px !important; font-size: 24px !important; }
 
 #header, .header {
   font-family: 'HelveticaNeue-Light';
@@ -122,10 +122,10 @@ div {
   padding: 0;
 }
 
-#header .title, .header .title { float: right; width: 720px; }
-#header .subtitle, .header .title { float: right; width: 720px; margin: 5px 0px; font-size: 20px; }
-
-#header .channel, .header .channel { float: left; }
+.header .title {
+  padding: 5px 0 15px 0;
+  font-size: 20px;
+}
 
 #navigation {
   position: absolute;
@@ -165,9 +165,26 @@ div {
   background: rgba(54, 73,39, 0.2)
 }
 
-#documents .document .title {
+#document .title {
+  padding-top: 40px;
+  font-size: 60px;
+  line-height: 70px;
+  text-align: center;
+  margin: 0 50px 20px 50px;
+}
+
+.document .title { 
   font-weight: bold;
   font-size: 17px;
+}
+
+#header+p {
+  font-size: 20px;
+  line-height: 1.5;
+  font-style: italic;
+  text-align: center;
+  color: #999;
+  padding: 0 100px 0 100px;
 }
 
 #documents .document .teaser {
@@ -204,6 +221,8 @@ div {
   line-height: 1.4em;
   font-size: 1.15em;
   counter-reset: section;
+  position: relative;
+  top: -100px;
 }
 
 #document  h2, h3, h4 {
@@ -235,7 +254,7 @@ div {
 #footer {
   margin-top: 50px;
   margin: 20px 0;
-  margin-left: 380px;
+  font-size: 14px;
 }
 
 /* Document Styles */
@@ -262,3 +281,171 @@ pre code {
   border-color: transparent;
 }
 
+.content-node.resource .content {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  min-width: 400px;
+  padding: 0;
+  margin: 0;
+}
+#document .content-node.resource.selected .content {
+  min-height: 80px;
+}
+#document .resource-editor {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  padding: 20px;
+}
+#document .resource-url-area .url-label {
+  color: #555;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-style: italic;
+}
+#document .resource-url-area {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  padding: 20px;
+  border: 2px dashed #aaa;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+#document .resource-editor .resource-url {
+  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  width: 350px;
+  color: #000;
+  background: #ccc;
+  opacity: 0.6;
+  border: 1px solid #fff;
+  padding-right: 100px;
+}
+.resource-editor .url-container {
+  display: inline-block;
+  position: relative;
+}
+.resource-editor .status {
+  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  padding: 2px 5px;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+  background: #555;
+  border-left: 1px solid #fff;
+  position: absolute;
+  height: 24px;
+  font-weight: bold;
+  top: 1px;
+  width: 90px;
+  right: 0px;
+}
+.resource-editor .status.image {
+  background: #C35A3A;
+}
+#document .content-node.document.edit .content-node.resource.selected .resource-editor {
+  display: block;
+}
+#document .content-node.document.edit .content-node.resource.selected .content img {
+  opacity: 0.1;
+}
+.content-node.resource {
+  text-align: center;
+}
+.content-node.resource img {
+  padding: 0;
+  margin: 0;
+  max-width: 720px;
+  display: block;
+  padding: 5px 0;
+}
+/*
+  References:
+    counter reset in "image.less"
+*/
+.content-node.selected.section > .operations {
+  background: #a5c54b;
+}
+.content-node.section {
+  margin-bottom: 10px;
+}
+#document h1 {
+  counter-reset: sub-section;
+  font-size: 30px;
+}
+#document h2 {
+  counter-reset: composite;
+}
+
+#document h1,
+#document h2,
+#document h3,
+#document h4,
+#document h5 {
+  font-weight: normal;
+  padding: 0;
+  line-height: 1.6em;
+}
+#document .edit h1,
+#document .edit h2,
+#document .edit h3 {
+  padding-top: 10px;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+#document h2 {
+  font-size: 20px;
+}
+#document h3 {
+  font-size: 16px;
+}
+.content-node.selected.text > .operations {
+  background: #459fc9;
+}
+#document .content-node.text .content {
+  padding: 10px 0;
+}
+.content-node.text > .content {
+  margin: 0 100px;
+}
+code {
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-size: 12px;
+  padding: 0px 3px;
+  background: white;
+  border: 1px solid #DDD;
+  zoom: 1;
+}
+#document strong,
+#document b {
+  font-weight: bold;
+}
+#document em,
+#document i {
+  font-style: italic;
+}
+#document p {
+  margin-bottom: 20px;
+  min-height: 22px;
+}
+#document ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+#document ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}

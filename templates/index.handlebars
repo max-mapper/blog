@@ -65,16 +65,17 @@
         </div>
       </div>
       <div id="document">
-        {{#if index.selected}}{{{index.selected.html}}}
+        {{#if index.selected}}
+          {{{index.selected.html}}}
+          <div id="footer">
+            Powered by <a href="http://substance.io">Substance</a>. If you would like to leave comments on this post please visit <a href="http://substance.io/maxogden/{{index.selected.name}}">http://substance.io/maxogden/{{index.selected.name}}</a>
+          </div>
+          
         {{else}}
           Loading posts... try refreshing in a moment. If <a href="http://substance.io/maxogden/contact.html">this</a> page is down then ping me on twitter (@maxogden).
         {{/if}}
+        
       </div>
-    </div>
-    <br class="clear"/>
-    
-    <div id="footer">
-      Powered by <a href="http://substance.io">Substance</a>
     </div>
   </div>  
   

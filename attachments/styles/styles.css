@@ -279,6 +279,7 @@ pre {
 pre code {
   background: none;
   border-color: transparent;
+  padding: 0;
 }
 
 .content-node.resource .content {

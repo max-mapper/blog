@@ -31,7 +31,7 @@
 <p>The first thing you'll want to do is speed up your clicks. By default in WebViews there is a ~300ms delay if you are responding to <code>click</code> events. This is for capturing certain gestures like double tap to zoom in. Since we are in a viewport controlled unzoomable application container we don't actually want this behavior but sadly there is no easy way to disable this and make clicks fast again. <code>touch</code> events, on the other hand, have no artificial delay. Google has offered up <a href="https://developers.google.com/mobile/articles/fast_buttons">one solution to this problem</a> but I find their approach requires tight coupling between events and DOM elements. Rather than having a 1:1 ratio between DOM elements and their associated event listeners I instead use a few global listeners that aren't tightly coupled to any specific DOM elements.</p>
 <p><a href="https://github.com/maxogden/masseuse.js">masseuse.js</a> is a library I wrote that includes all of the touch related helpers (in a less contrived form than this post) that I developed while working on my application.</p>
 <p>
-  <video poster="/media/doinitwrong.jpg" controls>
+  <video preload="none" poster="/media/doinitwrong.jpg" controls>
     <source src="/media/doinitwrong.m4v">
     <source src="/media/doinitwrong.ogv">
   </video>
@@ -71,7 +71,7 @@ input::-webkit-input-placeholder { opacity: .8; }</code></pre>
   window.location.href = $(event.currentTarget).attr(&#39;href&#39;)
 }</code></pre>
 <p>
-  <video poster="/media/touchevents.jpg" controls>
+  <video preload="none" poster="/media/touchevents.jpg" controls>
     <source src="/media/touchevents.m4v">
     <source src="/media/touchevents.ogv">
   </video>
@@ -116,7 +116,7 @@ Router({
   }
 }).init(&#39;/&#39;)</code></pre>
 <p>
-  <video poster="/media/templating.jpg" controls>
+  <video preload="none" poster="/media/templating.jpg" controls>
     <source src="/media/templating.m4v">
     <source src="/media/templating.ogv">
   </video>
@@ -130,7 +130,7 @@ Router({
 <pre><code>input { background-image: url(&#39;images/text.png&#39;) }
 input:focus { background-image: url(&#39;images/text-focus.png&#39;) }</code></pre>
 <p>
-  <video poster="/media/nosprite.jpg" controls>
+  <video preload="none" poster="/media/nosprite.jpg" controls>
     <source src="/media/nosprite.m4v">
     <source src="/media/nosprite.ogv">
   </video>
@@ -161,7 +161,7 @@ input:focus { background-image: url(&#39;images/text-focus.png&#39;) }</code></p
 <p>Now I don't have to re-define each element with a sprite inside of the media query -- I only need to swap out all elements with a <code>sprite</code> class on them with the retina sprite. The small caveat here is that I have to add the <code>sprite</code> class to each element in the markup that uses a sprite for it's background image:</p>
 <pre><code>&lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;text sprite&quot; value=&quot;&quot; placeholder=&quot;Name&quot;&gt;</code></pre>
 <p>
-  <video poster="/media/sprite.jpg" controls>
+  <video preload="none" poster="/media/sprite.jpg" controls>
     <source src="/media/sprite.m4v">
     <source src="/media/sprite.ogv">
   </video>

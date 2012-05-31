@@ -8,7 +8,6 @@ var deepExtend = require('deep-extend')
 var timeago = require('timeago')
 var jstoxml = require('jstoxml')
 var entities = require('entities')
-var syncHelpers = require('./sync-helpers')
 
 logging.stdout()
 process.logging = logging
@@ -79,16 +78,6 @@ blog.route('/*').files(path.resolve(__dirname, 'attachments'))
 blog.posts = []
 blog.nav = []
 
-function updatePosts(cb) {
-  syncHelpers.getPublishedPosts('maxogden', function(err, data) {
-    if (err && cb) return cb(err)
-    blog.posts = data.posts
-    blog.nav = data.nav
-    fs.writeFileSync('./posts.json', JSON.stringify(data))
-    if (cb) cb(false)
-  })
-}
-
 function generateFeed(keyword) {
   var channel = [
     {title: 'Max Ogden Blogotronz'},
@@ -129,6 +118,12 @@ function generateFeed(keyword) {
 }
 
 var data = JSON.parse(fs.readFileSync('./posts.json'))
+_.each(['posts', 'nav'], function(section) {
+  _.each(data[section], function(item) {
+    item['html'] = fs.readFileSync('posts/' + item.name + '.html').toString()
+  })
+})
+
 blog.posts = data.posts
 blog.nav = data.nav
 

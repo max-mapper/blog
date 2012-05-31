@@ -1,6 +1,7 @@
 var request = require('request').defaults({jar: false})
 var async = require('async')
 var _ = require('underscore')
+var fs = require('fs')
 
 module.exports = {}
 
@@ -12,13 +13,18 @@ module.exports.getPublishedPosts = function(user, callback) {
       if (!data.graph[id].published_on) return
       requests[data.graph[id].name] = function(cb) {
         // need user-agent due to substance.io api bug
-        request({
-          url: "http://substance.io/" + user + '/' + data.graph[id].name + ".html",
+        var filename = data.graph[id].name + ".html"
+        var fetch = request({
+          url: "http://substance.io/" + user + '/' + filename,
           headers: {"user-agent": "curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5"}
-        }, function(e,r,b) {
-          if(e) cb(e)
-          else cb(false, _.extend({}, data.graph[id], {html: b}))
         })
+        var write = fs.createWriteStream('posts/' + filename)
+        write.on('close', function() {
+          cb(false, data.graph[id])
+        })
+        write.on('error', cb)
+        fetch.on('error', cb)
+        fetch.pipe(write)
       }
     })
     async.parallel(requests, function(err, data) {

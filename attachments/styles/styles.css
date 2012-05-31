@@ -282,6 +282,7 @@ pre code {
   padding: 0;
 }
 
+blockquote { font-style: italic;}
 .content-node.resource .content {
   display: inline-block;
   position: relative;

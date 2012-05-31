@@ -36,7 +36,6 @@ blog.route('/', function (req, resp) {
     data.index.posts[0].active = "active"
     data.index.posts = generateTimestamps(data.index.posts)
     data.index.selected = data.index.posts[0]
-    console.log(Object.keys(data.index.selected))
   }
   req.pipe(renderPosts(finish)).pipe(resp)
 })

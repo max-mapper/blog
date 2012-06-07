@@ -13,6 +13,7 @@
 <h2 class="author">Max Ogden</h2>
 </div>
 <p>Description of and notes on the node.js Stream API</p>
+<center><p>There is also <a href="http://www.youtube.com/watch?feature=player_embedded&v=tnXz4HigcoI#!">a screencast</a> version of this article.</p></center>
 <h1 id="why-streams">Why Streams?</h1>
 <p>node bills itself as <em>JavaScript evented I/O</em>. In a nutshell that means if you are trying to solve a problem that is <em>I/O bound</em> (the limiting factor is reading/writing to relatively slow interfaces) then node can provide some useful abstractions to you. An example is if you are writing an application that has to talk to multiple databases, a caching layer, a load balancer, external web services, mobile clients, third party auth providers and serve web applications then node acts as a nice glue between all of the things.</p>
 <p><em>&quot;Streams in node are one of the rare occasions when doing something the fast way is actually easier. SO USE THEM. not since bash has streaming been introduced into a high level language as nicely as it is in node.&quot;</em></p>

@@ -19,7 +19,7 @@
 <p><em>&quot;Streams in node are one of the rare occasions when doing something the fast way is actually easier. SO USE THEM. not since bash has streaming been introduced into a high level language as nicely as it is in node.&quot;</em></p>
 <p><em>-</em><a href="http://twitter.com/dominictarr">@dominictarr</a> in his <a href="https://gist.github.com/2401787">high level node style guide</a></p>
 <h1 id="what-are-streams">What are Streams?</h1>
-<p>The main tool in node's evented toolbox is the <a href="http://nodejs.org/api/stream.html">Stream</a>. Stream instances are basically Unix pipes. They can be readable, writable or both and are easy to reason about -- you can pipe a readable stream to a writable stream by doing <code>readableStream.pipe(writableStream)</code>.</p>
+<p>The main tool in node's evented toolbox is the <a href="http://nodejs.org/api/stream.html">Stream</a>. Stream instances are basically Unix pipes. They can be readable, writable or both and are easy to reason about -- you can pipe a readable stream to a writable stream by doing <code data-language="javascript">readableStream.pipe(writableStream)</code>.</p>
 <h2 id="readable">Readable</h2>
 <p>Readable streams will emit <code>data</code> events each time they get a &quot;chunk&quot; of data and then they will emit <code>end</code> when they are all finished. emit (from <a href="http://nodejs.org/api/events.html">EventEmitter</a>) is the observer pattern - a publish/subscribe pattern which allows a number of observer objects to see an event. Different types of streams will have different ways of chunking up their data. For example, a library that reads CSVs might emit <code>data</code> every time it reads a new line whereas an HTTP request might emit <code>data</code> every few kilobytes during the download.</p>
 <p>Readable streams can also be paused and resumed, and it's up to the Stream implementer to write the <code>pause()</code> and <code>resume()</code> methods. Pause is intended to be an advisory API meaning when you call it you are telling the stream to stop emitting <code>data</code> events but you may still receive some <code>data</code> events after you call pause because certain things may already <em>in-flight</em>, or between states at the moment you called pause.</p>
@@ -28,9 +28,9 @@
 <p>This is a form of <em>back pressure</em> which is a very powerful feature as it lets stream communicate &quot;upstream&quot; to their writers. Most of the back pressure related APIs are advisory so there is sort of a gentlemens agreement to honor requests to start or stop writing as timely as possible. However, since they are advisory it means a writable stream may still receive <code>write</code> calls after it returns <code>false</code>.</p>
 <h1 id="streams-on-the-client">Streams on the client</h1>
 <p>After working with node for a while I came to love the Stream API (<a href="https://gist.github.com/2401787">and I'm not the only one</a>) but sorely missed it when I had to deal with the variety of I/O bound APIs in the client side realm. Some examples of these are XHR, WebSockets, IndexedDB, WebWorkers, WebRTC, and DOM Events (mouse, touch, etc). Wouldn't it be great if you could use the same node style Stream semantics to interface with all of these things? Unfortunately it seems that standards bodies have instead implemented their own (usually inconsistent or poorly done) streaming semantics for the client.</p>
-<p>I thought it would be useful to write something like <code>fingerSwipe.pipe(webSocket)</code> (pseudo-code for detecting swipe <code>touch</code> events and streaming them to the server as they happen over a WebSocket connection) so I started a project called <a href="https://github.com/maxogden/domnode/">domnode</a> which intends to wrap common I/O bound APIs in node style streams so that you can render them into the DOM easily.</p>
+<p>I thought it would be useful to write something like <code data-language="javascript">fingerSwipe.pipe(webSocket)</code> (pseudo-code for detecting swipe <code>touch</code> events and streaming them to the server as they happen over a WebSocket connection) so I started a project called <a href="https://github.com/maxogden/domnode/">domnode</a> which intends to wrap common I/O bound APIs in node style streams so that you can render them into the DOM easily.</p>
 <p>There is a magical project by <a href="http://twitter.com/substack">@substack</a> called <a href="http://github.com/substack/node-browserify">browserify</a> that makes domnode possible. It lets you write code in client side JS that looks like node code:</p>
-<pre><code>var stream = require(&#39;stream&#39;)
+<pre><code data-language="javascript">var stream = require(&#39;stream&#39;)
 var util = require(&#39;util&#39;)
    
 function XHRStream(xhr) {
@@ -49,7 +49,7 @@ util.inherits(XHRStream, stream.Stream)</code></pre>
 <p>Another possibility is that streams will get automagic buffering. This means that if you create a writable stream but haven't yet piped it anywhere then it will buffer any data you write to it and then emit that data when someone asks for it later. This same behavior will be available if you pause a stream and then resume later. Currently you have to roll your own buffered stream implementation or use a generic third party module like <a href="https://github.com/mikeal/morestreams/blob/master/main.js">BufferedStream</a> by <a href="http://twitter.com/mikeal">@mikeal</a>.</p>
 <h1 id="code-examples">Code examples</h1>
 <h2 id="simplified-writable-stream">Simplified writable stream</h2>
-<pre><code>var writestream = new stream.Stream()
+<pre><code data-language="javascript">var writestream = new stream.Stream()
 writestream.writable = true
 writestream.write = function (data) {
   return true // true means &#39;yes i am ready for more data now&#39;
@@ -63,7 +63,7 @@ writestream.end = function (data) {
 writestream.write({number: 1})
 // note: in node core data is always a buffer or string</code></pre>
 <h2 id="simplified-stream.pipe-implementation">Simplified Stream.pipe() implementation</h2>
-<pre><code>var readstream = new stream.Stream()
+<pre><code data-language="javascript">var readstream = new stream.Stream()
 readstream.readable = true
 
 readstream.on(&#39;data&#39;, function(data) {

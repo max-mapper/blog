@@ -5,21 +5,19 @@
   <title>Max Ogden | Posts</title> 
   
   <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css" />
-  
-  <script src="javascripts/schema.js"></script>
-  
+    
   <!-- Templates -->
   <script type="text/x-handlebars-template" name="document_browser">
     <div id="documents">
-        <% documents.each(function(doc) { %>
-          <a class="load-document" href="blog/<%= doc.get('name') %>" document="<%= doc._id %>"  user="<%= doc.get('creator')._id.split('/')[2] %>" name="<%= doc.get('name') %>">
-            <div class="document<%= "/user/"+app.document.username === doc.get('creator')._id && app.document.docname === doc.get('name') ? " active": "" %>">
-              <div class="published"><%= doc.get('created_at') ? _.date(doc.get('created_at')) : "Unpublished" %></div>
-              <div class="title"><%= doc.get('title') %></div>
-              <div class="teaser"><%= _.teaser(doc.get('lead')) %></div>
-            </div>
-          </a>
-        <% }); %>
+      <% documents.each(function(doc) { %>
+        <a class="load-document" href="blog/<%= doc.get('name') %>" document="<%= doc._id %>"  user="<%= doc.get('creator')._id.split('/')[2] %>" name="<%= doc.get('name') %>">
+          <div class="document<%= "/user/"+app.document.username === doc.get('creator')._id && app.document.docname === doc.get('name') ? " active": "" %>">
+            <div class="published"><%= doc.get('created_at') ? _.date(doc.get('created_at')) : "Unpublished" %></div>
+            <div class="title"><%= doc.get('title') %></div>
+            <div class="teaser"><%= _.teaser(doc.get('lead')) %></div>
+          </div>
+        </a>
+      <% }); %>
     </div>
   </script>
   

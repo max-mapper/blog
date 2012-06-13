@@ -40,7 +40,7 @@
 <p>
   The numbers shown are a rough calculation of the time between when the user's finger touches the screen to when the associated <code>click</code> event finishes firing.</p>
 <p>Beyond the click delay there are also certain CSS properties enabled in WebViews that can create a confusing UX (as you can see in the above video). Here's a rundown (via the <a href="http://wiki.phonegap.com/w/page/16494795/iPhone%3A%20Prevent%20callout,%20link%20selection,%20text%20auto-resize">PhoneGap wiki</a>):</p>
-<pre><code>* {
+<pre><code data-language="css">* {
   /* prevent callout when holding tap on links (the native dialog that comes up) */
   -webkit-touch-callout: none; 
 
@@ -60,14 +60,14 @@ input[type=&quot;checkbox&quot;] { -webkit-appearance: none; }
 // placeholder text opacity
 input::-webkit-input-placeholder { opacity: .8; }</code></pre>
 <p>To fix slow touches you must turn off <code>click</code> events for each kind of element that needs to be fast:</p>
-<pre><code>$(&#39;a&#39;).live(&#39;click&#39;, function(e) {
+<pre><code data-language="javascript">$(&#39;a&#39;).live(&#39;click&#39;, function(e) {
   e.preventDefault()
   return false
 })</code></pre>
 <p>To replace clicks you can use the <code>tap</code> abstraction from zepto.js to handle touch events:</p>
-<pre><code>$(&#39;a&#39;).live(&#39;tap&#39;, handleTaps)</code></pre>
+<pre><code data-language="javascript">$(&#39;a&#39;).live(&#39;tap&#39;, handleTaps)</code></pre>
 <p>Since we are disabling <code>click</code> we are also throwing away the native behavior that we get from <code>click</code> events (focus for inputs, href changes for anchor tags, checkbox checking, etc) so we will have to re-implement that behavior in javascript. To implement this for anchor tags in a very rudimentary way:</p>
-<pre><code>function handleTaps( event ) {
+<pre><code data-language="javascript">function handleTaps( event ) {
   window.location.href = $(event.currentTarget).attr(&#39;href&#39;)
 }</code></pre>
 <p>
@@ -82,7 +82,7 @@ input::-webkit-input-placeholder { opacity: .8; }</code></pre>
 <h1 id="templating-and-routing">Templating and Routing</h1>
 <p>Client side templating is good for mobile apps, as you wouldn't want to fetch remote templates over a wireless connection.</p>
 <p>There are a ton of templating and routing engines out there, so you can pick whichever one you like! I happen to use mustache.js and director.js because they are nice and simple. Here's a simple example:</p>
-<pre><code>// render a template and insert it into the dom
+<pre><code data-language="javascript">// render a template and insert it into the dom
 function render( template, target, data ) {
   target = $( target ).first()
   target.html( buildTemplate(template, data) )
@@ -123,11 +123,11 @@ Router({
 </p>
 <p><i>The above code in action.</i></p>
 <p>To get the fixed header and nice scroll behavior of the content div in the above: as of iOS5 you can use CSS to assign native scroll behavior to a DOM element:</p>
-<pre><code>.content { -webkit-overflow-scrolling: touch; }</code></pre>
+<pre><code data-language="css">.content { -webkit-overflow-scrolling: touch; }</code></pre>
 <p>To get this behavior on pre-iOS5 WebViews you have to use JS libraries like <a href="http://cubiq.org/iscroll">iScroll</a>. I personally have found most of these libraries to be very clunky to work with.</p>
 <h1 id="sprites-and-retina-images">Sprites and Retina Images</h1>
 <p>When testing on device I noticed significant latency when loading images from the filesystem. Given the following CSS, when you tap on an input it will focus before the image loads and appears, which makes the app feel slow.</p>
-<pre><code>input { background-image: url(&#39;images/text.png&#39;) }
+<pre><code data-language="css">input { background-image: url(&#39;images/text.png&#39;) }
 input:focus { background-image: url(&#39;images/text-focus.png&#39;) }</code></pre>
 <p>
   <video preload="none" poster="/media/nosprite.jpg" controls>
@@ -137,14 +137,14 @@ input:focus { background-image: url(&#39;images/text-focus.png&#39;) }</code></p
 </p>
 <p><i>Image load time in the simulator. On actual devices it is even more noticeable.</i></p>
 <p>If you look closely at the icons in the input fields you'll see that they are grainy, as the simulator in that video is simulating a retina display. To support retina devices I would have to have a copy of each CSS rule inside of a media query:</p>
-<pre><code>@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+<pre><code data-language="css">@media only screen and (-webkit-min-device-pixel-ratio: 2) {
   input { background-image: url(&#39;images/text@2x.png&#39;) }
   input:focus { background-image: url(&#39;images/text-focus@2x.png&#39;) }
 }</code></pre>
 <p>This isn't very maintainable as it would double the amount of CSS required to show images. Instead, I create sprites using the glue utility:</p>
 <pre><code>glue images/ . --simple --algorithm=vertical</code></pre>
 <p>This will give me a single sprite png as well as CSS rules based on the filenames of the original images from within the sprite, so now my CSS looks like this:</p>
-<pre><code>.sprite { 
+<pre><code data-language="css">.sprite { 
   background-image: url(sprite.png);
   background-repeat:no-repeat;
 }

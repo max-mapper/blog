@@ -1,6 +1,6 @@
 # Geohash-based spatial indexing
 
-### random notes
+## random notes
 
 - good at point data, more complex for line/poly
 - relatively easy to implement bounding box
@@ -22,3 +22,8 @@ can be improved in certain cases by using Hilbert curves [instead](blog.notdot.n
 recursive leaf splitting http://www.cs.umd.edu/~hjs/pubs/NelsSIGG86.pdf
 
 alternative approach: hypercube ray tracing!???
+
+### indexing polygons
+
+if you just store each point in the polygon then only queries that intersect with an edge of the polygon will work. queries that are entirely inside the polygon won't be able to detect that they are inside a polygon
+

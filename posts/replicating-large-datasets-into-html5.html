@@ -1,30 +1,60 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Max Ogden" />
-  <title>Replicating large datasets into HTML5</title>
-</head>
-<body>
-<div id="header">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Max Ogden" />
+    <title>Replicating large datasets into HTML5</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
 <h1 class="title">Replicating large datasets into HTML5</h1>
+
+      
 <h2 class="author">Max Ogden</h2>
-</div>
-<p>Typed arrays, streaming json and IndexedDB!</p>
-<p>The time for fat clients is now! There are some key projects that were all released over the last month or two that allow for some really exciting (relatively) large data manipulation and storage in the browser. If you Voltron them together you can open up an AJAX request to arbitrarily large JSON response that you can stream in realtime into a persistent client-side data store. This workflow opens up a lot of new web application possibilities.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/a3/0edf9526c936ff041165dccbdf8927/687474703a2f2f692e696d6775722e636f6d2f4a304850652e706e67.png" /><p class="caption"></p>
-</div>
+
+    </div>
+    <p>Typed arrays, streaming json and IndexedDB!</p>
+    <p>The time for fat clients is now! There are some key projects that were
+      all released over the last month or two that allow for some really exciting
+      (relatively) large data manipulation and storage in the browser. If you
+      Voltron them together you can open up an AJAX request to arbitrarily large
+      JSON response that you can stream in realtime into a persistent client-side
+      data store. This workflow opens up a lot of new web application possibilities.</p>
+    <div
+    class="figure">
+      <img src="http://substance-assets.s3.amazonaws.com/a3/0edf9526c936ff041165dccbdf8927/687474703a2f2f692e696d6775722e636f6d2f4a304850652e706e67.png"
+      />
+      <p class="caption"></p>
+      </div>
+      
 <h1 id="pouch-crossfilter-and-jsonstream">Pouch, Crossfilter and JSONStream</h1>
-<p><a href="https://github.com/mikeal/pouchdb">PouchDB</a> is maintained by @daleharvey, @tilgovi, @mikeal and me. Dale <a href="http://arandomurl.com/2012/03/27/pouchdb-is-couchdb-in-the-browser.html">wrote up</a> a post describing the project background but essentially Pouch gives you a CouchDB style API that stores data directly into your browser and uses IndexedDB which is available in <a href="http://caniuse.com/#search=indexeddb">a few browsers</a> now. It even replicates with remote CouchDBs.</p>
+
+      <p><a href="https://github.com/mikeal/pouchdb">PouchDB</a> is maintained by
+        @daleharvey, @tilgovi, @mikeal and me. Dale <a href="http://arandomurl.com/2012/03/27/pouchdb-is-couchdb-in-the-browser.html">wrote up</a> a
+        post describing the project background but essentially Pouch gives you
+        a CouchDB style API that stores data directly into your browser and uses
+        IndexedDB which is available in <a href="http://caniuse.com/#search=indexeddb">a few browsers</a> now.
+        It even replicates with remote CouchDBs.</p>
 <pre><code data-language="javascript">db.replicate.from(&#39;http://max.iriscouch.com/senators&#39;)
 db.changes({ 
   onChange: function (change) {
     console.log(change.doc)
   })</code></pre>
-<p><a href="https://github.com/square/crossfilter">Crossfilter</a> is by @mbostock. It uses HTML5 typed arrays (available in <a href="http://caniuse.com/#search=typed%20arrays">a bunch</a> of browsers) to build fast in-memory indexes, sort of like Redis for your browser. Databases like Couch and Mongo let you write map/reduce to query your data, and Crossfilter provides the same functional query API to construct 'dimensions' (synonymous with facets, columns, maps, groups, indexes, etc) and then lets you do fast range queries against your dimensions. Make sure to check out <a href="http://square.github.com/crossfilter/">the demo</a></p>
+
+      <p><a href="https://github.com/square/crossfilter">Crossfilter</a> is by @mbostock.
+        It uses HTML5 typed arrays (available in <a href="http://caniuse.com/#search=typed%20arrays">a bunch</a> of
+        browsers) to build fast in-memory indexes, sort of like Redis for your
+        browser. Databases like Couch and Mongo let you write map/reduce to query
+        your data, and Crossfilter provides the same functional query API to construct
+        'dimensions' (synonymous with facets, columns, maps, groups, indexes, etc)
+        and then lets you do fast range queries against your dimensions. Make sure
+        to check out <a href="http://square.github.com/crossfilter/">the demo</a>
+      </p>
 <pre><code data-language="javascript">var data = crossfilter([
   {id: 5325, value: 1455}, {id: 2333, value: 6754}, {id: 8183, value: 3003} 
 ])
@@ -34,8 +64,22 @@ byValue.filterRange([1000, 2000])
 
 console.log(byValue.top(10))
 // =&gt; {id: 5325, value: 1455}</code></pre>
-<p><a href="https://github.com/dominictarr/JSONStream">JSONStream</a> is by @dominictarr and <a href="https://github.com/creationix/jsonparse">jsonparse</a> is by @creationix. These libraries were originally written for Node point javascript but I forked em and got them to run on the client using the new HTML5 typed arrays. It turns out that Node uses Int32Array to implement it's Buffer object so I quickly <a href="https://github.com/maxogden/JSONStream/commit/ce43382f0bbae03ae7fb3752d20b32ab60cc5b2b">patched JSONStream</a> to work if it gets included in the browser.</p>
-<p>To use node modules (of which there are about 9000 at the time of this post but not all will work using browserify) you can use the excellent <a href="https://github.com/substack/node-browserify">node-browserify</a> by @substack. An advantage of this approach is code re-use between server and client as well as utilization of the excellent <a href="http://nodejs.org/api/">node point javascript documentation</a> and avoidance of reinventing the wheel when it comes to the thousands of packages on NPM.</p>
+
+      <p><a href="https://github.com/dominictarr/JSONStream">JSONStream</a> is by
+        @dominictarr and <a href="https://github.com/creationix/jsonparse">jsonparse</a> is
+        by @creationix. These libraries were originally written for Node point
+        javascript but I forked em and got them to run on the client using the
+        new HTML5 typed arrays. It turns out that Node uses Int32Array to implement
+        it's Buffer object so I quickly <a href="https://github.com/maxogden/JSONStream/commit/ce43382f0bbae03ae7fb3752d20b32ab60cc5b2b">patched JSONStream</a> to
+        work if it gets included in the browser.</p>
+      <p>To use node modules (of which there are about 9000 at the time of this
+        post but not all will work using browserify) you can use the excellent
+        <a
+        href="https://github.com/substack/node-browserify">node-browserify</a>by @substack. An advantage of this approach is code
+          re-use between server and client as well as utilization of the excellent
+          <a
+          href="http://nodejs.org/api/">node point javascript documentation</a>and avoidance of reinventing the
+            wheel when it comes to the thousands of packages on NPM.</p>
 <pre><code data-language="javascript">// from a command line
 npm install browserify -g
 browserify -r events -r buffer -r stream -r util -r JSONStream -o browserify-bundle.js
@@ -48,7 +92,11 @@ browserify -r events -r buffer -r stream -r util -r JSONStream -o browserify-bun
   var JSONStream = require(&#39;JSONStream&#39;)
   // now you can use them as if you were writing node!
 &lt;/script&gt;</code></pre>
-<p>JSONStream and jsonparse use Node's <a href="http://nodejs.org/api/stream.html">Stream API</a>, which essentially gives you UNIX style pipes in JavaScript. I wrapped XMLHttpRequest2 in a simple object called XHRStream which gives you streaming access to data from AJAX requests.</p>
+
+      <p>JSONStream and jsonparse use Node's <a href="http://nodejs.org/api/stream.html">Stream API</a>,
+        which essentially gives you UNIX style pipes in JavaScript. I wrapped XMLHttpRequest2
+        in a simple object called XHRStream which gives you streaming access to
+        data from AJAX requests.</p>
 <pre><code data-language="javascript">  var xhr = new XMLHttpRequest()
   xhr.open(&quot;GET&quot;, &quot;http://max.iriscouch.com/oakland_assessor/_all_docs?include_docs=true&quot;, true)
   var stream = new XHRStream(xhr) 
@@ -57,14 +105,54 @@ browserify -r events -r buffer -r stream -r util -r JSONStream -o browserify-bun
   json.on(&#39;data&#39;, function(doc) {
     // this will get called for each JSON object (available here as &#39;doc&#39;) that JSONStream parses
   })</code></pre>
-<p>It's important that everything remain evented + streaming as you always want to start displaying data immediately in your application and not force your users to wait seconds or minutes for their data to download. Another approach would be to use WebSockets to get a data stream from the server but that requires servers that speak WebSockets whereas the benefit of JSONStream is that it can be made to work with any plain-Jane or fancy JSON API.</p>
-<p>One technical note is that XHR2 doesn't technically stream data, it buffers the entire response body into one giant string, available as xhr.responseText. Every time it gets a new chunk of data from the server it emits a readystatechange of 3 (so a request will usually emit something like 2 3 3 3 3 3 3 3 3 3 3 3 4) but instead of giving you access to a new data chunk it just appends the new chunk to the end of xhr.responseText and you have to manually keep track of each chunk's offset and slice it up yourself. This is an unfortunate API design which means that if you are downloading 10GB of JSON in a single XHR request then your browser will try to slowly fill up a single (and therefore not garbage collectable) 10GB string until you run out of memory.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/40/74dd07cb415f985bd54441b3452279/Screen-Shot-2012-04-13-at-5.44.11-PM.png" alt="The first few properties being visualized" /><p class="caption">The first few properties being visualized</p>
-</div>
-<p>I wrote <a href="http://max.iriscouch.com/oakland_assessor/_design/streaming-xhr/_rewrite">a quick demo</a> (code <a href="https://github.com/maxogden/streaming-xhr-example">available here</a>) that streams an 80,000 row JSON query of assessed tax property values in Oakland into your browser and renders each property as a circle (radius is based on value) using d3.js. Because the data isn't being amortized or reduced in any way it quickly overwhelms browsers by creating an excess of expensive DOM nodes. I'm currently investigating streaming or &quot;on-line&quot; single pass statistics libraries written in JavaScript. @jasondavies tells me that his <a href="https://github.com/jasondavies/science.js">science.js</a> library will soon have a single pass K-Means clustering algorithm.</p>
-<p>Again, it would be key here to have a clustering algorithm that could immediately start giving you cluster data to display as opposed to having to wait for all 80,000 documents to finish replicating to the client.</p>
-<h1 id="bringing-them-all-together">Bringing them all together</h1>
-<p>Crossfilter and Pouch complement each other very, very well. The server-side Erlang CouchDB has a persistence layer and a query layer, whereas on the client these two features are achieved using Pouch and Crossfilter respectively. At this time Pouch isn't yet using a streaming JSON parser for it's replication implementation. It may be added in the future as a performance optimization. If your JSON is coming from CouchDB and you want it to get stored offline and sync it back later then use Pouch replication, otherwise consider playing with JSONStream as option for streaming large datasets into the client from traditional JSON APIs.</p>
-</body>
+
+      <p>It's important that everything remain evented + streaming as you always
+        want to start displaying data immediately in your application and not force
+        your users to wait seconds or minutes for their data to download. Another
+        approach would be to use WebSockets to get a data stream from the server
+        but that requires servers that speak WebSockets whereas the benefit of
+        JSONStream is that it can be made to work with any plain-Jane or fancy
+        JSON API.</p>
+      <p>One technical note is that XHR2 doesn't technically stream data, it buffers
+        the entire response body into one giant string, available as xhr.responseText.
+        Every time it gets a new chunk of data from the server it emits a readystatechange
+        of 3 (so a request will usually emit something like 2 3 3 3 3 3 3 3 3 3
+        3 3 4) but instead of giving you access to a new data chunk it just appends
+        the new chunk to the end of xhr.responseText and you have to manually keep
+        track of each chunk's offset and slice it up yourself. This is an unfortunate
+        API design which means that if you are downloading 10GB of JSON in a single
+        XHR request then your browser will try to slowly fill up a single (and
+        therefore not garbage collectable) 10GB string until you run out of memory.</p>
+      <div
+      class="figure">
+        <img src="http://substance-assets.s3.amazonaws.com/40/74dd07cb415f985bd54441b3452279/Screen-Shot-2012-04-13-at-5.44.11-PM.png"
+        alt="The first few properties being visualized" />
+        <p class="caption">The first few properties being visualized</p>
+        </div>
+        <p>I wrote <a href="http://max.iriscouch.com/oakland_assessor/_design/streaming-xhr/_rewrite">a quick demo</a> (code
+          <a
+          href="https://github.com/maxogden/streaming-xhr-example">available here</a>) that streams an 80,000 row JSON query of assessed
+            tax property values in Oakland into your browser and renders each property
+            as a circle (radius is based on value) using d3.js. Because the data isn't
+            being amortized or reduced in any way it quickly overwhelms browsers by
+            creating an excess of expensive DOM nodes. I'm currently investigating
+            streaming or &quot;on-line&quot; single pass statistics libraries written
+            in JavaScript. @jasondavies tells me that his <a href="https://github.com/jasondavies/science.js">science.js</a> library
+            will soon have a single pass K-Means clustering algorithm.</p>
+        <p>Again, it would be key here to have a clustering algorithm that could
+          immediately start giving you cluster data to display as opposed to having
+          to wait for all 80,000 documents to finish replicating to the client.</p>
+        <h1
+        id="bringing-them-all-together">Bringing them all together</h1>
+          <p>Crossfilter and Pouch complement each other very, very well. The server-side
+            Erlang CouchDB has a persistence layer and a query layer, whereas on the
+            client these two features are achieved using Pouch and Crossfilter respectively.
+            At this time Pouch isn't yet using a streaming JSON parser for it's replication
+            implementation. It may be added in the future as a performance optimization.
+            If your JSON is coming from CouchDB and you want it to get stored offline
+            and sync it back later then use Pouch replication, otherwise consider playing
+            with JSONStream as option for streaming large datasets into the client
+            from traditional JSON APIs.</p>
+  </body>
+
 </html>

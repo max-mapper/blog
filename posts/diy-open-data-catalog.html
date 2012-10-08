@@ -1,52 +1,166 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Max Ogden" />
-  <title>DIY Open Data</title>
-</head>
-<body>
-<div id="header">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Max Ogden" />
+    <title>DIY Open Data</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
 <h1 class="title">DIY Open Data</h1>
+
+      
 <h2 class="author">Max Ogden</h2>
-</div>
-<p>How to start a public data catalog in your city</p>
-<p>Around a year ago I started a project called <a href="http://www.pdxapi.com">PDX API</a>, the purpose of which is to make it <em>super easy</em> for web developers to access a bunch of public data that various Portland, Oregon, area governments had just <a href="http://www.wweek.com/portland/article-12331-app_dancing.html">started releasing</a>. The entire API is deceptively simple: its only dependency is a single <a href="https://github.com/couchbase/geocouch">GeoCouch</a> instance. I have been lucky enough to meet various open data hackers from around the world this past year and many spinoff projects have started in response to PDX API. Some examples include <a href="http://twitter.com/chewbranca">Russell Branca</a>'s <a href="http://seaapi.com">SEAAPI</a> in Seattle, <a href="http://twitter.com/mheadd">Mark Headd</a> &amp; co's <a href="http://phlapi.com">PHLAPI</a> in Philadelphia and my own generalized version, <a href="http://civicapi.com">CivicAPI</a>.</p>
-<p></p>
-<p>There are also some pretty awesome applications that have been built on top of PDX API. <a href="http://twitter.com/elsewisemedia">Matt Blair</a> has done an amazing job of making tools that let anyone consume or create public datasets such as <a href="http://publicartpdx.com/">public art</a>, <a href="http://pdxtrees.org/">heritage trees</a> and <a href="http://poetrybox.info/">poetry boxes</a>.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/67/b8b0c816774ddb28e8c56a7b0706a3/Screen-shot-2011-07-17-at-12.17.08-AM.png" alt="« Enter Caption »" /><p class="caption">« Enter Caption »</p>
-</div>
+
+    </div>
+    <p>How to start a public data catalog in your city</p>
+    <p>Around a year ago I started a project called <a href="http://www.pdxapi.com">PDX API</a>,
+      the purpose of which is to make it <em>super easy</em> for web developers
+      to access a bunch of public data that various Portland, Oregon, area governments
+      had just <a href="http://www.wweek.com/portland/article-12331-app_dancing.html">started releasing</a>.
+      The entire API is deceptively simple: its only dependency is a single
+      <a
+      href="https://github.com/couchbase/geocouch">GeoCouch</a>instance. I have been lucky enough to meet various open data
+        hackers from around the world this past year and many spinoff projects
+        have started in response to PDX API. Some examples include <a href="http://twitter.com/chewbranca">Russell Branca</a>'s
+        <a
+        href="http://seaapi.com">SEAAPI</a>in Seattle, <a href="http://twitter.com/mheadd">Mark Headd</a> &amp;
+          co's <a href="http://phlapi.com">PHLAPI</a> in Philadelphia and my own generalized
+          version, <a href="http://civicapi.com">CivicAPI</a>.</p>
+    <p></p>
+    <p>There are also some pretty awesome applications that have been built on
+      top of PDX API. <a href="http://twitter.com/elsewisemedia">Matt Blair</a> has
+      done an amazing job of making tools that let anyone consume or create public
+      datasets such as <a href="http://publicartpdx.com/">public art</a>, <a href="http://pdxtrees.org/">heritage trees</a> and
+      <a
+      href="http://poetrybox.info/">poetry boxes</a>.</p>
+    <div class="figure">
+      <img src="http://substance-assets.s3.amazonaws.com/67/b8b0c816774ddb28e8c56a7b0706a3/Screen-shot-2011-07-17-at-12.17.08-AM.png"
+      alt="« Enter Caption »" />
+      <p class="caption">« Enter Caption »</p>
+    </div>
+    
 <h1 id="starting-your-city-api">Starting (your city) API</h1>
-<p>This blog post is a call for participation. As more data gets made available from different places more applications can be shared and adapted for use in those places. The excellent <a href="http://www.civiccommons.com/">Civic Commons</a> project will ensure that plenty of applications will be available for you to adapt to your city's data, and everything listed so far in this blog post is open source and can also be used. All you need to do, dear reader, is follow these steps:</p>
-<ul>
-<li><p>Get raw data from your local government</p></li>
-<li><p>Transform the raw data into nice, happy data</p></li>
-<li><p>Put the data into GeoCouch so it can be shared</p></li>
-<li><p>Spread the word</p></li>
-</ul>
-<p></p>
+
+    <p>This blog post is a call for participation. As more data gets made available
+      from different places more applications can be shared and adapted for use
+      in those places. The excellent <a href="http://www.civiccommons.com/">Civic Commons</a> project
+      will ensure that plenty of applications will be available for you to adapt
+      to your city's data, and everything listed so far in this blog post is
+      open source and can also be used. All you need to do, dear reader, is follow
+      these steps:</p>
+    <ul>
+      <li>
+        <p>Get raw data from your local government</p>
+      </li>
+      <li>
+        <p>Transform the raw data into nice, happy data</p>
+      </li>
+      <li>
+        <p>Put the data into GeoCouch so it can be shared</p>
+      </li>
+      <li>
+        <p>Spread the word</p>
+      </li>
+    </ul>
+    <p></p>
+    
 <h2 id="getting-the-data">Getting the data</h2>
-<p>Many cities have participated in what are called <strong>open data initiatives</strong>, which means they take taxpayer dollar produced raw datasets and make them publicly accessible. These include things like library and hospital locations, real time bus GPS feeds and <a href="http://granicus.sandiego.gov/ViewPublisher.php?view_id=3">real time streams</a> (via <a href="http://www.granicus.com/">Granicus</a>) of your local city council chamber.</p>
-<p>PDX API works with most types of data, but you shouldn't reinvent the wheel. Make sure to check the <a href="http://wiki.civiccommons.org/">CivicCommons wiki</a> and see if there is an existing web accessible API that makes your city's data available.</p>
-<p>Reach out to your local Mayor's office and try to figure out if there is any raw data available from your city. If you want some advice shoot me an email! At <a href="http://codeforamerica.org/">Code for America</a> we have a great government relations director, <a href="http://twitter.com/alissa007">Alissa Black</a>, who can help navigate the political aspects of this step.</p>
-<p>Recently I found an <a href="ftp://ftp.ci.austin.tx.us/GIS-Data/Regional/">FTP server</a> hosted by the City of Austin, Texas containing over 80 gigabytes of public data. This makes Austin a perfect candidate: they have a bunch of data available but it is hard to download and work with if you aren't a GIS technician.</p>
-<h2 id="making-happy-data">Making happy data</h2>
-<p>I've spent much of the last year looking for tools that help ease the process of taking raw data and turning it into something nice and accessible. Perhaps the most useful utility I've worked with is <a href="http://code.google.com/p/google-refine/">Google Refine</a>, a &quot;power tool for working with messy data.&quot;</p>
-<p>To learn Refine, I'd recommend watching the screencasts available from David Huynh, the author of Refine, over on the <a href="http://code.google.com/p/google-refine/">Google Refine page.</a> I also did a tutorial screencast that is <a href="http://vimeo.com/18351837">available here</a>.</p>
-<h2 id="putting-your-data-online">Putting your data online</h2>
-<p>Up until this point I've been assuming you've got access to some public data and server space available to host it. If not, let me know, and I can try to connect you with the right resources. The purpose of my <a href="http://civicapi.com/">CivicAPI</a> project is to host anyone's public data, so if you don't want to go through the hassle of setting up our own domain, I would be happy to host the data for you.</p>
-<p>On your server you will need to be running a copy of <a href="http://www.couchbase.com/downloads/couchbase-server/community">GeoCouch</a>. Check out my blog post describing how to <a href="http://maxogden.com/#/blog/installing-geocouch">install GeoCouch and shp2geocouch</a>. The majority of open geographic data is released in the ESRI Shapefile format, so I wrote <a href="https://github.com/maxogden/shp2geocouch">shp2geocouch</a>, a command line Ruby gem utility that processes Shapefiles and converts them into GeoCouch databases. A pretty good review/tutorial for using shp2geocouch is available from the aforementioned Mark Headd on the <a href="http://blog.tropo.com/2010/12/25/unlocking-government-data-with-tropo-and-open-source-software/">Tropo developer blog</a>.</p>
-<p>Another useful utility that I've written is <a href="https://github.com/maxogden/refine-uploader">an extension</a> for Refine that lets you export data directly to any compatible webserver (including CouchDB and GeoCouch). Once your data is in GeoCouch, you can use my <a href="https://github.com/maxogden/removalist">Removalist</a> app to export your database back and forth forever between GeoCouch and Google Refine, making bulk edits and cleanups each time.</p>
-<p>The third tool in the open data trifecta is <a href="http://scraperwiki.com">ScraperWiki</a>. ScraperWiki is a browser based editor that lets you write scrapers -- bits of code that go and fetch messy data. ScraperWiki then takes care of running your scrapers every day so that they'll go and fetch new content.</p>
-<p>ScraperWiki is useful in cases where raw data is not available directly from your city, but it instead is embedded inside of a page on the city's website. For instance, some of the other fellows at Code for America and I wrote a <a href="http://scraperwiki.com/search/boston/">variety of scrapers</a> for the City of Boston's website, ranging from datasets like phone numbers for every department in city hall to the name of every street that you're allowed to park on during a snow storm. <a href="http://vimeo.com/17462239">Here's a screencast</a> that I made to demonstrate ScraperWiki by scraping all of the restaurants in Chicago off of their health inspection website.</p>
-<p>When setting up your API in Couch there are a bunch of resources at your disposal. If you are unfamiliar with CouchDB, you might find my <a href="http://vimeo.com/18808177">intro screencast</a> useful.</p>
-<p>There are also a lot of helpful links at <a href="http://couchapp.org/page/index">CouchApp.org.</a> For getting data out of GeoCouch in a bunch of different ways (like KML or radius queries) there is the <a href="https://github.com/maxogden/geocouch-utils">GeoCouch Utils</a> project.</p>
-<p>CouchDB is capable of hosting not only your data but also your application (as long as your application is written in JavaScript and HTML5). The most awesome part of Couch is that every single dataset is fully replicable to any other Couch. If there is a dataset of 20,000 bus stops that you want to download and play with, the easiest way is to install Couch on your local computer and make a clone of all 20,000 by copying them (also known as &quot;replicating&quot;) to your local Couch. This also works both ways, so if you do all of your data cleanup on your local Couch and you want to host the datasets on <a href="http://civicapi.com/">CivicAPI</a>, let me know, and I will give you permission to replicate directly to the CivicAPI Couch. You can learn more about Couch's replication <a href="http://guide.couchdb.org/draft/replication.html">here</a>.</p>
-<p>The other benefit of replication is that it makes for robust decentralized networks. If your server gets its <a href="http://www.readwriteweb.com/archives/datagov_7_other_sites_to_shut_down_after_budgets_c.php">budget cut</a>, it's only a few clicks to replicate all of your datasets to another Couch powered API.</p>
+
+    <p>Many cities have participated in what are called <strong>open data initiatives</strong>,
+      which means they take taxpayer dollar produced raw datasets and make them
+      publicly accessible. These include things like library and hospital locations,
+      real time bus GPS feeds and <a href="http://granicus.sandiego.gov/ViewPublisher.php?view_id=3">real time streams</a> (via
+      <a
+      href="http://www.granicus.com/">Granicus</a>) of your local city council chamber.</p>
+    <p>PDX API works with most types of data, but you shouldn't reinvent the
+      wheel. Make sure to check the <a href="http://wiki.civiccommons.org/">CivicCommons wiki</a> and
+      see if there is an existing web accessible API that makes your city's data
+      available.</p>
+    <p>Reach out to your local Mayor's office and try to figure out if there
+      is any raw data available from your city. If you want some advice shoot
+      me an email! At <a href="http://codeforamerica.org/">Code for America</a> we
+      have a great government relations director, <a href="http://twitter.com/alissa007">Alissa Black</a>,
+      who can help navigate the political aspects of this step.</p>
+    <p>Recently I found an <a href="ftp://ftp.ci.austin.tx.us/GIS-Data/Regional/">FTP server</a> hosted
+      by the City of Austin, Texas containing over 80 gigabytes of public data.
+      This makes Austin a perfect candidate: they have a bunch of data available
+      but it is hard to download and work with if you aren't a GIS technician.</p>
+    <h2
+    id="making-happy-data">Making happy data</h2>
+      <p>I've spent much of the last year looking for tools that help ease the
+        process of taking raw data and turning it into something nice and accessible.
+        Perhaps the most useful utility I've worked with is <a href="http://code.google.com/p/google-refine/">Google Refine</a>,
+        a &quot;power tool for working with messy data.&quot;</p>
+      <p>To learn Refine, I'd recommend watching the screencasts available from
+        David Huynh, the author of Refine, over on the <a href="http://code.google.com/p/google-refine/">Google Refine page.</a> I
+        also did a tutorial screencast that is <a href="http://vimeo.com/18351837">available here</a>.</p>
+      <h2
+      id="putting-your-data-online">Putting your data online</h2>
+        <p>Up until this point I've been assuming you've got access to some public
+          data and server space available to host it. If not, let me know, and I
+          can try to connect you with the right resources. The purpose of my <a href="http://civicapi.com/">CivicAPI</a> project
+          is to host anyone's public data, so if you don't want to go through the
+          hassle of setting up our own domain, I would be happy to host the data
+          for you.</p>
+        <p>On your server you will need to be running a copy of <a href="http://www.couchbase.com/downloads/couchbase-server/community">GeoCouch</a>.
+          Check out my blog post describing how to <a href="http://maxogden.com/#/blog/installing-geocouch">install GeoCouch and shp2geocouch</a>.
+          The majority of open geographic data is released in the ESRI Shapefile
+          format, so I wrote <a href="https://github.com/maxogden/shp2geocouch">shp2geocouch</a>,
+          a command line Ruby gem utility that processes Shapefiles and converts
+          them into GeoCouch databases. A pretty good review/tutorial for using shp2geocouch
+          is available from the aforementioned Mark Headd on the <a href="http://blog.tropo.com/2010/12/25/unlocking-government-data-with-tropo-and-open-source-software/">Tropo developer blog</a>.</p>
+        <p>Another useful utility that I've written is <a href="https://github.com/maxogden/refine-uploader">an extension</a> for
+          Refine that lets you export data directly to any compatible webserver (including
+          CouchDB and GeoCouch). Once your data is in GeoCouch, you can use my
+          <a
+          href="https://github.com/maxogden/removalist">Removalist</a>app to export your database back and forth forever between
+            GeoCouch and Google Refine, making bulk edits and cleanups each time.</p>
+        <p>The third tool in the open data trifecta is <a href="http://scraperwiki.com">ScraperWiki</a>.
+          ScraperWiki is a browser based editor that lets you write scrapers -- bits
+          of code that go and fetch messy data. ScraperWiki then takes care of running
+          your scrapers every day so that they'll go and fetch new content.</p>
+        <p>ScraperWiki is useful in cases where raw data is not available directly
+          from your city, but it instead is embedded inside of a page on the city's
+          website. For instance, some of the other fellows at Code for America and
+          I wrote a <a href="http://scraperwiki.com/search/boston/">variety of scrapers</a> for
+          the City of Boston's website, ranging from datasets like phone numbers
+          for every department in city hall to the name of every street that you're
+          allowed to park on during a snow storm. <a href="http://vimeo.com/17462239">Here's a screencast</a> that
+          I made to demonstrate ScraperWiki by scraping all of the restaurants in
+          Chicago off of their health inspection website.</p>
+        <p>When setting up your API in Couch there are a bunch of resources at your
+          disposal. If you are unfamiliar with CouchDB, you might find my <a href="http://vimeo.com/18808177">intro screencast</a> useful.</p>
+        <p>There are also a lot of helpful links at <a href="http://couchapp.org/page/index">CouchApp.org.</a> For
+          getting data out of GeoCouch in a bunch of different ways (like KML or
+          radius queries) there is the <a href="https://github.com/maxogden/geocouch-utils">GeoCouch Utils</a> project.</p>
+        <p>CouchDB is capable of hosting not only your data but also your application
+          (as long as your application is written in JavaScript and HTML5). The most
+          awesome part of Couch is that every single dataset is fully replicable
+          to any other Couch. If there is a dataset of 20,000 bus stops that you
+          want to download and play with, the easiest way is to install Couch on
+          your local computer and make a clone of all 20,000 by copying them (also
+          known as &quot;replicating&quot;) to your local Couch. This also works
+          both ways, so if you do all of your data cleanup on your local Couch and
+          you want to host the datasets on <a href="http://civicapi.com/">CivicAPI</a>,
+          let me know, and I will give you permission to replicate directly to the
+          CivicAPI Couch. You can learn more about Couch's replication <a href="http://guide.couchdb.org/draft/replication.html">here</a>.</p>
+        <p>The other benefit of replication is that it makes for robust decentralized
+          networks. If your server gets its <a href="http://www.readwriteweb.com/archives/datagov_7_other_sites_to_shut_down_after_budgets_c.php">budget cut</a>,
+          it's only a few clicks to replicate all of your datasets to another Couch
+          powered API.</p>
+        
 <h2 id="tell-the-world">Tell the world</h2>
-<p>Once your data is online, get out there are tell people about it! Try hooking up some applications to the API, show it off at local user groups, announce it on Twitter (cc me for a retweet) and don't forget to add it to the <a href="http://wiki.civiccommons.org/">CivicCommons wiki</a>.</p>
-</body>
+
+        <p>Once your data is online, get out there are tell people about it! Try
+          hooking up some applications to the API, show it off at local user groups,
+          announce it on Twitter (cc me for a retweet) and don't forget to add it
+          to the <a href="http://wiki.civiccommons.org/">CivicCommons wiki</a>.</p>
+  </body>
+
 </html>

@@ -1,29 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Max Ogden" />
-  <title>Gut: Hosted Open Data Filet Knives</title>
-</head>
-<body>
-<div id="header">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Max Ogden" />
+    <title>Gut: Hosted Open Data Filet Knives</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
 <h1 class="title">Gut: Hosted Open Data Filet Knives</h1>
+
+      
 <h2 class="author">Max Ogden</h2>
-</div>
-<p>HTTP Unix pipes for Open Data</p>
+
+    </div>
+    <p>HTTP Unix pipes for Open Data</p>
+    
 <h1 id="not-invented-here">Not Invented Here</h1>
-<p>A topic that has fascinated me for years now is (broadly speaking) <a href="http://en.wikipedia.org/wiki/Nationalism">nationalism</a>. In the world of the internet that essentially boils down to something like &quot;<em>I am a Python programmer and this project is written in Java! Ignored!&quot;</em>. It is this behavior (which I see a lot in programming, mostly manifested as &quot;<a href="http://en.wikipedia.org/wiki/Not_invented_here">Not invented here</a>&quot;) that leads to a bunch of solutions to the same problem written in a bunch of different languages where many of the solutions are half-baked.</p>
-<p>For a concrete example consider open data catalogues. As evidenced by <a href="http://datacatalogs.org">datacatalogs.org</a> there are a ton of different solutions to the same set of problems, namely hosting open data. Having a rich ecosystem is a good thing, but I believe that there is a common open data infrastructure layer that we aren't maximizing our collaborating on: the conversion of data between different formats.</p>
-<p>Wouldn't it be great if I, as a Javascript developer, could use the awesome data conversion libraries available in Java like <a href="http://poi.apache.org">Apache POI</a>? Or if Ruby developers could use Python packages like <a href="https://github.com/onyxfish/csvkit">csvkit</a> (which contains the super useful csvclean utility). The good news is that the internet has settled on a common language for crossing these language barriers: HTTP and JSON. Additionally, nowadays the web is filled with hosted services (see SaaS, PaaS). There are numerous platforms where hosted services can be deployed for free (Google App Engine, Heroku, Dotcloud, Nodejitsu, etc).</p>
-<h1 id="unix-pipes">Unix pipes</h1>
-<p>On the Unix command line there are a bunch of useful single purpose utilities. The <a href="http://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a> is <em>&quot;write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface&quot;</em>. The Unix command <code>wc</code> is a great example. You give it a bunch of text and it will count the number of words, lines and characters. Combined with the <code>cat</code> command, which reads and file and dumps out all the text, you can use a Unix pipe (the | character) to 'pipe' the data that <code>cat</code> dumps out into <code>wc</code>:</p>
+
+    <p>A topic that has fascinated me for years now is (broadly speaking) <a href="http://en.wikipedia.org/wiki/Nationalism">nationalism</a>.
+      In the world of the internet that essentially boils down to something like
+      &quot;<em>I am a Python programmer and this project is written in Java! Ignored!&quot;</em>.
+      It is this behavior (which I see a lot in programming, mostly manifested
+      as &quot;<a href="http://en.wikipedia.org/wiki/Not_invented_here">Not invented here</a>&quot;)
+      that leads to a bunch of solutions to the same problem written in a bunch
+      of different languages where many of the solutions are half-baked.</p>
+    <p>For a concrete example consider open data catalogues. As evidenced by
+      <a
+      href="http://datacatalogs.org">datacatalogs.org</a>there are a ton of different solutions to the same
+        set of problems, namely hosting open data. Having a rich ecosystem is a
+        good thing, but I believe that there is a common open data infrastructure
+        layer that we aren't maximizing our collaborating on: the conversion of
+        data between different formats.</p>
+    <p>Wouldn't it be great if I, as a Javascript developer, could use the awesome
+      data conversion libraries available in Java like <a href="http://poi.apache.org">Apache POI</a>?
+      Or if Ruby developers could use Python packages like <a href="https://github.com/onyxfish/csvkit">csvkit</a> (which
+      contains the super useful csvclean utility). The good news is that the
+      internet has settled on a common language for crossing these language barriers:
+      HTTP and JSON. Additionally, nowadays the web is filled with hosted services
+      (see SaaS, PaaS). There are numerous platforms where hosted services can
+      be deployed for free (Google App Engine, Heroku, Dotcloud, Nodejitsu, etc).</p>
+    <h1
+    id="unix-pipes">Unix pipes</h1>
+      <p>On the Unix command line there are a bunch of useful single purpose utilities.
+        The <a href="http://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a> is <em>&quot;write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface&quot;</em>.
+        The Unix command <code>wc</code> is a great example. You give it a bunch
+        of text and it will count the number of words, lines and characters. Combined
+        with the <code>cat</code> command, which reads and file and dumps out all
+        the text, you can use a Unix pipe (the | character) to 'pipe' the data
+        that <code>cat</code> dumps out into <code>wc</code>:</p>
 <pre><code>cat awesomeText.txt | wc
 21      55     507</code></pre>
+
+      
 <h1 id="what-is-gut">What is gut</h1>
-<p>Taking heavy inspiration from unix pipes, HTTP and JSON I have come up with a modest proposal for how we might share our best tools for various data conversion jobs as hosted web services. I'm calling it gut, as in gutting a fish and getting the yummy filet out while leaving behind all of the junk.</p>
-<p>Here's a simple example of how a gut server would work that takes in a CSV file and returns JSON data. As a developer using the gut server to process my CSV file I would send the following HTTP request containing my CSV data:</p>
+
+      <p>Taking heavy inspiration from unix pipes, HTTP and JSON I have come up
+        with a modest proposal for how we might share our best tools for various
+        data conversion jobs as hosted web services. I'm calling it gut, as in
+        gutting a fish and getting the yummy filet out while leaving behind all
+        of the junk.</p>
+      <p>Here's a simple example of how a gut server would work that takes in a
+        CSV file and returns JSON data. As a developer using the gut server to
+        process my CSV file I would send the following HTTP request containing
+        my CSV data:</p>
 <pre><code>POST / HTTP/1.1
 User-Agent: curl
 Host: gutcsv.nodejitsu.com
@@ -35,7 +79,8 @@ name,appearance
 chewbacca,hairy
 bill,nonplussed
 bubbles,relaxed</code></pre>
-<p>This is what the gut server would give me back:</p>
+
+      <p>This is what the gut server would give me back:</p>
 <pre><code>POST / HTTP/1.1
 host: gutcsv.nodejitsu.com
 content-type: application/json
@@ -66,9 +111,26 @@ Connection: close
     }
   ]
 }</code></pre>
-<p>Essentially I am piping data from my computer through a gut server and when it comes back it is in the new format. In this example I used the node.js hosting platform Nodejitsu to deploy my CSV-to-JSON code so that it is available to anyone in the world who can make an HTTP request.</p>
-<h1 id="voltron-assemble">Voltron, assemble!</h1>
-<p>If you are writing code that converts data from one format to another, consider also exposing your solution in the form of a gut server! Last year I had great success at <a href="http://opendataday.org">International Open Data Day</a> teachin ScraperWiki because it scaled out well to a room full of people with different programming backgrounds. I think that writing these lightweight data converters/massagers/transformer servers is also a task that anyone can tackle in a short amount of time.</p>
-<p>There is a <a href="https://github.com/maxogden/gut">Github project</a> that contains the current gut servers that I have been working on and also a <a href="https://github.com/maxogden/gut/wiki/List-of-gut-servers">wiki page</a> where you can add your gut server to the list. Once there are a handful of gut servers we can start working on more extensive discovery and testing tools (ensuring gut server availability, better documentation, web based gut server API playground, etc).</p>
-</body>
+
+      <p>Essentially I am piping data from my computer through a gut server and
+        when it comes back it is in the new format. In this example I used the
+        node.js hosting platform Nodejitsu to deploy my CSV-to-JSON code so that
+        it is available to anyone in the world who can make an HTTP request.</p>
+      <h1
+      id="voltron-assemble">Voltron, assemble!</h1>
+        <p>If you are writing code that converts data from one format to another,
+          consider also exposing your solution in the form of a gut server! Last
+          year I had great success at <a href="http://opendataday.org">International Open Data Day</a> teachin
+          ScraperWiki because it scaled out well to a room full of people with different
+          programming backgrounds. I think that writing these lightweight data converters/massagers/transformer
+          servers is also a task that anyone can tackle in a short amount of time.</p>
+        <p>There is a <a href="https://github.com/maxogden/gut">Github project</a> that
+          contains the current gut servers that I have been working on and also a
+          <a
+          href="https://github.com/maxogden/gut/wiki/List-of-gut-servers">wiki page</a>where you can add your gut server to the list. Once there
+            are a handful of gut servers we can start working on more extensive discovery
+            and testing tools (ensuring gut server availability, better documentation,
+            web based gut server API playground, etc).</p>
+  </body>
+
 </html>

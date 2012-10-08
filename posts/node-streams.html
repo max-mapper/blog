@@ -1,35 +1,102 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Max Ogden" />
-  <title>Node Streams: How do they work?</title>
-</head>
-<body>
-<div id="header">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Max Ogden" />
+    <title>Node Streams: How do they work?</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
 <h1 class="title">Node Streams: How do they work?</h1>
+
+      
 <h2 class="author">Max Ogden</h2>
-</div>
-<p>Description of and notes on the node.js Stream API</p>
-<center><p>There is also <a href="http://www.youtube.com/watch?feature=player_embedded&v=tnXz4HigcoI#!">a screencast</a> version of this article.</p></center>
+
+    </div>
+    <p>Description of and notes on the node.js Stream API</p>
+    <center>
+      <p>There is also <a href="http://www.youtube.com/watch?feature=player_embedded&v=tnXz4HigcoI#!">a screencast</a> version
+        of this article.</p>
+    </center>
+    
 <h1 id="why-streams">Why Streams?</h1>
-<p>node bills itself as <em>JavaScript evented I/O</em>. In a nutshell that means if you are trying to solve a problem that is <em>I/O bound</em> (the limiting factor is reading/writing to relatively slow interfaces) then node can provide some useful abstractions to you. An example is if you are writing an application that has to talk to multiple databases, a caching layer, a load balancer, external web services, mobile clients, third party auth providers and serve web applications then node acts as a nice glue between all of the things.</p>
-<p><em>&quot;Streams in node are one of the rare occasions when doing something the fast way is actually easier. SO USE THEM. not since bash has streaming been introduced into a high level language as nicely as it is in node.&quot;</em></p>
-<p><em>-</em><a href="http://twitter.com/dominictarr">@dominictarr</a> in his <a href="https://gist.github.com/2401787">high level node style guide</a></p>
+
+    <p>node bills itself as <em>JavaScript evented I/O</em>. In a nutshell that
+      means if you are trying to solve a problem that is <em>I/O bound</em> (the
+      limiting factor is reading/writing to relatively slow interfaces) then
+      node can provide some useful abstractions to you. An example is if you
+      are writing an application that has to talk to multiple databases, a caching
+      layer, a load balancer, external web services, mobile clients, third party
+      auth providers and serve web applications then node acts as a nice glue
+      between all of the things.</p>
+    <p><em>&quot;Streams in node are one of the rare occasions when doing something the fast way is actually easier. SO USE THEM. not since bash has streaming been introduced into a high level language as nicely as it is in node.&quot;</em>
+    </p>
+    <p><em>-</em><a href="http://twitter.com/dominictarr">@dominictarr</a> in
+      his <a href="https://gist.github.com/2401787">high level node style guide</a>
+    </p>
+    
 <h1 id="what-are-streams">What are Streams?</h1>
-<p>The main tool in node's evented toolbox is the <a href="http://nodejs.org/api/stream.html">Stream</a>. Stream instances are basically Unix pipes. They can be readable, writable or both and are easy to reason about -- you can pipe a readable stream to a writable stream by doing <code data-language="javascript">readableStream.pipe(writableStream)</code>.</p>
-<h2 id="readable">Readable</h2>
-<p>Readable streams will emit <code>data</code> events each time they get a &quot;chunk&quot; of data and then they will emit <code>end</code> when they are all finished. emit (from <a href="http://nodejs.org/api/events.html">EventEmitter</a>) is the observer pattern - a publish/subscribe pattern which allows a number of observer objects to see an event. Different types of streams will have different ways of chunking up their data. For example, a library that reads CSVs might emit <code>data</code> every time it reads a new line whereas an HTTP request might emit <code>data</code> every few kilobytes during the download.</p>
-<p>Readable streams can also be paused and resumed, and it's up to the Stream implementer to write the <code>pause()</code> and <code>resume()</code> methods. Pause is intended to be an advisory API meaning when you call it you are telling the stream to stop emitting <code>data</code> events but you may still receive some <code>data</code> events after you call pause because certain things may already <em>in-flight</em>, or between states at the moment you called pause.</p>
+
+    <p>The main tool in node's evented toolbox is the <a href="http://nodejs.org/api/stream.html">Stream</a>.
+      Stream instances are basically Unix pipes. They can be readable, writable
+      or both and are easy to reason about -- you can pipe a readable stream
+      to a writable stream by doing <code data-language="javascript">readableStream.pipe(writableStream)</code>.</p>
+    <h2
+    id="readable">Readable</h2>
+      <p>Readable streams will emit <code>data</code> events each time they get a
+        &quot;chunk&quot; of data and then they will emit <code>end</code> when they
+        are all finished. emit (from <a href="http://nodejs.org/api/events.html">EventEmitter</a>)
+        is the observer pattern - a publish/subscribe pattern which allows a number
+        of observer objects to see an event. Different types of streams will have
+        different ways of chunking up their data. For example, a library that reads
+        CSVs might emit <code>data</code> every time it reads a new line whereas
+        an HTTP request might emit <code>data</code> every few kilobytes during the
+        download.</p>
+      <p>Readable streams can also be paused and resumed, and it's up to the Stream
+        implementer to write the <code>pause()</code> and <code>resume()</code> methods.
+        Pause is intended to be an advisory API meaning when you call it you are
+        telling the stream to stop emitting <code>data</code> events but you may
+        still receive some <code>data</code> events after you call pause because
+        certain things may already <em>in-flight</em>, or between states at the
+        moment you called pause.</p>
+      
 <h2 id="writable">Writable</h2>
-<p>Writable streams must implement two functions: <code>write</code> and <code>end</code>. When you write data to a writable stream it will return either <code>true</code> or <code>false</code>. <code>true</code> means <em>cool, keep sending more data with write</em> and <code>false</code> means <em>Uh-oh I am backed up -- don't write any more data until I emit drain</em>.</p>
-<p>This is a form of <em>back pressure</em> which is a very powerful feature as it lets stream communicate &quot;upstream&quot; to their writers. Most of the back pressure related APIs are advisory so there is sort of a gentlemens agreement to honor requests to start or stop writing as timely as possible. However, since they are advisory it means a writable stream may still receive <code>write</code> calls after it returns <code>false</code>.</p>
+
+      <p>Writable streams must implement two functions: <code>write</code> and <code>end</code>.
+        When you write data to a writable stream it will return either <code>true</code> or <code>false</code>. <code>true</code> means <em>cool, keep sending more data with write</em> and <code>false</code> means <em>Uh-oh I am backed up -- don't write any more data until I emit drain</em>.</p>
+      <p>This is a form of <em>back pressure</em> which is a very powerful feature
+        as it lets stream communicate &quot;upstream&quot; to their writers. Most
+        of the back pressure related APIs are advisory so there is sort of a gentlemens
+        agreement to honor requests to start or stop writing as timely as possible.
+        However, since they are advisory it means a writable stream may still receive <code>write</code> calls
+        after it returns <code>false</code>.</p>
+      
 <h1 id="streams-on-the-client">Streams on the client</h1>
-<p>After working with node for a while I came to love the Stream API (<a href="https://gist.github.com/2401787">and I'm not the only one</a>) but sorely missed it when I had to deal with the variety of I/O bound APIs in the client side realm. Some examples of these are XHR, WebSockets, IndexedDB, WebWorkers, WebRTC, and DOM Events (mouse, touch, etc). Wouldn't it be great if you could use the same node style Stream semantics to interface with all of these things? Unfortunately it seems that standards bodies have instead implemented their own (usually inconsistent or poorly done) streaming semantics for the client.</p>
-<p>I thought it would be useful to write something like <code data-language="javascript">fingerSwipe.pipe(webSocket)</code> (pseudo-code for detecting swipe <code>touch</code> events and streaming them to the server as they happen over a WebSocket connection) so I started a project called <a href="https://github.com/maxogden/domnode/">domnode</a> which intends to wrap common I/O bound APIs in node style streams so that you can render them into the DOM easily.</p>
-<p>There is a magical project by <a href="http://twitter.com/substack">@substack</a> called <a href="http://github.com/substack/node-browserify">browserify</a> that makes domnode possible. It lets you write code in client side JS that looks like node code:</p>
+
+      <p>After working with node for a while I came to love the Stream API (
+        <a
+        href="https://gist.github.com/2401787">and I'm not the only one</a>) but sorely missed it when I had to deal
+          with the variety of I/O bound APIs in the client side realm. Some examples
+          of these are XHR, WebSockets, IndexedDB, WebWorkers, WebRTC, and DOM Events
+          (mouse, touch, etc). Wouldn't it be great if you could use the same node
+          style Stream semantics to interface with all of these things? Unfortunately
+          it seems that standards bodies have instead implemented their own (usually
+          inconsistent or poorly done) streaming semantics for the client.</p>
+      <p>I thought it would be useful to write something like <code data-language="javascript">fingerSwipe.pipe(webSocket)</code> (pseudo-code
+        for detecting swipe <code>touch</code> events and streaming them to the server
+        as they happen over a WebSocket connection) so I started a project called
+        <a
+        href="https://github.com/maxogden/domnode/">domnode</a>which intends to wrap common I/O bound APIs in node style streams
+          so that you can render them into the DOM easily.</p>
+      <p>There is a magical project by <a href="http://twitter.com/substack">@substack</a> called
+        <a
+        href="http://github.com/substack/node-browserify">browserify</a>that makes domnode possible. It lets you write code in client
+          side JS that looks like node code:</p>
 <pre><code data-language="javascript">var stream = require(&#39;stream&#39;)
 var util = require(&#39;util&#39;)
    
@@ -40,15 +107,49 @@ function XHRStream(xhr) {
 }
 
 util.inherits(XHRStream, stream.Stream)</code></pre>
-<p>The best part about browserify is that it avoids reinventing the wheel/not invented here by letting you use the pure JavaScript parts of node or thousands of third party modules while maintaining node's simplified require API. Since browserify uses node's source code verbatim you get to use the <a href="http://nodejs.org/api/">node documentation</a> as well as the multitude of related information floating around on the internets to look up how these things work.</p>
-<p><a href="http://twitter.com/dominictarr">@dominictarr</a> contributed a Stream wrapper for Socket.io called <a href="https://github.com/dominictarr/browser-stream">browser-stream</a> that nicely integrates with domnode so you can emit things from node and rest assured that they will make their way into your web app.</p>
+
+      <p>The best part about browserify is that it avoids reinventing the wheel/not
+        invented here by letting you use the pure JavaScript parts of node or thousands
+        of third party modules while maintaining node's simplified require API.
+        Since browserify uses node's source code verbatim you get to use the
+        <a
+        href="http://nodejs.org/api/">node documentation</a>as well as the multitude of related information
+          floating around on the internets to look up how these things work.</p>
+      <p><a href="http://twitter.com/dominictarr">@dominictarr</a> contributed a
+        Stream wrapper for Socket.io called <a href="https://github.com/dominictarr/browser-stream">browser-stream</a> that
+        nicely integrates with domnode so you can emit things from node and rest
+        assured that they will make their way into your web app.</p>
+      
 <h1 id="streams.next">Streams.next</h1>
-<p>As wonderful as streams are today, they can definitely use some improvements. <a href="http://twitter.com/izs">@izs</a> tells me node v0.9 is going to feature a major Stream overhaul to make the API even more unified. When node started it created a few domain specific evented I/O abstractions for things like the filesystem or TCP and then later, around 0.4, it consolidated them into the Stream API we have today, but there are still some vestigial phantoms lurking around.</p>
-<p>One of the major blemishes is the collection of methods used end a stream. <code>destroy()</code> initiates a forceful end to a stream, whereas <code>destroySoon()</code> and <code>end()</code> both wait for the current data to finish buffering. <code>end()</code> and <code>destroySoon()</code> came from different parts of node originally but after being consolidated into Streams they have some overlap and can probably be redesigned.</p>
-<p>There is also some confusion between the <code>close</code> and <code>end</code> events. <code>end</code> means <em>no more data will be emitted but if this stream is also writable it should stay open for more writes if they need to happen</em> and <code>close</code> means <em>whatever this thing was tied to, it's done now. you may dispose of it, it's gone</em>. Close comes from the <code>fs.close()</code> method and end is tied to the <code>end()</code> function on Streams and as you can see these can probably be refactored.</p>
-<p>Another possibility is that streams will get automagic buffering. This means that if you create a writable stream but haven't yet piped it anywhere then it will buffer any data you write to it and then emit that data when someone asks for it later. This same behavior will be available if you pause a stream and then resume later. Currently you have to roll your own buffered stream implementation or use a generic third party module like <a href="https://github.com/mikeal/morestreams/blob/master/main.js">BufferedStream</a> by <a href="http://twitter.com/mikeal">@mikeal</a>.</p>
-<h1 id="code-examples">Code examples</h1>
+
+      <p>As wonderful as streams are today, they can definitely use some improvements.
+        <a
+        href="http://twitter.com/izs">@izs</a>tells me node v0.9 is going to feature a major Stream overhaul
+          to make the API even more unified. When node started it created a few domain
+          specific evented I/O abstractions for things like the filesystem or TCP
+          and then later, around 0.4, it consolidated them into the Stream API we
+          have today, but there are still some vestigial phantoms lurking around.</p>
+      <p>One of the major blemishes is the collection of methods used end a stream. <code>destroy()</code> initiates
+        a forceful end to a stream, whereas <code>destroySoon()</code> and <code>end()</code> both
+        wait for the current data to finish buffering. <code>end()</code> and <code>destroySoon()</code> came
+        from different parts of node originally but after being consolidated into
+        Streams they have some overlap and can probably be redesigned.</p>
+      <p>There is also some confusion between the <code>close</code> and <code>end</code> events. <code>end</code> means <em>no more data will be emitted but if this stream is also writable it should stay open for more writes if they need to happen</em> and <code>close</code> means <em>whatever this thing was tied to, it's done now. you may dispose of it, it's gone</em>.
+        Close comes from the <code>fs.close()</code> method and end is tied to the <code>end()</code> function
+        on Streams and as you can see these can probably be refactored.</p>
+      <p>Another possibility is that streams will get automagic buffering. This
+        means that if you create a writable stream but haven't yet piped it anywhere
+        then it will buffer any data you write to it and then emit that data when
+        someone asks for it later. This same behavior will be available if you
+        pause a stream and then resume later. Currently you have to roll your own
+        buffered stream implementation or use a generic third party module like
+        <a
+        href="https://github.com/mikeal/morestreams/blob/master/main.js">BufferedStream</a>by <a href="http://twitter.com/mikeal">@mikeal</a>.</p>
+      <h1
+      id="code-examples">Code examples</h1>
+        
 <h2 id="simplified-writable-stream">Simplified writable stream</h2>
+
 <pre><code data-language="javascript">var writestream = new stream.Stream()
 writestream.writable = true
 writestream.write = function (data) {
@@ -62,7 +163,9 @@ writestream.end = function (data) {
 
 writestream.write({number: 1})
 // note: in node core data is always a buffer or string</code></pre>
-<h2 id="simplified-stream.pipe-implementation">Simplified Stream.pipe() implementation</h2>
+
+        <h2
+        id="simplified-stream.pipe-implementation">Simplified Stream.pipe() implementation</h2>
 <pre><code data-language="javascript">var readstream = new stream.Stream()
 readstream.readable = true
 
@@ -77,5 +180,7 @@ readstream.on(&#39;data&#39;, function(data) {
 readstream.on(&#39;end&#39;, function() {
   writestream.end()
 })</code></pre>
-</body>
+
+  </body>
+
 </html>

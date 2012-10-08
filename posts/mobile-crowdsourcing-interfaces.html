@@ -1,86 +1,242 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Max Ogden" />
-  <title>Mobile Crowdsourcing Interfaces</title>
-</head>
-<body>
-<div id="header">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Max Ogden" />
+    <title>Mobile Crowdsourcing Interfaces</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
 <h1 class="title">Mobile Crowdsourcing Interfaces</h1>
+
+      
 <h2 class="author">Max Ogden</h2>
-</div>
-<p>Some experiments in collecting images + location from mobile devices</p>
-<p>Over the last couple of years I've been fascinated with technology that collects and aggregates mappable information. Specifically I have been searching for or creating tools that have these properties:</p>
-<p></p>
-<ul>
-<li><p>Lets users discover things near them, allows submission of location, photos and text</p></li>
-<li><p>Built on an open data API so that others can access and build on the data</p></li>
-<li><p>Easy for new developers to clone and deploy the app. A big roadblock on this front has been the Apple App Store. $100 and weeks of back and forth just to publish a public data app that uploads photos? Rubbish.</p></li>
-</ul>
-<p></p>
-<p>My first foray into &quot;civic web&quot; applications was in the form of a project called Portland Smells, which was a map-wiki that collected smelly places (both good and bad) and threw them on a map.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/19/65ca390f66b525383a3779dc12844c/psmells.png" alt="The now defunct www.portlandsmells.com" /><p class="caption">The now defunct www.portlandsmells.com</p>
-</div>
-<p>Portland Smells was meant to be more of an art project than a public utility. That is, until a local government representative contacted me regarding a project that was being built out (now available at <a href="http://www.whatsinourair.org/">whatsinourair.org</a>) to help report and monitor illegal chemical dump sites in the Portland area. Apparently the functionality created for Portland Smells was greatly needed for social and environmental justice. Needless to say I got hooked on the idea of open data.</p>
+
+    </div>
+    <p>Some experiments in collecting images + location from mobile devices</p>
+    <p>Over the last couple of years I've been fascinated with technology that
+      collects and aggregates mappable information. Specifically I have been
+      searching for or creating tools that have these properties:</p>
+    <p></p>
+    <ul>
+      <li>
+        <p>Lets users discover things near them, allows submission of location, photos
+          and text</p>
+      </li>
+      <li>
+        <p>Built on an open data API so that others can access and build on the data</p>
+      </li>
+      <li>
+        <p>Easy for new developers to clone and deploy the app. A big roadblock on
+          this front has been the Apple App Store. $100 and weeks of back and forth
+          just to publish a public data app that uploads photos? Rubbish.</p>
+      </li>
+    </ul>
+    <p></p>
+    <p>My first foray into &quot;civic web&quot; applications was in the form
+      of a project called Portland Smells, which was a map-wiki that collected
+      smelly places (both good and bad) and threw them on a map.</p>
+    <div class="figure">
+      <img src="http://substance-assets.s3.amazonaws.com/19/65ca390f66b525383a3779dc12844c/psmells.png"
+      alt="The now defunct www.portlandsmells.com" />
+      <p class="caption">The now defunct www.portlandsmells.com</p>
+    </div>
+    <p>Portland Smells was meant to be more of an art project than a public utility.
+      That is, until a local government representative contacted me regarding
+      a project that was being built out (now available at <a href="http://www.whatsinourair.org/">whatsinourair.org</a>)
+      to help report and monitor illegal chemical dump sites in the Portland
+      area. Apparently the functionality created for Portland Smells was greatly
+      needed for social and environmental justice. Needless to say I got hooked
+      on the idea of open data.</p>
+    
 <h1 id="from-smells-to-carts-and-cats">From smells to carts and cats</h1>
-<p>After mapping smells I took a stab at an application to map <a href="http://www.foodcartsportland.com/">food carts</a> that also allowed users to keep food cart locations, menus and hours of operation up to date. The app was made in early 2010 (<a href="https://github.com/maxogden/pdx-food-carts-mobile">code here</a>) using the Titanium Mobile framework and used <a href="http://pdxapi.com">PDX API</a> as the backend. Unfortunately Microsoft also decided to <a href="http://spinnerin.tumblr.com/post/1014484948/why-contribute-to-a-community-project-when-you-can">release a closed source</a> food cart application (with a huge marketing budget) which effectively killed my excitement about the cart mapping project.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/7d/5ba7d7b536bf39861123d0d043e2ee/Screen-Shot-2011-07-29-at-5.23.43-PM.png" alt="The now defunct CartsPDX" /><p class="caption">The now defunct CartsPDX</p>
-</div>
-<p>Developing a cross platform mobile application using <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium</a> had it's fair share of speedbumps, including buggy tools, lack of features and weird javascript DSLs. I would imagine that now, a year and a half later, a lot of these issues have been addressed.</p>
-<p>Then I got <a href="http://www.wweek.com/portland/print-article-12542-print.html">obsessed with cats</a>. While walking around neighborhoods in Portland you will run into them all over the freaking place. I started to wonder if certain cats were always out on porches and what neighborhoods had the highest cat density. Someone told me that if the humane society had access to cat density data then they could better target spaying and neutering education initiatives. I started <a href="http://www.vimeo.com/tag:catmapper">recording videos</a> of cats that I found while walking around and prototyped a pure webapp CartsPDX-like interface using jQuery Mobile: <a href="http://catmapper.com">catmapper.com</a></p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/6b/5483054d6c36b98f15e2c3e1cee5db/Screen-Shot-2011-07-29-at-5.53.32-PM.png" alt="catmapper.com" /><p class="caption">catmapper.com</p>
-</div>
+
+    <p>After mapping smells I took a stab at an application to map <a href="http://www.foodcartsportland.com/">food carts</a> that
+      also allowed users to keep food cart locations, menus and hours of operation
+      up to date. The app was made in early 2010 (<a href="https://github.com/maxogden/pdx-food-carts-mobile">code here</a>)
+      using the Titanium Mobile framework and used <a href="http://pdxapi.com">PDX API</a> as
+      the backend. Unfortunately Microsoft also decided to <a href="http://spinnerin.tumblr.com/post/1014484948/why-contribute-to-a-community-project-when-you-can">release a closed source</a> food
+      cart application (with a huge marketing budget) which effectively killed
+      my excitement about the cart mapping project.</p>
+    <div class="figure">
+      <img src="http://substance-assets.s3.amazonaws.com/7d/5ba7d7b536bf39861123d0d043e2ee/Screen-Shot-2011-07-29-at-5.23.43-PM.png"
+      alt="The now defunct CartsPDX" />
+      <p class="caption">The now defunct CartsPDX</p>
+    </div>
+    <p>Developing a cross platform mobile application using <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium</a> had
+      it's fair share of speedbumps, including buggy tools, lack of features
+      and weird javascript DSLs. I would imagine that now, a year and a half
+      later, a lot of these issues have been addressed.</p>
+    <p>Then I got <a href="http://www.wweek.com/portland/print-article-12542-print.html">obsessed with cats</a>.
+      While walking around neighborhoods in Portland you will run into them all
+      over the freaking place. I started to wonder if certain cats were always
+      out on porches and what neighborhoods had the highest cat density. Someone
+      told me that if the humane society had access to cat density data then
+      they could better target spaying and neutering education initiatives. I
+      started <a href="http://www.vimeo.com/tag:catmapper">recording videos</a> of
+      cats that I found while walking around and prototyped a pure webapp CartsPDX-like
+      interface using jQuery Mobile: <a href="http://catmapper.com">catmapper.com</a>
+    </p>
+    <div class="figure">
+      <img src="http://substance-assets.s3.amazonaws.com/6b/5483054d6c36b98f15e2c3e1cee5db/Screen-Shot-2011-07-29-at-5.53.32-PM.png"
+      alt="catmapper.com" />
+      <p class="caption">catmapper.com</p>
+    </div>
+    
 <h1 id="collecting-photos">Collecting photos</h1>
-<p>The biggest tradeoff to consider when building mobile web apps vs. native apps is the inability of most mobile web browsers to natively upload photos. Generally speaking native applications require more commitment from the application developer but provide a better user experience. Here I will share some different approaches to the problem of collecting photos and locations</p>
+
+    <p>The biggest tradeoff to consider when building mobile web apps vs. native
+      apps is the inability of most mobile web browsers to natively upload photos.
+      Generally speaking native applications require more commitment from the
+      application developer but provide a better user experience. Here I will
+      share some different approaches to the problem of collecting photos and
+      locations</p>
+    
 <h2 id="wrapping-web-apps-in-native-functionality-with-phonegaptitanium">Wrapping web apps in native functionality with Phonegap/Titanium</h2>
-<p>Rather than learning Objective-C and Java I would strongly prefer to stick to my high level dynamic language of choice, JavaScript. Both <a href="https://github.com/phonegap">Phonegap</a> and <a href="https://github.com/appcelerator">Titanium</a> provide a JavaScript DSL that abstracts native functionality for the developer and has the ability to 'compile' to multiple mobile platforms.</p>
-<p>Personally I am more a fan of Phonegap because of the team's commitment to support and foster HTML5 and their ultimate goal of making Phonegap itself obsolete through cross platform open web standards. This also results in more of a &quot;modern&quot; JavaScript feel than what Titanium offers.</p>
-<p>Regardless of which tools you choose to create native applications, the most tedious part will always be registering app store developer licenses, packaging and submitting applications for approval.</p>
-<p>The <a href="https://github.com/andrewgleave/OpenElm">OpenElm</a> Project is a great open source Phonegap application built using jQuery Mobile for the UI and CouchDB on the server. Andrew Gleave, lead developer on the project, even went the extra mile and wrote an <a href="https://github.com/andrewgleave/CouchDBAttachmentUploader">attachment uploader plugin</a> for iOS Phonegap devices that makes uploading files and photos super smooth.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/42/e7a15aa17cc6e8901be8d0cdba767f/Screen-Shot-2011-07-29-at-6.07.25-PM.png" alt="OpenElm" /><p class="caption">OpenElm</p>
-</div>
+
+    <p>Rather than learning Objective-C and Java I would strongly prefer to stick
+      to my high level dynamic language of choice, JavaScript. Both <a href="https://github.com/phonegap">Phonegap</a> and
+      <a
+      href="https://github.com/appcelerator">Titanium</a>provide a JavaScript DSL that abstracts native functionality
+        for the developer and has the ability to 'compile' to multiple mobile platforms.</p>
+    <p>Personally I am more a fan of Phonegap because of the team's commitment
+      to support and foster HTML5 and their ultimate goal of making Phonegap
+      itself obsolete through cross platform open web standards. This also results
+      in more of a &quot;modern&quot; JavaScript feel than what Titanium offers.</p>
+    <p>Regardless of which tools you choose to create native applications, the
+      most tedious part will always be registering app store developer licenses,
+      packaging and submitting applications for approval.</p>
+    <p>The <a href="https://github.com/andrewgleave/OpenElm">OpenElm</a> Project
+      is a great open source Phonegap application built using jQuery Mobile for
+      the UI and CouchDB on the server. Andrew Gleave, lead developer on the
+      project, even went the extra mile and wrote an <a href="https://github.com/andrewgleave/CouchDBAttachmentUploader">attachment uploader plugin</a> for
+      iOS Phonegap devices that makes uploading files and photos super smooth.</p>
+    <div
+    class="figure">
+      <img src="http://substance-assets.s3.amazonaws.com/42/e7a15aa17cc6e8901be8d0cdba767f/Screen-Shot-2011-07-29-at-6.07.25-PM.png"
+      alt="OpenElm" />
+      <p class="caption">OpenElm</p>
+      </div>
+      
 <h2 id="email-submissions">Email Submissions</h2>
-<p>Many smartphones can interpret mailto: links and launch email composition forms pre-loaded with the recipient address from the mailto:. On Android devices users are given the option of adding attachments to an existing message, but on iOS there is no way to add an attachment to a message being composed - you have to start the interaction by visiting the photo browser and choosing 'Share', however there is no way to initialize the photo sharing interface from a mobile web app. This severely complicates the UX for iOS users.</p>
-<p>Regardless of the UX complications, email can be a nice and simple way to offer photo submissions without going through the rigamarole of registering native developer credentials. There are two ways that I've tried initiating email submissions</p>
+
+      <p>Many smartphones can interpret mailto: links and launch email composition
+        forms pre-loaded with the recipient address from the mailto:. On Android
+        devices users are given the option of adding attachments to an existing
+        message, but on iOS there is no way to add an attachment to a message being
+        composed - you have to start the interaction by visiting the photo browser
+        and choosing 'Share', however there is no way to initialize the photo sharing
+        interface from a mobile web app. This severely complicates the UX for iOS
+        users.</p>
+      <p>Regardless of the UX complications, email can be a nice and simple way
+        to offer photo submissions without going through the rigamarole of registering
+        native developer credentials. There are two ways that I've tried initiating
+        email submissions</p>
+      
 <h3 id="visiting-a-mobile-web-app-first-and-being-given-a-mailto-link">Visiting a mobile web app first and being given a mailto: link</h3>
-<p>Catmapper.com (source), a prototype application, is an example of first collecting location and then providing an email address where photos can be submitted later. The requires that users remember to visit catmapper.com when they are walking down the street and visit a cat, and also that they are able to take an email address from a website and successfully email photos to it.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/cb/3ad60ae34b1ac58234e55c7f7806b8/Screen-Shot-2011-07-29-at-5.53.32-PM.png" alt="Catmapper Prototype" /><p class="caption">Catmapper Prototype</p>
-</div>
+
+      <p>Catmapper.com (source), a prototype application, is an example of first
+        collecting location and then providing an email address where photos can
+        be submitted later. The requires that users remember to visit catmapper.com
+        when they are walking down the street and visit a cat, and also that they
+        are able to take an email address from a website and successfully email
+        photos to it.</p>
+      <div class="figure">
+        <img src="http://substance-assets.s3.amazonaws.com/cb/3ad60ae34b1ac58234e55c7f7806b8/Screen-Shot-2011-07-29-at-5.53.32-PM.png"
+        alt="Catmapper Prototype" />
+        <p class="caption">Catmapper Prototype</p>
+      </div>
+      
 <h3 id="sending-photos-to-a-particular-email-address-first-and-receiving-instructions-in-a-reply-email">Sending photos to a particular email address first and receiving instructions in a reply email</h3>
-<p>Pictured below is another now defunct prototype that was meant to demonstrate how defibrillator locations might be submitted by thoughtful citizens who encounter them. First the smartphone must have GPS enabled so that the photos contain coordinates in the embedded EXIF data. Photos are emailed in and users will receive a response email containing a visualization of the GPS coordinates from the EXIF information. Upon tapping on the map they are taken to a catmapper-style mobile interface that lets them update the specific coordinates for their submission.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/a8/b4d051dc6477185ac39f861f9539b2/Screen-Shot-2011-07-29-at-6.12.44-PM.png" alt="AED Mapper prototype" /><p class="caption">AED Mapper prototype</p>
-</div>
-<p>This particular email processing workflow was implemented using a Ruby server that accessed a gmail account through IMAP. You can get the code by visiting the older commits in <a href="https://github.com/codeforamerica/aedmapper">this repository</a>. Warning: trying to write a realtime IMAP client for Gmail was pretty painful and prompted me to write a realtime node.js email processor, <a href="http://github.com/maxogden/haraka-couchdb">haraka-couchdb</a>.</p>
-<h2 id="tweets-with-geolocation-and-photos">Tweets with geolocation and photos</h2>
-<p>There are tons of native Twitter applications that allow uploading to third party image sharing services like yfrog or twitpic. Some colleagues of mine at Code for America took a <a href="https://github.com/codeforamerica/muralmapper">Node.js daemon</a> from civic hacker Mark Headd and extended it to save images + latitude/longitude from tweets into CouchDB. This approach requires users to enable geolocation in their Twitter client. It also has an interesting social property that can photo sharing engagement.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/6c/4c0b8bb4f10a849ecd72dfe8fd7100/Screen-Shot-2011-07-29-at-6.30.27-PM.png" alt="Public Art Mapper" /><p class="caption">Public Art Mapper</p>
-</div>
+
+      <p>Pictured below is another now defunct prototype that was meant to demonstrate
+        how defibrillator locations might be submitted by thoughtful citizens who
+        encounter them. First the smartphone must have GPS enabled so that the
+        photos contain coordinates in the embedded EXIF data. Photos are emailed
+        in and users will receive a response email containing a visualization of
+        the GPS coordinates from the EXIF information. Upon tapping on the map
+        they are taken to a catmapper-style mobile interface that lets them update
+        the specific coordinates for their submission.</p>
+      <div class="figure">
+        <img src="http://substance-assets.s3.amazonaws.com/a8/b4d051dc6477185ac39f861f9539b2/Screen-Shot-2011-07-29-at-6.12.44-PM.png"
+        alt="AED Mapper prototype" />
+        <p class="caption">AED Mapper prototype</p>
+      </div>
+      <p>This particular email processing workflow was implemented using a Ruby
+        server that accessed a gmail account through IMAP. You can get the code
+        by visiting the older commits in <a href="https://github.com/codeforamerica/aedmapper">this repository</a>.
+        Warning: trying to write a realtime IMAP client for Gmail was pretty painful
+        and prompted me to write a realtime node.js email processor, <a href="http://github.com/maxogden/haraka-couchdb">haraka-couchdb</a>.</p>
+      <h2
+      id="tweets-with-geolocation-and-photos">Tweets with geolocation and photos</h2>
+        <p>There are tons of native Twitter applications that allow uploading to
+          third party image sharing services like yfrog or twitpic. Some colleagues
+          of mine at Code for America took a <a href="https://github.com/codeforamerica/muralmapper">Node.js daemon</a> from
+          civic hacker Mark Headd and extended it to save images + latitude/longitude
+          from tweets into CouchDB. This approach requires users to enable geolocation
+          in their Twitter client. It also has an interesting social property that
+          can photo sharing engagement.</p>
+        <div class="figure">
+          <img src="http://substance-assets.s3.amazonaws.com/6c/4c0b8bb4f10a849ecd72dfe8fd7100/Screen-Shot-2011-07-29-at-6.30.27-PM.png"
+          alt="Public Art Mapper" />
+          <p class="caption">Public Art Mapper</p>
+        </div>
+        
 <h2 id="mms-gateways">MMS Gateways</h2>
-<p>This would be super cool for bridging the gap from smartphones to feature phones but unfortunately is not supported by the major telephony API providers (Twilio and Tropo).</p>
+
+        <p>This would be super cool for bridging the gap from smartphones to feature
+          phones but unfortunately is not supported by the major telephony API providers
+          (Twilio and Tropo).</p>
+        
 <h2 id="desktop-uploading">Desktop uploading</h2>
-<p>Photos often don't need to be uploaded in the field and can be synced and uploaded at a later time. This broadens the range of cameras that can be used to capture images and lets users without smartphones participate in using your application. Here is another prototype, <a href="http://aedmapper.com/">aedmapper.com</a> (<a href="https://github.com/codeforamerica/aedmapper">code here</a>), that is meant to show how to collect accurate information about defibrillator locations using address autocompletion, web based mapping and drag and drop photo upload forms.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/43/af19e69b4d2d349432e055a134840f/Screen-Shot-2011-07-29-at-6.41.03-PM.png" /><p class="caption"></p>
-</div>
-<p>Using the same code I created two separate <a href="http://open211.org/#upload">upload forms</a> for another project, Open211, a directory of social services. One form collects locations while the other offers dropbox-like attachment uploading functionality.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/c9/8bbadecdb367cd0c474c30231212ba/Screen-Shot-2011-07-30-at-1.14.07-PM.png" alt="Open211.org" /><p class="caption">Open211.org</p>
-</div>
+
+        <p>Photos often don't need to be uploaded in the field and can be synced
+          and uploaded at a later time. This broadens the range of cameras that can
+          be used to capture images and lets users without smartphones participate
+          in using your application. Here is another prototype, <a href="http://aedmapper.com/">aedmapper.com</a> (
+          <a
+          href="https://github.com/codeforamerica/aedmapper">code here</a>), that is meant to show how to collect accurate information
+            about defibrillator locations using address autocompletion, web based mapping
+            and drag and drop photo upload forms.</p>
+        <div class="figure">
+          <img src="http://substance-assets.s3.amazonaws.com/43/af19e69b4d2d349432e055a134840f/Screen-Shot-2011-07-29-at-6.41.03-PM.png"
+          />
+          <p class="caption"></p>
+        </div>
+        <p>Using the same code I created two separate <a href="http://open211.org/#upload">upload forms</a> for
+          another project, Open211, a directory of social services. One form collects
+          locations while the other offers dropbox-like attachment uploading functionality.</p>
+        <div
+        class="figure">
+          <img src="http://substance-assets.s3.amazonaws.com/c9/8bbadecdb367cd0c474c30231212ba/Screen-Shot-2011-07-30-at-1.14.07-PM.png"
+          alt="Open211.org" />
+          <p class="caption">Open211.org</p>
+          </div>
+          
 <h2 id="pen-paper">Pen + Paper</h2>
-<p>The most ubiquitous mobile crowdsourcing interface comes in the form of <a href="http://walking-papers.org/">walking papers</a>, a project by Michal Migurski. Designed as a tool for collecting data for OpenStreetMap, the computer vision technology that powers walking papers could also prove useful for large scale low technology data collection deployments. I haven't yet had a chance to use this tech but am itching at the opportunity.</p>
-<div class="figure">
-<img src="http://substance-assets.s3.amazonaws.com/3d/36cd4193c7bd70371e4ca41da172ab/5042873815_d1f17898fb_z.png" alt="www.flickr.com/photos/harrywood/5042873815/" /><p class="caption">www.flickr.com/photos/harrywood/5042873815/</p>
-</div>
-<p>OpenStreetMap contributors have gathered for <em>mapping parties,</em> which consist of treks through unmapped neighborhoods where participants document what they see by writing down landmarks, roads, parks and playgrounds on a special map that can be scanned and uploaded to walking-papers.org where they are then georectified and traced directly onto OpenStreetMap.</p>
-</body>
+
+          <p>The most ubiquitous mobile crowdsourcing interface comes in the form of
+            <a
+            href="http://walking-papers.org/">walking papers</a>, a project by Michal Migurski. Designed as a tool for
+              collecting data for OpenStreetMap, the computer vision technology that
+              powers walking papers could also prove useful for large scale low technology
+              data collection deployments. I haven't yet had a chance to use this tech
+              but am itching at the opportunity.</p>
+          <div class="figure">
+            <img src="http://substance-assets.s3.amazonaws.com/3d/36cd4193c7bd70371e4ca41da172ab/5042873815_d1f17898fb_z.png"
+            alt="www.flickr.com/photos/harrywood/5042873815/" />
+            <p class="caption">www.flickr.com/photos/harrywood/5042873815/</p>
+          </div>
+          <p>OpenStreetMap contributors have gathered for <em>mapping parties,</em> which
+            consist of treks through unmapped neighborhoods where participants document
+            what they see by writing down landmarks, roads, parks and playgrounds on
+            a special map that can be scanned and uploaded to walking-papers.org where
+            they are then georectified and traced directly onto OpenStreetMap.</p>
+  </body>
+
 </html>

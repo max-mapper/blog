@@ -1,1 +1,2 @@
-all: node render.js
+all:
+	node render.js

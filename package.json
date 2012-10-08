@@ -1,31 +1,10 @@
 {
   "name": "blog",
-  "subdomain": "maxogden",
-  "domains": [
-    "maxogden.com"
-  ],
-  "bundleDependencies": [
-    "async",
-    "filed",
-    "logref",
-    "request",
-    "morestreams",
-    "deep-extend",
-    "timeago",
-    "rewriter",
-    "routes",
-    "socket.io",
-    "stoopid",
-    "tako",
-    "underscore",
-    "jstoxml",
-    "entities"
-  ],
-  "version": "0.0.1-19",
-  "scripts": {
-    "start": "run.js"
-  },
-  "engines": {
-    "node": "v0.6.x"
+  "version": "0.0.1",
+  "dependencies": {
+    "cheerio" : "0.10.1",
+    "glob": "3.1.13",
+    "moment": "1.7.2",
+    "underscore": "1.4.2"
   }
 }

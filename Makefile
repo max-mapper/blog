@@ -1,0 +1,1 @@
+all: node render.js

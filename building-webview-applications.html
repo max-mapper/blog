@@ -1,23 +1,145 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title">Max Ogden | <a href="http://tantek.com/2010/281/b1/what-is-the-open-web">Open Web</a> developer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="projects.html">projects</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="building-webview-applications.html">
+  <div class="document active" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="replicating-large-datasets-into-html5.html">
+  <div class="document" id="replicating-large-datasets-into-html5">
+    <div class="published" data-published="2012-04-14T06:32:16.787Z">April 2012</div>
+    <div class="title">Replicating large datasets into HTML5</div>
+    <div class="teaser">Typed arrays, streaming json and IndexedDB!</div>
+  </div>
+</a>
+
+<a class="load-document" href="open211.html">
+  <div class="document" id="open211">
+    <div class="published" data-published="2012-01-30T01:57:20.310Z">January 2012</div>
+    <div class="title">Open211</div>
+    <div class="teaser">An open source directory of social programs and services</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="mobile-crowdsourcing-interfaces.html">
+  <div class="document" id="mobile-crowdsourcing-interfaces">
+    <div class="published" data-published="2011-07-30T17:20:49.949Z">July 2011</div>
+    <div class="title">Mobile Crowdsourcing Interfaces</div>
+    <div class="teaser">Some experiments in collecting images + location from mobile devices</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Style-Type" content="text/css" />
-    <meta name="author" content="Max Ogden" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="author" content="Max Ogden">
     <title>Building WebView Applications</title>
   </head>
   
   <body>
     <div id="header">
       
-      <h1 class="title">Building WebView Applications</h1>
+<h1 class="title">Building WebView Applications</h1>
       
-      <h2 class="author">Max Ogden</h2>
+<h2 class="author">Max Ogden</h2>
 
     </div>
     <p>Article version of <a href="http://www.youtube.com/watch?v=rn597gDdlng">this PhoneGap Day EU presentation</a> given in September 2012</p>
-      <p>Summary: WebKit browsers are capable of a lot, but writing native code is still necessary for certain things. Hence: "hybrid apps". The web is a double edged sword. Openness on one side and splintered bugginess on the other. Most of the bugs I've encountered have been squashed in <a href="https://github.com/maxogden/ViewKit">ViewKit</a>, a jQuery mobile-esque UI library designed for mobile WebKits.
+      <p>WebKit browsers aren't bad, but writing native code is still inevitable for certain things. UI is still a contested territory. Most of the bugs I've encountered have been slayed in <a href="https://github.com/maxogden/ViewKit">ViewKit</a>, a jQuery-mobile-esque UI library designed for mobile WebKits.
       </p>
       
       <p><i>This is part two of a series, the first part is called <a href="http://maxogden.com/fast-webview-applications.html">Fast WebView Applications</a>.</i></p>
@@ -123,7 +245,7 @@
       </p>
       <h1 id="native-plugins">Native plugins</h1>
       <p>
-        As I mentioned earlier, there are a few places where we use PhoneGap plugins. Plugins are designed so that they expose a single JS API and then offer a number of platform specific native code implementations. That way you can write your JS once and then use the <code>.java</code> plugin for Android or <code>.h</code> and </code>.m</code> files for iOS. Another awesome thing about PhoneGap plugins is that it is a way to prototype experimental W3C APIs via native polyfills. The date picker shown above is a native plugin.
+        As I mentioned earlier, there are a few places where we use PhoneGap plugins. Plugins are designed so that they expose a single JS API and then offer a number of platform specific native code implementations. That way you can write your JS once and then use the <code>.java</code> plugin for Android or <code>.h</code> and .m files for iOS. Another awesome thing about PhoneGap plugins is that it is a way to prototype experimental W3C APIs via native polyfills. The date picker shown above is a native plugin.
       </p>
       <p>
         For bringing up pop-up browser windows we use a popular 3rd party PhoneGap plugin called "child browser". This plugin is soon changing its name and moving into PhoneGap core. On iOS I wasn't happy with the default child browser UX so I wrote a API compatible alternative that is based on the UX of the iOS Facebook SDK (pictured below on the right). It's <a href="https://github.com/maxogden/cordova-modalwebview">available here</a>. The picture on the left is the same JS API running on Android to generate a web browser overlay written in Java using the Android SDK.
@@ -144,4 +266,22 @@
       </p>
   </body>
 
+</html></div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
 </html>

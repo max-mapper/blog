@@ -16,9 +16,7 @@
 <h2 class="author">Max Ogden</h2>
 
     </div>
-    <p>Article version of a PhoneGap Day EU presentation given in September 2012</p>
-    <h1
-    id="tldr">tl;dr</h1>
+    <p>Article version of <a href="http://www.youtube.com/watch?v=rn597gDdlng">this PhoneGap Day EU presentation</a> given in September 2012</p>
       <p>WebKit browsers aren't bad, but writing native code is still inevitable for certain things. UI is still a contested territory. Most of the bugs I've encountered have been slayed in <a href="https://github.com/maxogden/ViewKit">ViewKit</a>, a jQuery-mobile-esque UI library designed for mobile WebKits.
       </p>
       
@@ -50,14 +48,16 @@
       <h1 id="development-workflow">Development workflow</h1>
       <p>The majority of the app was written on my laptop in Chrome + its dev tools, the same workflow I've been using for years. Our designer, Michael Felix (<a href="http://twitter.com/objcts">@objcts</a>) worked with us during the initial conceptual phase and then starting whipping up some pixel perfect PSDs.</p>
       <p><img src="/media/gather-psd.png"></p>
-      <p>On device testing is a must. Get a new android + iPhone and an old Android and iPhone. We went with the Galaxy Nexus, iPhone 4S, some random LG android phone that runs 2.3 and an iPhone 3GS. Turns out nobody has really complained to us about iPhone 4.x compatibility so we are currently iOS5+6 only. Android emulators are a waste of time, just plug your device in. iPhone Simulator is nice though. With PhoneGap nowadays you can do pretty much everything from the command line:</p>
+      <p>On device testing is a must. Get a new Android + iPhone and an old Android and iPhone. We went with the Galaxy Nexus, iPhone 4S, some random LG android phone that runs 2.3 and an iPhone 3GS. Turns out nobody has really complained to us about iPhone 4.x compatibility so we are currently iOS5+6 only. Android emulators are a waste of time, just plug your device in. iPhone Simulator is nice though. With PhoneGap nowadays you can do pretty much everything from the command line:</p>
       
       <pre><code data-language="bash">      
       // get phonegap
-      git clone https://github.com/apache/incubator-cordova-ios.git && cd incubator-cordova-ios
+      git clone https://github.com/apache/incubator-cordova-ios.git
+      cd incubator-cordova-ios
 
       // create a new XCode project
-      ./bin/create ~/src/gather-ios com.gather.gather Gather && cd ~/src/gather-ios
+      ./bin/create ~/src/gather-ios com.gather.gather Gather
+      cd ~/src/gather-ios
       
       // compile app
       ./cordova/build
@@ -73,10 +73,12 @@
       
       <pre><code data-language="bash">      
       // get phonegap
-      git clone https://github.com/apache/incubator-cordova-android.git && cd incubator-cordova-android
+      git clone https://github.com/apache/incubator-cordova-android.git
+      cd incubator-cordova-android
 
       // create a new Eclipse project
-      ./bin/create ~/src/gather-android com.gather.gather Gather && cd ~/src/gather-android
+      ./bin/create ~/src/gather-android com.gather.gather Gather
+      cd ~/src/gather-android
       
       // generate an .apk and run it on a plugged in phone
       ./cordova/BOOM
@@ -118,7 +120,7 @@
       </p>
       <p>
         We don't officially tablets yet but the app is at least somewhat usable on them without any modifications -- the buttons are just kind of small. It wouldn't be that much work to put in a media query and tweak the css, I just haven't gotten around to it.
-      <p>
+      </p>
       <h1 id="native-plugins">Native plugins</h1>
       <p>
         As I mentioned earlier, there are a few places where we use PhoneGap plugins. Plugins are designed so that they expose a single JS API and then offer a number of platform specific native code implementations. That way you can write your JS once and then use the <code>.java</code> plugin for Android or <code>.h</code> and </code>.m</code> files for iOS. Another awesome thing about PhoneGap plugins is that it is a way to prototype experimental W3C APIs via native polyfills. The date picker shown above is a native plugin.
@@ -136,7 +138,7 @@
       <p>We've been using Testflight for beta testing. It is worth checking out and simplifies the process of distributing beta builds to authorized beta testing devices (that you have to manually add to the Apple developer portal). Unfortunately there is no API for a lot of the Apple developer portal so there are a lot of manual processes involved in distributing iOS apps.</p>
       <h1 id="future-pans">Future plans</h1>
       <p>There are two things that aren't here yet but are super exciting. One is the ability to programmatically install native plugins in the same way that you can type `npm install foobar` to get modules in node. The PhoneGap team is working on this and it will make development way easier, as well as enable the PhoneGap user ecosystem to really blossom (just look at what NPM did for node).</p>
-      </p>The other thing is doing remote updates. Since PhoneGap apps are just a bunch of dynamic code you can easily write a Google Chrome style autoupdating capability into the apps as a way of circumventing Apples crazy long review process. There are definitely guidelines from Apple that you can't break (bait and switch -- changing your apps UI so that it suddenly shows naked people), but for things like fixing JS bugs and making minor updates to libraries, templates and stylesheets this kind of remote update functionality is going to be super awesome.</p>
+      <p>The other thing is doing remote updates. Since PhoneGap apps are just a bunch of dynamic code you can easily write a Google Chrome style autoupdating capability into the apps as a way of circumventing Apples crazy long review process. There are definitely guidelines from Apple that you can't break (bait and switch -- changing your apps UI so that it suddenly shows naked people), but for things like fixing JS bugs and making minor updates to libraries, templates and stylesheets this kind of remote update functionality is going to be super awesome.</p>
       <h1 id="conclusion">In Conclusion</h1>
       <p>Don't use PhoneGap if you aren't willing to get down and dirty and help establish some good patterns for hybrid mobile app development. It is still the early days. But the idea that you can use the open web stack to write nice mobile phone apps isn't crazy. After going through the process I would say I did about 80% web, 10% iOS and 10% Android. Would I have been able to achieve the same goals with me doing 50% iOS and 50% Android? I couldn't tell ya! I'm just happy that I got to keep writing JS without sacrificing too much in terms of quality.
       </p>

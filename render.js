@@ -84,6 +84,10 @@ function createRSS(documents) {
     author: author
   })
 
+  var documents = _.sortBy(documents, function(doc) {
+    return doc.published
+  }).reverse()
+
   _.each(documents, function(doc) {
     feed.item({
       title:  doc.title,

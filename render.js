@@ -4,6 +4,9 @@ var $ = require('cheerio')
 var glob = require('glob')
 var moment = require('moment')
 var _ = require('underscore')
+var RSS = require('rss')
+var baseURL = 'http://maxogden.com/'
+var author = 'Max Ogden'
 
 glob("posts/*.html", function(err, postFilenames) {
   if (err) return console.log(err)
@@ -16,6 +19,7 @@ glob("posts/*.html", function(err, postFilenames) {
     return documents[name].published
   }).reverse()
   loadPosts(sortedPostNames)
+  createRSS(documents)
 })
 
 function loadDocuments() {
@@ -26,9 +30,11 @@ function loadDocuments() {
     doc = $(doc)
     var docName = doc.find('.document').attr('id')
     var published = doc.find('.published').attr('data-published')
+    var title = doc.find('.title').html()
     documents[docName] = {
       published: published,
-      name: docName
+      name: docName,
+      title: title
     }
   })
   return documents
@@ -64,4 +70,32 @@ function renderTopNav(index) {
   renderPage(index, '', fs.readFileSync('posts/contact.html'), 'contact.html')
   renderPage(index, '', fs.readFileSync('posts/projects.html'), 'projects.html')
   renderPage(index, '', fs.readFileSync('posts/videos.html'), 'videos.html')
+}
+
+function createRSS(documents) {
+  var docRSS = 'rss.xml'
+
+  var feed = new RSS({
+    title: author + ' Blog',
+    description: 'Open Web Developer',
+    feed_url: baseURL + docRSS,
+    site_url: baseURL,
+    image_url: baseURL + 'icon.png',
+    author: author
+  })
+
+  var documents = _.sortBy(documents, function(doc) {
+    return doc.published
+  }).reverse()
+
+  _.each(documents, function(doc) {
+    feed.item({
+      title:  doc.title,
+      description: doc.title,
+      url: baseURL + doc.name + '.html',
+      date: doc.published
+    })
+  })
+
+  fs.writeFileSync(docRSS, feed.xml())
 }

@@ -4,10 +4,20 @@ var $ = require('cheerio')
 var glob = require('glob')
 var moment = require('moment')
 var _ = require('underscore')
+var RSS = require('rss')
+var feed = new RSS({
+    title: 'Max Ogden Blog',
+    description: 'Open Web Developer',
+    feed_url: 'http://maxogden.com/rss.xml',
+    site_url: 'http://maxogden.com/',
+    image_url: 'http://maxogden.com/icon.png',
+    author: 'Max Ogden'
+})
 
 glob("posts/*.html", function(err, postFilenames) {
   if (err) return console.log(err)
   var documents = loadDocuments()
+  console.log(documents)
   var postNames = postFilenames.map(function(name) {
     return path.basename(name, '.html')
   })
@@ -55,9 +65,9 @@ function switchNav(nav, postName) {
 }
 
 function renderPage(index, nav, body, outputPath) {
-  index('#documents').html(nav)
-  index('#document').html(body)
-  fs.writeFileSync(outputPath, index.html())
+  //index('#documents').html(nav)
+  //index('#document').html(body)
+  //fs.writeFileSync(outputPath, index.html())
 }
 
 function renderTopNav(index) {

@@ -64,7 +64,7 @@ response.on('data', function(chunk) {
 </code></pre>
     <p>Unfortunately this isn't possible with the current XHR implementation for two reasons. The first is that `xhr.response` is essentially one big buffer that keeps growing linearly as the response data comes in which means it can't get garbage collected. This just means you can't download files with XHR that are larger than the amount of RAM in your machine which isn't a total deal breaker for streaming data. The other reason is that currently the XHR spec prevents access to binary response data before the request has completed. Here is a simplified excerpt from the <a href="http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute">XMLHTTPRequest specification on w3.org</a> (thanks to <a href="http://twitter.com/tobie">@tobie</a> for assisting me in navigating the web standards world here):</p>
     <pre><code>If responseType is "text"
-  If the state is not LOADING or DONE, return an empty string and terminate these steps.
+  If the state is not LOADING or DONE, return empty string and terminate these steps
   Otherwise return the text response entity body.
 Otherwise (for all other types of responseTypes such as 'arraybuffer' or 'blob')
   If the state is not DONE, return null and terminate these steps.

@@ -63,23 +63,21 @@ response.on('data', function(chunk) {
 })
 </code></pre>
     <p>Unfortunately this isn't possible with the current XHR implementation for two reasons. The first is that `xhr.response` is essentially one big buffer that keeps growing linearly as the response data comes in which means it can't get garbage collected. This just means you can't download files with XHR that are larger than the amount of RAM in your machine which isn't a total deal breaker for streaming data. The other reason is that currently the XHR spec prevents access to binary response data before the request has completed. Here is a simplified excerpt from the <a href="http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute">XMLHTTPRequest specification on w3.org</a> (thanks to <a href="http://twitter.com/tobie">@tobie</a> for assisting me in navigating the web standards world here):</p>
-    <pre><code>
-      If responseType is "text"
-        If the state is not LOADING or DONE, return an empty string and terminate these steps.
-        Otherwise return the text response entity body.
-      Otherwise (for all other types of responseTypes such as 'arraybuffer' or 'blob')
-        If the state is not DONE, return null and terminate these steps.
+    <pre><code>If responseType is "text"
+  If the state is not LOADING or DONE, return an empty string and terminate these steps.
+  Otherwise return the text response entity body.
+Otherwise (for all other types of responseTypes such as 'arraybuffer' or 'blob')
+  If the state is not DONE, return null and terminate these steps.
     </code></pre>
     <p>Here is <a href="http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2011-January/029992.html">a discussion from the whatwg mailing list</a> on this topic that contains this particularly insightful comment:</p>
-    <pre><code>
-      Hmm! And I guess it's very difficult to create a abstract in/out 
-      interface that can handle any protocol/stream.
-      Although an abstract in/out would be ideal as that would let new 
-      protocols to be supported without needing to rewrite anything at the 
-      higher level.
-      
-      -- 
-      Roger "Rescator" Hågensen.
+    <pre><code>Hmm! And I guess it's very difficult to create a abstract in/out 
+interface that can handle any protocol/stream.
+Although an abstract in/out would be ideal as that would let new 
+protocols to be supported without needing to rewrite anything at the 
+higher level.
+
+-- 
+Roger "Rescator" Hågensen.
     </code></pre>
     <p>I totally agree! It turns out that the node Stream API, which is the core I/O abstraction in Node.js (which is a tool for I/O) is essentially an abstract in/out interface that can handle any protocol/stream that also happens to be written in JavaScript.</p>
     <p>It should be noted that websockets now support transporting binary data but the websocket spec still <a href="https://github.com/maxogden/websocket-stream/issues/1">isn't perfect</a> for streaming and the overwhelming majority of APIs are HTTP.</p>

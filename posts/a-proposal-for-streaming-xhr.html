@@ -15,6 +15,7 @@
       <h2 class="author">Max Ogden</h2>
     </div>
     <p>XHR2 isn't stream friendly. Lets explore why and propose a solution!</p>
+    <p>Note: While writing this I found out about the new <a href="http://dvcs.w3.org/hg/streams-api/raw-file/tip/Overview.htm">Stream</a> API. I'm currently rewriting this article to reflect that.</p>
     <p><a href="http://www.html5rocks.com/en/tutorials/file/xhr2/">XHR2</a> (XHR is short for XMLHTTPRequest and is the HTTP client in AJAX) does some cool stuff. You can get binary response data, either read-only in a <a href="https://developer.mozilla.org/en-US/docs/DOM/Blob">Blob</a> or mutable in an <a href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer#ArrayBuffer()">Array Buffer</a> (which you can turn into one of the many flavors of <a href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed Arrays</a>). Binary data in JavaScript pushes the boundaries of the web by enabling rich multimedia experiences (like those demonstrated in <a href="http://www.youtube.com/watch?v=PN8Eg1K9xjE">this mind-blowing talk</a> on the Web Audio API by <a href="twitter.com/stuartmemo">@stuartmemo</a>).</p>
     <p>There is one fundamental problem with the current XHR specification (and implementations) which is that they aren't designed for real-time streaming, but with a few tweaks I believe they can enable a much better web experience.
       

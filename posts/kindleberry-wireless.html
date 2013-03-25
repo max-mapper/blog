@@ -30,6 +30,7 @@
         <li>Week-long battery life: the pi and the kindle both have low power ARM processors so you can use any USB charger to power them</li>
         <li>The kindle screen is designed for use in direct sunlight</li>
       </ul>
+      <p><img src="../media/kindle-table.png"></p>
       <p>The idea of the kindleberry is to have the kindle just act as screen and have it log into an ssh session on the pi. Then you can plug a keyboard into the pi and it when you type it will show up on the kindle screen. This approach pretty much only works for terminals so you can't do anything except edit code in vim. I like this limitation as it gives me an option that is free from distraction for writing long pieces of code or text in any environment.
       <p>
         The first problem I ran into was that the kindleberry instructions only worked on Kindle 3 devices, and the newest generation of Kindles (e.g. the paperwhite) are Kindle 5's. While the end result is similar this just means that essentially all of the steps to set up and install the peripherals correctly were different, including the terminal software that runs on the kindle. The other issue was that I wanted a totally wireless version: no cords between the keyboard, kindle or pi.
@@ -47,7 +48,7 @@
         <li><a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16833704134">TP-LINK TL-WR702N Travel Router</a> for establishing wireless connectivity between the kindle and the pi</li>
         <li><a href="http://www.amazon.com/gp/product/B003M0NURK/ref=oh_details_o03_s00_i00?ie=UTF8&psc=1">4 port USB hub</a> just because it is useful to have around for cable management</li>
       </ul>
-      <p><img src="../media/kindle-table.png"></p>
+      <p><img src="../media/kindleberry-detail.png"></p>
       <p>
         For the software side of things, the best resource is <a href="https://gist.github.com/rvagg/5095506">this nice tutorial</a> that Rod Vagg has put together for getting the paperwhite set up with a terminal emulator. He even compiled node.js 0.10.0 for the kindle as well!
       </p>

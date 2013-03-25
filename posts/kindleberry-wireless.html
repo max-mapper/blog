@@ -29,9 +29,11 @@
       <ul>
         <li>Week-long battery life: the pi and the kindle both have low power ARM processors so you can use any USB charger to power them</li>
         <li>The kindle screen is designed for use in direct sunlight</li>
+        <li>The whole setup is small enough to carry around in a pouch inside my normal backpack along with my normal laptop. I work from coffee shops in Oakland and often move around by bicycle during the day -- now I can work from almost anywhere and still be at least a little productive.</li>
       </ul>
       <p><img src="../media/kindle-table.png"></p>
-      <p>The idea of the kindleberry is to have the kindle just act as screen and have it log into an ssh session on the pi. Then you can plug a keyboard into the pi and it when you type it will show up on the kindle screen. This approach pretty much only works for terminals so you can't do anything except edit code in vim. I like this limitation as it gives me an option that is free from distraction for writing long pieces of code or text in any environment.
+      <p>The idea of the kindleberry is to have the kindle just act as screen and have it log into an ssh session on the pi. Then you can plug a keyboard into the pi and it when you type it will show up on the kindle screen. This approach pretty much only works for terminals so you can't do anything except edit code in vim. I like this limitation as it gives me an option that is free from distraction for writing long pieces of code or text.
+      <p>Since the screen on the kindle is e-ink it has a slower-than-normal refresh rate. If you are a touch typist this shouldn't be an issue, I would recon that between the wifi latency and the screen latency there is a ~200ms screen delay, but it doesn't bother me at all when typing.</p>
       <p>
         The first problem I ran into was that the kindleberry instructions only worked on Kindle 3 devices, and the newest generation of Kindles (e.g. the paperwhite) are Kindle 5's. While the end result is similar this just means that essentially all of the steps to set up and install the peripherals correctly were different, including the terminal software that runs on the kindle. The other issue was that I wanted a totally wireless version: no cords between the keyboard, kindle or pi.
       </p>

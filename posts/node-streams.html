@@ -24,6 +24,54 @@
         of this article.</p>
     </center>
     
+    <h1 id="what-are-streams"><bold>UPDATE:</bold> new information about Node >= 0.10</h1>
+        <p>
+          Since writing this blog post (back in the Node 0.6 days) there have been major changes made to the Node Stream API. In Node 0.10 a new version of Streams called Streams2 were released. Here is a summary of using Streams2.
+        </p>
+        <p>
+         <h2>
+          <a name="user-content-how-to-destroyend-streams-in-node--010" class="anchor" href="#how-to-destroyend-streams-in-node--010" rel="noreferrer"><span class="octicon octicon-link"></span></a>how to destroy/end streams in node &gt;= 0.10</h2>
+
+            <ul class="task-list">
+              <li>usually you call <code>.destroy()</code> if it has <code>.destroy</code>
+
+              </li>
+              <li>if it doesnt have <code>.destroy</code> you are out of luck and the stream
+                should upgrade to use e.g. newer <code>through2</code>
+
+              </li>
+              <li>in request you call <code>.abort()</code> (this should get fixed to use <code>.destroy()</code>)</li>
+            </ul>
+  
+          <h3>
+          <a name="user-content-what-about-close-end" class="anchor" href="#what-about-close-end" rel="noreferrer"><span class="octicon octicon-link"></span></a>what about close, end</h3>
+
+            <ul class="task-list">
+              <li>usually no <code>.close</code> method exists except in FD backed streams
+                (usually only <code>fs</code>). usually you would never call <code>.close()</code>
+
+              </li>
+              <li>
+          <code>.end()</code> tries to end the stream gracefully</li>
+            </ul>
+  
+          <h3>
+          <a name="user-content-what-about-events" class="anchor" href="#what-about-events" rel="noreferrer"><span class="octicon octicon-link"></span></a>what about events</h3>
+
+          <ul class="task-list">
+              <li>
+          <code>finish</code> event is emitted when a stream ends nicely (e.g. <code>stream.end()</code>)</li>
+              <li>
+          <code>close</code> and <code>error</code> events are emitted when a stream
+                ends due to failure (e.g. <code>stream.destroy()</code>)</li>
+              <li>
+          <code>end</code> is emitted when a readable stream has no more data</li>
+              <li>
+          <code>end</code> in streams2 behaves more like a flush event, it only gets
+                emitted when the data has been read from the readable</li>
+            </ul>
+        </p>
+    
 <h1 id="why-streams">Why Streams?</h1>
 
     <p>node bills itself as <em>JavaScript evented I/O</em>. In a nutshell that

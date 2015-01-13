@@ -1,0 +1,10 @@
+{
+    "env": {
+        "default": {
+            "db": "http://max:yerevan@127.0.0.1:5984/blog"
+        },
+        "production": {
+            "db": "http://max:yerevan@max.couchone.com/blog"
+        }
+    }
+}

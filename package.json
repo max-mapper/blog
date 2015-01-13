@@ -2,9 +2,38 @@
   "name": "blog",
   "version": "0.0.1",
   "dependencies": {
-    "cheerio" : "0.10.1",
+    "cheerio": "0.10.1",
+    "cpr": "^0.3.2",
+    "gh-pages-deploy": "^0.1.1",
     "glob": "3.1.13",
+    "marked": "^0.3.2",
+    "mkdirp": "^0.5.0",
     "moment": "1.7.2",
+    "rss": "^1.1.1",
     "underscore": "1.4.2"
+  },
+  "description": "my internet website",
+  "main": "render.js",
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "gh-pages-deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/blog.git"
+  },
+  "author": "max ogden",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/maxogden/blog/issues"
+  },
+  "homepage": "https://github.com/maxogden/blog",
+  "gh-pages-deploy": {
+    "staticpath": "rendered",
+    "cname": "maxogden.com",
+    "prep": [
+      "node render.js"
+    ],
+    "noprompt": false
   }
 }

@@ -4,23 +4,58 @@ var $ = require('cheerio')
 var glob = require('glob')
 var moment = require('moment')
 var _ = require('underscore')
+var cpr = require('cpr')
+var mkdirp = require('mkdirp')
+var marked = require('marked')
 var RSS = require('rss')
+
 var baseURL = 'http://maxogden.com/'
 var author = 'Max Ogden'
+var outputFolder = 'rendered'
 
-glob("posts/*.html", function(err, postFilenames) {
-  if (err) return console.log(err)
-  var documents = loadDocuments()
-  var postNames = postFilenames.map(function(name) {
-    return path.basename(name, '.html')
-  })
-  postNames = _.filter(postNames, function(name) { return documents[name] })
-  var sortedPostNames = _.sortBy(postNames, function(name) {
-    return documents[name].published
+mkdirp.sync(outputFolder)
+
+var documents = loadDocuments()
+
+loadPosts(function(files) {
+  files = _.filter(files, function(file) { return documents[file.name] })
+  files = _.sortBy(files, function(file) {
+    return documents[file.name].published
   }).reverse()
-  loadPosts(sortedPostNames)
-  createRSS(documents)
+  renderPosts(files)
+  createRSS()
+  copyStatic()
 })
+
+function copyStatic() {
+  cpr('script', path.join(outputFolder, 'script'), {overwrite: true}, noop)
+  cpr('styles', path.join(outputFolder, 'styles'), {overwrite: true}, noop)
+  cpr('media', path.join(outputFolder, 'media'), {overwrite: true}, noop)
+}
+
+function loadPosts(cb) {
+  glob("posts/*.html", function(err, htmlFilenames) {
+    if (err) throw err
+    glob("posts/*.md", function(err, markdownFilenames) {
+      if (err) throw err
+      htmlFilenames = htmlFilenames.map(function(name) {
+        return path.basename(name, '.html')
+      })
+      markdownFilenames = markdownFilenames.map(function(name) {
+        return path.basename(name, '.md')
+      })
+      var markdownFiles = markdownFilenames.map(function(mdName) {
+        var rendered = new Buffer(marked(fs.readFileSync('posts/' + mdName + '.md').toString()))
+        return {name: mdName, content: rendered}
+      })
+      var htmlFiles = htmlFilenames.map(function(htmlName) {
+        return {name: htmlName, content: fs.readFileSync('posts/' + htmlName + '.html')}
+      })
+      var files = markdownFiles.concat(htmlFiles)
+      cb(files)
+    })
+  })
+}
 
 function loadDocuments() {
   var documents = {}
@@ -40,18 +75,16 @@ function loadDocuments() {
   return documents
 }
 
-function loadPosts(sortedPostNames) {
+function renderPosts(files) {
   var documents = $.load(fs.readFileSync('documents.html').toString())
   var index = $.load(fs.readFileSync('index.html'))
-  var latestPost = false
-  sortedPostNames.map(function(postName) {
-    var post = fs.readFileSync('posts/' + postName + '.html')
-    if (!latestPost) latestPost = post
-    switchNav(documents, postName)
-    renderPage(index, documents.html(), post, postName + '.html')
+  var latest = files[0]
+  files.map(function(post) {
+    switchNav(documents, post.name)
+    renderPage(index, documents.html(), post.content, post.name + '.html')
   })
-  switchNav(documents, sortedPostNames[0])
-  renderPage(index, documents.html(), latestPost, 'index.html')
+  switchNav(documents, latest.name)
+  renderPage(index, documents.html(), latest.content, 'index.html')
   renderTopNav(index)
 }
 
@@ -63,28 +96,29 @@ function switchNav(nav, postName) {
 function renderPage(index, nav, body, outputPath) {
   index('#documents').html(nav)
   index('#document').html(body)
-  fs.writeFileSync(outputPath, index.html())
+  fs.writeFileSync(path.join(outputFolder, outputPath), index.html())
 }
 
 function renderTopNav(index) {
   renderPage(index, '', fs.readFileSync('posts/contact.html'), 'contact.html')
-  renderPage(index, '', fs.readFileSync('posts/projects.html'), 'projects.html')
   renderPage(index, '', fs.readFileSync('posts/videos.html'), 'videos.html')
 }
 
-function createRSS(documents) {
-  var docRSS = 'rss.xml'
-
+function createRSS() {
   var feed = new RSS({
     title: author + ' Blog',
     description: 'Open Web Developer',
-    feed_url: baseURL + docRSS,
+    feed_url: baseURL + 'rss.xml',
     site_url: baseURL,
     image_url: baseURL + 'icon.png',
     author: author
   })
+  
+  var docs = Object.keys(documents).map(function(doc) {
+    return documents[doc]
+  })
 
-  var documents = _.sortBy(documents, function(doc) {
+  docs = _.sortBy(docs, function(doc) {
     return doc.published
   }).reverse()
 
@@ -97,5 +131,7 @@ function createRSS(documents) {
     })
   })
 
-  fs.writeFileSync(docRSS, feed.xml())
+  fs.writeFileSync(outputFolder + '/rss.xml', feed.xml())
 }
+
+function noop() {}

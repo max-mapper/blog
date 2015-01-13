@@ -1,2 +1,0 @@
-all:
-	node render.js

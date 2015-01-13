@@ -16,7 +16,8 @@
   "main": "render.js",
   "devDependencies": {},
   "scripts": {
-    "deploy": "gh-pages-deploy"
+    "deploy": "gh-pages-deploy",
+    "render": "node render.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,7 @@
     "staticpath": "rendered",
     "cname": "maxogden.com",
     "prep": [
-      "node render.js"
+      "render"
     ],
     "noprompt": false
   }

@@ -30,11 +30,13 @@ With nested dependencies we now have two copies of `a`. If our app needs `a` at 
 
 - The simpler of the two designs. It's up to you to decide how much complexity you want to deal with.
 - Dependency conflicts (AKA dependency hell)
+- Sometimes the only option for languages where you cannot load dependencies in isolation
 
 #### Nested
 
 - No dependency conflicts
 - Encourages use of small, isolated modules
 - More complicated
+- Good for languages like JavaScript with first class scoping support for isolating dependencies from each other
 - Installs multiple copies of dependencies (when necessary), so takes up more disk space (though in practice this is rarely an issue because code is small).
 - Confuses users who use dependencies that aren't designed to be modular (e.g. 'Why do I have five versions of jQuery in my browserify app?')

@@ -8,6 +8,7 @@ var cpr = require('cpr')
 var mkdirp = require('mkdirp')
 var marked = require('marked')
 var RSS = require('rss')
+var url = require('url')
 
 var baseURL = 'http://maxogden.com/'
 var author = 'Max Ogden'
@@ -106,7 +107,7 @@ function renderTopNav(index) {
 
 function createRSS(files) {
   var contentByName = files.reduce(function(map, file) {
-    map[file.name] = file.content.toString('utf8')
+    map[file.name] = makeImagesAbsolute(file.content.toString('utf8'))
     return map
   }, {})
 
@@ -137,6 +138,17 @@ function createRSS(files) {
   })
 
   fs.writeFileSync(outputFolder + '/rss.xml', feed.xml())
+}
+
+function makeImagesAbsolute(html) {
+  var doc = $.load(html)
+  doc('img').each(function(eh, img) {
+    console.log(img)
+    var relative = $(img).attr('src')
+    var absolute = url.resolve(baseURL, relative)
+    $(img).attr('src', absolute)
+  })
+  return doc.html()
 }
 
 function noop() {}

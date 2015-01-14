@@ -23,7 +23,7 @@ loadPosts(function(files) {
     return documents[file.name].published
   }).reverse()
   renderPosts(files)
-  createRSS()
+  createRSS(files)
   copyStatic()
 })
 
@@ -104,7 +104,12 @@ function renderTopNav(index) {
   renderPage(index, '', fs.readFileSync('posts/videos.html'), 'videos.html')
 }
 
-function createRSS() {
+function createRSS(files) {
+  var contentByName = files.reduce(function(map, file) {
+    map[file.name] = file.content.toString('utf8')
+    return map
+  }, {})
+
   var feed = new RSS({
     title: author + ' Blog',
     description: 'Open Web Developer',
@@ -113,7 +118,7 @@ function createRSS() {
     image_url: baseURL + 'icon.png',
     author: author
   })
-  
+
   var docs = Object.keys(documents).map(function(doc) {
     return documents[doc]
   })
@@ -125,7 +130,7 @@ function createRSS() {
   _.each(documents, function(doc) {
     feed.item({
       title:  doc.title,
-      description: doc.title,
+      description: contentByName[doc.name],
       url: baseURL + doc.name + '.html',
       date: doc.published
     })

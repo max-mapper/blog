@@ -8,6 +8,7 @@ var cpr = require('cpr')
 var mkdirp = require('mkdirp')
 var marked = require('marked')
 var RSS = require('rss')
+var url = require('url')
 
 var baseURL = 'http://maxogden.com/'
 var author = 'Max Ogden'
@@ -23,7 +24,7 @@ loadPosts(function(files) {
     return documents[file.name].published
   }).reverse()
   renderPosts(files)
-  createRSS()
+  createRSS(files)
   copyStatic()
 })
 
@@ -104,7 +105,12 @@ function renderTopNav(index) {
   renderPage(index, '', fs.readFileSync('posts/videos.html'), 'videos.html')
 }
 
-function createRSS() {
+function createRSS(files) {
+  var contentByName = files.reduce(function(map, file) {
+    map[file.name] = makeImagesAbsolute(file.content.toString('utf8'))
+    return map
+  }, {})
+
   var feed = new RSS({
     title: author + ' Blog',
     description: 'Open Web Developer',
@@ -113,7 +119,7 @@ function createRSS() {
     image_url: baseURL + 'icon.png',
     author: author
   })
-  
+
   var docs = Object.keys(documents).map(function(doc) {
     return documents[doc]
   })
@@ -125,13 +131,23 @@ function createRSS() {
   _.each(documents, function(doc) {
     feed.item({
       title:  doc.title,
-      description: doc.title,
+      description: contentByName[doc.name],
       url: baseURL + doc.name + '.html',
       date: doc.published
     })
   })
 
   fs.writeFileSync(outputFolder + '/rss.xml', feed.xml())
+}
+
+function makeImagesAbsolute(html) {
+  var doc = $.load(html)
+  doc('img').each(function(index, img) {
+    var relative = $(img).attr('src')
+    var absolute = url.resolve(baseURL, relative)
+    $(img).attr('src', absolute)
+  })
+  return doc.html()
 }
 
 function noop() {}

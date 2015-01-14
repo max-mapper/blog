@@ -142,8 +142,7 @@ function createRSS(files) {
 
 function makeImagesAbsolute(html) {
   var doc = $.load(html)
-  doc('img').each(function(eh, img) {
-    console.log(img)
+  doc('img').each(function(index, img) {
     var relative = $(img).attr('src')
     var absolute = url.resolve(baseURL, relative)
     $(img).attr('src', absolute)

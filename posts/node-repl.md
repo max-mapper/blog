@@ -43,11 +43,11 @@ The [repl code itself](https://github.com/maxogden/node-repl/blob/master/repl.js
 
 The whole thing is wrapped in an [IIFE](http://en.wikipedia.org/wiki/Immediately-invoked_function_expression) to avoid altering any external state in the users program, since [this code is concatenated](https://github.com/maxogden/node-repl/blob/master/bin.js#L19) onto the end of the program. I very rarely use IIFEs any more because node's module system handles isolating files for you automatically (and if you use browserify you can use node's module system for client side code), but this case is an exception.
 
-The code `var empty = '(' + os.EOL + ')'` is specific to how node's repl works. When you hit `<return>` in node's it takes whatever you typed and wrapps it in parentheses. For example, if you enter `var x = 1` and hit return you will end up with `(var x = 1\n)` on OSX/Linux or `(var x = 1\r\n)` on Windows. The code `require('os').EOL` gets the correct line ending for the users current OS. Also, you should never actually do this, but try going into the default node repl and typing `console.log)(42`. Even though you didn't type valid JS code, it ends up working because it gets turned into `(console.log)(42)\n` by the repl.
+The code `var empty = '(' + os.EOL + ')'` is specific to how node's repl works. When you hit `<return>` in node's it takes whatever you typed and wrapps it in parentheses. For example, if you enter `var x = 1` and hit return you will end up with `(var x = 1\n)` on OSX/Linux or `(var x = 1\r\n)` on Windows. The code `require('os').EOL` gets the correct line ending for the users current OS. Also (warning: this is just a parlour trick) try going into the default node repl and typing `console.log)(42`. Even though you didn't type valid JS code, it ends up working because it gets turned into `(console.log)(42)\n` by the repl.
 
 ### A quick primer on scopes in node modules
 
-When you run a program with node, e.g. `node hello.js` or `require('hello.js')`, node takes the contents of `foo.js` and wraps them in a function like this:
+When you run a program with node, e.g. `node hello.js` or `require('hello.js')`, node takes the contents of `hello.js` and wraps them in a function like this:
 
 ```js
 (function (exports, require, module, __filename, __dirname) {
@@ -55,9 +55,9 @@ When you run a program with node, e.g. `node hello.js` or `require('hello.js')`,
 });
 ```
 
-Wrapping your code in a a function like this causes a new scope to be created for your code to run in. You could have two different modules that both default `var pizza` to be different values, and because of the way that JavaScript's function scope works they can both exist in their own scopes without conflicting. This property of JavaScript is what allows node's [nested dependency](http://maxogden.com/nested-dependencies.html) system to work and is extremely simple and powerful.
+Wrapping your code in a a function like this causes a new scope to be created for your code to run in. You could have two different modules that both set `var pizza` to different values, and because of the way that JavaScript's function scope works they can both exist in their own scopes without conflicting. This property of JavaScript is what allows node's [nested dependency](http://maxogden.com/nested-dependencies.html) system to work and is extremely simple and powerful.
 
-The problem with this is that your code is running in it's own scope, and `node-repl` needs access to it! This is why we "inject" (in this case by concatenating) our repl code into your code before it gets required.
+The problem with this for us is that your code is running in it's own scope, and `node-repl` needs access to it! This is why we "inject" (in this case by concatenating) our repl code into your code before it gets required.
 
 ### Intercepting node's require call
 
@@ -84,7 +84,7 @@ Finally, we `require(file)` which triggers the extension we just defined with th
 
 The node repl [supports passing in a custom `eval` function](https://iojs.org/api/repl.html#repl_repl_start_options), which is how we are able to swap out it's default eval with the eval from the program scope.
 
-After being wrapped by `require` and having our repl injected, the code looks like this:
+After being wrapped by `require` and having our repl injected the code looks like this:
 
 ```js
 (function (exports, require, module, __filename, __dirname) {

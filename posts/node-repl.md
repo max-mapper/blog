@@ -1,12 +1,14 @@
-# node-repl, an interactive console for node
+# node-repl
 
-How to use it and how it was made
+An interactive console for node
+
+You can [install node-repl with npm](https://www.npmjs.com/package/node-repl#installation).
 
 Recently I was asked if there was an equivalent of the [Interactive Ruby Shell (IRB)](http://en.wikipedia.org/wiki/Interactive_Ruby_Shell) for node. IRB is great because it lets you quickly poke around in your program while it is running without having to set up breakpoints or print messages out to the console.
 
 Node ships with a [repl](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) that you can run by simply typing `node`, and you can run a program by running `node program.js`, but you cannot both run a program *and* open a repl at the same time.
 
-To solve this, with the help of my friends [Mathias](http://github.com/mafintosh) and [Chris](https://github.com/chrisdickinson) I whipped up a command-line module called [`node-repl`](http://npmjs.org/node-repl). You can [install it with npm](https://www.npmjs.com/package/node-repl#installation).
+To solve this, with the help of my friends [Mathias](http://github.com/mafintosh) and [Chris](https://github.com/chrisdickinson) I whipped up a command-line module called [`node-repl`](http://npmjs.org/node-repl).
 
 Here's how to use it:
 

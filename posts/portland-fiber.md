@@ -1,6 +1,6 @@
 <div id="header"><h1 class="title">Gigabit Fiber in Portland</h1></div>
 
-Review of 1GB fiber from CenturyLink
+Review of 1Gb fiber from CenturyLink
 
 Yesterday I got Gigabit fiber Internet installed at home in Portland, OR from [CenturyLink](https://www.centurylink.com/fiber/). If you haven't checked out how fiber works here's a good [intro video](https://www.youtube.com/watch?v=Rz1gv2JkmXQ). The variety that CenturyLink offers is a [passive optical network](http://en.wikipedia.org/wiki/Passive_optical_network) consisting of fiber optic cables strung up on telephone poles around town.
 

@@ -16,7 +16,9 @@ My day job is to work on data replication tools for really large scientific data
 
 ## CenturyLink vs Google Fiber
 
-CenturyLink costs $109 a month and Google Fiber is $70 a month. Both offer 1000mbps up/1000mpbs down (133MB/s) with no download/upload limits or caps. CenturyLink's [ToS states](http://www.centurylink.com/Pages/AboutUs/Legal/InternetServiceManagement/) "Residential 1 Gbps plans are not subject to download limits" and this has been [verified by the Seattle Mayor's office](http://www.reddit.com/r/Seattle/comments/2cooqy/centurylink_plans_to_bring_gigabit_internet_to/cji4gul). [Google Fiber's ToS](https://fiber.google.com/legal/network.html) also states they do "not employ volume-based data caps".
+CenturyLink costs $109 a month (for the first year) and Google Fiber is $70 a month. Both offer 1000mbps up/1000mpbs down (133MB/s) with no download/upload limits or caps. CenturyLink's [ToS states](http://www.centurylink.com/Pages/AboutUs/Legal/InternetServiceManagement/) "Residential 1 Gbps plans are not subject to download limits" and this has been [verified by the Seattle Mayor's office](http://www.reddit.com/r/Seattle/comments/2cooqy/centurylink_plans_to_bring_gigabit_internet_to/cji4gul). [Google Fiber's ToS](https://fiber.google.com/legal/network.html) also states they do "not employ volume-based data caps".
+
+CenturyLink seems to be quite secretive when it comes to disclosing the price after the first 12 months. From looking at my first bill it seems their 'standard rate' for gigabit appears to be $153.95, and they give a $44.00 per month discount for the first 12 months of service. This information isn't advertised publicly on their website (from what I can tell).
 
 The only major difference (beyond price) that I can find is that Google Fiber specifically prohibits commercial servers, but CenturyLink does not seem to.
 

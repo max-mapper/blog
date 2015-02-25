@@ -19,6 +19,8 @@ I would also recommend using a junction box/electronics enclosure for housing th
 
 The key is the solid state relay. For background on how these works check out <a href="http://www.scienceprog.com/considering-solid-state-relays-ssr-for-your-projects/">this excellent article</a>, but the short version is that they let you use a small voltage (3.3V or 5V such as those available in "digital out" pins in microcontrollers) to turn on and off high voltage circuits such as 110V or 220V (wall outlets).
 
+Instead of using an SSR directly as I did you could also purchase a <a href="http://www.powerswitchtail.com/Pages/default.aspx">PowerSwitchTail</a>, which is a pre-made enclosure that is a safely housed relay that comes to you already built.
+
 [![components](media/tessel-components.png)](media/tessel-components-large.png)
 
 To build the 'circuit', I simply cut the dimmer slider portion off of the Lamp Dimmer, stripped the ends off of the wires, and connected them to the SSR instead. Where there used to be a dimmer slider the circuit there is now the SSR.
@@ -67,5 +69,7 @@ function off (req, res) {
 Save the above code as a file called `server.js`, plug your Tessel over USB, and run `tessel push server.js` to upload the server onto your Tessel. You can run `tessel logs` to view the HTTP server logs while your tessel is connected over USB.
 
 Once you have the Tessel configured to join your home Wi-Fi (using the `tessel wifi` CLI command) it will then always automatically connect a few seconds after powering up, every time. You can put it anywhere in your house, power it over USB, and it will start up it's HTTP server and be accessible over your local network.
+
+You could definitely use other microcontrollers instead of the Tessel for this. I like the Tessel, however, because it is the simplest way to run Node code on hardware, and they also make add-on hardware modules that are easy to use. For example, you could use the Raspberry Pi for this project, but it would be more complicated as you would have to configure Linux. I just prefer to keep things easy!
 
 Happy hacking! Questions? Open an issue [in this repository](https://github.com/maxogden/blog/issues)

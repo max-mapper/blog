@@ -19,7 +19,7 @@ I would also recommend using a junction box/electronics enclosure for housing th
 
 The key is the solid state relay. For background on how these works check out <a href="http://www.scienceprog.com/considering-solid-state-relays-ssr-for-your-projects/">this excellent article</a>, but the short version is that they let you use a small voltage (3.3V or 5V such as those available in "digital out" pins in microcontrollers) to turn on and off high voltage circuits such as 110V or 220V (wall outlets).
 
-Instead of using an SSR directly as I did you could also purchase a <a href="http://www.powerswitchtail.com/Pages/default.aspx">PowerSwitchTail</a>, which is a pre-made enclosure that is a safely housed relay that comes to you already built.
+Instead of using an SSR directly as I did you could also purchase a <a href="http://www.powerswitchtail.com/Pages/default.aspx">PowerSwitch Tail</a>, which is a pre-made, safely housed relay enclosure that comes to you already built.
 
 [![components](media/tessel-components.png)](media/tessel-components-large.png)
 

@@ -8,7 +8,7 @@ I have been looking for a way to do hobby electronics projects using JavaScript 
 
 The <a href="https://tessel.io/">Tessel</a> is a microcontroller that runs Node code **on the board**. The team at Tessel wrote a <a href="https://github.com/tessel/colony-compiler">JS to Lua compiler</a> and then they run Lua directly on the Tessel hardware. It's not the fastest thing in the world, but it opens up most of npm to run on a wi-fi enabled, USB powered microcontroller the size of an Arduino.
 
-For this project I used four components:
+For this project I used four components. It takes about an hour to put together:
 
 - <a href="https://shop.tessel.io/">Tessel Microcontroller</a>
 - <a href="http://www.amazon.com/DC-AC-Solid-State-Relay-Heatsink/dp/B005K2IXHU/ref=sr_1_4?ie=UTF8&qid=1424888528&sr=8-4&keywords=Lightobject">Fotek SSR-25DA Solid State Relay</a>

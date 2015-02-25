@@ -64,6 +64,8 @@ function off (req, res) {
 }
 ```
 
-Once you have the Tessel configured to join your home Wi-Fi it will then always automatically connect a few seconds after powering up. You can put it anywhere in your house, power it over USB, and it will start up it's HTTP server and be accessible over your local network.
+Save the above code as a file called `server.js`, plug your Tessel over USB, and run `tessel push server.js` to upload the server onto your Tessel. You can run `tessel logs` to view the HTTP server logs while your tessel is connected over USB.
+
+Once you have the Tessel configured to join your home Wi-Fi (using the `tessel wifi` CLI command) it will then always automatically connect a few seconds after powering up, every time. You can put it anywhere in your house, power it over USB, and it will start up it's HTTP server and be accessible over your local network.
 
 Happy hacking! Questions? Open an issue [in this repository](https://github.com/maxogden/blog/issues)

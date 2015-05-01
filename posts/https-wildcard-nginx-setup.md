@@ -6,6 +6,8 @@ I finally got a wildcard certificate for my new domain `publicbits.org`. This me
 
 At the recommendation of my friend [Eric Mill](https://konklone.com/) I decided to try out [SSLMate](https://sslmate.com/). Wildcard certs aren't cheap. From SSLMate it costs $149 USD. However, it was super easy compared to every other SSL purchasing experience I've ever dealt with.
 
+It should take about 20 minutes to do all the things in this blog post.
+
 I have high hopes for [Let's Encrypt](https://letsencrypt.org), which will essentially make this process cost $0 instead of $149, but until then this is the easiest way to do it that I've seen.
 
 Note: my domain `maxogden.com` is hosted on GitHub Pages and they don't yet support HTTPS with custom domains. Email GitHub support and request this feature if it is important to you!

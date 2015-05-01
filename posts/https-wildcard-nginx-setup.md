@@ -8,6 +8,8 @@ At the recommendation of my friend [Eric Mill](https://konklone.com/) I decided 
 
 I have high hopes for [Let's Encrypt](https://letsencrypt.org), which will essentially make this process cost $0 instead of $149, but until then this is the easiest way to do it that I've seen.
 
+Note: my domain `maxogden.com` is hosted on GitHub Pages and they don't yet support HTTPS with custom domains. Email GitHub support and request this feature if it is important to you!
+
 ## Installing SSLMate and buying the cert
 
 First I [signed up at SSLMate](https://sslmate.com/signup). I picked a username and password and entered my payment info.
@@ -33,7 +35,7 @@ Then I did `mkdir keys` and `cd keys`. I was now in `/home/max/keys`.
 
 Next was `sslmate download --all`. Now a bunch of files appeared in my `keys` folder.
 
-The ones I'm using are `*.publicbits.org.key;` and `*.publicbits.org.chained.crt;`.
+The ones I'm using are `*.publicbits.org.key` and `*.publicbits.org.chained.crt`.
 
 ## Installing and configuring Nginx
 

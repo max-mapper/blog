@@ -128,7 +128,7 @@ Testing module to make testing spawned processes easier
 
 ### [transport-stream](https://npmjs.org/transport-stream)
 
-Abstract module to support different transports (used in dat), e.g. `tcp://`, 'ssh://`, 'https://`
+Abstract module to support different transports (used in dat), e.g. `tcp://`, `ssh://`, `https://`
 
 ### [utp-native](https://npmjs.org/utp-native)
 

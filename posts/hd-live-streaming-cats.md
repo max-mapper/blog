@@ -48,6 +48,8 @@ Basically you create a new 'Live Event' on YouTube and it gives you a `rtsp://` 
 
 Here's an [example YouTube video of some kittens](https://www.youtube.com/watch?v=Xn4yNavjdR4&t=4m50s) made using this method.
 
+[![youtube cats](media/youtube-cats.png)](https://www.youtube.com/watch?v=Xn4yNavjdR4&t=4m50s)
+
 ## How to set up the Raspberry Pi
 
 For this I used the Raspberry Pi B+. I don't have a Raspberry Pi 2 yet. I'm using the Raspbian OS. The trickiest part is getting `ffmpeg`. You can `apt-get install libav-tools` to get libav, the ffmpeg fork, but it didn't work for me and ffmpeg did. *shrug*. To get ffmpeg compiled for the correct ARM architecture that the Raspi B+ needs the easiest way I've found is to get it from [this docker container](https://github.com/fiorix/ffmpeg-arm):

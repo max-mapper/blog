@@ -34,11 +34,11 @@ Worse yet, the framerate was under 10FPS. Not gonna cut it in the age of HD! Ano
 
 ## Version three (current version)
 
-The main thing I learned in the first two versions is that I wanna try and avoid re-encoding video. It's slow (too slow for Raspi even except at very low resolution) and degrades quality.
+The main thing I learned in the first two versions is that I wanna try and avoid re-encoding video. It's slow (and especially too slow for CPU weak Raspi) and degrades quality.
 
 For the latest iteration I went back to using the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/camera-module/). It's $25 bucks, so along with the $25 Raspberry Pi that brings the project cost to a nice even $50.
 
-The raw data that comes from `raspivid`, a CLI tool that is part of the Raspberry Pi [userland](https://github.com/raspberrypi/userland) repository, is straight H264 encoded video data that comes from the on-board H264 encoder hardware chip built into the Raspi. This means it's fast and high quality. Re-encoding it in software is slow and crappy looking.
+The raw data that comes from `raspivid`, a CLI tool that is part of the Raspberry Pi [userland](https://github.com/raspberrypi/userland) repository, is straight H264 encoded video data that comes from the on-board H264 encoder hardware chip built into the Raspi. This means it's fast and high quality. Re-encoding it in software is slow and crappy looking. Side note: it makes me deeply, deeply sad that our devices now come with chips that encode video data into a patented, closed video format.
 
 I spent some time learning about the differences between encoding/decoding and muxing/demuxing. Muxing/demuxing is cheap (it just means wrapping the encoded video in a container format, e.g. `.mp4` or `.avi`), but encoding/decoding is difficult and slow and involves lots of math and patents.
 

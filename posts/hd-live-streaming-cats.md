@@ -6,7 +6,7 @@ Over the past few months I've built three versions of a camera to detect cats in
 
 ## Version one
 
-The first version was using some motion detection software called `motion-mmal`. It worked but the framerate was less than 1FPS, which isn't very good at all compared to the camera modules max resolution of 1920x1080 at 30FPS. I captured 3 cats helping themselves to my catnip, but the quality left me wanting more.
+The first version was using some motion detection software called `motion-mmal`. It worked but the framerate was less than 1FPS, which isn't very good at all compared to the camera modules max resolution of 1920x1080 at 30FPS. I captured 3 cats helping themselves to my catnip, but the quality left me wanting more. I also found out there is a family of 3 opossum living in the large bush in my yard, and that there is a very, very [fat raccoon](media/fatraccoon.png) that frequently visits.
 
 ![fat cat](media/fatcat.png)
 
@@ -99,6 +99,6 @@ I'm gonna try these things out:
 - Get other cat weirdos on the internet to set up their own catnip cams (looking at you, person who read the whole blog post)
 - Try out a device using an Ambarella video capture chip. The Raspberry Pi Camera uses a OV5647 video capture chip and supports HD live streaming over the network thx to the Pi, but maybe the e.g. GoPro/Xiaomi Yi/SJCam (which are tiny ARM linux boxes too) can be hacked to do this with less overhead
 
-If you found this post useful, or made something cool with the tips here, send me a tweet at <a href="https://twitter.com/maxogden">@maxogden</a on twitter.
+If you found this post useful, or made something cool with the tips here, send me a tweet at <a href="https://twitter.com/maxogden">@maxogden</a> on twitter.
 
 Happy streaming!

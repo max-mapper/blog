@@ -2,7 +2,7 @@
 
 How to stream in 1080p to YouTube Live Events, May 2015
 
-Over the past few months I've built three versions of a camera to detect cats in my backyard, where I have placed a potted catnip plant. I can't have a cat, so this is the best I can do. The final version supports full HD live streaming (skip to bottom for that), but it took a few iterations to get there.
+Over the past few months I've built three versions of a camera to detect cats in my backyard, where I have placed a potted catnip plant. I don't have my own cat (allergies/landlord) so this is how I get my fix. Plus I recently got gigabit fiber at home and have this burning desire to use the bandwidth. The final version supports full HD live streaming (skip to bottom for that), but it took a few iterations to get there.
 
 ## Version one
 
@@ -42,7 +42,7 @@ The raw data that comes from `raspivid`, a CLI tool that is part of the Raspberr
 
 I spent some time learning about the differences between encoding/decoding and muxing/demuxing. Muxing/demuxing is cheap (it just means wrapping the encoded video in a container format, e.g. `.mp4` or `.avi`), but encoding/decoding is difficult and slow and involves lots of math and patents.
 
-Then we started fostering some kittens. And since part of our job was to find them adoptive parents (we can't keep cats permanently), I figured a HD live stream would help find them a home. I looked the options, and it came down to UStream vs YouTube "Live Events". UStream charges $99 bucks a month for HD streaming (seriously) and YouTube "Live Events", a feature [baked into YouTube.com](https://www.youtube.com/my_live_events), offers 24 hour HD live streaming for free, with the last 4 hours of each stream available as a regular youtube video afterwards.
+Then recently I agreed to take care of some kittens for a week. And since part my job was to find them adoptive parents (can't keep cats permanently), I figured a HD live stream would help find them a home. I looked the options, and the best one was YouTube "Live Events". UStream charges $99 bucks a month for HD streaming (seriously) and YouTube "Live Events", a feature [baked into YouTube.com](https://www.youtube.com/my_live_events), offers 24 hour HD live streaming for free, with the last 4 hours of each stream available as a regular YouTube video afterwards.
 
 Basically you create a new 'Live Event' on YouTube and it gives you a `rtsp://` url you can stream audio/video to, and a public YouTube URL that anyone with a browser or YouTube app can watch live. And it's free, and supports HD. Pretty sweet!
 
@@ -50,7 +50,7 @@ Here's an [example YouTube video of some kittens](https://www.youtube.com/watch?
 
 ## How to set up the Raspberry Pi
 
-For this I used the Raspberry Pi B+. I don't have a Raspberry Pi 2 yet. I'm using the Raspbian OS (similar to Debian). The trickiest part is getting `ffmpeg`. You can `apt-get install libav-tools` to get libav, the ffmpeg fork, but it didn't work for me and ffmpeg did. YMMV. To get ffmpeg compiled for the correct ARM architecture that the Raspi B+ needs the easiest way I've found is to get it from [this docker container](https://github.com/fiorix/ffmpeg-arm):
+For this I used the Raspberry Pi B+. I don't have a Raspberry Pi 2 yet. I'm using the Raspbian OS. The trickiest part is getting `ffmpeg`. You can `apt-get install libav-tools` to get libav, the ffmpeg fork, but it didn't work for me and ffmpeg did. *shrug*. To get ffmpeg compiled for the correct ARM architecture that the Raspi B+ needs the easiest way I've found is to get it from [this docker container](https://github.com/fiorix/ffmpeg-arm):
 
 ```
 docker run -t fiorix/ffmpeg-arm cat /opt/ffmpeg/bin/ffmpeg > ffmpeg
@@ -86,5 +86,17 @@ If your stream is working you should see something like this:
 ![ffmpeg-output](media/ffmpeg-output.png)
 
 The bitrate in the bottom rate should match what you set on YouTube. Also important is the `Stream 1 (copy)`. The `copy` means it isn't re-encoding the input video into the output -- it is copying it. This is what makes it fast and high quality.
+
+## Future plans
+
+I'm gonna try these things out:
+
+- Set up a 24 hour live YouTube channel of my catnip
+- Run the motion detection out-of-band to try and capture specific events separately out of the live stream
+- Try and get my friends who are smarter at video stuff than I am to write better cat detection algorithms
+- Get other cat weirdos on the internet to set up their own catnip cams (looking at you, person who read the whole blog post)
+- Try out a device using an Ambarella video capture chip. The Raspberry Pi Camera uses a OV5647 video capture chip and supports HD live streaming over the network thx to the Pi, but maybe the e.g. GoPro/Xiaomi Yi/SJCam (which are tiny ARM linux boxes too) can be hacked to do this with less overhead
+
+If you found this post useful, or made something cool with the tips here, send me a tweet at <a href="https://twitter.com/maxogden">@maxogden</a on twitter.
 
 Happy streaming!

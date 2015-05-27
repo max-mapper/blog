@@ -6,7 +6,7 @@ Over the past few months I've built three versions of a camera to detect cats in
 
 ## Version one
 
-The first version was using some motion detection software called `motion-mmal`. It worked but the framerate was less than 1FPS, which isn't very good at all compared to the camera modules max resolution of 1920x1080 at 30FPS. I captured 3 cats helping themselves to my catnip, but the quality left me wanting more. I also found out there is a family of 3 opossum living in the large bush in my yard, and that there is a very, very [fat raccoon](media/fatraccoon.png) that frequently visits.
+The first version was using some motion detection software called `motion-mmal`. It worked but the framerate was less than 1FPS, which isn't very good at all compared to the camera modules max resolution of 1920x1080 at 30FPS. I captured 3 cats helping themselves to my catnip, but the quality left me wanting more. I also found out there is a family of 3 opossum living in the large bush in my yard, and that there is a very, very [fat raccoon](media/fat-raccoon.png) that frequently visits.
 
 ![fat cat](media/fatcat.png)
 

@@ -62,6 +62,13 @@ There are some big companies using Electron (in additon to GitHub). Notably Micr
 
 Myself and some friends have worked on a few apps in our spare time, just to get acquainted with Electron. Along the way I've [opened ~20 issues](https://github.com/atom/electron/issues?utf8=%E2%9C%93&q=is%3Aissue+author%3Amaxogden) on the Electron repo when I got stuck and have got a response from zcbenz on each one. Some turned out to be bugs, some were feature requests that got implemented, and others turned into discussions that helped me find workaround.
 
+
+### Playback
+
+![Playback](media/playback-app.png)
+
+[Playback](https://mafintosh.github.io/playback/) is an experiment in trying to write an app like VLC but based on web technologies. Some notable features include the ability to stream movies directly from Torrent files and Chromecast integration, all done with Node modules!
+
 ### Monu
 
 ![monu](media/monu.png)

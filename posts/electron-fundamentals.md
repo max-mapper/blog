@@ -62,7 +62,6 @@ There are some big companies using Electron (in additon to GitHub). Notably Micr
 
 Myself and some friends have worked on a few apps in our spare time, just to get acquainted with Electron. Along the way I've [opened ~20 issues](https://github.com/atom/electron/issues?utf8=%E2%9C%93&q=is%3Aissue+author%3Amaxogden) on the Electron repo when I got stuck and have got a response from zcbenz on each one. Some turned out to be bugs, some were feature requests that got implemented, and others turned into discussions that helped me find workaround.
 
-
 ### Playback
 
 ![Playback](media/playback-app.png)
@@ -86,6 +85,10 @@ Myself and some friends have worked on a few apps in our spare time, just to get
 ![friends](media/friends-app.png)
 
 [Friends](https://github.com/moose-team/friends) is a **highly experimental** decentralized public chat app, similar to Slack or IRC but built entirely on WebRTC Peer-to-Peer systems so it doesn't depend on a central server -- all messages are exchanged directly between users. It's totally pre-alpha quality, so don't expect it to be easy to run just yet, but it has been a fun way to play with WebRTC and Node together.
+
+### Electron Microscope
+
+This one isn't an app per-se, but I'm working on a web scraping/spidering tool based on Electron called [Electron Microscope](https://github.com/maxogden/electron-microscope). It adds an automation + data streaming API to Electron browser windows to visit, interact with, and stream data out of websites. If you're interested in giving it a spin I'd appreciate [API feedback](https://github.com/maxogden/electron-microscope/issues/1).
 
 ## Summary
 

@@ -62,11 +62,11 @@ Protocol Buffer Streaming. A standard way to serialize protobuf data. We use pro
 
 Tiny utility stream that lets you pick a random item from a stream.
 
-### [playback](https://npmjs.org/playback)
+### [playback](https://github.com/mafintosh/playback)
 
 Desktop video player written in JS that supports torrent streaming, chromecast and youtube.
 
-### [playback-chrome](https://npmjs.org/playback-chrome)
+### [playback-chrome](https://github.com/maxogden/playback-chrome)
 
 Chrome extension to that adds a 'open in Playback' button to YouTube videos.
 

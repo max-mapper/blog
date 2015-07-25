@@ -1,8 +1,12 @@
-<div id="header"><h1 class="title">iot.js and JerryScript</h1></div>
+<div id="header"><h1 class="title">What's the deal with iot.js and JerryScript</h1></div>
 
 Node.js will soon be running on tiny low power chips.
 
 [iot.js](http://samsung.github.io/iotjs/) is a Node.js compatible runtime being written by Samsung. The project is still in active development, is open source and Apache Licensed. It hasn't yet had a stable release but has been in development for over a year. It is built on a new JavaScript VM called [JerryScript](http://samsung.github.io/jerryscript/) that they are also working on. Node.js is built on V8, and iot.js is built on JerryScript. The major goal of iot.js is to run Node code on low power devices.
+
+JerryScript doesn't have a logo yet, so I made one:
+
+[![jerryscript](media/jerryscript.png)](media/jerryscript-large.png)
 
 The current hardware requirements for iot.js are around 350KB ROM and 100KB RAM. This is a huge difference compared with V8, the VM that Node.js is built on, which is notoriously memory hungry and doesn't run on devices with less than 64MB of RAM (the lowest power device I've seen running it is the [Arduino Yun](https://www.arduino.cc/en/Main/ArduinoBoardYun?from=Products.ArduinoYUN)).
 

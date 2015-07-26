@@ -30,6 +30,10 @@ In the future they will work on support for other devices (according to [their w
 
 Perhaps the closest thing to iot.js is Espruino, who both develop a custom JavaScript runtime as well as manufacture development boards like the [Espruino Pico](http://www.espruino.com/Pico). The major difference between iot.js and Espruino is that Espruino is not Node.js compatible. The Espruino boards use a family of chips (STM32F4) that iot.js supports, so it should be possible to run iot.js on Espruino hardware in the future.
 
-Another similar device is the [ESP8266](http://www.esp8266.com/wiki/doku.php), which is a low power microcontroller with an integrated WiFi networking stack. They are really cheap - you can get ESP8266 development boards for around $8 from Amazon or the raw chips in bulk for around $2 a piece. However, with only 64KB of RAM and ROM it is not quite beefy enough to run iot.js. The closest thing you can get is Lua through a project called [NodeMCU](https://github.com/nodemcu/nodemcu-firmware).
+In addition to JerryScript and Espruino there is also [Duktape](http://duktape.org) which is "an embeddable Javascript engine, with a focus on portability and compact footprint". There is a project called [Duklove](https://github.com/creationix/dukluv) that combines Duktape and LibUV, which in the future could form the basis of a Node.js compatible runtime build on top of Duktape.
 
-I think a low power JS VM is long overdue and am looking forward to the first stable iot.js release.
+It would be interesting to get the authors of JerryScript, Espruino and Duklove to sit down and talk to each other.
+
+Another similar device is the [ESP8266](http://www.esp8266.com/wiki/doku.php), which is a low power microcontroller with an integrated WiFi networking stack. They are really cheap - you can get ESP8266 development boards for around $8 from Amazon or the raw chips in bulk for around $2 a piece. However, with only 64KB of RAM and ROM it is not quite beefy enough to run iot.js. The closest thing you can get is Lua through a project called [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) or the [μScript](https://github.com/creationix/uscript/) project.
+
+I think a low power Node.js runtime is long overdue and am looking forward to the first stable iot.js release.

@@ -2,7 +2,7 @@
 
 Node.js will soon be running on tiny low power chips.
 
-[iot.js](http://samsung.github.io/iotjs/) is a Node.js compatible runtime being written by Samsung. The project is still in active development, is open source and Apache Licensed. It hasn't yet had a stable release but has been in development for over a year. It is built on a new JavaScript VM called [JerryScript](http://samsung.github.io/jerryscript/) that they are also working on. Node.js is built on V8, and iot.js is built on JerryScript. The major goal of iot.js is to run Node code on low power devices.
+[iot.js](http://samsung.github.io/iotjs/) is a Node.js compatible runtime being written by Samsung. The project is still in active development, is open source and Apache Licensed. It hasn't yet had a stable release but has been in development for over a year. It is built on a new JavaScript VM called [JerryScript](http://samsung.github.io/jerryscript/) (named after [Jerry Mouse](https://en.wikipedia.org/wiki/Jerry_Mouse)) that they are also working on. Node.js is built on V8, and iot.js is built on JerryScript. The major goal of iot.js is to run Node code on low power devices.
 
 JerryScript doesn't have a logo yet, so I made one:
 

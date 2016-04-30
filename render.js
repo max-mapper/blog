@@ -32,6 +32,7 @@ function copyStatic() {
   cpr('script', path.join(outputFolder, 'script'), {overwrite: true}, noop)
   cpr('styles', path.join(outputFolder, 'styles'), {overwrite: true}, noop)
   cpr('media', path.join(outputFolder, 'media'), {overwrite: true}, noop)
+  fs.writeFileSync(outputFolder + '/resume.html', fs.readFileSync('posts/resume.html')
 }
 
 function loadPosts(cb) {
@@ -103,7 +104,6 @@ function renderPage(index, nav, body, outputPath) {
 function renderTopNav(index) {
   renderPage(index, '', fs.readFileSync('posts/contact.html'), 'contact.html')
   renderPage(index, '', fs.readFileSync('posts/videos.html'), 'videos.html')
-  renderPage(index, '', fs.readFileSync('posts/resume.html'), 'resume.html')
 }
 
 function createRSS(files) {

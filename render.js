@@ -103,6 +103,7 @@ function renderPage(index, nav, body, outputPath) {
 function renderTopNav(index) {
   renderPage(index, '', fs.readFileSync('posts/contact.html'), 'contact.html')
   renderPage(index, '', fs.readFileSync('posts/videos.html'), 'videos.html')
+  renderPage(index, '', fs.readFileSync('posts/resume.html'), 'resume.html')
 }
 
 function createRSS(files) {

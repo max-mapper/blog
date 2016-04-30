@@ -32,7 +32,7 @@ function copyStatic() {
   cpr('script', path.join(outputFolder, 'script'), {overwrite: true}, noop)
   cpr('styles', path.join(outputFolder, 'styles'), {overwrite: true}, noop)
   cpr('media', path.join(outputFolder, 'media'), {overwrite: true}, noop)
-  fs.writeFileSync(outputFolder + '/resume.html', fs.readFileSync('posts/resume.html')
+  fs.writeFileSync(outputFolder + '/resume.html', fs.readFileSync('posts/resume.html'))
 }
 
 function loadPosts(cb) {

@@ -4,7 +4,7 @@ Where to get started with streams and peer to peer, May 2016
 
 The great thing about node (and it's streams) is that its easy to plug different modules together into powerful pipelines.
 
-For example in [Dat](http://dat-data.com) we use [rabin](https://github.com/maxogden/rabin) to chunk a file stream and then pipe into a merkle tree generator ((merkle-tree-stream)[https://www.npmjs.com/package/merkle-tree-stream]):
+For example in [Dat](http://dat-data.com) we use [rabin](https://github.com/maxogden/rabin) to chunk a file stream and then pipe into a merkle tree generator ([merkle-tree-stream](https://www.npmjs.com/package/merkle-tree-stream)):
 
 ```js
 var merkle = require('merkle-tree-stream')

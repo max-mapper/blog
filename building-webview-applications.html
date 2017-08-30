@@ -1,0 +1,393 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document active" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="author" content="Max Ogden">
+    <title>Building WebView Applications</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+      <h1 class="title">Building WebView Applications</h1>
+      
+      <h2 class="author">Max Ogden</h2>
+
+    </div>
+    <p>Article version of <a href="http://www.youtube.com/watch?v=rn597gDdlng">this PhoneGap Day EU presentation</a> given in September 2012</p>
+      <p>Summary: WebKit browsers are capable of a lot, but writing native code is still necessary for certain things. Hence: "hybrid apps". The web is a double edged sword. Openness on one side and splintered bugginess on the other. Most of the bugs I've encountered have been squashed in <a href="https://github.com/maxogden/ViewKit">ViewKit</a>, a jQuery mobile-esque UI library designed for mobile WebKits.
+      </p>
+      
+      <p><i>This is part two of a series, the first part is called <a href="http://maxogden.com/fast-webview-applications.html">Fast WebView Applications</a>.</i></p>
+      
+<h1 id="javascript-everywhere">JS all the things!</h1>
+
+      <p>My company (<a href="http://twitter.com/gather">@gather</a>) is a little under a year old and consists of 2.5 (two full time, me and <a href="http://twitter.com/mikeal">@mikeal</a>, and one design contractor, <a href="http://twitter.com/objcts">@objcts</a>). Mikeal does all the backend... node, redis, couch, apple + google push notifications, load balancing, deployment, etc and I work on our mobile app. As covered in part one, we rolled with PhoneGap due to a) front end team size of 1 (with little to no iOS or Android experience) and b) a somewhat dogmatic belief in the open web and c) cross-platform.
+      </p>
+
+      <p>So far mobile development has been an uphill battle. Not as bad as IE6 but it approaches the same level of facepalm. Here are some example commit messages to give you a sense of the day-to-day reality of cross platform development:</p>
+      <p><img src="media/commit-messages.png"></p>
+      <p>If you aren't already a super capable client side developer I would definitely not recommend attempting to make a high quality hybrid native app today. The community just isn't there yet. If you buy an iOS book you learn about the built in UI libraries and Interface Builder, have world class documentation, tons of google-able error messages and stack overflow posts, and generally lots of great example products in the App Store to draw inspiration from. PhoneGap gives you a blank white browser window and you take it from there. Fixing cross browser bugs, the entire UI for your app and custom native plugin functionality are all left as exercises for the reader.</p>
+      
+      <p>It isn't that these things aren't possible. As HTML5 gets better and better these problems will disappear. But the state of mobile app development today is that the current JS UI framework offerings just don't compete with the UX of the native smartphone SDKs.
+      </p>
+      <p>So if it is a pain, why are we doing it this way? The redeeming quality of the web is that the more work you pour into it, the more value you create in the ecosystem. Things like Firefox OS, which will allow mobile app developers to fork the operating system, are going to be huge wins. We just happen to be among the first on the bandwagon :)</p>
+
+<h1 id="architecture">Architecture</h1>
+      <p>At the moment, our app has one set of front-end assets that run on most iOS (5.1+) and Android (2.3+) devices. We use native plugins to do only a few things: popup browsers for the OAuth login dance, date + time pickers for forms and push notifications. Our entire UI is just one big web view.</p>
+      <p>A few months into development I realized that I needed to abstract out a few of the UI components into a library so that I could make sure everything worked in all of the browsers that we aim to support. This library is called <a href="https://github.com/maxogden/ViewKit">ViewKit</a> and can be thought of as a WebKit specific jQuery mobile with way less features.
+      </p>
+      <p><img src="media/architecture-diagram.png"></p>
+      <p>All in all we have five repos: ViewKit, our app specific front-end code that uses ViewKit, Android and iOS projects (that both symlink to the same front-end code), and our backend.
+      </p>
+      <p>At the moment the only way to use Gather is to install the native app. We want to release a web-app version but haven't had enough time to do enough testing to feel good about a more wide release like that. The cool part is that when we are ready we would just serve the same application code in the above diagram directly from a static file server.
+      </p>
+
+      <h1 id="development-workflow">Development workflow</h1>
+      <p>The majority of the app was written on my laptop in Chrome + its dev tools, the same workflow I've been using for years. Our designer, Michael Felix (<a href="http://twitter.com/objcts">@objcts</a>) worked with us during the initial conceptual phase and then starting whipping up some pixel perfect PSDs.</p>
+      <p><img src="media/gather-psd.png"></p>
+      <p>On device testing is a must. Get a new Android + iPhone and an old Android and iPhone. We went with the Galaxy Nexus, iPhone 4S, some random LG android phone that runs 2.3 and an iPhone 3GS. Turns out nobody has really complained to us about iPhone 4.x compatibility so we are currently iOS5+6 only. Android emulators are a waste of time, just plug your device in. iPhone Simulator is nice though. With PhoneGap nowadays you can do pretty much everything from the command line:</p>
+      
+      <pre><code data-language="bash">      
+      // get phonegap
+      git clone https://github.com/apache/incubator-cordova-ios.git
+      cd incubator-cordova-ios
+
+      // create a new XCode project
+      ./bin/create ~/src/gather-ios com.gather.gather Gather
+      cd ~/src/gather-ios
+      
+      // compile app
+      ./cordova/build
+      
+      // run in simulator
+      ./cordova/emulate
+      
+      // get an .ipa for ad-hoc (testflight) or app store distribution
+      gem install shenzhen && ipa build
+      </code></pre>
+      
+      <p>or for Android:</p>
+      
+      <pre><code data-language="bash">      
+      // get phonegap
+      git clone https://github.com/apache/incubator-cordova-android.git
+      cd incubator-cordova-android
+
+      // create a new Eclipse project
+      ./bin/create ~/src/gather-android com.gather.gather Gather
+      cd ~/src/gather-android
+      
+      // generate an .apk and run it on a plugged in phone
+      ./cordova/BOOM
+      </code></pre>
+      
+      <p><img src="media/native-app-folders.png"></p>
+      
+      <h1 id="cross-platform">Cross-platform code</h1>
+      <p>
+        On app load we first execute all of the common, platform independent JS and then do a bit of UA sniffing (using zeptos <code>$.os</code> plugin) to load browser + platform specific scripts. These scripts include things like the required <code>cordova.js</code> library (which at the time of this writing has specific builds for specific platforms), our phonegap plugin JS files, and any browser specific polyfills. We also have a iOS specific stylesheet that currently has a single line to enable <code>-webkit-transform</code> animations (they are disabled by default because Android animation performance is abysmal).
+      </p>
+      <p>
+        There are a few other places in the app where we have platform specific code. Here is a snippet from our date picker code that executes after you choose a date or time (or both) in the native date picker UI popup dialog:
+      </p>
+      <pre><code data-language="javascript">
+      if ($.os.ios) {
+        $('.datepicker').text(moment(start).format("MMM Do h:mma"))          
+      } else {
+        $('.datepicker').text(moment(start).format("MMM Do"))
+        $('.timepicker').text(moment(start).format("h:mma"))
+      }
+      </code></pre>
+      <p>
+        iOS has a combination date + time picker in a single dialog but Android offers only date or time but not both, so we have to add a new input field for Android users and branch a few times in the code to handle both platforms correctly.
+      </p>
+      <p><img src="media/datepickers.png"></p>
+      <h1 id="real-time">Networking and real-time</h1>
+      <p>Since the app is just a WebView I just use XHR for most things. We wrote a RESTy JSON API in node for doing things like authentication, retrieving user data and posting new data, etc. Since our API has CORS turned on I can use Chrome on my laptop to develop directly against our production servers over SSL to make sure everything works. This speeds up development workflow dramatically because mobile debugging is a pain.
+      </p>
+      <p>
+        The latest (and unfinished) thing we've been working on is a real time chat in the app built with <a href="http://socket.io/">socket.io</a>, a popular cross-browser node powered real time abstraction. In my experience so far socket.io is a bit too monolithic and ends up being a pain to debug and configure. It doesn't implement things like the node Stream API but instead has it's own connection state API and automagic reconnect logic. When it works it works great but when it doesn't you have to ask the socket.io team for assistance. The next version of socket.io (currently in development) is supposed to fix lots of these issues but it isn't done yet :(.
+      </p>
+      <p>In order to actually transmit data over websockets on mobile there are a couple of requirements: a) <code>wss://</code> is a must because normal <code>ws://</code> messages sometimes randomly get lost by poorly implemented mobile carrier proxies, b) you have to be able to handle the <code>wss://</code> encryption overhead on your server (equivalent to <code>https://</code>). In node right now SSL is 10X slower than non-SSL so this can be a deal breaker (SSL speed is a priority for the node team but OpenSSL is hard).
+      </p>
+      <p>Due to the limited <code>wss://</code> support in mobile browsers (pretty much only iOS) we have just been forcing socket.io to use its XHR polling transport because XHR works everywhere. If I had to re-write the whole chat feature again from scratch I would probably just use a custom XHR polling transport or shop around for something way more focused and simple. However, socket.io will be awesome when we release a webapp version of Gather because ideally we wouldn't have to worry about as many cross browser + desktop issues. Both solutions have tradeoffs. I'd love to hear others experience with the open source real-time web on mobile!
+      </p>
+      <h1 id="responsive-design">Fluid + responsive design</h1>
+      <p>This might sound fancy but it just means that you should make your web app look good on different screen sizes. I employ three techniques with Gather to make sure the app works on all the random Android phones it gets installed on: fluid css (for slightly different screen widths and heights), sprites (for different pixel densities) and responsive design/media queries (for drastically different screen widths and heights). I'm not gonna go into detail here (since there are tons of <a href="http://girliemac.github.com/presentation-slides/SFHTML5DevConf/#1">better sources for info</a> on these techniques) other than on two points: css <code>flexbox</code> is awesome (even though the spec is in flux) and <a href="http://github.com/jorgebastida/glue">glue</a> is super great for creating sprites.
+      </p>
+      <p>
+        We don't officially tablets yet but the app is at least somewhat usable on them without any modifications -- the buttons are just kind of small. It wouldn't be that much work to put in a media query and tweak the css, I just haven't gotten around to it.
+      </p>
+      <h1 id="native-plugins">Native plugins</h1>
+      <p>
+        As I mentioned earlier, there are a few places where we use PhoneGap plugins. Plugins are designed so that they expose a single JS API and then offer a number of platform specific native code implementations. That way you can write your JS once and then use the <code>.java</code> plugin for Android or <code>.h</code> and .m files for iOS. Another awesome thing about PhoneGap plugins is that it is a way to prototype experimental W3C APIs via native polyfills. The date picker shown above is a native plugin.
+      </p>
+      <p>
+        For bringing up pop-up browser windows we use a popular 3rd party PhoneGap plugin called "child browser". This plugin is soon changing its name and moving into PhoneGap core. On iOS I wasn't happy with the default child browser UX so I wrote a API compatible alternative that is based on the UX of the iOS Facebook SDK (pictured below on the right). It's <a href="https://github.com/maxogden/cordova-modalwebview">available here</a>. The picture on the left is the same JS API running on Android to generate a web browser overlay written in Java using the Android SDK.
+      </p>
+      <p><img src="media/childbrowser.png"></p>
+      <p>
+        Push notifications are one of the biggest reasons we aren't a web app. There are some nice plugins for both <a href="https://github.com/phonegap/phonegap-plugins/tree/master/iOS/PushNotification">iOS</a> and <a href="https://github.com/marknutter/GCM-Cordova">Android</a> to handle registering devices for push notifications and getting device tokens than you can send to your server and use to send push notifications later. At the moment the APIs are different between the two platforms but there is some work happening now to standardize the JS API for registering a device and receiving a push notification across all platforms that offer push notification functionality. There is a plugin for Android called StatusBarNotification that lets you send messages to display in the Android status bar (as pictured below on the left). The JS API <a href="https://github.com/phonegap/phonegap-plugins/blob/master/Android/StatusBarNotification/statusbarnotification.js#L61-133">actually polyfills</a> the <a href="http://www.w3.org/TR/notifications/">Web Notification API</a> from the W3C, which is a big win for future proofing our app.
+      </p>
+      <p><img src="media/pushnotifications.png"></p>
+      <h1 id="app-stores">App Stores</h1>
+      <p>Submitting to the Android Play marketplace is pretty straightforward and once you upload your app it only takes between 30 minutes and 6 hours for it to become available for download. iOS, on the other hand, usually takes 1-2 weeks for app review and involves an insanely complicated certificate signing and device provisioning process. Be prepared to search stack overflow for obscure XCode generated errors and find answers that tell you to delete your entire XCode project and start over from scratch.</p>
+      <p>We've been using Testflight for beta testing. It is worth checking out and simplifies the process of distributing beta builds to authorized beta testing devices (that you have to manually add to the Apple developer portal). Unfortunately there is no API for a lot of the Apple developer portal so there are a lot of manual processes involved in distributing iOS apps.</p>
+      <h1 id="future-pans">Future plans</h1>
+      <p>There are two things that aren't here yet but are super exciting. One is the ability to programmatically install native plugins in the same way that you can type `npm install foobar` to get modules in node. The PhoneGap team is working on this and it will make development way easier, as well as enable the PhoneGap user ecosystem to really blossom (just look at what NPM did for node).</p>
+      <p>The other thing is doing remote updates. Since PhoneGap apps are just a bunch of dynamic code you can easily write a Google Chrome style autoupdating capability into the apps as a way of circumventing Apples crazy long review process. There are definitely guidelines from Apple that you can't break (bait and switch -- changing your apps UI so that it suddenly shows naked people), but for things like fixing JS bugs and making minor updates to libraries, templates and stylesheets this kind of remote update functionality is going to be super awesome.</p>
+      <h1 id="conclusion">In Conclusion</h1>
+      <p>Don't use PhoneGap if you aren't willing to get down and dirty and help establish some good patterns for hybrid mobile app development. It is still the early days. But the idea that you can use the open web stack to write nice mobile phone apps isn't crazy. After going through the process I would say I did about 80% web, 10% iOS and 10% Android. Would I have been able to achieve the same goals with me doing 50% iOS and 50% Android? I couldn't tell ya! I'm just happy that I got to keep writing JS without sacrificing too much in terms of quality.
+      </p>
+  </body>
+
+</html></div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

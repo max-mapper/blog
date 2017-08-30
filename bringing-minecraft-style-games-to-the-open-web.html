@@ -1,0 +1,381 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document active" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="author" content="Max Ogden">
+    <title>Bringing Minecraft-style games to the Open Web</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+      <h1 class="title">Bringing Minecraft-style games to the Open Web</h1>
+      
+      <h2 class="author">Max Ogden</h2>
+
+    </div>
+      <p>A status report from the one month old <a href="http://voxeljs.com">voxel.js project</a></p>
+      <p>
+        <img src="../media/voxeljs.png">
+      </p>
+      <p>Shortly after Christmas 2012 (about 3 and a half weeks ago) the <a href="http://www.2playerproductions.com/projects/minecraft">Story of Mojang</a> was <a href="http://www.gameinformer.com/b/news/archive/2012/12/22/minecraft-the-story-of-mojang-documentary-creators-torrent-their-own-film.aspx">intentionally released</a> as a torrent. I watched it and was inspired. A year earlier I had purchased 2 copies of Minecraft for my nephews to play (and they haven't done much else since) but as gaming hasn't been a big part of my life for the last few years (because I've been too busy programming) I never had much time to play the game. Seeing how engaging Minecraft could be for my nephews was fascinating so I started looking into the modding community to see how feasible it would be to do things like hook Minecraft up to <a href="http://en.wikipedia.org/wiki/OpenStreetMap">OpenStreetMap</a>. My first foray into programming logic was <a href="http://maxogden.com/little-coders.html">in Starcraft</a> over a decade ago so I figured that a game that is so addicting and yet so simple could be a really powerful platform for education.
+      </p>
+      <p>
+        I was disappointed to find out that not only is Minecraft closed-source but it also hasn't shipped an official API (these are used to extend a programs functionality). Instead, if you want to change the way Minecraft works, you have to decompile the Java program that Mojang distributes and then reverse engineer it to make it do what you want. Despite these technical hurdles, due to the success of Minecraft there is still a huge modding community. One of my favorites is <a href="http://wiki.sk89q.com/wiki/WorldEdit">World Edit</a>, which lets you bulk edit the Minecraft world by doing things like making giant pyramids, spheres, rectangles or even <a href="http://www.youtube.com/watch?v=PmyBs4IXFdM">frosted donuts</a>. 
+      </p>
+      <p>
+        The first thing I tried to do was install a plugin. I immediately found myself on old forum posts that I found on google while looking for answers to obscure questions like what the OS X path is for the plugin folder, how to downgrade my Minecraft version because I had upgraded to the newest version which broke the plugin I was trying to use and how to edit a Minecraft world file that I had downloaded from someone else to change the game mode from Survival to Creative (turns out you have to use a hex editor).
+      </p>
+      <p>For the last couple years I have grown accustomed to the automated installation of modules that <a href="http://npmjs.org">NPM</a> provides and wondered if anyone had tried to make a package manager for Minecraft plugins. There are a few out there, but quite frankly they all reeked of Java (too many abstract interfaces, lots of boilerplate and hard to use build tools. Java was the first language I learned so I may very well be scarred from the experience) and were limited by the nature of decompiling as a workaround to Minecrafts lack of an API. 
+      </p>
+      <h2>Had anyone written a voxel engine in JS?</h2>
+      <p>At this point I had decided that decompiling Java wasn't in my future, so as any JavaScript programmer would do I decided to rewrite the entire thing in JavaScript. The fun part is that at the time (3.5 weeks ago) I had zero experience programming games. But I had google search and free time. 
+      </p>
+      <p>On Github I <a href="https://gist.github.com/4637750">found 26 repositories</a> that contained some approach to rendering voxels in a browser. I spent a few days getting them to run on my computer and reading the source code of every single one. The projects that stood out were <a href="https://github.com/mitsuhiko/webgl-meincraft">webgl-meincraft</a>, <a href="https://github.com/jwagner/voxelworlds">voxelworlds</a> and <a href="https://github.com/danielribeiro/WebGLCraft">WebGLCraft</a>. Daniel Ribeiro wrote a post one year ago called <a href="http://metaphysicaldeveloper.wordpress.com/2011/12/20/implementing-minecraft-in-webgl/">Implementing Minecraft in WebGL</a> and Jonas Wagner did a talk at <a href="http://ongamestart.com/">OnGameStart</a> a few months ago called <a href="http://29a.ch/2012/12/9/webgl-voxel-worlds">Rendering Voxel Worlds using WebGL</a> and produced <a href="http://29a.ch/sandbox/2012/voxelworld/">this impressive demo</a>. I later found <a href="https://github.com/benvanik/blk-game">BLK Game</a> by Ben Vanik from Google which also has an <a href="http://benvanik.github.com/blk-game/">impressive demo</a>. My problem with every single one of the 26 projects that I found is that they were all huge projects that were hard to wrap your head around and hack on. I was trying to escape the Java mentality and make game development small and modular (like NPM) but didn't find a single project that had well documented, modular components. Some were written in coffeescript, hadn't been updated in over a year, had giant lib/ folders filled with custom written modules or only produced a single tech demo and then were never used again. To summarize: it was possible but still not very accessible.
+      </p>
+      <p>
+        I also discovered an obscure subreddit called <a href="http://www.reddit.com/r/voxelgamedev">voxelgamedev</a> that had produced a wiki page called <a href="http://www.reddit.com/r/gamedev/wiki/block_engines">The BIG list of block engines and resources!</a>. Through this I found out about Mikola Lysenko's blog <a href="http://0fps.wordpress.com">0fps.wordpress.com</a> and his articles <a href="http://0fps.wordpress.com/2012/06/30/meshing-in-a-minecraft-game/">Meshing in a Minecraft Game</a>, <a href="http://0fps.wordpress.com/2012/07/07/meshing-minecraft-part-2/">Meshing in a Minecraft Game (Part 2)</a> and <a href="http://0fps.wordpress.com/2012/01/14/an-analysis-of-minecraft-like-engines/">An Analysis of Minecraft-like Engines</a>. Not only were these written in an amazingly accessible way but they also had a <a href="http://mikolalysenko.github.com/MinecraftMeshes2/">voxel meshing sandbox</a> implemented in WebGL and <a href="http://mrdoob.github.com/three.js/">three.js</a>.
+      </p>
+      <h2>Start with a few small modules</h2>
+      <p>Mikola had some code <a href="https://github.com/mikolalysenko/mikolalysenko.github.com/tree/master/MinecraftMeshes2/js">hidden away</a> in his blog that I used a the basis for two modules: <a href="https://npmjs.org/package/voxel">voxel</a> and <a href="https://npmjs.org/package/voxel-mesh">voxel-mesh</a>. With these two modules I could create a little wireframe world.
+      </p>
+      <p>
+        <img src="../media/wireframe-hill.png">
+      </p>
+      <p>You should read Mikola's posts but the main idea with a voxel rendering engine is to create chunks of voxels. If you try to treat each individual voxel as an individual cube then you will have to send too much state back and forth to the GPU and your game will be slow. If you use one giant mesh for all the voxels in your world then it will take to long when a player digs a hole in the ground because you will have to recalculate the entire world. Chunks should be sized "just-right" in the middle of these two extremes so that you aren't making thousands of draw calls per frame but also can make voxel editing imperceptibly fast.</p>
+      <p>
+        <img src="../media/wireframe-edit.gif">
+      </p>
+      <p>
+        When you edit a voxel (to make a cave or build a tower) you are actually telling the engine to recalculate an entire chunk with or without a voxel present. To reduce the number of vertices these get culled/decimated (jargon for simplified) so that you aren't drawing voxel edges that the player can't see. To implement voxel editing I shoot an invisible ray (using the Raycaster in three.js), see where it intersected with the world, look up if the voxel there is air, dirt, brick or some other material, toggle it, and then tell the parent chunk to re-render (which includes the simplification). All of this happens quickly enough that the editing feels fast while you are playing the game.
+      </p>
+      <p>The next thing to tackle was to get first person shooter style controls and physics hooked up. Luckily Chrome 23 was recently released and included support for the <a href="https://developer.mozilla.org/en-US/docs/API/Pointer_Lock_API">HTML5 Pointer Lock API</a>. I based my physics on the code behind <a href="http://mrdoob.github.com/three.js/examples/misc_controls_pointerlock.html">this demo</a> by mrdoob but heavily modified it (made it more modular) and turned into the <a href="https://npmjs.org/package/player-physics">player-physics</a> module. It still isn't perfect and I would love to see other approaches to FPS controls in JS now that Pointer Lock is here.</p>
+      <p>
+        The project was a week old when I got stuck on collision detection and voxel texturing. I called for reinforcements and fellow Oakland JS hacker <a href="http://twitter.com/substack">Substack</a> answered the call. We stayed up until 2AM a couple of nights in a row and had a thing that kind of looked like Minecraft. Substack had some experience doing 3D programming and figured out how to calculate UV mappings and normals to texture our meshes. He also wrote some basic collision code so that the player could jump on top of and run into voxels. If you got stuck inside a voxel (which happened a lot) you would slowly float up to the top and pop out on the surface again. Good enough for a first version! One thing we couldn't figure out is how to have separate bottom, top and side textures for voxels so our world looked a little bland (but not too bad).
+      </p>
+      <p>
+        <img src="../media/bland-voxels.png">
+      </p>
+      <p>
+        During all of this early-on hacking Substack said something along the lines of "I can't wait until all of this 3D rendering stuff is done so we can never think about it again". What he meant was doing things like UV mapping, player physics and occlusion culling are things that some game developer should write once in a generic way and then be used by other higher level developers to hack together awesome experimental voxel games. I personally appreciate 3D programming and think game developers are super smart, but JavaScripts place in the world is <a href="http://www.futurealoof.com/posts/generation-gap.html">to amateurize</a>. This stuff should be easy and approachable for new programmers. Once we establish a nice platform of abstraction then we can enable any JS programmer to make their own Minecraft clone from scratch in just a few lines of JS.
+      </p>
+      <h2>Voxel.js</h2>
+      <p>
+        I decided to name the project voxel.js and figured that we should have a website. My wonderful girlfriend <a href="http://jlord.us/">Jessica Lord</a> offered to help design a basic website because she also wanted in on the exciting voxel action. We threw together <a href="http://voxeljs.com">voxeljs.com</a> over the course of a couple days and substack and I made a bunch of inaugural modules to get the point across.
+      </p>
+      <p>
+        The core module is called <a href="http://npmjs.org/voxel-engine">voxel-engine</a>. This module is used to create a game instance which can be given to other modules so that they can augment the game. The engine is responsible for doing things like rendering the world using a game loop. The goal of the engine is to be simple with sensible defaults that are easy to override. 
+      </p>
+      <p>To use Pointer Lock we got some help from <a href="https://twitter.com/isntitvacant">Chris Dickinson</a> who ended up writing the <a href="https://npmjs.org/interact">interact</a> module for us (though it would be useful in many programs). I made a module for HTML selectable toolbars (used for selecting block types) called <a href="https://npmjs.org/package/toolbar">toolbar</a> and another for generating terrain called <a href="https://github.com/maxogden/voxel-perlin-terrain">perlin-terrain</a>. Substack then wrote <a href="https://github.com/substack/voxel-creature">creature</a>, <a href="https://github.com/substack/voxel-debris">debris</a> and <a href="https://github.com/substack/voxel-forest">forest</a> which really proved to me that we were on to something. 
+      </p>
+      <p>Before we "announced" the project publicly (I use quotes because all the code had been in public Github repos the whole time) I thought I should try to make a multiplayer server and a couple hundred lines of JS later had a basic implementation where every player was an animated 3D horse :D.
+      </p>
+      <p>
+        <img src="../media/isaachorse.png">
+      </p>
+      <p>
+        Pictured here is <a href="http://twitter.com/izs">@izs</a> (Node.js maintainer) running across a bridge he made in an early multiplayer test.
+      </p>
+      <p>I later learned about techniques to make real time multiplayer games fast like the <a href="https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking">Source Multiplayer Networking</a> article and the <a href="http://buildnewgames.com/real-time-multiplayer/">Build New Games HTML5 Networking</a> article. The server is still a work in progress but has server-side physics and (somewhat currently broken) client-side prediction. If this project interests you then get in touch and I can help you start hacking on it!</p>
+      <p>
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/Y0JiIDhdeuw" frameborder="0" allowfullscreen=""></iframe>
+      </p>
+      <h2>Contributions!</h2>
+      <p>The goal in most of my open source projects is to solve stupid problems so other people don't have to. Then people will use your solution to build other new things. It is a great feeling to see someone make something because of work that you did to make that thing easy.</p>
+      <p>In this way voxel.js has totally exceeded all of my expectations, even though I am writing this only a week and a half after the initial public release. Since the project started we have generated about 25 modules, half of which are from me and substack but half of which have come from outside contributors.</p>
+      <p>
+        <img src="../media/voxelmodules.png">
+      </p>
+      <p>The first mind blowing module that I saw was made by <a href="https://github.com/shama">Kyle Robinson Young (@shama)</a>. It is called <a href="http://npmjs.org/voxel-drone">voxel-drone</a> and is a full emulator for the <a href="http://nodecopter.com/">nodecopter</a>. At Node.js + JavaScript conferences around the world over the last few months (largely in part to some awesome work by <a href="http://twitter.com/felixe">@felixge</a>) there have been offshoot events called NodeCopter in which participants with (usually) zero hardware experience spend a day writing JS to control quadcopter robots. Kyle had been to a nodecopter event in San Francisco and also other node events around the bay like <a href="http://www.tacoconf.com/">TacoConf</a>. What he did with voxel-drone is allow you to use the exact same JS library that you would use to control an actual drone but all in your browser on top of a voxel landscape. On top of that he implemented a virtual iPad of sorts in the game so that you can see what the drone sees. Go and <a href="http://shama.github.com/voxel-drone">play with the demo</a> now, seriously. There is a list of commands in the readme for the <a href="https://github.com/felixge/node-ar-drone#client">node-ar-drone</a> project.</p>
+      <p>Many members of the Node.js community also are disciplined in writing small, Unixy pieces of software that do one thing and do them well. This is where the modular design of voxel.js comes from but also where our contributors come from. Since we used the package manager from node, put all of our code on Github, made some exciting demos and encouraged others to build new modules we were able to tap into the creativity of other members in our community like Kyle.</p>
+      <p>While I was writing this article Kyle actually released a new module called <a href="http://npmjs.org/voxel-sky">voxel-sky</a> which lets you add sun and moon cycles to your voxel world.</p>
+      <p>
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/iES7EKhTJXU" frameborder="0" allowfullscreen=""></iframe>
+      </p>
+      <p>
+        At a <a href="http://musichackday.org/">Music Hack Day</a> hackathon somewhere in northern Europe last weekend a developer named <a href="http://github.com/andreypopp">Andrey Popp</a> made a project called MusVox that adds Soundcloud powered voxels. It even won a prize!
+      </p>
+      <p>
+        <iframe width="420" height="315" src="http://www.youtube.com/embed/k54Zq421PiI" frameborder="0" allowfullscreen=""></iframe>
+      </p>
+      <p>Also in the realm of audio <a href="https://twitter.com/eckoit">Ryan Ramage</a> from the CouchDB community wrote the very impressively executed <a href="http://ryanramage.github.com/voxel-audio/">voxel-audio</a> which adds 3D positional audio to voxel games using the new HTML5 Web Audio API.</p>
+      <p>Our old collision code needed some major love and luckily Chris Dickinson was knowledgable in the realm of collisions and physics and whipped up a ton of super useful (for any game) modules: <a href="https://github.com/chrisdickinson/aabb-3d">aabb-3d</a>, <a href="https://github.com/chrisdickinson/collide-3d-tilemap">collide-3d-tilemap</a>, <a href="https://github.com/chrisdickinson/spatial-events">spatial-events</a> and <a href="https://github.com/chrisdickinson/spatial-trigger">spatial-trigger</a>. Chris also sent a bunch of pull requests to the various voxel core modules to integrate in his modules and make our collisions super awesome. 
+      </p>
+      <p>We event had <a href="http://twitter.com/dariusk">Darius</a> and <a href="twitter.com/_gsmith">Greg</a> from <a href="http://bocoup.com">Bocoup</a> volunteer two entire work days to hack on voxel.js. Darius edits the site <a href="http://buildnewgames.com/">Build New Games</a> and made some great contributions to the player physics code and Greg made an awesome <a href="https://github.com/incompl/voxel-heightmap-terrain#voxel-heightmap-terrain">heightmap module</a>.
+      <p>
+        This week I have written a handful of new modules: <a href="http://maxogden.github.com/voxel-city/?lat=37.7750&lon=-122.4183&zoom=16">city</a>, which dynamically renders any area of San Francisco into a crude voxel world, <a href="http://github.com/maxogden/voxel-highlight">highlight</a> and <a href="http://maxogden.github.com/voxel-script-gun">script-gun</a>. Here is a video of highlight in action:
+      </p>
+      <p>
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/R3P0LN82QFY" frameborder="0" allowfullscreen=""></iframe>
+      </p>
+      <p>I am most excited about script-gun though. From here on out I'm going to focus on making voxel.js an environment in which you can learn to program. Script-gun is my first attempt (the module itself is only about 50 lines of JS) at a WorldEdit style module in the browser. You can try <a href="http://maxogden.github.com/voxel-script-gun/">the demo here</a> and use some example scripts that I prepared <a href="http://maxogden.github.com/voxel-script-gun/">here</a> to get an idea of the possibilities. It will get more intuitive as time goes on, this is just the very first version.</p>
+      <h2>What is next</h2>
+      <p>
+        Substack is currently implementing detached chunks so that you can build voxel space ships and robots that walk around but are still editable. He also has mentioned that he wants to make a space vacuum with cellular automata logic for hull breaches to enable space battles where you would have to patch your hull to contain air leaks. An early example of these detached chunks is in <a href="http://substack.net/projects/voxel-servo/">voxel-servo</a>.
+      </p>
+      <p>
+        We both see so many awesome things that can be done with voxel games that Minecraft isn't doing at all and don't intend on porting Minecraft in any way to JS. We instead just want to make it easier to make your own game in the same style. To me Minecraft should be a category and not an instance. (note: Minecraft is a trademark of <a href="http://mojang.com/">Mojang</a>.)
+      </p>
+      <p>
+        The next thing I am going to build is an in-browser game editor so that you don't need to know how to use the command line in order to start making games with voxel.js. JSFiddle is a great example of a web based editor like this. I'm going to implement it in such a way that you can create a game and then get a URL to share with your friends so that they can play your game, fork it, and remix your game.
+      </p>
+      <p>
+        The newest version of Chrome Beta for Android lets you enable WebGL through about:flags and I have a demo called <a href="http://maxogden.github.com/fps-touch-controls/">fps-touch-controls</a> that adds touch screen controls to voxel.js. The controls are still wonky but it is definitely possible to play on a phone.
+      </p>
+      <p>
+        Raspberry Pi is also capable of running it... in theory. Back in August someone got Firefox OS to run with WebGL enabled on the Pi but I haven't been able to get the newer versions of Firefox OS to work. FFOS is nearing a 1.0 release so hopefully someone makes it easy to install FFOS on a Pi soon! Once that is well supported I have plans to buy 10 Pis and start doing pop up computer labs for kids to teach them programming through hacking on voxel.js. The Raspberry Pi Foundation and Mojang have actually been working on a <a href="http://www.raspberrypi.org/archives/2872">Minecraft Pi Edition</a> that is intended for education but it isn't out yet, will be very stripped down and won't be open source!
+      </p>
+      <p>
+        To stay up to date with the project you can follow <a href="http://twitter.com/voxeljs">@voxeljs</a> on twitter or hang out in #voxel.js on freenode IRC. But more importantly you should go forth and create modules and games!
+      </p>
+  </p></body>
+
+</html></div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

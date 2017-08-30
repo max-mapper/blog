@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -75,7 +75,7 @@
 </a>
 
 <a class="load-document" href="electron-fundamentals.html">
-  <div class="document" id="electron-fundamentals">
+  <div class="document active" id="electron-fundamentals">
     <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
     <div class="title">Electron Fundamentals</div>
     <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
@@ -226,33 +226,63 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">Electron Fundamentals</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
+<p>A quick intro to Electron, a desktop application runtime.</p>
+<p><a href="http://electron.atom.io/">Electron</a> is an open source project written by <a href="https://github.com/zcbenz">Cheng Zhao AKA zcbenz</a>, an engineer who works for GitHub in Beijing on the <a href="http://atom.io/">Atom text editor</a> team. It combines Chromium and Node into a single runtime suitable for building custom desktop web applications that also have access to Node for things that web browsers normally can&#39;t do.</p>
+<p>Before starting Electron zcbenz <a href="https://github.com/nwjs/nw.js/graphs/contributors">contributed heavily</a> to the node-webkit (now called nw.js) project. Electron is conceptually similar to nw.js but has some important technical differences which are <a href="https://github.com/atom/electron/blob/master/docs/development/atom-shell-vs-node-webkit.md">explained here</a>. A key difference is that Electron uses Googles <a href="http://www.chromium.org/developers/content-module">Chromium Content Module</a> to bring in Chromium functionality vs nw.js which uses a <a href="https://github.com/nwjs/chromium.src/commits">forked version of Chromium itself</a>.</p>
+<h2 id="it-s-a-runtime">It&#39;s a runtime</h2>
+<p>Electron is a runtime, just like <code>node</code>. This means instead of running <code>node app.js</code> you run <code>electron app.js</code>. To make installing the Electron runtime easier I created a module called <a href="https://www.npmjs.com/package/electron-prebuilt"><code>electron-prebuilt</code></a> that downloads the latest release of Electron and installs it in your CLI path as <code>electron</code>.</p>
+<pre><code>$ npm install electron-prebuilt -g
+Downloading electron-v0.30.0-darwin-x64.zip
+[=================================================&gt;] 100.0% of 37.07 MB (3.53 MB/s)
 
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
+$ electron -v
+v0.30.0
+</code></pre><p>I&#39;d also like to give a shoutout to John Muhl who wrote <a href="https://github.com/johnmuhl/electron-prebuilt-updater">electron-prebuilt-updater</a>, which runs on a free Heroku server, listens for GitHub Releases on Electron with a WebHook and automatically does an NPM publish to <code>electron-prebuilt</code> with the new release. It&#39;s an awesome bit of automation that has saved me a lot of maintenance time!</p>
+<p>My favorite part of Electron is that it combines Node and Chromium into a single context. This means you can write code like this:</p>
+<pre><code class="lang-js">// require a C++ module in a browser!
+var leveldb = require(&#39;level&#39;)
+
+// open the database on the real HD
+var db = leveldb(&#39;./data&#39;)
+
+db.get(&#39;maxogden-profile&#39;, function (err, profile) {
+  if (err) throw err
+
+  // render data to the DOM
+  document.body.appendChild(JSON.stringify(profile))
+})
 </code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
+<p>Normally to get <code>require</code> in the browser you have to use <a href="http://browserify.org/">browserify</a> to transform your code. In Electron apps <code>require</code> is already defined along with <code>process</code> and all of the other Node globals as well as <code>window</code>, <code>document</code> and all of the browser globals. Again, this is because Electron combines a Node JS context with a Chromium JS context. Anything you can do in Node and/or Chromium you can do in Electron.</p>
+<h2 id="electron-is-low-level">Electron is low level</h2>
+<p>The Electron API, similar to Node, is designed to support a rich userland of modules and applications. I was able to write a module called <a href="https://github.com/maxogden/menubar">menubar</a> that hides much of the complexity of the Electron API from you and lets you make a &#39;menubar&#39; style app (e.g. Dropbox) in just a few lines of code. Check out <a href="https://github.com/maxogden/menubar/blob/143f12309a5b617a586584a40fb5c52325f769d4/index.js">the source code</a> for menubar itself to get an idea of how you might wrap the Electron API in a higher level module (just like you would do with Node).</p>
+<h2 id="apps-work-cross-platform">Apps work cross-platform</h2>
+<p>Node itself has supported Mac, Windows and Linux equally since version 0.6, and Chromium is also cross platform. The Electron API philosophy is that it only adds support for features that can work on all platforms. For example, Windows has a &#39;system tray&#39; but Mac OS has a &#39;menubar&#39;. Electron implements an abstraction over these called the &#39;Tray&#39; API that is generic enough to function on whatever platform it is running on. Here&#39;s the same app running on Mac and Windows (using a Cat icon):</p>
+<p><img src="media/electron-tray.png" alt="electron tray"></p>
+<p>Electron itself doesn&#39;t include a way to package your code into a executable (e.g. a <code>.app</code> for Mac or a <code>.exe</code> for Windows), so I wrote a module called <a href="https://github.com/maxogden/electron-packager"><code>electron-packager</code></a> that lets you build Mac, Windows or Linux apps from your source code.</p>
+<pre><code>$ electron-packager /src/my-electron-foobar-app FooBar --platform=darwin --arch=x64 --version=0.25.1
+</code></pre><h2 id="app-examples">App examples</h2>
+<p>There are some big companies using Electron (in additon to GitHub). Notably Microsoft with their <a href="https://code.visualstudio.com/">VisualStudio Code editor</a> and Faceboook with their <a href="http://nuclide.io/">Nuclide editor</a>. However, Electron can be used for lots of things besides Code editors.</p>
+<p>Myself and some friends have worked on a few apps in our spare time, just to get acquainted with Electron. Along the way I&#39;ve <a href="https://github.com/atom/electron/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+author%3Amaxogden">opened ~20 issues</a> on the Electron repo when I got stuck and have got a response from zcbenz on each one. Some turned out to be bugs, some were feature requests that got implemented, and others turned into discussions that helped me find workaround.</p>
+<h3 id="playback">Playback</h3>
+<p><img src="media/playback-app.png" alt="Playback"></p>
+<p><a href="https://mafintosh.github.io/playback/">Playback</a> is an experiment in trying to write an app like VLC but based on web technologies. Some notable features include the ability to stream movies directly from Torrent files and Chromecast integration, all done with Node modules!</p>
+<h3 id="monu">Monu</h3>
+<p><img src="media/monu.png" alt="monu"></p>
+<p><a href="https://github.com/maxogden/monu">Monu</a> is a menubar app that wraps a process monitor in a little UI. It lets me run persistent command-line processes on my machine, much like I would do with <code>upstart</code> or even <code>cron</code> on a Linux server. It was something I&#39;ve wanted to make for a while and was a good way to get to know Electron. I use it to run <a href="https://www.npmjs.com/package/ssid-checkin">ssid-checkin</a> which logs me into Foursquare when I join known WiFi hotspots.</p>
+<h3 id="screencat">ScreenCat</h3>
+<p><img src="media/screencat.gif" alt="screencat"></p>
+<p><a href="https://github.com/maxogden/screencat">ScreenCat</a> is a screen/keyboard/mouse sharing + voice chat app that uses WebRTC. If you have ScreenCat running you can share your screen with someone else who has ScreenCat, or you can share your screen with someone in a WebRTC enabled web browser. It&#39;s a little rough around the edges, but I use it to do remote pair programming with coworkers from time to time.</p>
+<h3 id="friends">Friends</h3>
+<p><img src="media/friends-app.png" alt="friends"></p>
+<p><a href="https://github.com/moose-team/friends">Friends</a> is a <strong>highly experimental</strong> decentralized public chat app, similar to Slack or IRC but built entirely on WebRTC Peer-to-Peer systems so it doesn&#39;t depend on a central server -- all messages are exchanged directly between users. It&#39;s totally pre-alpha quality, so don&#39;t expect it to be easy to run just yet, but it has been a fun way to play with WebRTC and Node together.</p>
+<h3 id="electron-microscope">Electron Microscope</h3>
+<p>This one isn&#39;t an app per-se, but I&#39;m working on a web scraping/spidering tool based on Electron called <a href="https://github.com/maxogden/electron-microscope">Electron Microscope</a>. It adds an automation + data streaming API to Electron browser windows to visit, interact with, and stream data out of websites. If you&#39;re interested in giving it a spin I&#39;d appreciate <a href="https://github.com/maxogden/electron-microscope/issues/1">API feedback</a>.</p>
+<h2 id="summary">Summary</h2>
+<p>Given that Electron is a young open source project largely maintained by a single individual I think it&#39;s off to a great start. Browsers are complex beasts and I believe, given the interest it has had so far, that Electron will grow into a healthy open source source project with many core contributors and even better cross platform support.</p>
+<p>I should note that I don&#39;t work at GitHub, I just like Node and Chromium and hence got excited about Electron and have written a few &#39;missing utilities&#39; to automate Electron workflows. I encourage you to do the same if you get the chance, or to get involved with any of my utilities as they are all open source projects.</p>
+<p>For more Electron resources you should check out the <a href="https://github.com/sindresorhus/awesome-electron">awesome-electron</a> list by Sindre Sorhus.</p>
 </div>
     </div>
   </div>  

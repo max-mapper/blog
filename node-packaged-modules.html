@@ -1,0 +1,317 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document active" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Max Ogden">
+    <title>Node Packaged Modules</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+<h1 class="title" style="font-size: 56px;">Introducing RequireBin, Browserify-CDN and npmsearch</h1>
+
+      
+<h2 class="author">Max Ogden</h2>
+
+    </div>
+    <p>Three new projects that bring npm modules to the web</p>
+    
+<h1 id="npm">npm: Node Packaged Modules</h1>
+
+    <p>A common misconception about <a href="http://npmjs.org/" target="_blank">npm</a> is that since it has 'Node' in the name that it must only be used for server side JS modules. This is completely untrue! npm actually stands for Node <i>Packaged</i> Modules, e.g. modules that Node packages together for you. The modules themselves can be whatever you want -- they are just a folder of files wrapped up in a <code>.tar.gz</code>, and a file called <code>package.json</code> that declares the module version and a list of all modules that are dependencies of the module (as well as their version numbers so the working versions get installed automatically). It's turtles all the way down - module dependencies are just modules, and those modules can have dependencies etc. etc. etc.</p>
+    <p><a href="http://npmjs.org" target="_blank"><img src="media/npm.png"></a></p>
+    <p>The main features that npm brings to the table (in my opinion) are:</p>
+    <ul>
+      <li>Automatic installation + upgrading (e.g. no more downloading individual .js files and moving them manually into your js/ folder)</li>
+      <li>Modules specify a list of other modules that are dependencies</li>
+      <li>Dependencies get installed at known working versions</li>
+      <li>Each module gets it's own local set of working dependencies (different versions of the same module can be depended on by different modules in the same project)</li>
+      <li>Dependencies can have dependencies</li>
+      <li>The availability of solutions on npm makes you feel like a <a href="https://twitter.com/ceejbot/status/354406370289782785" target="_blank">kid in a candy store</a></li>
+    </ul>
+    <p>I've written more about the specifics of writing programs with npm in my <a href="https://github.com/maxogden/art-of-node#modules" target="_blank">Art of Node</a> article. If you haven't grokked how npm works yet I highly encourage you to give it a spin. Some other great reads on the subject: <a href="http://dontkry.com/posts/code/using-npm-on-the-client-side.html" target="_blank">Using npm on the client side</a> and <a href="http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html" target="_blank">Browserify and the Universal Module Definition</a> by <a href="https://twitter.com/shamakry" target="_blank">@shamakry</a> and <a href="http://superbigtree.tumblr.com/post/54873453939/introduction-to-browserify" target="_blank">Introduction to Browserify</a> by Seth Vincent.</p>
+    <h1 id="browserify">Browserify: Using npm for client-side programs</h1>
+    <p>A traditional JS app that might have a few libraries like jquery.js, bootstrap.js, angular.js, underscore.js and a few additional plugins. Since there are only a handful of js files it's not a big deal to manually download, move and add a script tag for each one.</p>
+    <p>Node programs, on the other hand, don't have the same limitations as browsers. Any program can require() another program and start using it. Programs can be published as tiny components that do one thing well, a la Unix. There isn't a strict definition but generally speaking code is modular if it exposes a generically useful API that be used by multiple dependent modules.</p>
+    <p>There is only one problem: browsers don't have a good way to load modules. The state of the art is to have a ton of script tags that either leak globals e.g. how jQuery plugins all use $ or use RequireJS to manage loading code into the correct scopes.</p>
+    <p>Both of these approaches make tons of HTTP requests which means when your app gets bigger than a dozen or so dependencies then you'll want to start thinking about a build step to reduce page load time.</p>
+    <p>A good module system enables better code to be written. When you have to worry about limiting the number of script tags you will tend to use large kitchen sink style projects like jQuery. A build step is just some process that combines multiple JS programs into one larger JS program so that you can reduce the number of script tags on your page (and sometimes also other things like minifying code).</p>
+    <p><a href="http://browserify.org" target="_blank">Browserify</a> is a build tool that builds bundles of modules from npm. Here is a visualization (using the <a href="https://twitter.com/maxogden/status/348185617907200000" target="_blank">colony</a> node module) of what the bundle looks like when browserify packages up the <a href="http://voxeljs.com" target="_blank"><code>voxel-engine</code></a> module:</p>
+    <p><img src="media/voxel-hello-world.png"></p>
+    <p>Each dot is a fully fledged node module, complete with its own version number, github repo, author/maintainer and optional list of dependent modules. Each author gets their own color and the circle sizes are based on how large the modules are.</p>
+    <p>Thanks to npm and browserify the <a href="http://voxeljs.com" target="_blank">Voxel.js project</a> has seen a couple dozen unique contributors create around 100 modules over the last six months. The conventions are pretty simple: Use npm and name your module voxel-"something" so that it's easy to find. Most of them don't even run in node itself as they require WebGL to function, but that's okay because node is simply packaging them up for browsers.
+    </p>
+    <p>When browserify bundles up the <code>voxel-engine</code> module it gathers up all of the dependencies in the graph and combines them into a single JS program that you can load into a web browser and run.</p>
+    <h1 id="browserify-cdn">Browserify CDN</h1>
+    <p>Browserify is written with Node and is usually executed on the command line on the same computer that a program is being developed on. To make browserify more accessible to JavaScripters that aren't as comfortable with the command line or Node <a href="https://github.com/jesusabdullah/browserify-cdn">browserify-cdn</a> was developed by <a href="https://github.com/jesusabdullah/" target="_blank">Joshua Holbrook</a>, a Node hacker who has formerly worked on the Node hosting platform Nodejitsu. It's a really well designed caching + API layer built on top of browserify that automatically installs and packages up any module available on npm.</p>
+    <p>This week I set up a production ready instance of browserify-cdn over at <a href="http://wzrd.in" target="_blank">http://wzrd.in</a> (wizardin', like the browserify logo). It's also pretty easy to host an instance yourself. The browserify-cdn API is CORS enabled which means you can load bundles from anywhere on the internet (and do things like <a href="https://github.com/shama/browser-module-cache" target="_blank">cache them in IndexedDB</a>).
+    <p><a href="http://wzrd.in" target="_blank"><img src="media/browserify-cdn.png"></a></p>
+    <h1 id="requirebin">RequireBin</h1>
+    <p>In the spirit of <a href="http://jsfiddle.net/" target="_blank">JSFiddle</a> and <a href="http://jsbin.com/" target="_blank">JSBin</a>, <a href="http://requirebin.com/" target="_blank">RequireBin</a> is a web application that I wrote over this last weekend for making short + sweet shareable JS applications that run in the browser. The major difference from similar works being that RequireBin is built on top of browserify-cdn and therefore provides access to the wealth of modules on npm. RequireBins are <a href="https://gist.github.com/maxogden/5953535" target="_blank">saved as github gists</a> so that each one is clone-able and fork-able and the RequireBin website itself is just a static site that is hosted on Github Pages.</p>
+    <p><a href="http://requirebin.com" target="_blank"><img src="media/requirebin.png"></a></p>
+    <h1 id="npmsearch">npmsearch</h1>
+    <p>The npm command line tool has a built in search feature but it is quite barebones and doesn't have a dedicated full text index. To provide a better search experience to npm users <a href="http://github.com/tmpvar" target="_blank">Elijah Insua (tmpvar)</a> has created <a href="http://npmsearch.com" target="_blank">npmsearch.com</a> which offers lightning fast search (Solr + SSDs) and a CORS enabled JSON API for adding npm search to any app.</p>
+    <p><a href="http://npmsearch.com" target="_blank"><img src="media/npmsearch.png"></a></p>
+    <p>Here's a live embedded iframe of <a href="http://requirebin.com/?gist=5953535&q=voxel" target="_blank">this RequireBin</a> integrating with the npmsearch API and rendering output to a fake ANSI terminal via <a href="https://npmjs.org/package/hypernal" target="_blank">hypernal</a> and <a href="https://npmjs.org/package/tablify" target="_blank">tablify</a>, two modules I recently found on npm.</p>
+    <p>
+    <iframe width="750" height="315" src="http://requirebin.com/embed?gist=5953535&q=voxel" frameborder="0" allowfullscreen=""></iframe>
+    </p>
+    <p>For a more complex RequireBin example check out this WebGL Ambient Occlusion Voxel rendering demo by computational geometry PHD student <a href="http://twitter.com/mikolalysenko">Mikola Lysenko</a>:</p>
+    <p><a href="http://requirebin.com/?gist=5941747" target="_blank"><img src="media/voxel-ao-requirebin.png"></a></p>
+    <p>Mikola also happens to be the most prolific author of node modules lately (according to npmjs.org), you should definitely <a href="https://npmjs.org/~mikolalysenko" target="_blank">look at his modules</a> and <a href="http://0fps.wordpress.com" target="_blank">read his blog</a>.
+    </p>
+    <p>I'll end this post with this, the first and arguably most important rule from <a href="https://en.wikipedia.org/wiki/Unix_philosophy" target="_blank">The Art of Unix Programming</a>, a text close to the hearts of <a href="http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js" target="_blank">many of the Node community members</a>.</p>
+    <p><img src="media/rule-of-modularity.png"></p>
+  </p></body>
+
+</html></div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

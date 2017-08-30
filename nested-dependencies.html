@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -139,7 +139,7 @@
 </a>
 
 <a class="load-document" href="nested-dependencies.html">
-  <div class="document" id="nested-dependencies">
+  <div class="document active" id="nested-dependencies">
     <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
     <div class="title">Nested Dependencies</div>
     <div class="teaser">Insight into why node_modules works the way it does</div>
@@ -226,32 +226,35 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">Nested Dependencies</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
+<p>Insight into why node_modules works the way it does</p>
+<p>There are a lot of package managers in use today, but the only popular one (to my knowledge) that is designed to support + works by default with nested dependencies is <a href="http://npmjs.org/">npm</a>.</p>
+<p><img src="media/nested-vs-flat-deps.png" alt="nested-vs-flat"></p>
+<p>In the above diagram the <code>deps</code> containers represent <em>isolated</em> sets of dependencies. In most package managers there is only a single &#39;namespace&#39; for all dependencies. I refer to this behavior as &#39;flat&#39; because it means you only have one level of discoverability when resolving a dependency, which means you can only have one dependency called &#39;foo&#39; in your entire app.</p>
+<p>Let&#39;s look at a close-up example of how dependency resolution works in a flat dependency system.</p>
+<p><img src="media/flat-deps.png" alt="flat"></p>
+<p>In this example we have three dependencies. The black lines represent &#39;depends-on&#39; relationships, so our app depends on <code>a</code>, <code>b</code> and <code>c</code>, and <code>c</code> depends on <code>a</code>. So both our app <em>and</em> <code>c</code> depend on <code>a</code>.</p>
+<p>Because the dependencies are flat, meaning we can only have one copy of <code>a</code> in our entire app, it means we have to make sure that both our app and <code>c</code> both depend on <em>compatible versions</em> of <code>a</code>. If we want to upgrade <code>c</code> to a newer version, but that new version also upgrades <code>a</code> to a version that in incompatible with the <code>a</code> that our app depends on, we have a dependency conflict. This phenomenon is referred to as &quot;DLL Hell&quot; (from Windows) or more generally &quot;Dependency Hell&quot;.</p>
+<p>Let&#39;s look at the same example but in a nested system.</p>
+<p><img src="media/nested-deps.png" alt="nested"></p>
+<p>Here we don&#39;t just have one level of dependencies, we have multiple. Assume <code>a</code> and <code>b</code> have no dependencies. Our app and <code>c</code> both still depend on <code>a</code>. </p>
+<p>With nested dependencies we now have two copies of <code>a</code>. If our app needs <code>a</code> at version 1 and <code>c</code> needs <code>a</code> at version 2 then there is we just install both versions of <code>a</code>. The dependencies of <code>c</code> are only available to <code>c</code>, nothing else can access them. Additionally, if it turns out that our app and <code>c</code> both depend on a compatible version of <code>a</code>, we never need to create the <code>c&#39;s deps</code> folder -- so the behavior in that case would mimic flat deps (this is how <a href="https://docs.npmjs.com/cli/dedupe"><code>npm dedupe</code></a> works).</p>
+<h3 id="pros-and-cons">Pros and Cons</h3>
+<h4 id="flat">Flat</h4>
 <ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
+<li>The simpler of the two designs. It&#39;s up to you to decide how much complexity you want to deal with.</li>
+<li>Dependency conflicts (AKA dependency hell)</li>
+<li>Sometimes the only option for languages where you cannot load dependencies in isolation</li>
+</ul>
+<h4 id="nested">Nested</h4>
+<ul>
+<li>No dependency conflicts</li>
+<li>Encourages use of small, isolated modules</li>
+<li>More complicated</li>
+<li>Good for languages like JavaScript with first class scoping support for isolating dependencies from each other</li>
+<li>Installs multiple copies of dependencies (when necessary), so takes up more disk space (though in practice this is rarely an issue because code is small).</li>
+<li>Confuses users who use dependencies that aren&#39;t designed to be modular (e.g. &#39;Why do I have five versions of jQuery in my browserify app?&#39;)</li>
 </ul>
 </div>
     </div>

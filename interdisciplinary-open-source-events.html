@@ -1,0 +1,422 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document active" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><div id="header"><h1 class="title">Interdisciplinary Open Source Community Conferences</h1></div>
+
+<p>A bunch of events that are community organized and not specific to one language/framework silo.</p>
+<p>I&#39;m a huge fan of interdisciplinary learning. As someone who attends a lot of conferences related to open source or more general knowledge sharing, I have found that I enjoy events more if they span multiple topic areas. I&#39;ve spent some time curating this list and can wholeheartedly recommend spending your dollars to attend these events.</p>
+<p>If you have a suggestion for an event that should be on this list, leave a comment on <a href="https://gist.github.com/maxogden/322a649ff84fe1c2a680">this gist</a>.</p>
+<h3 id="criteria">Criteria</h3>
+<ul>
+<li>Must be an event that someone involved in open source would be interested in attending</li>
+<li>Must be a community oriented event (no corporate owned for-profit events are listed here)</li>
+<li>Can&#39;t be about a specific language/framework.</li>
+</ul>
+<h4 id="codeneuro">CodeNeuro</h4>
+<ul>
+<li>SF, NYC</li>
+<li><a href="http://codeneuro.org/">http://codeneuro.org/</a></li>
+<li>&quot;Bringing neuroscience and data science together&quot;</li>
+</ul>
+<h4 id="open-source-bridge">Open Source Bridge</h4>
+<ul>
+<li>Portland, OR</li>
+<li><a href="http://opensourcebridge.org/">http://opensourcebridge.org/</a></li>
+<li>&quot;The Conference For Open Source Citizens&quot;</li>
+</ul>
+<h4 id="open-source-open-society">Open Source Open Society</h4>
+<ul>
+<li>Wellington, NZ</li>
+<li><a href="http://www.opensourceopensociety.com/">http://www.opensourceopensociety.com/</a></li>
+<li>&quot;OS//OS is a two-day gathering of bright minds and communities from open technology, open government, open business and open education&quot;</li>
+</ul>
+<h4 id="chaos-communication-congress">Chaos Communication Congress</h4>
+<ul>
+<li>Hamburg, Germany</li>
+<li><a href="http://www.ccc.de/en/">http://www.ccc.de/en/</a></li>
+<li>&quot;The Chaos Computer Club e. V. (CCC) is Europe&#39;s Largest association of hackers.&quot;</li>
+</ul>
+<h4 id="csv-conf">CSV Conf</h4>
+<ul>
+<li>Berlin, Germany (next one not scheduled yet)</li>
+<li><a href="http://maxogden.github.io/csvconf.com/">http://maxogden.github.io/csvconf.com/</a></li>
+<li>&quot;A conference for data makers&quot;</li>
+</ul>
+<h4 id="data-terra-nemo">Data Terra Nemo</h4>
+<ul>
+<li>Berlin, Germany</li>
+<li><a href="http://dtn.is">http://dtn.is</a></li>
+<li>&quot;Terra nemo is a Latin expression meaning &quot;No man&#39;s land&quot;. In this context we describe systems and protocols without centralized ownership and how they impact the landscape of the internet.&quot;</li>
+</ul>
+<h4 id="src-con">SRC Con</h4>
+<ul>
+<li>Minneapolis, MN</li>
+<li><a href="http://srccon.org/">http://srccon.org/</a></li>
+<li>&quot;Two days of building better newsroom code, culture, and processâ€”together.&quot;</li>
+</ul>
+<h4 id="openvisconf">OpenVisConf</h4>
+<ul>
+<li>Boston, MA</li>
+<li><a href="http://openvisconf.com">http://openvisconf.com</a></li>
+<li>&quot;OpenVis Conf is a two-day, single track conference about the practice of visualizing data on the web. &quot;</li>
+</ul>
+<h4 id="polyglot-unconference">Polyglot Unconference</h4>
+<ul>
+<li>Vancouver, CA</li>
+<li><a href="http://www.polyglotconf.com/">http://www.polyglotconf.com/</a></li>
+<li>&quot;Polyglot is a &quot;non-denominational&quot; software development un-conference event that encourages software developers and operators from different stacks, backgrounds and with different opinions to come together for one day of spontaneous sharing, teaching and learning.&quot;</li>
+</ul>
+<h4 id="nonprofit-software-development-summit">Nonprofit Software Development Summit</h4>
+<ul>
+<li>Oakland, CA</li>
+<li><a href="https://aspirationtech.org/events/devsummit15">https://aspirationtech.org/events/devsummit15</a></li>
+<li>&quot;interactive festival of people who are passionate about co-developing technology to support the work of nonprofit and community organizations.&quot;</li>
+</ul>
+<h4 id="mozilla-festival">Mozilla Festival</h4>
+<ul>
+<li>London, UK</li>
+<li><a href="http://mozillafestival.org">http://mozillafestival.org</a></li>
+<li>&quot;MozFest is a yearly festival with hundreds of passionate people exploring the Web, learning together, and making things that can change the world. It&#39;s very hands-on and immersive. Sometimes it will feel chaotic, but everyone is open-minded and eager to help you make and learn with them.&quot;</li>
+</ul>
+<h4 id="foss4g">foss4g</h4>
+<ul>
+<li>All Over! Next is Seoul, Korea</li>
+<li><a href="http://foss4g.org">http://foss4g.org</a></li>
+<li>&quot;FOSS4G is the acronym for Free and Open Source Software for Geospatial. It is the annual recurring global event hosted by OSGeo since itâ€™s inception in 2006.&quot;</li>
+</ul>
+<h4 id="open-knowledge-festival">Open Knowledge Festival</h4>
+<ul>
+<li>Berlin, Germany (next one TBA)</li>
+<li><a href="http://okfestival.org">http://okfestival.org</a></li>
+<li>&quot;Organised by Open Knowledge and owned, in the broadest sense, by the open community, the Festival will bring together over 1,000 people from more than 60 countries to share their skills and experiences; encouraging them to work together to build the very tools and partnerships that will further the power of openness as a positive force for change.&quot;</li>
+</ul>
+<h4 id="hope-hackers-on-planet-earth">HOPE - Hackers on Planet Earth</h4>
+<ul>
+<li>New York City</li>
+<li><a href="http://www.hope.net/">http://www.hope.net/</a></li>
+<li>&quot;the most European of the American hacker conferences. defcon for cipher hippies. put on by 2600 magazine&quot;</li>
+</ul>
+<h4 id="fosdem">FOSDEM</h4>
+<ul>
+<li>Brussels, Belgium</li>
+<li><a href="https://fosdem.org">https://fosdem.org</a></li>
+<li>&quot;FOSDEM is a free event for software developers to meet, share ideas and collaborate.&quot;</li>
+</ul>
+<h4 id="fscons">FSCONS</h4>
+<ul>
+<li>Gothenburg, Sweden</li>
+<li><a href="https://fscons.org">https://fscons.org</a></li>
+<li>&quot;FSCONS exists to provide a meeting place where subjects covering society, culture and technology can be discussed and brought to life in peer discussions, without being confined to each particular subject area. It should provide both the physical and virtual space where people, organisations and governments, with interest in the three subject areas can meet in a participatory and constructive dialogue. The unique combination of topics creates a platform where cross-pollination between the areas can occur, and where new co-operations and thoughts can emerge which allows the participants to find new inspiration even from areas outside of their own.&quot;</li>
+</ul>
+<h4 id="libre-graphics-meeting">Libre Graphics Meeting</h4>
+<ul>
+<li>location alternates between Europe and Northern America (next one Toronto, Canada)</li>
+<li><a href="http://libregraphicsmeeting.org">http://libregraphicsmeeting.org</a></li>
+<li>&quot;The Libre Graphics Meeting (LGM) is an annual meeting on free and open source software for graphics. Held yearly since 2006 the Libre Graphics Meeting aims to attract developers, artists and professionals who use and improve free and open source software graphics applications. The LGM aims to bring these people together in the cause of creating high quality free graphics applications.&quot;</li>
+</ul>
+<h4 id="border-none">border:none</h4>
+<ul>
+<li>Nuremberg, Germany (next one TBA)</li>
+<li><a href="https://border-none.net">https://border-none.net</a></li>
+<li>&quot;A novel 2-day concept conference about the decentralization of the web, featuring inspiring talks and creative sessions, spreading over several outstanding venues in medieval Nuremberg.&quot;</li>
+</ul>
+<h4 id="decentralize-camp">Decentralize Camp</h4>
+<ul>
+<li>Dusseldorf, Germany (next one TBA)</li>
+<li><a href="http://decentralizecamp.com">http://decentralizecamp.com</a></li>
+<li>&quot;The web is more and more converting to a monoculture. Big global players like Google, Facebook and Co. control every part of our digital life and build an alternative web of walled gardens. It&#39;s in our hands to move the web in a new direction and keep it open and decentralized and it&#39;s our responsibility to get started now. This camp is about defining the status quo, about exchanging ideas, making plans and moving forward.&quot;</li>
+</ul>
+<h4 id="wutheringbytes">WutheringBytes</h4>
+<ul>
+<li>Hebden Bridge, UK</li>
+<li><a href="http://wutheringbytes.com/">http://wutheringbytes.com/</a></li>
+<li>&quot;A weekend festival of technology&quot;. &quot;Was an amazing conference last year with talks from Sophie Wilson co-designed the ARM processor , Live rocket launching and a profound talk from Sarah Angliss on the origins of techno&quot;</li>
+</ul>
+<h4 id="squatconf">Squatconf</h4>
+<ul>
+<li>In squats. Last one was in Paris.</li>
+<li><a href="http://squatconf.eu/">http://squatconf.eu/</a></li>
+<li>&quot;Squatconfs are tech conference that happen... in squats, hence the name. It started because some of us are lucky enough to attend marvelous conventions, made with love by amazing people. Great events with top-notch speakers, incredible venues, and amazing parties. These conferences are run with huge contributions from volunteers, and financial support from sponsors, providing top-notch events at affordable prices. But even then, they&#39;re not affordable for everyone.&quot;</li>
+</ul>
+<h4 id="notacon">Notacon</h4>
+<ul>
+<li>Cleveland, Ohio</li>
+<li><a href="http://notacon.org">http://notacon.org</a></li>
+<li>&quot;security, arts, culture. killer demoparty&quot;</li>
+</ul>
+<h4 id="theorizing-the-web">Theorizing The Web</h4>
+<ul>
+<li>New York City</li>
+<li><a href="http://theorizingtheweb.tumblr.com/">http://theorizingtheweb.tumblr.com/</a></li>
+<li>&quot;Theorizing the Web is an inter- and non-disciplinary annual conference that brings together scholars, journalists, artists, activists, and commentators to ask conceptual questions about the interrelationships between the web and society. We deeply value public engagement, and consider insights from academics, non-academics, and non-â€œtech theoristsâ€ alike to be equally valuable.&quot;</li>
+</ul>
+<h4 id="polyconf">PolyConf</h4>
+<ul>
+<li><a href="http://polyconf.com/">http://polyconf.com/</a></li>
+<li>PoznaÅ„, Poland</li>
+<li>&quot;a three-day, single track, multi-disciplinary conference on advanced technologies
+for programmers interested in polyglot approach to software development.&quot;</li>
+</ul>
+<h4 id="indie-web-camp">Indie Web Camp</h4>
+<ul>
+<li>USA: Portland, SF, NYC, Cambridge</li>
+<li>Europe: Brighton UK, Berlin &amp; Dusseldorf DE</li>
+<li><a href="http://indiewebcamp.com">http://indiewebcamp.com</a></li>
+<li>The IndieWeb is a people-focused alternative to the &quot;corporate web&quot;</li>
+</ul>
+<h4 id="open-help">Open Help</h4>
+<ul>
+<li>Cincinnati, OH, USA</li>
+<li><a href="http://conf.openhelp.cc/">http://conf.openhelp.cc/</a></li>
+<li>Documentation and support in open source and open communities</li>
+</ul>
+<h4 id="write-the-docs">Write The Docs</h4>
+<ul>
+<li>North America, Europe</li>
+<li><a href="http://conf.writethedocs.org">http://conf.writethedocs.org</a></li>
+<li>&quot;a series of conferences and local meetups focused on documentation systems, tech writing theory, and information delivery.&quot;</li>
+</ul>
+</div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document active" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><div id="header"><h1 class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</h1></div>
+
+<p>How to stream in 1080p to YouTube Live Events, May 2015</p>
+<p>Over the past few months I&#39;ve built three versions of a camera to detect cats in my backyard, where I have placed a potted catnip plant. I don&#39;t have my own cat (allergies/landlord) so this is how I get my fix. Plus I recently got gigabit fiber at home and have this burning desire to use the bandwidth. The final version supports full HD live streaming (skip to bottom for that), but it took a few iterations to get there.</p>
+<h2 id="version-one">Version one</h2>
+<p>The first version was using some motion detection software called <code>motion-mmal</code>. It worked but the framerate was less than 1FPS, which isn&#39;t very good at all compared to the camera modules max resolution of 1920x1080 at 30FPS. I captured 3 cats helping themselves to my catnip, but the quality left me wanting more. I also found out there is a family of 3 opossum living in the large bush in my yard, and that there is a very, very <a href="media/fat-raccoon.png">fat raccoon</a> that frequently visits.</p>
+<p><img src="media/fatcat.png" alt="fat cat"></p>
+<p>Here&#39;s an example of the framerate it captured (in lower resolution gif form). In this gif the offending cat (which I have never seen other than in this video) reaches such an emotional peak during its time with my catnip that it throws the nip off the first step, breaking the pot. If this act was intentional or not we will never know for sure. The catnip survived.</p>
+<p><img src="media/fatcat.gif" alt="fat cat gif"></p>
+<p>I believe the reason for the slowness of <code>motion-mmal</code> is that it isn&#39;t designed to run on such a low CPU power device as the Raspberry Pi. Maybe this issue will be fixed in the future, but as you can see from the framerate of the above gif, it has a long way to go.</p>
+<h2 id="version-two">Version two</h2>
+<p>The next version happened thanks to a donation from my friend <a href="https://github.com/beaugunderson/">@beaugunderson</a>, who donated a IP Network Cam to me for the cat surveillance cause. The camera, made by Axis Network, has an ethernet port and a web interface that had a video feed. I set up a wireless -&gt; ethernet bridge using a <a href="http://www.tp-link.com/en/products/details/cat-9_TL-WR702N.html">WR702N</a> and hooked the camera up in my back yard pointing down at my catnip plant.</p>
+<p><img src="media/axis-cam.png" alt="axis cam"></p>
+<p>It also boasted motion detection built in to the camera. Upon setting it up I found that it required Internet Explorer to configure the motion detection (thanks to an ActiveX-only UI), so I installed VirtualBox and configured it. It wasn&#39;t as easy to calibrate as <code>motion-mmal</code>, and I ended up getting a lot of shots of shadows on my porch.</p>
+<p>Then came the problem of capturing video from it. It had a <code>.mjpeg</code> (Motion JPEG) live stream endpoint, but no storage and no way to record. I did discover a setting in the ActiveX UI that let me give it a HTTP endpoint to POST to when the motion detection was triggered. So I rigged it up to tell the server in my living room via HTTP POST when the motion detection triggered, and then that server would kick off a <code>ffmpeg</code> job that would archive the <code>.mjpeg</code> stream for 30 seconds.</p>
+<p>This approach worked, but the quality wasn&#39;t acceptable:</p>
+<p><img src="media/backporch-cat.png" alt="backporch cat"></p>
+<p>Worse yet, the framerate was under 10FPS. Not gonna cut it in the age of HD! Another downside of the Axis Cam is that it required an AC outlet, whereas the Raspberry Pi has the nice quality of only needing USB power.</p>
+<h2 id="version-three-current-version-">Version three (current version)</h2>
+<p>The main thing I learned in the first two versions is that I wanna try and avoid re-encoding video. It&#39;s slow (and especially too slow for CPU weak Raspi) and degrades quality.</p>
+<p>For the latest iteration I went back to using the <a href="https://www.raspberrypi.org/products/camera-module/">Raspberry Pi Camera Module</a>. It&#39;s $25 bucks, so along with the $25 Raspberry Pi that brings the project cost to a nice even $50.</p>
+<p><img src="media/raspi-cam.png" alt="raspi cam"></p>
+<p><em>Raspberry Pi + Camera in 3D printed cases and a highly engineered stabilization mechanism</em></p>
+<p>The raw data that comes from <code>raspivid</code>, a CLI tool that is part of the Raspberry Pi <a href="https://github.com/raspberrypi/userland">userland</a> repository, is straight H264 encoded video data that comes from the on-board H264 encoder hardware chip built into the Raspi. This means it&#39;s fast and high quality. Re-encoding it in software is slow and crappy looking. Side note: it makes me deeply, deeply sad that our devices now come with chips that encode video data into a patented, closed video format.</p>
+<p>I spent some time learning about the differences between encoding/decoding and muxing/demuxing. Muxing/demuxing is cheap (it just means wrapping the encoded video in a container format, e.g. <code>.mp4</code> or <code>.avi</code>), but encoding/decoding is difficult and slow and involves lots of math and patents.</p>
+<p>Then recently I agreed to take care of some kittens for a week. And since part my job was to find them adoptive parents (can&#39;t keep cats permanently), I figured a HD live stream would help find them a home. I looked the options, and the best one was YouTube &quot;Live Events&quot;. UStream charges $99 bucks a month for HD streaming (seriously) and YouTube &quot;Live Events&quot;, a feature <a href="https://www.youtube.com/my_live_events">baked into YouTube.com</a>, offers 24 hour HD live streaming for free, with the last 4 hours of each stream available as a regular YouTube video afterwards.</p>
+<p>Basically you create a new &#39;Live Event&#39; on YouTube and it gives you a <code>rtsp://</code> url you can stream audio/video to, and a public YouTube URL that anyone with a browser or YouTube app can watch live. And it&#39;s free, and supports HD. Pretty sweet!</p>
+<p>Here&#39;s an <a href="https://www.youtube.com/watch?v=Xn4yNavjdR4&amp;t=4m50s">example YouTube video of some kittens</a> made using this method.</p>
+<p><a href="https://www.youtube.com/watch?v=Xn4yNavjdR4&amp;t=4m50s"><img src="media/youtube-cats.png" alt="youtube cats"></a></p>
+<h2 id="how-to-set-up-the-raspberry-pi">How to set up the Raspberry Pi</h2>
+<p>For this I used the Raspberry Pi B+. I don&#39;t have a Raspberry Pi 2 yet. I&#39;m using the Raspbian OS. The trickiest part is getting <code>ffmpeg</code>. You can <code>apt-get install libav-tools</code> to get libav, the ffmpeg fork, but it didn&#39;t work for me and ffmpeg did. <em>shrug</em>. To get ffmpeg compiled for the correct ARM architecture that the Raspi B+ needs the easiest way I&#39;ve found is to get it from <a href="https://github.com/fiorix/ffmpeg-arm">this docker container</a>:</p>
+<pre><code>docker run -t fiorix/ffmpeg-arm cat /opt/ffmpeg/bin/ffmpeg &gt; ffmpeg
+</code></pre><p>This will download the container if you don&#39;t have it already and save the <code>ffmpeg</code> binary as <code>./ffmpeg</code> in whatever folder you run this as.</p>
+<p>I have also forked the repo just to add the <code>ffmpeg</code> binary to GitHub so <a href="https://github.com/maxogden/ffmpeg-arm/releases/tag/1.0.0">you can download it from here</a> if you don&#39;t want to compile it (assuming you trust I didn&#39;t actually upload a virus).</p>
+<p>You will also need the <code>raspivid</code> command. If you don&#39;t have it, try using a newer Raspbian, where it is included. Make sure you follow some Raspi camera tutorials to make sure the camera works.</p>
+<p>To start the stream, run this command:</p>
+<pre><code>raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/your-custom-session-here
+</code></pre><p>Let&#39;s break it down:</p>
+<ul>
+<li><code>-o -</code> makes it write the video data to STDOUT so it gets piped into <code>ffmpeg</code>. </li>
+<li><code>-t 0</code> is how you make it record forever</li>
+<li><code>-vf -hf</code> flips it horizontal and vertical so it looks correct</li>
+<li><code>-fps 30</code> sets frames per second to 30</li>
+<li><code>-b 6000000</code> - output bitrate limit. YouTube recommends 400-600kbps, this is 600kbps. Change this to save upload bandwidth at the expense of a lower quality video</li>
+<li><code>-re</code> - tells ffmpeg to slow down the reading of the input to the native frame rate of the input (useful when live streaming)</li>
+<li><code>-ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero</code> and <code>-acodec aac -ab 128k</code> and <code>-strict experimental</code> - adds a fake audio channel filled with zeroes (silence). YouTube rejects streams without an audio channel. You can also change the input device to a microphone if you want (I haven&#39;t done this yet)</li>
+<li><code>-g 50</code> adds a keyframe every 50 frames. Feel free to tweak, its one of those tradeoff variables.</li>
+<li><code>-f h264</code> and <code>-f flv</code> tells ffmpeg it&#39;s receiving h264 input and that you should mux it into <code>flv</code> output (<code>flv</code> is the container format that works with YouTube. Others might work but I haven&#39;t tried them)</li>
+<li>by <em>not</em> specifying <code>-w</code> and <code>-h</code> to raspivid we get the full 1920x1080 resolution (aka 1080p). You can specify these if you want a lower resolution</li>
+</ul>
+<p>If your stream is working you should see something like this:</p>
+<p><img src="media/ffmpeg-output.png" alt="ffmpeg-output"></p>
+<p>The bitrate in the bottom rate should match what you set on YouTube. Also important is the <code>Stream 1 (copy)</code>. The <code>copy</code> means it isn&#39;t re-encoding the input video into the output -- it is copying it. This is what makes it fast and high quality.</p>
+<h2 id="future-plans">Future plans</h2>
+<p>I&#39;m gonna try these things out:</p>
+<ul>
+<li>Set up a 24 hour live YouTube channel of my catnip</li>
+<li>Run the motion detection out-of-band to try and capture specific events separately out of the live stream</li>
+<li>Try and get my friends who are smarter at video stuff than I am to write better cat detection algorithms</li>
+<li>Get other cat weirdos on the internet to set up their own catnip cams (looking at you, person who read the whole blog post)</li>
+<li>Try out a device using an Ambarella video capture chip. The Raspberry Pi Camera uses a OV5647 video capture chip and supports HD live streaming over the network thx to the Pi, but maybe the e.g. GoPro/Xiaomi Yi/SJCam (which are tiny ARM linux boxes too) can be hacked to do this with less overhead</li>
+</ul>
+<p>If you found this post useful, or made something cool with the tips here, send me a tweet at <a href="https://twitter.com/maxogden">@maxogden</a> on twitter.</p>
+<p>Happy streaming!</p>
+</div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

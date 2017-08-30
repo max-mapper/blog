@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -219,41 +219,106 @@
 </a>
 
 <a class="load-document" href="little-coders.html">
-  <div class="document" id="little-coders">
+  <div class="document active" id="little-coders">
     <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
     <div class="title">Little Coders</div>
     <div class="teaser">Elementary school programming</div>
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Max Ogden">
+    <title>Little Coders</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+<h1 class="title">Little Coders</h1>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
+      
+<h2 class="author">Max Ogden</h2>
 
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
-</div>
+    </div>
+    <p>Elementary school programming</p>
+    <p>My first foray into programming was in 1999 and happened accidentally
+      inside the Starcraft custom level editor. I would sit, fully <a href="http://cyborganthropology.com/Paracosmic_Immersion">immersed in a paracosm</a>,
+      and create complex storylines that the player could play through, one small
+      objective at a time. You could specify, for instance, that if a Zergling
+      walks onto a particular platform then an event should trigger. You could
+      subscribe other elements of the game to listen for events on that platform
+      and perform other callbacks. I was getting exposed to event based publish/subscribe
+      asynchronous programming without realizing it.</p>
+    <div class="figure">
+      <img src="media/sc_triggers.png" alt="triggers inside a Starcraft scenario">
+      <p class="caption">triggers inside a Starcraft scenario</p>
+    </div>
+    <p>When my older brother asked me how to get his nine year old interested
+      in programming, I told him to look for a programming environment that sacrifices
+      practicality for imagination. Nine year olds aren't worried about vendor
+      lock in or job security, they are only going to get hooked if the feel
+      like they are playing a video game (in my case with Starcraft I was literally
+      playing a video game). A good example of this mentality is <a href="http://hacketyhack.heroku.com/">Hackety Hack</a> by
+      _why the lucky stiff. Hackety Hack aims to &quot;offer a place for plainspeople
+      to tinker with code&quot;. Here is a wonderful video from the <a href="http://www.flong.com/projects/artandcode/">Art &amp;&amp; Code Symposium</a> where
+      _why talks about his thoughts on programming education for youngsters and
+      shows off Hackety Hack. <a href="http://vimeo.com/5047563">Highly recommended viewing.</a>
+    </p>
+    <p>Near the end of the above video, _why describes a card game called Kaxxt
+      that is designed to get little coders introduced to fundamental programming
+      concepts. At it's core Kaxxt is about robots, lazers and pyramids. What
+      nine year old wouldn't want to play that? When kids play this game they
+      get exposed to ideas such as enumerability or thinking recursively, much
+      in the same fashion that <a href="http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&amp;tid=4825">The Little Schemer</a> tries
+      to &quot;present abstract concepts in a humorous and easy-to-grasp fashion&quot;.
+      The Flash game <a href="http://armorgames.com/play/2205/light-bot">Lightbot</a> also
+      comes to mind. In Lightbot, you visually program an animated robot through
+      a series of puzzles. It seems that robots and lazers may be the key to
+      connecting with today's youth.</p>
+    <p>Sadly, _why mysteriously stopped contributing to his projects at some
+      point in 2009, leaving many orphaned works behind. His projects have been
+      adopted by various open source community members. <a href="http://blog.steveklabnik.com/2010/11/17/the-hardest-decision-i-ve-ever-made.html">Steve Klabnik</a> recently
+      quit his job to courageously follow his heart and work on Hackety Hack
+      full time. Similarly, <a href="http://kitenet.net/~joey/">Joey Hess</a> then
+      took the liberty of creating an alpha, playtestable version of Kaxxt that
+      uses the pieces from the board game <a href="http://boardgamegeek.com/boardgame/225/icehouse">Icehouse</a>.
+      His port is called '<a href="http://kitenet.net/~joey/code/kaxxt/">Kaxxt on Ice</a>'</p>
+    <p>There are also a few notable academic programming education efforts.
+      <a href="http://www.greenfoot.org/">Greenfoot</a>is designed to teach kids Java. There is an entertaining
+        <a href="http://blogs.kent.ac.uk/mik/2008/01/20/teaching-my-daughter-to-code/">series of posts</a>from a programmer who tried teaching his nine year
+          old daughter how to program using Greenfoot. Google has been lightly researching
+          alternative curriculum designs through their <a href="http://www.google.com/educators/index.html">Google for Educators</a> program.
+          As described by Google's director of education relations in the tech talk
+          &quot;<a href="http://www.youtube.com/watch?v=Hz4ZgC_A77g">Initiatives in Education</a>&quot;,
+          Google has been working on &quot;integrating computing curriculum across
+          K-12 core subjects&quot;. They also recently donated 2 million USD to Sal
+          Khan's <a href="http://www.khanacademy.org/">Khan Academy</a>, which offers
+          a staggering amount of free, digestible education lectures.</p>
+    <p>MIT's <a href="http://scratch.mit.edu/">Scratch</a> and Carnegie Mellon's
+      Alice seem to each have years of development poured into them, as well
+      as some friendly competitionand actual in-classroom testing. At first glance,
+      both Scratch and Alice appear deep and involved, much like a complicated
+      programming IDE. I would personally like to see more lightweight artistic
+      interpretations, mockups and spikes of the PhD level programming educational
+      research that is happening between Google, MIT, Carnegie Mellon and elsewhere.
+      In the Hackety Hack Manifesto it is explictly stated that&quot;IDEs are
+      a disaster. Newbs should see only one non-scary window free of tree controls
+      and pinned windows and toolbars. As such, we want to stay away from project
+      files and makefiles, the trappings of an IDE.&quot;</p>
+    <p>As part of my fellowship with <a href="http://codeforamerica.org/">Code for America</a> in
+      2011 I will be working with the city of Boston on software to improve public
+      school education (more details <a href="http://codeforamerica.org/2010/11/19/2011-projects-overview-video-and-deck/">here</a>).
+      I am excited at the prospect of getting to meet those working on Scratch
+      at MIT or researchers from the <a href="http://www.concord.org/">Concord Consortium</a>.</p>
+  </body>
+
+</html></div>
     </div>
   </div>  
   

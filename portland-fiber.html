@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -123,7 +123,7 @@
 </a>
 
 <a class="load-document" href="portland-fiber.html">
-  <div class="document" id="portland-fiber">
+  <div class="document active" id="portland-fiber">
     <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
     <div class="title">Portland Fiber Internet</div>
     <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
@@ -226,33 +226,40 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">Gigabit Fiber in Portland</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
+<p>Review of 1Gb fiber from CenturyLink</p>
+<p>Yesterday I got Gigabit fiber Internet installed at home in Portland, OR from <a href="https://www.centurylink.com/fiber/">CenturyLink</a>. If you haven&#39;t checked out how fiber works here&#39;s a good <a href="https://www.youtube.com/watch?v=Rz1gv2JkmXQ">intro video</a>. The variety that CenturyLink offers is a <a href="http://en.wikipedia.org/wiki/Passive_optical_network">passive optical network</a> consisting of fiber optic cables strung up on telephone poles around town.</p>
+<p><img src="media/centurylink-technicians.png" alt="fiber techs"></p>
+<p>Here&#39;s the result of a speedtest I did today:</p>
+<p><img src="media/speedtest.png" alt="speedtest"></p>
+<p>Gigabit fiber probably isn&#39;t practical for most Internet users today because it&#39;s more bandwidth than most Internet applications know what to do with. However, in a few years time, as more people get retina screens, 4K TVs, 8TB hard drives and neighbors with fiber Internet who stream super-HD video then there will hopefully be a tipping point. And the fiber infrastructure is relatively future-proof.</p>
+<p>My day job is to work on data replication tools for really large scientific datasets so I jumped at the opportunity to get it at home.</p>
+<h2 id="centurylink-vs-google-fiber">CenturyLink vs Google Fiber</h2>
+<p>CenturyLink costs $109 a month (for the first year) and Google Fiber is $70 a month. Both offer 1000mbps up/1000mpbs down (133MB/s) with no download/upload limits or caps. CenturyLink&#39;s <a href="http://www.centurylink.com/Pages/AboutUs/Legal/InternetServiceManagement/">ToS states</a> &quot;Residential 1 Gbps plans are not subject to download limits&quot; and this has been <a href="http://www.reddit.com/r/Seattle/comments/2cooqy/centurylink_plans_to_bring_gigabit_internet_to/cji4gul">verified by the Seattle Mayor&#39;s office</a>. <a href="https://fiber.google.com/legal/network.html">Google Fiber&#39;s ToS</a> also states they do &quot;not employ volume-based data caps&quot;.</p>
+<p>CenturyLink seems to be quite secretive when it comes to disclosing the price after the first 12 months. From looking at my first bill it seems their &#39;standard rate&#39; for gigabit appears to be $153.95, and they give a $44.00 per month discount for the first 12 months of service. This information isn&#39;t advertised publicly on their website (from what I can tell).</p>
+<p>The only major difference (beyond price) that I can find is that Google Fiber specifically prohibits commercial servers, but CenturyLink does not seem to.</p>
+<p>CenturyLink&#39;s FTTH (Fiber To The Home) service seems to currently be in most of inner SE Portland (where I live).</p>
+<p>Google Fiber isn&#39;t in Portland yet, and might never be. If I had the choice between Google Fiber and CenturyLink on my block, I would pick Google because of the price. That being said I am still incredibly excited to get gigabit internet direct to my home for less than some of my friends pay for their cell phone.</p>
+<p>There&#39;s another local ISP doing Gigabit fiber in Portland called <a href="http://www.fibersphere.com/">Fibersphere</a> but they only offer it in selected apartment buildings and are still working on their broader rollout strategy.</p>
+<h2 id="installation">Installation</h2>
+<p>You pay a (roughly) $100 setup fee and then another $100 for an <a href="http://www.actiontec.com/301.html">Actiontec C2000A modem/router</a>. They send a technician (or in my case two) out to your house for the 3-5 hour installation process.</p>
+<p>First they allocate you a fiber optic cable up to 500ft in length. In my case it was 450. Here it is on the sidewalk outside:</p>
+<p><img src="media/fiber-spool.png" alt="fiber spool"></p>
+<p>They have to run it along the aerial wiring along your street and connect it to the nearest fiber splitter, which are little black boxes attached to aerial wires. </p>
+<p><img src="media/fiber-splitter.png" alt="fiber splitter"></p>
+<p>In my case the nearest one was at the end of my block. They actually said that starting from two more houses down the block from me they wouldn&#39;t be able to offer fiber service because it would exceed the 500ft limit.</p>
+<p><img src="media/fiber-install.png" alt="fiber install"></p>
+<p>Then they put a optical terminator on the outside of your house. This thing converts data from the fiber optic cable into ethernet, which then enters your home and goes into the modem/router. Behind the terminator is the &#39;slack box&#39; which holds the extra spooled fiber extension cable.</p>
+<p><img src="media/fiber-box.png" alt="fiber box"></p>
+<p>They also throw a power unit for the terminator in your basement.</p>
+<p><img src="media/fiber-power.png" alt="fiber power"></p>
+<p>Finally here is the modem/router combo unit they provided. It supports Gigabit Ethernet but only 802.11N wireless, meaning wireless bandwidth is limited to around 100Mbps.</p>
+<p><img src="media/fiber-router.png" alt="fiber router"></p>
+<p>Attached to the yellow cat6 ethernet cable is an <a href="http://store.apple.com/us/product/MD463ZM/A/thunderbolt-to-gigabit-ethernet-adapter">Apple Thunderbolt to Gigabit Ethernet</a> adapter. The speed test from the top of this article was made while plugged in using this on a mid-2013 MacBook Air.</p>
+<p>I also have a Raspberry Pi running a <a href="https://www.eff.org/torchallenge/what-is-tor.html">Tor Relay Node</a>.</p>
+<p>All in all it must cost CenturyLink quite a bit of money to upgrade a house to fiber, much more than the $100 in setup fees. Hopefully Google Fiber (and others!) enter the market to keep the competition going.</p>
+<p>See you in the future!</p>
 </div>
     </div>
   </div>  

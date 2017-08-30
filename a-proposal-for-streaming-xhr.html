@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -171,7 +171,7 @@
 </a>
 
 <a class="load-document" href="a-proposal-for-streaming-xhr.html">
-  <div class="document" id="a-proposal-for-streaming-xhr">
+  <div class="document active" id="a-proposal-for-streaming-xhr">
     <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
     <div class="title">A Proposal For Streaming XHR</div>
     <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
@@ -226,34 +226,94 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Max Ogden">
+    <title>A Proposal For Streaming XHR</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      <h1 class="title">A Proposal For Streaming XHR</h1>
+      <h2 class="author">Max Ogden</h2>
+    </div>
+    <p>XHR2 isn't stream friendly. Lets explore why and propose a solution!</p>
+    <p>Note: This article predates the <a href="https://streams.spec.whatwg.org/">HTML5 Streams work</a></p>
+    <p><a href="http://www.html5rocks.com/en/tutorials/file/xhr2/">XHR2</a> (XHR is short for XMLHTTPRequest and is the HTTP client in AJAX) does some cool stuff. You can get binary response data, either read-only in a <a href="https://developer.mozilla.org/en-US/docs/DOM/Blob">Blob</a> or mutable in an <a href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer#ArrayBuffer()">Array Buffer</a> (which you can turn into one of the many flavors of <a href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed Arrays</a>). Binary data in JavaScript pushes the boundaries of the web by enabling rich multimedia experiences (like those demonstrated in <a href="http://www.youtube.com/watch?v=PN8Eg1K9xjE">this mind-blowing talk</a> on the Web Audio API by <a href="twitter.com/stuartmemo">@stuartmemo</a>).</p>
+    <p>There is one fundamental problem with the current XHR specification (and implementations) which is that they aren't designed for real-time streaming, but with a few tweaks I believe they can enable a much better web experience.
+      
+    <p>Here is an example of trying to wrap XHR in the <a href="https://github.com/substack/stream-handbook">node.js Stream API</a>. The important part of the following code is the <code>write</code> function which takes the Array Buffer that XHR returns, turns it into a Typed Array and then emits each new chunk of binary data each time that xhr.readyState 3 is fired.</p>
+<pre><code data-language="javascript">var stream = require('stream')
+var util = require('util')
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
+function XHRStream(xhr) {
+  stream.Stream.call(this)
+  this.xhr = xhr
+  this.offset = 0
+  xhr.onreadystatechange = this.handle.bind(this)
+  xhr.send(null)
+}
 
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
+// copy the Stream methods to this prototype
+util.inherits(XHRStream, stream.Stream)
+
+XHRStream.prototype.handle = function () {
+  // readyState 3 will be fired many times during a large download
+  if (this.xhr.readyState === 3) this.write()
+  if (this.xhr.readyState === 4) this.emit('end')
+}
+
+XHRStream.prototype.write = function () {
+  if (!this.responseArray) this.responseArray = new Int8Array(this.xhr.response)
+  if (this.responseArray.byteLength > this.offset) {
+    this.emit('data', this.responseArray.slice(this.offset))
+    this.offset = this.responseArray.byteLength
+  }
+}
+
+module.exports = XHRStream
 </code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
-</div>
+    <p>Fundamentally what node Streams (and the above code) do is take a huge response that may take a loooooong time to complete (like downloading a Blu-ray DVD) and splits the response up into chunks. This is a beautiful pattern due to its simplicity. The programmer can decide if they want to combine the chunks and store them in a file or database OR if they want to process the chunks one at a time immediately and then throw the chunks away so that the JavaScript VM can clean the chunks up and free up the memory they were using. The <code>xhr.response</code> (<code>xhr.responseText</code> when getting non-binary responseTypes) in an XHR request is a single JavaScript object that just grows and grows and grows so if you are downloading a 5GB file you will have a 5GB JavaScript object in memory at the end of the request. The "node way" would be to have hundreds of small objects that each contain a contiguous chunk of the file that get emitted as soon as the client receives the data from the network.</p>
+    <p>The XHRStream prototype lets you write code that looks like this:</p>
+<pre><code data-language="javascript">var xhr = new XMLHttpRequest()
+xhr.responseType = 'arraybuffer'
+xhr.open("GET", "http://bigdata.com/hugefile.zip", true)
+var response = new XHRStream(xhr)
+
+// 'data' events will happen each time a new chunk gets to the browser
+response.on('data', function(chunk) {
+  // chunk size in this case is determined by TCP and will
+  // probably be in the range of 10s or 100s of kilobytes
+})
+</code></pre>
+    <p>Unfortunately this isn't possible with the current XHR implementation for two reasons. The first is that <code>xhr.response</code> is essentially one big buffer that keeps growing linearly as the response data comes in which means it can't get garbage collected. This just means you can't download files with XHR that are larger than the amount of RAM in your machine which isn't a total deal breaker for streaming data. The other reason is that currently the XHR spec prevents access to binary response data before the request has completed. Here is a simplified excerpt from the <a href="http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute">XMLHTTPRequest specification on w3.org</a> (thanks to <a href="http://twitter.com/tobie">@tobie</a> for assisting me in navigating the web standards world here):</p>
+    <pre><code>If responseType is "text"
+  If the state is not LOADING or DONE, return empty string and terminate these steps
+  Otherwise return the text response entity body.
+Otherwise (for all other types of responseTypes such as 'arraybuffer' or 'blob')
+  If the state is not DONE, return null and terminate these steps.
+    </code></pre>
+    <p>Here is <a href="http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2011-January/029992.html">a discussion from the whatwg mailing list</a> on this topic that contains this particularly insightful comment:</p>
+    <pre><code>Hmm! And I guess it's very difficult to create a abstract in/out 
+interface that can handle any protocol/stream.
+Although an abstract in/out would be ideal as that would let new 
+protocols to be supported without needing to rewrite anything at the 
+higher level.
+
+-- 
+Roger "Rescator" Hågensen.
+    </code></pre>
+    <p>I totally agree! It turns out that the node Stream API, which is the core I/O abstraction in Node.js (which is a tool for I/O) is essentially an abstract in/out interface that can handle any protocol/stream that also happens to be written in JavaScript.</p>
+    <p>It should be noted that websockets now support transporting binary data but the websocket spec still <a href="https://github.com/maxogden/websocket-stream/issues/1">isn't perfect</a> for streaming and the overwhelming majority of APIs are HTTP.</p>
+    <p>So, to any standards people or browser implementers reading this: please please please take some notes from Node.js and change the spec to allow for truly streaming data over XMLHTTPRequest.</p>
+</p></body>
+
+</html></div>
     </div>
   </div>  
   

@@ -1,0 +1,554 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document active" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Max Ogden">
+    <title>Fast WebView Applications</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+<h1 class="title">Fast WebView Applications</h1>
+
+      
+<h2 class="author">Max Ogden</h2>
+
+    </div>
+    <p>Article version of a JSConf Argentina presentation given in May 2012</p>
+    <h1 id="tldr">tl;dr</h1>
+      <p>Embedded mobile <a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UIWebView_Class/Reference/Reference.html">WebViews</a> have
+        bad default behaviors that result in slow applications. To help fix the
+        bad defaults I started some new libraries, <a href="https://github.com/maxogden/ViewKit">ViewKit</a> and
+        <a href="https://github.com/maxogden/masseuse.js">masseuse.js</a>, and found some helpful libraries written by others. Additionally,
+          all of the specific things covered in this article have associated code
+          examples available in <a href="https://github.com/maxogden/fast-webview-applications-presentation">https://github.com/maxogden/fast-webview-applications-presentation</a>
+      </p>
+      
+<h1 id="why-not-go-full-native">Why not go &quot;full native&quot;?</h1>
+
+      <p>Having been recently tasked with writing <a href="https://gather.at/">an iPhone application</a> I
+        found myself at a fork in the road. Going down the path of Objective-C
+        meant diving head first into a painful world of static typing, subclassing,
+        IDEs, closed source frameworks and cultish fanaticism. The other path,
+        JavaScript and HTML5, is one I have been working with every day for years.
+        For me the natural choice would be to work with the tools I knew best,
+        but I also recognized that most developers who write iPhone applications
+        choose Objective-C so there would be a lot (see: tons) of rough edges along
+        the road less traveled.</p>
+      
+<h1 id="cordova">Cordova</h1>
+
+      <p>I ended up using <a href="http://incubator.apache.org/cordova/">Cordova</a> (formerly
+        PhoneGap). The name Cordova comes from <a href="http://goo.gl/maps/HLRM">the street</a> in
+        Vancouver, Canada that was home to the software developers who built the
+        framework, but the project's goals actually remind me a lot of the Spanish
+        city of <a href="http://en.wikipedia.org/wiki/C%C3%B3rdoba,_Andalusia">Cordoba</a> (Cordova
+        is actually the English form of Cordoba according to Encyclopedia Britannica).
+        Around 1000 years ago Spain was filled, like much of pre-enlightenment
+        western Europe, with people who got all of their information from the church.
+        Then Muslims from northern Africa started moving into southern Spain and
+        spread their ideology: to seek knowledge through science. Cordoba quickly
+        became the most incredible city in the world with paved streets, street
+        lights (gas powered), public hospitals, universities, medical schools,
+        restaurants and the world’s largest library.</p>
+      <p>The whole Objective-C vs JavaScript debate is a modern version of what
+        happened in Spain back in the day. Then: The church delivered the facts
+        and you weren't encouraged to modify them. Now: Apple delivers SDKs and
+        developers aren't allowed to modify them. Then: Cordoba made giant leaps
+        and bounds due to a culture of open science. Now: JavaScript has created
+        of the <a href="https://github.com/popular/watched">largest</a> open source
+        projects and <a href="http://www.modulecounts.com/">fastest growing</a> package
+        repositories.</p>
+      <blockquote>
+        <p>Contemporary Muslims who bring up the memory of Cordoba typically do so
+          either to emphasize the need for a new Islamic scientific and industrial
+          renaissance, or to emphasize the need for a multi-cultural and tolerant
+          society.</p>
+      </blockquote>
+      <p>— <a href="http://www.el-baghdadi.com/projects/the-islamic-paradigm/56-cordoba-victory-over-christianity.html">via</a>
+      </p>
+      <p>Cordova gives you a nice platform to build HTML5 iOS apps on top of. Essentially
+        Cordova wraps a full screen WebView in a native app 'container' so you
+        get nice things like the ability to call from JavaScript into Objective-C
+        to do things like send and receive <a href="https://github.com/phonegap/phonegap-plugins/tree/master/iOS/PushNotification">push notifications</a>,
+        <a href="http://docs.phonegap.com/en/1.7.0/cordova_media_capture_capture.md.html#Capture">take photos</a>, integrate with SDKs (<a href="https://github.com/phonegap/phonegap-plugins/tree/master/iOS/Twitter">Twitter</a> and
+          <a href="https://github.com/davejohnson/phonegap-plugin-facebook-connect">Facebook</a>for example), etc. At the end of the day, though, most of
+            your time will be spent working on the HTML, CSS and JS that runs in that
+            WebView. The harsh reality is that where Apple ships both the platform
+            and the UI framework together, Cordova is just the platform. You are expected
+            to BYOUI.</p>
+      <p>Even though Cordova implements the same <a href="http://docs.phonegap.com/en/1.7.0/index.html">core JS API</a> across
+        many platforms many mobile developers will tell you a bigger issue is that
+        WebKit is turning into the new Internet Explorer: huge <a href="http://www.bgr.com/2012/05/16/android-fragmentation-visualized-opensignalmaps/">fragmentation in the Android market</a> and
+        a we-do-whatever-we-want attitude at Apple means it's not realistic to
+        expect the code that runs in a WebView on iOS5 to run on iOS4 or an Android
+        browser. Because of these issues I decided to first target iOS5 and then
+        port to other platforms later.</p>
+      <p>There are a few big frameworks for iOS like <a href="http://jquerymobile.com/">jQuery Mobile</a> and
+        <a href="http://www.sencha.com/products/touch">Sencha Touch</a>but having built web apps with them in the past I always
+          felt too constricted by their monolithic approach. Instead, I prefer a
+          small modules loosely joined approach.</p>
+      
+<h1 id="touch-events">Touch Events</h1>
+
+      <p>The first thing you'll want to do is speed up your clicks. By default
+        in WebViews there is a ~300ms delay if you are responding to <code>click</code> events.
+        This is for capturing certain gestures like double tap to zoom in. Since
+        we are in a viewport controlled unzoomable application container we don't
+        actually want this behavior but sadly there is no easy way to disable this
+        and make clicks fast again. <code>touch</code> events, on the other hand,
+        have no artificial delay. Google has offered up <a href="https://developers.google.com/mobile/articles/fast_buttons">one solution to this problem</a> but
+        I find their approach requires tight coupling between events and DOM elements.
+        Rather than having a 1:1 ratio between DOM elements and their associated
+        event listeners I instead use a few global listeners that aren't tightly
+        coupled to any specific DOM elements.</p>
+      <p><a href="https://github.com/maxogden/masseuse.js">masseuse.js</a> is a
+        library I wrote that includes all of the touch related helpers (in a less
+        contrived form than this post) that I developed while working on my application.</p>
+      <p>
+        <video preload="none" poster="media/doinitwrong.jpg" controls>
+          <source src="media/doinitwrong.m4v">
+            <source src="media/doinitwrong.ogv">
+        </source></source></video>
+      </p>
+      <p><i>Strange default behavior.</i>
+      </p>
+      <p>The numbers shown are a rough calculation of the time between when the
+        user's finger touches the screen to when the associated <code>click</code> event
+        finishes firing.</p>
+      <p>Beyond the click delay there are also certain CSS properties enabled in
+        WebViews that can create a confusing UX (as you can see in the above video).
+        Here's a rundown (via the <a href="http://wiki.phonegap.com/w/page/16494795/iPhone%3A%20Prevent%20callout,%20link%20selection,%20text%20auto-resize">PhoneGap wiki</a>):</p>
+<pre><code data-language="css">* {
+  /* prevent callout when holding tap on links (the native dialog that comes up) */
+  -webkit-touch-callout: none; 
+
+  /* prevent webkit from resizing text to fit */
+  -webkit-text-size-adjust: none; 
+
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  /* prevent copy paste, to allow, change &#39;none&#39; to &#39;text&#39; */
+  -webkit-user-select: none; 
+}
+
+// turn off webkit checkbox style, works for other inputs too
+input[type=&quot;checkbox&quot;] { -webkit-appearance: none; }
+
+// placeholder text opacity
+input::-webkit-input-placeholder { opacity: .8; }</code></pre>
+
+      <p>To fix slow touches you must turn off <code>click</code> events for each
+        kind of element that needs to be fast:</p>
+<pre><code data-language="javascript">$(&#39;a&#39;).live(&#39;click&#39;, function(e) {
+  e.preventDefault()
+  return false
+})</code></pre>
+
+      <p>To replace clicks you can use the <code>tap</code> abstraction from zepto.js
+        to handle touch events:</p>
+<pre><code data-language="javascript">$(&#39;a&#39;).live(&#39;tap&#39;, handleTaps)</code></pre>
+
+      <p>Since we are disabling <code>click</code> we are also throwing away the
+        native behavior that we get from <code>click</code> events (focus for inputs,
+        href changes for anchor tags, checkbox checking, etc) so we will have to
+        re-implement that behavior in javascript. To implement this for anchor
+        tags in a very rudimentary way:</p>
+<pre><code data-language="javascript">function handleTaps( event ) {
+  window.location.href = $(event.currentTarget).attr(&#39;href&#39;)
+}</code></pre>
+
+      <p>
+        <video preload="none" poster="media/touchevents.jpg" controls>
+          <source src="media/touchevents.m4v">
+            <source src="media/touchevents.ogv">
+        </source></source></video>
+      </p>
+      <p><i>Fast clicks and CSS disabling in action</i>
+      </p>
+      
+<h1 id="zepto">Zepto</h1>
+
+      <p><a href="http://zeptojs.com/">Zepto</a> is a jQuery API compatible library
+        designed specifically for WebKit so it is smaller and much more easy to
+        read because it doesn't aim to support every weird browser under the sun.
+        It also has some nice mobile specific modules like <a href="https://github.com/madrobby/zepto/blob/master/src/gesture.js">gesture</a> and
+        <a href="https://github.com/madrobby/zepto/blob/master/src/touch.js">touch</a>.</p>
+      
+<h1 id="templating-and-routing">Templating and Routing</h1>
+
+      <p>Client side templating is good for mobile apps, as you wouldn't want to
+        fetch remote templates over a wireless connection.</p>
+      <p>There are a ton of templating and routing engines out there, so you can
+        pick whichever one you like! I happen to use mustache.js and director.js
+        because they are nice and simple. Here's a simple example:</p>
+<pre><code data-language="javascript">// render a template and insert it into the dom
+function render( template, target, data ) {
+  target = $( target ).first()
+  target.html( buildTemplate(template, data) )
+}
+
+// gets templates out of hidden &lt;script&gt; tags in the DOM:
+function buildTemplate(template, data) {
+  return $.mustache( $( &quot;.&quot; + template + &quot;Template&quot; ).first().html(), data || {} )
+}
+
+var routes = {
+  cats: function() {
+    var cats = [&#39;aristotle.png&#39;, &#39;bikecat.png&#39;, &#39;awesomecat.gif&#39;, &#39;walkingcat.png&#39;, &#39;seriouscat.png&#39;]
+    render(&#39;gallery&#39;, &#39;.content&#39;, {pictures: cats})
+  },
+  dogs: function() {
+    var dogs = [&#39;hellodog.png&#39;, &#39;shopdog.png&#39;, &#39;bearddog.png&#39;, &#39;coco.png&#39;]
+    render(&#39;gallery&#39;, &#39;.content&#39;, {pictures: dogs})
+  }
+}
+
+// Router is provided by Director
+Router({
+  &#39;/&#39;: {
+    on: function() { window.location.href = &quot;#/cats&quot; }
+  },
+  &#39;/:page&#39;: { 
+    on: function(page) {
+      routes[page]()
+    }
+  }
+}).init(&#39;/&#39;)</code></pre>
+
+      <p>
+        <video preload="none" poster="media/templating.jpg" controls>
+          <source src="media/templating.m4v">
+            <source src="media/templating.ogv">
+        </source></source></video>
+      </p>
+      <p><i>The above code in action.</i>
+      </p>
+      <p>To get the fixed header and nice scroll behavior of the content div in
+        the above: as of iOS5 you can use CSS to assign native scroll behavior
+        to a DOM element:</p>
+<pre><code data-language="css">.content { -webkit-overflow-scrolling: touch; }</code></pre>
+
+      <p>To get this behavior on pre-iOS5 WebViews you have to use JS libraries
+        like <a href="http://cubiq.org/iscroll">iScroll</a>. I personally have found
+        most of these libraries to be very clunky to work with.</p>
+      
+<h1 id="sprites-and-retina-images">Sprites and Retina Images</h1>
+
+      <p>When testing on device I noticed significant latency when loading images
+        from the filesystem. Given the following CSS, when you tap on an input
+        it will focus before the image loads and appears, which makes the app feel
+        slow.</p>
+<pre><code data-language="css">input { background-image: url(&#39;images/text.png&#39;) }
+input:focus { background-image: url(&#39;images/text-focus.png&#39;) }</code></pre>
+
+      <p>
+        <video preload="none" poster="media/nosprite.jpg" controls>
+          <source src="media/nosprite.m4v">
+            <source src="media/nosprite.ogv">
+        </source></source></video>
+      </p>
+      <p><i>Image load time in the simulator. On actual devices it is even more noticeable.</i>
+      </p>
+      <p>If you look closely at the icons in the input fields you'll see that they
+        are grainy, as the simulator in that video is simulating a retina display.
+        To support retina devices I would have to have a copy of each CSS rule
+        inside of a media query:</p>
+<pre><code data-language="css">@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  input { background-image: url(&#39;images/text@2x.png&#39;) }
+  input:focus { background-image: url(&#39;images/text-focus@2x.png&#39;) }
+}</code></pre>
+
+      <p>This isn't very maintainable as it would double the amount of CSS required
+        to show images. Instead, I create sprites using the glue utility:</p>
+<pre><code>glue images/ . --simple --algorithm=vertical</code></pre>
+
+      <p>This will give me a single sprite png as well as CSS rules based on the
+        filenames of the original images from within the sprite, so now my CSS
+        looks like this:</p>
+<pre><code data-language="css">.sprite { 
+  background-image: url(sprite.png);
+  background-repeat:no-repeat;
+}
+.sprite.text { background-position:0px 0px; }
+.sprite.text:focus { background-position:0px -40px; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .sprite {
+    background-image: url(&#39;sprite@2x.png&#39;);
+    background-repeat:no-repeat;
+    background-size: 40px 160px;
+  }
+}</code></pre>
+
+      <p>Now I don't have to re-define each element with a sprite inside of the
+        media query -- I only need to swap out all elements with a <code>sprite</code> class
+        on them with the retina sprite. The small caveat here is that I have to
+        add the <code>sprite</code> class to each element in the markup that uses
+        a sprite for it's background image:</p>
+<pre><code>&lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;text sprite&quot; value=&quot;&quot; placeholder=&quot;Name&quot;&gt;</code></pre>
+
+      <p>
+        <video preload="none" poster="media/sprite.jpg" controls>
+          <source src="media/sprite.m4v">
+            <source src="media/sprite.ogv">
+        </source></source></video>
+      </p>
+      <p><i>With the retina sprite enabled. Again, on an actual device the improvement is much more noticeable.</i>
+      </p>
+      <p>There are lots of WebView quirks not related to performance that I will
+        save for another blog post.</p>
+  </body>
+
+</html></div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

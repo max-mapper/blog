@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -131,7 +131,7 @@
 </a>
 
 <a class="load-document" href="node-repl.html">
-  <div class="document" id="node-repl">
+  <div class="document active" id="node-repl">
     <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
     <div class="title">node-repl</div>
     <div class="teaser">An interactive console for node</div>
@@ -226,33 +226,83 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">node-repl</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
+<p>An interactive console for node</p>
+<p>You can <a href="https://www.npmjs.com/package/node-repl#installation">install node-repl with npm</a>.</p>
+<p>Recently I was asked if there was an equivalent of the <a href="http://en.wikipedia.org/wiki/Interactive_Ruby_Shell">Interactive Ruby Shell (IRB)</a> for node. IRB is great because it lets you quickly poke around in your program while it is running without having to set up breakpoints or print messages out to the console.</p>
+<p>Node ships with a <a href="http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">repl</a> that you can run by simply typing <code>node</code>, and you can run a program by running <code>node program.js</code>, but you cannot both run a program <em>and</em> open a repl at the same time.</p>
+<p>To solve this, with the help of my friends <a href="http://github.com/mafintosh">Mathias</a> and <a href="https://github.com/chrisdickinson">Chris</a> I whipped up a command-line module called <a href="http://npmjs.org/node-repl"><code>node-repl</code></a>.</p>
+<p>Here&#39;s how to use it:</p>
+<p><img src="media/node-repl.png" alt="node-repl"></p>
+<p>When you run a program with <code>node-repl program.js</code>, it both spawns your program but also opens a repl. The useful part is that the repl is executing code in the same JavaScript scope that your program is running in.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>The functionality offered by <code>node-repl</code> seems simple at first, but underneath the hood it is doing a few tricky things: injecting the repl code, intercepting node&#39;s <code>require</code> and patching in <code>eval</code> from your program&#39;s scope into the repl.</p>
+<h3 id="injecting-the-repl-code">Injecting the repl code</h3>
+<p>Node has a <code>repl</code> module <a href="https://iojs.org/api/repl.html">in the core library</a> that makes it easy to implement a fully featured repl. By default the repl executes code in it&#39;s own scope, but in order to get the desired IRB-style functionality (e.g. where <code>pizza</code> is available to the repl as in the above example) we want the repl to execute in the same scope as the program.</p>
+<p>The <a href="https://github.com/maxogden/node-repl/blob/master/repl.js">repl code itself</a> that <code>node-repl</code> injects is relatively simple:</p>
+<pre><code class="lang-js">;(function() {
+  var repl = require(&#39;repl&#39;)
+  var os = require(&#39;os&#39;)
+  var empty = &#39;(&#39; + os.EOL + &#39;)&#39;
+  repl.start({
+    input: process.stdin,
+    output: process.stdout,
+    eval: function(cmd, context, filename, callback) {
+      if (cmd === empty) return callback()
+      var result = eval(cmd)
+      callback(null, result)
+    }
   })
+})();
 </code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
+<p>The whole thing is wrapped in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> to avoid altering any external state in the users program, since <a href="https://github.com/maxogden/node-repl/blob/master/bin.js#L19">this code is concatenated</a> onto the end of the program. I very rarely use IIFEs any more because node&#39;s module system handles isolating files for you automatically (and if you use browserify you can use node&#39;s module system for client side code), but this case is an exception.</p>
+<p>The code <code>var empty = &#39;(&#39; + os.EOL + &#39;)&#39;</code> is specific to how node&#39;s repl works. When you hit <code>&lt;return&gt;</code> in node&#39;s it takes whatever you typed and wrapps it in parentheses. For example, if you enter <code>var x = 1</code> and hit return you will end up with <code>(var x = 1\n)</code> on OSX/Linux or <code>(var x = 1\r\n)</code> on Windows. The code <code>require(&#39;os&#39;).EOL</code> gets the correct line ending for the users current OS. Also (warning: this is just a parlour trick) try going into the default node repl and typing <code>console.log)(42</code>. Even though you didn&#39;t type valid JS code, it ends up working because it gets turned into <code>(console.log)(42)\n</code> by the repl.</p>
+<h3 id="a-quick-primer-on-scopes-in-node-modules">A quick primer on scopes in node modules</h3>
+<p>When you run a program with node, e.g. <code>node hello.js</code> or <code>require(&#39;hello.js&#39;)</code>, node takes the contents of <code>hello.js</code> and wraps them in a function like this:</p>
+<pre><code class="lang-js">(function (exports, require, module, __filename, __dirname) {
+  var pizza = 1
+});
+</code></pre>
+<p>Wrapping your code in a a function like this causes a new scope to be created for your code to run in. You could have two different modules that both set <code>var pizza</code> to different values, and because of the way that JavaScript&#39;s function scope works they can both exist in their own scopes without conflicting. This property of JavaScript is what allows node&#39;s <a href="http://maxogden.com/nested-dependencies.html">nested dependency</a> system to work and is extremely simple and powerful.</p>
+<p>The problem with this for us is that your code is running in it&#39;s own scope, and <code>node-repl</code> needs access to it! This is why we &quot;inject&quot; (in this case by concatenating) our repl code into your code before it gets required.</p>
+<h3 id="intercepting-node-s-require-call">Intercepting node&#39;s require call</h3>
+<p>Node has a somewhat obscure API called <code>require.extensions</code> that lets you change what happens when files of a certain file extension are required. For <code>node-repl</code> we use this to rewrite the users program before it gets executed.</p>
+<p>The following code is from <a href="https://github.com/maxogden/node-repl/blob/master/bin.js">https://github.com/maxogden/node-repl/blob/master/bin.js</a></p>
+<pre><code class="lang-js">var original = require.extensions[&#39;.js&#39;]
+require.extensions[&#39;.js&#39;] = function(module, filename) {
+  if (filename !== file) return original(module, filename)
+  var content = fs.readFileSync(filename).toString()
+  module._compile(stripBOM(content + replCode), filename)
+}
+
+require(file)
+</code></pre>
+<p>First we store the original <code>.js</code> require function, so that we can call it for files other than our program. Then we define our own custom <code>require.extension</code> that emulates what the default <code>.js</code> require code does, but does <code>content + replCode</code> first, which &#39;injects&#39; our repl into the users program code. We reverse engineered the default <code>.js</code> functionality by looking at the output of <code>console.log(require.extensions[&#39;.js&#39;])</code>.</p>
+<p>Finally, we <code>require(file)</code> which triggers the extension we just defined with the users program. This was confusing to me at first because the users program may not have <code>module.exports</code> in it, and it seemed unintuitive to me to <code>require</code> something when I really just wanted to execute it, but this is in fact a valid way to simply run code. <code>module.exports</code> defaults to an empty object (<code>{}</code>), meaning you can simply use <code>require</code> to run a JS program in it&#39;s own scope.</p>
+<h3 id="patching-in-eval-">Patching in <code>eval</code></h3>
+<p>The node repl <a href="https://iojs.org/api/repl.html#repl_repl_start_options">supports passing in a custom <code>eval</code> function</a>, which is how we are able to swap out it&#39;s default eval with the eval from the program scope.</p>
+<p>After being wrapped by <code>require</code> and having our repl injected the code looks like this:</p>
+<pre><code class="lang-js">(function (exports, require, module, __filename, __dirname) {
+  var pizza = 1
+  ;(function() {
+    var repl = require(&#39;repl&#39;)
+    var os = require(&#39;os&#39;)
+    var empty = &#39;(&#39; + os.EOL + &#39;)&#39;
+    repl.start({
+      input: process.stdin,
+      output: process.stdout,
+      eval: function(cmd, context, filename, callback) {
+        if (cmd === empty) return callback()
+        var result = eval(cmd)
+        callback(null, result)
+      }
+    })
+  })();
+});
+</code></pre>
+<p>The trick here is that <code>eval</code> above is the eval from the same scope as what the program is running in, which gives it access to local variables like <code>pizza</code>.</p>
+<p>Happy hacking!</p>
 </div>
     </div>
   </div>  

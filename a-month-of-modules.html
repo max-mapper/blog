@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -107,7 +107,7 @@
 </a>
 
 <a class="load-document" href="a-month-of-modules.html">
-  <div class="document" id="a-month-of-modules">
+  <div class="document active" id="a-month-of-modules">
     <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
     <div class="title">A Month of Modules</div>
     <div class="teaser">Modules Mafintosh and I wrote this month</div>
@@ -226,33 +226,79 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">A Month of Modules</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
+<p>Modules mafintosh and I wrote this month</p>
+<p>I work on a distributed team with two other developers. The three of us are in three different cities. This month <a href="http://github.com/mafintosh/">mafintosh</a> came out and stayed in my guest room for the month. I wanted to take the time to document what we wrote during his trip to give a little insight into what is it like to work in an &quot;open source first&quot; way.</p>
+<p>Most of these were written for use cases involving our day job, <a href="http://dat-data.com/">dat</a>. Some, such as the Playback video player, were written for fun.</p>
+<h3 id="-airpaste-https-npmjs-org-airpaste-"><a href="https://npmjs.org/airpaste">airpaste</a></h3>
+<p>Run <code>airpaste</code> on two computers that are on the same network and airpaste opens a two way binary pipe. Uses mdns (aka Bonjour) to connect peers.</p>
+<h3 id="-axis-camera-https-npmjs-org-axis-camera-"><a href="https://npmjs.org/axis-camera">axis-camera</a></h3>
+<p>A module to control a webcam in my backyard from node. The webcam points at <a href="https://twitter.com/maxogden/status/587743809947086849">some catnip in my yard</a> and motion detects cats.</p>
+<h3 id="-ble-stream-https-npmjs-org-ble-stream-"><a href="https://npmjs.org/ble-stream">ble-stream</a></h3>
+<p>Implements a duplex stream interface on top of Bluetooth Low Energy</p>
+<h3 id="-ble-swarm-https-npmjs-org-ble-swarm-"><a href="https://npmjs.org/ble-swarm">ble-swarm</a></h3>
+<p>Implements a swarm API (mesh networking) using ble-stream</p>
+<h3 id="-blecat-https-npmjs-org-blecat-"><a href="https://npmjs.org/blecat">blecat</a></h3>
+<p>Works like <code>airpaste</code> except uses bluetooth</p>
+<h3 id="-electron-packager-https-npmjs-org-electron-packager-"><a href="https://npmjs.org/electron-packager">electron-packager</a></h3>
+<p>Creates a mac <code>.app</code> from your Electron source code</p>
+<h3 id="-electron-prebuilt-https-npmjs-org-electron-prebuilt-"><a href="https://npmjs.org/electron-prebuilt">electron-prebuilt</a></h3>
+<p>Lets you do <code>npm install electron-prebuilt -g</code> to get <code>electron</code> in your PATH.</p>
+<h3 id="-electron-spawn-https-npmjs-org-electron-spawn-"><a href="https://npmjs.org/electron-spawn">electron-spawn</a></h3>
+<p>Run <code>electron-spawn foo.js</code> to run <code>foo.js</code> inside a headless Electron window</p>
+<h3 id="-idlecast-https-npmjs-org-idlecast-"><a href="https://npmjs.org/idlecast">idlecast</a></h3>
+<p>Play videos on your chromecast when nothing else is playing. I use it to play the captured cat videos from the catnip cam.</p>
+<h3 id="-mon-prebuilt-https-npmjs-org-mon-prebuilt-"><a href="https://npmjs.org/mon-prebuilt">mon-prebuilt</a></h3>
+<p>Lets you <code>npm install mon-prebuilt -g</code> to get the <code>mon</code> C process monitor in your PATH</p>
+<h3 id="-multicast-dns-service-types-https-npmjs-org-multicast-dns-service-types-"><a href="https://npmjs.org/multicast-dns-service-types">multicast-dns-service-types</a></h3>
+<p>A low level module for parsing MDNS data. Factored out, like many of these, because Unix philosophy!</p>
+<h3 id="-multileveldown-https-npmjs-org-multileveldown-"><a href="https://npmjs.org/multileveldown">multileveldown</a></h3>
+<p>Lets us access a single LevelDB from multiple processes in a failsafe way</p>
+<h3 id="-pbs-https-npmjs-org-pbs-"><a href="https://npmjs.org/pbs">pbs</a></h3>
+<p>Protocol Buffer Streaming. A standard way to serialize protobuf data. We use protobufs for almost all data interchange now. We are getting friends to implement pbs in Golang and C++.</p>
+<h3 id="-pick-random-stream-https-npmjs-org-pick-random-stream-"><a href="https://npmjs.org/pick-random-stream">pick-random-stream</a></h3>
+<p>Tiny utility stream that lets you pick a random item from a stream.</p>
+<h3 id="-playback-https-github-com-mafintosh-playback-"><a href="https://github.com/mafintosh/playback">playback</a></h3>
+<p>Desktop video player written in JS that supports torrent streaming, chromecast and youtube.</p>
+<h3 id="-playback-chrome-https-github-com-maxogden-playback-chrome-"><a href="https://github.com/maxogden/playback-chrome">playback-chrome</a></h3>
+<p>Chrome extension to that adds a &#39;open in Playback&#39; button to YouTube videos.</p>
+<h3 id="-random-iterate-https-npmjs-org-random-iterate-"><a href="https://npmjs.org/random-iterate">random-iterate</a></h3>
+<p>Tiny array module that can iterate an array in random order</p>
+<h3 id="-require-times-https-npmjs-org-require-times-"><a href="https://npmjs.org/require-times">require-times</a></h3>
+<p>Tells you how long <code>require()</code> calls take in your program</p>
+<h3 id="-signalhub-https-npmjs-org-signalhub-"><a href="https://npmjs.org/signalhub">signalhub</a></h3>
+<p>A stateless pub/sub server with &#39;channels&#39; that we use to introduce peers in p2p apps like <a href="https://moose-team.github.io/friends">Friends</a>.</p>
+<h3 id="-sorted-diff-stream-https-npmjs-org-sorted-diff-stream-"><a href="https://npmjs.org/sorted-diff-stream">sorted-diff-stream</a></h3>
+<p>Used by dat to compute diffs between two branches, used when merging forked data</p>
+<h3 id="-sorted-union-stream-https-npmjs-org-sorted-union-stream-"><a href="https://npmjs.org/sorted-union-stream">sorted-union-stream</a></h3>
+<p>Join two sorted streams based on a key</p>
+<h3 id="-stream-iterate-https-npmjs-org-stream-iterate-"><a href="https://npmjs.org/stream-iterate">stream-iterate</a></h3>
+<p>A simple stream module to go through items in stream one at a time. We factored this out of our <code>sorted-*-stream</code> modules above.</p>
+<h3 id="-subcommand-https-npmjs-org-subcommand-"><a href="https://npmjs.org/subcommand">subcommand</a></h3>
+<p>CLI routing tool that we use in dat to route subcommands like <code>dat cat</code> or <code>dat add</code>.</p>
+<h3 id="-taco-https-npmjs-org-taco-"><a href="https://npmjs.org/taco">taco</a></h3>
+<p>We rewrote our deploy tools, and produced a series of small modules that can compose together into deploy pipelines. We&#39;re calling the system <code>taco</code></p>
+<h3 id="-taco-build-https-npmjs-org-taco-build-"><a href="https://npmjs.org/taco-build">taco-build</a></h3>
+<p>Runs a command inside a taco tarball (e.g. <code>npm install --production</code>)</p>
+<h3 id="-taco-git-push-deploy-https-npmjs-org-taco-git-push-deploy-"><a href="https://npmjs.org/taco-git-push-deploy">taco-git-push-deploy</a></h3>
+<p>Lets you <code>git push</code> deploy with taco</p>
+<h3 id="-taco-mon-https-npmjs-org-taco-mon-"><a href="https://npmjs.org/taco-mon">taco-mon</a></h3>
+<p>Deploys apps using the <code>mon</code> C process monitor</p>
+<h3 id="-taco-nginx-https-npmjs-org-taco-nginx-"><a href="https://npmjs.org/taco-nginx">taco-nginx</a></h3>
+<p>Auto configures Nginx to route traffic to your process</p>
+<h3 id="-taco-pack-https-npmjs-org-taco-pack-"><a href="https://npmjs.org/taco-pack">taco-pack</a></h3>
+<p>Creates a tarball from your app source code</p>
+<h3 id="-tape-spawn-https-npmjs-org-tape-spawn-"><a href="https://npmjs.org/tape-spawn">tape-spawn</a></h3>
+<p>Testing module to make testing spawned processes easier</p>
+<h3 id="-transport-stream-https-npmjs-org-transport-stream-"><a href="https://npmjs.org/transport-stream">transport-stream</a></h3>
+<p>Abstract module to support different transports (used in dat), e.g. <code>tcp://</code>, <code>ssh://</code>, <code>https://</code></p>
+<h3 id="-utp-native-https-npmjs-org-utp-native-"><a href="https://npmjs.org/utp-native">utp-native</a></h3>
+<p>An experimental C implementation of the utp (micro-tp) protocol from Bittorrent.</p>
+<h3 id="-webcat-https-npmjs-org-webcat-"><a href="https://npmjs.org/webcat">webcat</a></h3>
+<p>Like airpaste or blecat but over webrtc. Uses github usernames for auth/discovery. Opens a duplex stream to someone over webrtc.</p>
+<h3 id="-webrtc-swarm-https-npmjs-org-webrtc-swarm-"><a href="https://npmjs.org/webrtc-swarm">webrtc-swarm</a></h3>
+<p>A connection swarm API for webrtc. Manages a pool of webrtc connections. Used in Friends.</p>
 </div>
     </div>
   </div>  

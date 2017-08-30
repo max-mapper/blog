@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -67,7 +67,7 @@
 </a>
 
 <a class="load-document" href="iotjs-and-jerryscript.html">
-  <div class="document" id="iotjs-and-jerryscript">
+  <div class="document active" id="iotjs-and-jerryscript">
     <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
     <div class="title">What's the deal with iot.js and JerryScript</div>
     <div class="teaser">Node.js will soon be running on tiny low power chips</div>
@@ -226,33 +226,27 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">What&#39;s the deal with iot.js and JerryScript</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
+<p>Node.js will soon be running on tiny low power chips.</p>
+<p><a href="http://samsung.github.io/iotjs/">iot.js</a> is a Node.js compatible runtime being written by Samsung. The project is still in active development, is open source and Apache Licensed. It hasn&#39;t yet had a stable release but has been in development for over a year. It is built on a new JavaScript VM called <a href="http://samsung.github.io/jerryscript/">JerryScript</a> (named after <a href="https://en.wikipedia.org/wiki/Jerry_Mouse">Jerry Mouse</a>) that they are also working on. Node.js is built on V8, and iot.js is built on JerryScript. The major goal of iot.js is to run Node code on low power devices.</p>
+<p>JerryScript doesn&#39;t have a logo yet, so I made one:</p>
+<p><a href="media/jerryscript-large.png"><img src="media/jerryscript.png" alt="jerryscript"></a></p>
+<p>The current hardware requirements for iot.js are around 350KB ROM and 100KB RAM. This is a huge difference compared with V8, the VM that Node.js is built on, which is notoriously memory hungry and doesn&#39;t run on devices with less than 64MB of RAM (the lowest power device I&#39;ve seen running it is the <a href="https://www.arduino.cc/en/Main/ArduinoBoardYun?from=Products.ArduinoYUN">Arduino Yun</a>).</p>
+<p>As you can <a href="https://github.com/Samsung/iotjs/wiki/IoT.js%20API%20Reference">see on their wiki</a> and the <a href="https://github.com/Samsung/iotjs/tree/master/src">current implementation</a>, iot.js is a Node.js compatible JS + C runtime that binds to JerryScript. </p>
+<p>The first two officially supported devices are the STM32F4-Discovery and the Raspberry Pi 2:</p>
+<p><a href="https://www.youtube.com/watch?v=hZXPa6szk3Q"><img src="media/STM32F4.png" alt="STM32F4"></a></p>
+<p><a href="https://www.flickr.com/photos/travelinlibrarian/16012874634/in/photolist-qp1aKq-cDBDks-gVeh8G-cteaUY-r4La4W-rp7cPE-g2nwfp-q3AdFU-rfmy16-uB73KM-c5JmRd-caokMG-dcFPis-eseAkY-rBAA2v-rinQFa-rkfjxi-dorXrE-c7JHuo-diztsQ-qeGZid-pZzc1H-pk154Y-pk14Ry-pZzbHP-pZrjR1-cDBYvJ-qDvwFe-daTWwG-omP1sP-rrJCaF-h4gEiw-qXTK4K-qKX8dV-qKVmAH-qKPr6N-r3nYtT-r3nYpV-r3dWga-q6zWGv-r3dVU8-q6nmh3-qKPrY9-qKPpoE-r15RSU-r3iasd-q6zXiF-q6zZmP-qKVjAF-r3dV1e"><img src="media/raspberry-pi-2.png" alt="raspi2"></a></p>
+<p>The exciting thing about this stuff is that it makes low power hardware more accessible to coders like me who know JS and can install modules from NPM but don&#39;t want to deal with C and compiled language tooling and debugging headaches.</p>
+<p>I&#39;ve done a number of projects with the Arduino which can&#39;t run Node but has great battery life, and the Raspberry Pi which can run Node but has poor battery life and requires Linux sysadmin skills to operate effectively. The Raspberry Pi (or any Linux machine) is totally overkill for a lot of the projects I&#39;m interested in doing (e.g. a computer that lives on my bicycle, or on that sits in my garden measuring soil moisture levels). Low power node.js seems like the sweet spot for me - I can leverage the Node + NPM ecosystem to deploy stuff to hardware that can potentially run for weeks on a single charge.</p>
+<p>In the future they will work on support for other devices (according to <a href="https://github.com/Samsung/iotjs/wiki/Getting-Started">their wiki</a>), including the Intel Edison and Samsungs recently announced Artik 1.</p>
+<p><a href="https://www.youtube.com/watch?v=CPXQ65QRV3k"><img src="media/intel-edison-size.png" alt="edison"></a></p>
+<p><a href="https://www.artik.io/"><img src="media/artik-1.png" alt="artik-1"></a></p>
+<p>Perhaps the closest thing to iot.js is Espruino, who both develop a custom JavaScript runtime as well as manufacture development boards like the <a href="http://www.espruino.com/Pico">Espruino Pico</a>. The major difference between iot.js and Espruino is that Espruino is not Node.js compatible. The Espruino boards use a family of chips (STM32F4) that iot.js supports, so it should be possible to run iot.js on Espruino hardware in the future.</p>
+<p>In addition to JerryScript and Espruino there is also <a href="http://duktape.org">Duktape</a> which is &quot;an embeddable Javascript engine, with a focus on portability and compact footprint&quot;. There is a project called <a href="https://github.com/creationix/dukluv">Duklove</a> that combines Duktape and LibUV, which in the future could form the basis of a Node.js compatible runtime build on top of Duktape.</p>
+<p>It would be interesting to get the authors of JerryScript, Espruino and Duklove to sit down and talk to each other.</p>
+<p>Another similar device is the <a href="http://www.esp8266.com/wiki/doku.php">ESP8266</a>, which is a low power microcontroller with an integrated WiFi networking stack. They are really cheap - you can get ESP8266 development boards for around $8 from Amazon or the raw chips in bulk for around $2 a piece. However, with only 64KB of RAM and ROM it is not quite beefy enough to run iot.js. The closest thing you can get is Lua through a project called <a href="https://github.com/nodemcu/nodemcu-firmware">NodeMCU</a> or the <a href="https://github.com/creationix/uscript/">μScript</a> project.</p>
+<p>I think a low power Node.js runtime is long overdue and am looking forward to the first stable iot.js release.</p>
 </div>
     </div>
   </div>  

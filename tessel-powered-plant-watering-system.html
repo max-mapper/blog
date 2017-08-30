@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -115,7 +115,7 @@
 </a>
 
 <a class="load-document" href="tessel-powered-plant-watering-system.html">
-  <div class="document" id="tessel-powered-plant-watering-system">
+  <div class="document active" id="tessel-powered-plant-watering-system">
     <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
     <div class="title">Tessel Powered Plant Watering System</div>
     <div class="teaser">Make an HTTP accessible water pump</div>
@@ -226,33 +226,63 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">Tessel Powered Plant Watering System</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
+<p>Make a water pump that can be turned on and off over HTTP using only JavaScript.</p>
+<p><strong>Warning</strong> Do not try this at home without the help of an electronics expert. Solid state relays switch high voltage and can cause bodily harm if used improperly.</p>
+<p>I have been looking for a way to do hobby electronics projects using JavaScript running on microcontrollers. You can control an Arduino remotely from a laptop over USB with libraries like <a href="https://www.npmjs.com/package/johnny-five">johnny-five</a>, but you can&#39;t keep your code running after you close your laptop since the Arduino can&#39;t run JavaScript.</p>
+<p>The <a href="https://tessel.io/">Tessel</a> is a microcontroller that runs Node code <strong>on the board</strong>. The team at Tessel wrote a <a href="https://github.com/tessel/colony-compiler">JS to Lua compiler</a> and then they run Lua directly on the Tessel hardware. It&#39;s not the fastest thing in the world, but it opens up most of npm to run on a wi-fi enabled, USB powered microcontroller the size of an Arduino.</p>
+<p>For this project I used four components. It takes about an hour to put together:</p>
 <ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
+<li><a href="https://shop.tessel.io/">Tessel Microcontroller</a></li>
+<li><a href="http://www.amazon.com/DC-AC-Solid-State-Relay-Heatsink/dp/B005K2IXHU/ref=sr_1_4?ie=UTF8&qid=1424888528&sr=8-4&keywords=Lightobject">Fotek SSR-25DA Solid State Relay</a></li>
+<li><a href="http://www.amazon.com/AquaTop-NP-80-Aquatop-Aquarium-Submersible/dp/B00798FYR0">AquaTop NP-80 Submersible Pump</a></li>
+<li><a href="http://www.amazon.com/Lutron-TT-300NLH-WH-Credenza-Dimmer-White/dp/B0000DI241/ref=sr_1_1?ie=UTF8&qid=1424888624&sr=8-1&keywords=dimmer+light">Lutron TT-300NLH-WH Lamp Dimmer</a></li>
 </ul>
+<p>I would also recommend using a junction box/electronics enclosure for housing the SSR along the lines of <a href="http://www.amazon.com/Estone%C2%AE-85x58x33mm-Waterproof-Electronic-Enclosure/dp/B00M1HL2UM/ref=sr_1_2?s=hi&amp;ie=UTF8&amp;qid=1424891818&amp;sr=1-2&amp;keywords=estone+box#productDetails">this one</a>.</p>
+<p>The key is the solid state relay. For background on how these works check out <a href="http://www.scienceprog.com/considering-solid-state-relays-ssr-for-your-projects/">this excellent article</a>, but the short version is that they let you use a small voltage (3.3V or 5V such as those available in &quot;digital out&quot; pins in microcontrollers) to turn on and off high voltage circuits such as 110V or 220V (wall outlets).</p>
+<p>Instead of using an SSR directly as I did you could also purchase a <a href="http://www.powerswitchtail.com/Pages/default.aspx">PowerSwitch Tail</a>, which is a pre-made, safely housed relay enclosure that comes to you already built.</p>
+<p><a href="media/tessel-components-large.png"><img src="media/tessel-components.png" alt="components"></a></p>
+<p>To build the &#39;circuit&#39;, I simply cut the dimmer slider portion off of the Lamp Dimmer, stripped the ends off of the wires, and connected them to the SSR instead. Where there used to be a dimmer slider the circuit there is now the SSR.</p>
+<p>The flow of electricity is roughly: Wall -&gt; Dimmer -&gt; SSR -&gt; Pump. The tessel is connected to the SSR and can turn it on and off at will.</p>
+<p><strong>Again, I can&#39;t stress enough that you should really not try this on your own unless you have someone who is experienced with Solid State Relays and 110V/220V electricity.</strong></p>
+<p>Here&#39;s a <a href="http://youtu.be/sgU3McOF-l8">video of the system in action</a>:</p>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/sgU3McOF-l8?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<p>The tessel is running a small HTTP server written in Node that turns the G3 GPIO pin on or off. When it is on it outputs 3.3V to the SSR, which tells the SSR to turn on voltage, which turns on the pump.</p>
+<pre><code class="lang-js">var tessel = require(&#39;tessel&#39;)
+var http = require(&#39;http&#39;)
+
+var pin = tessel.port[&#39;GPIO&#39;].pin[&#39;G3&#39;]
+
+var server = http.createServer(function (req, res) {
+  console.log(req.url)
+  if (req.url === &#39;/on&#39;) return on(req, res)
+  if (req.url === &#39;/off&#39;) return off(req, res)
+  return res.end(&#39;&lt;a href=&quot;/on&quot;&gt;/on&lt;/a&gt; or &lt;a href=&quot;/off&quot;&gt;/off&lt;/a&gt;\n&#39;)
+})
+
+server.listen(80, function(err) {
+  if (err) console.log(&#39;error!&#39; + err)
+  console.log(&#39;http listening&#39;)
+})
+
+function on (req, res) {
+  console.log(&#39;turning on&#39;)
+  pin.write(1)
+  res.end(&#39;turned on\n&#39;)
+}
+
+function off (req, res) {
+  console.log(&#39;turning off&#39;)
+  pin.write(0)
+  res.end(&#39;turned off\n&#39;)
+}
+</code></pre>
+<p>Save the above code as a file called <code>server.js</code>, plug your Tessel over USB, and run <code>tessel push server.js</code> to upload the server onto your Tessel. You can run <code>tessel logs</code> to view the HTTP server logs while your tessel is connected over USB.</p>
+<p>Once you have the Tessel configured to join your home Wi-Fi (using the <code>tessel wifi</code> CLI command) it will then always automatically connect a few seconds after powering up, every time. You can put it anywhere in your house, power it over USB, and it will start up it&#39;s HTTP server and be accessible over your local network.</p>
+<p>You could definitely use other microcontrollers instead of the Tessel for this. I like the Tessel, however, because it is the simplest way to run Node code on hardware, and they also make add-on hardware modules that are easy to use. For example, you could use the Raspberry Pi for this project, but it would be more complicated as you would have to configure Linux. I just prefer to keep things easy!</p>
+<p>Happy hacking! Questions? Open an issue <a href="https://github.com/maxogden/blog/issues">in this repository</a></p>
 </div>
     </div>
   </div>  

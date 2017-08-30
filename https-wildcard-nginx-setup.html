@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -99,7 +99,7 @@
 </a>
 
 <a class="load-document" href="https-wildcard-nginx-setup.html">
-  <div class="document" id="https-wildcard-nginx-setup">
+  <div class="document active" id="https-wildcard-nginx-setup">
     <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
     <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
     <div class="teaser">How I set up HTTPS with Nginx</div>
@@ -226,33 +226,93 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><div id="header"><h1 class="title">Setting up HTTPS with a wildcard certificate and Nginx</h1></div>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
-
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
+<p>How I set up HTTPS with Nginx, April 2015</p>
+<p>I finally got a wildcard certificate for my new domain <code>publicbits.org</code>. This means I can use one cert for e.g. <code>https://foo.publicbits.org</code> or <code>https://bar.publicbits.org</code> but also <code>https://publicbits.org</code> or <code>https://www.publicbits.org</code>.</p>
+<p>At the recommendation of my friend <a href="https://konklone.com/">Eric Mill</a> I decided to try out <a href="https://sslmate.com/">SSLMate</a>. Wildcard certs aren&#39;t cheap. From SSLMate it costs $149 USD. However, it was super easy compared to every other SSL purchasing experience I&#39;ve ever dealt with.</p>
+<p>It should take about 20 minutes to do all the things in this blog post.</p>
+<p>I have high hopes for <a href="https://letsencrypt.org">Let&#39;s Encrypt</a>, which will essentially make this process cost $0 instead of $149, but until then this is the easiest way to do it that I&#39;ve seen.</p>
+<p>Note: my domain <code>maxogden.com</code> is hosted on GitHub Pages and they don&#39;t yet support HTTPS with custom domains. Email GitHub support and request this feature if it is important to you!</p>
+<h2 id="installing-sslmate-and-buying-the-cert">Installing SSLMate and buying the cert</h2>
+<p>First I <a href="https://sslmate.com/signup">signed up at SSLMate</a>. I picked a username and password and entered my payment info.</p>
+<p>Then they have you install their <code>sslmate</code> CLI utility.</p>
+<pre><code class="lang-sh">sudo wget -P /etc/apt/sources.list.d https://sslmate.com/apt/ubuntu1404/sslmate.list
+sudo wget -P /etc/apt/trusted.gpg.d https://sslmate.com/apt/ubuntu1404/sslmate.gpg
+sudo apt-get update
+sudo apt-get install sslmate
 </code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
+<p>Then you can buy a wildcard cert from the CLI:</p>
+<pre><code class="lang-sh">sslmate buy *.publicbits.org
+</code></pre>
+<p>Then they ask you some questions, verify the order, purchase the cert and then send you an email. The email has instructions for verifying your ownership of the domain on a Comodo site. Turns out SSLMate is basically a user friendly front end to Comodo&#39;s positiveSSL service. I really appreciate how easy they make the process, and hope more SSL providers will follow suit!</p>
+<p>Then I did <code>mkdir keys</code> and <code>cd keys</code>. I was now in <code>/home/max/keys</code>.</p>
+<p>Next was <code>sslmate download --all</code>. Now a bunch of files appeared in my <code>keys</code> folder.</p>
+<p>The ones I&#39;m using are <code>*.publicbits.org.key</code> and <code>*.publicbits.org.chained.crt</code>.</p>
+<h2 id="installing-and-configuring-nginx">Installing and configuring Nginx</h2>
+<p>Then I installed the latest Nginx. I have a utility I wrote last year called <a href="https://github.com/maxogden/install-nginx-on-ubuntu">install-nginx-on-ubuntu</a> that I used. It basically does this:</p>
+<pre><code class="lang-sh">sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:nginx/stable
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo initctl start nginx
+</code></pre>
+<p>Then after lots of twiddling around with configs I ended up creating this &#39;default&#39; config and wrote it to <code>/etc/nginx/conf.d/ssl.conf</code>. It redirects all <code>http://</code> traffic to <code>https://</code>.</p>
+<pre><code># redirect http -&gt; https
+server {
+  listen 80;
+  server_name *.publicbits.org;
+  return 301 https://$host$request_uri;
+}  
+
+# default config (server_name _; makes this &#39;base&#39; config)
+server {
+  listen 443 default ssl;
+  server_name _;
+
+  ssl_certificate_key /home/max/keys/*.publicbits.org.key;
+  ssl_certificate /home/max/keys/*.publicbits.org.chained.crt;
+
+  # These this next block of settings came directly from the SSLMate recommend nginx configuration
+  # Recommended security settings from https://wiki.mozilla.org/Security/Server_Side_TLS
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;;
+  ssl_prefer_server_ciphers on;
+  ssl_session_timeout 5m;
+  ssl_session_cache shared:SSL:5m;
+  # Enable this if you want HSTS (recommended)
+  add_header Strict-Transport-Security max-age=15768000;
+
+  # from https://gist.github.com/konklone/6532544
+  # Generated by OpenSSL with the following command:
+  #   openssl dhparam -outform pem -out dhparam2048.pem 2048
+  ssl_dhparam /home/max/keys/dhparam2048.pem;
+}
+</code></pre><p>Make sure you run <code>openssl dhparam -outform pem -out dhparam2048.pem 2048</code> inside your <code>keys</code> folder (it will take a while).</p>
+<h2 id="deploying-processes">Deploying processes</h2>
+<p>Then I use <a href="https://www.npmjs.com/package/taco-nginx">taco-nginx</a> to deploy individual processes:</p>
+<pre><code>taco-nginx --name signalhub signalhub listen -m 10
+</code></pre><p><code>taco-nginx</code> takes care of generating a configuration for my app and then reloading nginx. For the above command the configuration file it generated is <code>/etc/nginx/conf.d/signalhub.conf</code> with the contents:</p>
+<pre><code># generated by taco-nginx
+upstream signalhub {
+  server 127.0.0.1:54082;
+}
+
+server {
+  listen 443;
+  server_name signalhub.*;
+  location / {
+    proxy_pass http://signalhub;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_buffering off;
+    proxy_request_buffering off;
+    proxy_http_version 1.1;
+  }
+}
+</code></pre><p>With this configuration I can deploy new apps with <code>taco-nginx</code> quickly without having to configure them for HTTPS, since Nginx can reverse proxy HTTPS -&gt; HTTP. </p>
+<p>My <a href="https://www.ssllabs.com/ssltest/analyze.html?d=signalhub.publicbits.org">score on SSLLabs</a> is an A:</p>
+<p><img src="media/ssllabs.png" alt="ssl labs"></p>
+<p>Thanks a ton to <a href="https://konklone.com">Eric Mill</a> for helping tweak my HTTPS settings and <a href="https://github.com/mafintosh">Mathias Buus</a> for helping with Nginx.</p>
 </div>
     </div>
   </div>  

@@ -1,0 +1,471 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="Max Ogden Blogotronz (RSS 2.0)" href="http://maxogden.com/rss.xml">
+  <title>Max Ogden Blogotronz</title> 
+  
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles/rainbow.github.css" media="screen" rel="stylesheet" type="text/css">
+
+  <!-- libraries --> 
+  <script src="script/jquery-1.6.1.min.js"></script>
+  <script src="script/underscore.js"></script>
+  <script src="script/d3.min.js"></script>
+  <script src="script/voronoi.min.js"></script>
+  <script src="script/rainbow.min.js"></script>
+  <script src="script/rainbow.generic.js"></script>
+  <script src="script/rainbow.javascript.js"></script>
+  <script src="script/rainbow.css.js"></script>
+  <script src="script/helpers.js"></script>
+  
+  <script src="script/application.js"></script>
+
+</head>
+<body> 
+  <div id="container">
+    <div class="header">
+      <div class="title"><a href="https://github.com/maxogden" rel="me">Max Ogden</a> | Open Web programmer</div>
+      <div class="subtitle"></div>
+      <!-- THANKS, MICHAEL BOSTOCK! YOU RULE -->
+      <div id="voronoi">
+      </div>
+      <div class="channel"></div>
+      <div id="navigation">
+        <div class="toggle home">
+          <div class="navitem">
+            <span rel="emojilock" style="letter-spacing: 3px;">📍🌍💩👼💊🍃🍷🍃🐊👅⛄️🎵🔋👊🐫🍁🐜🎂🐇🐣🐾👛📚👇🍟🐝🎲😭🎈🎊🙏🐜</span>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="index.html">blog</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="videos.html">media</a>
+          </div>
+        </div>
+        <div class="toggle home">
+          <div class="navitem">
+            <a href="contact.html">contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="browser">
+        <div id="documents"><a class="load-document" href="node-distributed-systems.html">
+  <div class="document" id="node-distributed-systems">
+    <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
+    <div class="title">Getting Started With Node For Distributed Systems</div>
+    <div class="teaser">Where to get started with streams and peer to peer</div>
+  </div>
+</a>
+
+<a class="load-document" href="iotjs-and-jerryscript.html">
+  <div class="document" id="iotjs-and-jerryscript">
+    <div class="published" data-published="2015-07-24T06:32:56.584Z">July 2015</div>
+    <div class="title">What's the deal with iot.js and JerryScript</div>
+    <div class="teaser">Node.js will soon be running on tiny low power chips</div>
+  </div>
+</a>
+
+<a class="load-document" href="electron-fundamentals.html">
+  <div class="document" id="electron-fundamentals">
+    <div class="published" data-published="2015-07-23T06:32:56.584Z">July 2015</div>
+    <div class="title">Electron Fundamentals</div>
+    <div class="teaser">A quick intro to Electron, a desktop application runtime</div>
+  </div>
+</a>
+
+<a class="load-document" href="hd-live-streaming-cats.html">
+  <div class="document" id="hd-live-streaming-cats">
+    <div class="published" data-published="2015-05-26T06:32:56.584Z">May 2015</div>
+    <div class="title">HD Live Streaming Cats to YouTube with the Raspberry Pi Camera</div>
+    <div class="teaser">A how to guide</div>
+  </div>
+</a>
+
+<a class="load-document" href="interdisciplinary-open-source-events.html">
+  <div class="document" id="interdisciplinary-open-source-events">
+    <div class="published" data-published="2015-05-10T06:32:56.584Z">May 2015</div>
+    <div class="title">Interdisciplinary Open Source Community Conferences</div>
+    <div class="teaser">A list of community organized events</div>
+  </div>
+</a>
+
+<a class="load-document" href="https-wildcard-nginx-setup.html">
+  <div class="document" id="https-wildcard-nginx-setup">
+    <div class="published" data-published="2015-04-30T06:32:56.584Z">April 2015</div>
+    <div class="title">Setting up HTTPS with a wildcard certificate and Nginx</div>
+    <div class="teaser">How I set up HTTPS with Nginx</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-month-of-modules.html">
+  <div class="document" id="a-month-of-modules">
+    <div class="published" data-published="2015-04-30T03:32:56.584Z">April 2015</div>
+    <div class="title">A Month of Modules</div>
+    <div class="teaser">Modules Mafintosh and I wrote this month</div>
+  </div>
+</a>
+
+<a class="load-document" href="tessel-powered-plant-watering-system.html">
+  <div class="document" id="tessel-powered-plant-watering-system">
+    <div class="published" data-published="2015-02-25T03:32:56.584Z">February 2015</div>
+    <div class="title">Tessel Powered Plant Watering System</div>
+    <div class="teaser">Make an HTTP accessible water pump</div>
+  </div>
+</a>
+
+<a class="load-document" href="portland-fiber.html">
+  <div class="document" id="portland-fiber">
+    <div class="published" data-published="2015-02-01T03:32:56.584Z">January 2015</div>
+    <div class="title">Portland Fiber Internet</div>
+    <div class="teaser">Review of 1Gb fiber from CenturyLink</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-repl.html">
+  <div class="document" id="node-repl">
+    <div class="published" data-published="2015-01-24T23:04:02.791Z">January 2015</div>
+    <div class="title">node-repl</div>
+    <div class="teaser">An interactive console for node</div>
+  </div>
+</a>
+
+<a class="load-document" href="nested-dependencies.html">
+  <div class="document" id="nested-dependencies">
+    <div class="published" data-published="2015-01-13T22:24:35.821Z">January 2015</div>
+    <div class="title">Nested Dependencies</div>
+    <div class="teaser">Insight into why node_modules works the way it does</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-packaged-modules.html">
+  <div class="document" id="node-packaged-modules">
+    <div class="published" data-published="2013-07-08T20:48:11.493Z">July 2013</div>
+    <div class="title">Node Packaged Modules</div>
+    <div class="teaser">Bringing NPM modules to the web</div>
+  </div>
+</a>
+
+<a class="load-document" href="kindleberry-wireless.html">
+  <div class="document" id="kindleberry-wireless">
+    <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
+    <div class="title">Kindleberry Wireless</div>
+    <div class="teaser">A Portable Outdoor Hackstation</div>
+  </div>
+</a>
+
+<a class="load-document" href="bringing-minecraft-style-games-to-the-open-web.html">
+  <div class="document" id="bringing-minecraft-style-games-to-the-open-web">
+    <div class="published" data-published="2013-01-25T20:48:11.493Z">January 2013</div>
+    <div class="title">Bringing Minecraft-style games to the Open Web</div>
+    <div class="teaser">A status report from the one month old voxel.js project</div>
+  </div>
+</a>
+
+<a class="load-document" href="a-proposal-for-streaming-xhr.html">
+  <div class="document" id="a-proposal-for-streaming-xhr">
+    <div class="published" data-published="2012-11-20T20:48:11.493Z">November 2012</div>
+    <div class="title">A Proposal For Streaming XHR</div>
+    <div class="teaser">XHR2 isn't stream friendly. Lets explore why and propose a solution!</div>
+  </div>
+</a>
+
+<a class="load-document" href="scraping-with-node.html">
+  <div class="document" id="scraping-with-node">
+    <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
+    <div class="title">Scraping With Node</div>
+    <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
+  </div>
+</a>
+
+<a class="load-document" href="building-webview-applications.html">
+  <div class="document" id="building-webview-applications">
+    <div class="published" data-published="2012-10-15T20:48:11.493Z">October 2012</div>
+    <div class="title">Building WebView Applications</div>
+    <div class="teaser">Things I learned while building @gather</div>
+  </div>
+</a>
+
+<a class="load-document" href="fast-webview-applications.html">
+  <div class="document" id="fast-webview-applications">
+    <div class="published" data-published="2012-05-31T20:48:11.493Z">May 2012</div>
+    <div class="title">Fast WebView Applications</div>
+    <div class="teaser">How to make web apps feel fast and responsive</div>
+  </div>
+</a>
+
+<a class="load-document" href="node-streams.html">
+  <div class="document active" id="node-streams">
+    <div class="published" data-published="2012-04-17T23:52:20.241Z">April 2012</div>
+    <div class="title">Node Streams: How do they work?</div>
+    <div class="teaser">Description of and notes on the node.js Stream API</div>
+  </div>
+</a>
+
+<a class="load-document" href="gut-hosted-open-data-filets.html">
+  <div class="document" id="gut-hosted-open-data-filets">
+    <div class="published" data-published="2011-12-02T20:36:31.424Z">December 2011</div>
+    <div class="title">Gut: Hosted Open Data Filet Knives</div>
+    <div class="teaser">HTTP Unix pipes for Open Data</div>
+  </div>
+</a>
+
+<a class="load-document" href="little-coders.html">
+  <div class="document" id="little-coders">
+    <div class="published" data-published="2011-07-17T02:56:48.555Z">July 2011</div>
+    <div class="title">Little Coders</div>
+    <div class="teaser">Elementary school programming</div>
+  </div>
+</a></div>
+      </div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Max Ogden">
+    <title>Node Streams: How do they work?</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+<h1 class="title">Node Streams: How do they work?</h1>
+
+      
+<h2 class="author">Max Ogden</h2>
+
+    </div>
+    <p>Description of and notes on the node.js Stream API</p>
+    <center>
+      <p>There is also <a href="http://www.youtube.com/watch?feature=player_embedded&v=tnXz4HigcoI#!">a screencast</a> version
+        of this article.</p>
+    </center>
+    
+    <h1 id="what-are-streams"><bold>UPDATE:</bold> new information about Node >= 0.10</h1>
+        <p>
+          Since writing this blog post (back in the Node 0.6 days) there have been major changes made to the Node Stream API. In Node 0.10 a new version of Streams called Streams2 were released. Here is a summary of using Streams2.
+        </p>
+        <p>
+         <h2>
+          <a name="user-content-how-to-destroyend-streams-in-node--010" class="anchor" href="#how-to-destroyend-streams-in-node--010" rel="noreferrer"><span class="octicon octicon-link"></span></a>how to destroy/end streams in node &gt;= 0.10</h2>
+
+            <ul class="task-list">
+              <li>usually you call <code>.destroy()</code> if it has <code>.destroy</code>
+
+              </li>
+              <li>if it doesnt have <code>.destroy</code> you are out of luck and the stream
+                should upgrade to use e.g. newer <code>through2</code>
+
+              </li>
+              <li>in request you call <code>.abort()</code> (this should get fixed to use <code>.destroy()</code>)</li>
+            </ul>
+  
+          <h3>
+          <a name="user-content-what-about-close-end" class="anchor" href="#what-about-close-end" rel="noreferrer"><span class="octicon octicon-link"></span></a>what about close, end</h3>
+
+            <ul class="task-list">
+              <li>usually no <code>.close</code> method exists except in FD backed streams
+                (usually only <code>fs</code>). usually you would never call <code>.close()</code>
+
+              </li>
+              <li>
+          <code>.end()</code> tries to end the stream gracefully</li>
+            </ul>
+  
+          <h3>
+          <a name="user-content-what-about-events" class="anchor" href="#what-about-events" rel="noreferrer"><span class="octicon octicon-link"></span></a>what about events</h3>
+
+          <ul class="task-list">
+              <li>
+          <code>finish</code> event is emitted when a stream ends nicely (e.g. <code>stream.end()</code>)</li>
+              <li>
+          <code>close</code> and <code>error</code> events are emitted when a stream
+                ends due to failure (e.g. <code>stream.destroy()</code>)</li>
+              <li>
+          <code>end</code> is emitted when a readable stream has no more data</li>
+              <li>
+          <code>end</code> in streams2 behaves more like a flush event, it only gets
+                emitted when the data has been read from the readable</li>
+            </ul>
+        </p>
+    
+<h1 id="why-streams">Why Streams?</h1>
+
+    <p>node bills itself as <em>JavaScript evented I/O</em>. In a nutshell that
+      means if you are trying to solve a problem that is <em>I/O bound</em> (the
+      limiting factor is reading/writing to relatively slow interfaces) then
+      node can provide some useful abstractions to you. An example is if you
+      are writing an application that has to talk to multiple databases, a caching
+      layer, a load balancer, external web services, mobile clients, third party
+      auth providers and serve web applications then node acts as a nice glue
+      between all of the things.</p>
+    <p><em>&quot;Streams in node are one of the rare occasions when doing something the fast way is actually easier. SO USE THEM. not since bash has streaming been introduced into a high level language as nicely as it is in node.&quot;</em>
+    </p>
+    <p><em>-</em><a href="http://twitter.com/dominictarr">@dominictarr</a> in
+      his <a href="https://gist.github.com/2401787">high level node style guide</a>
+    </p>
+    
+<h1 id="what-are-streams">What are Streams?</h1>
+
+    <p>The main tool in node's evented toolbox is the <a href="http://nodejs.org/api/stream.html">Stream</a>.
+      Stream instances are basically Unix pipes. They can be readable, writable
+      or both and are easy to reason about -- you can pipe a readable stream
+      to a writable stream by doing <code data-language="javascript">readableStream.pipe(writableStream)</code>.</p>
+    <h2 id="readable">Readable</h2>
+      <p>Readable streams will emit <code>data</code> events each time they get a
+        &quot;chunk&quot; of data and then they will emit <code>end</code> when they
+        are all finished. emit (from <a href="http://nodejs.org/api/events.html">EventEmitter</a>)
+        is the observer pattern - a publish/subscribe pattern which allows a number
+        of observer objects to see an event. Different types of streams will have
+        different ways of chunking up their data. For example, a library that reads
+        CSVs might emit <code>data</code> every time it reads a new line whereas
+        an HTTP request might emit <code>data</code> every few kilobytes during the
+        download.</p>
+      <p>Readable streams can also be paused and resumed, and it's up to the Stream
+        implementer to write the <code>pause()</code> and <code>resume()</code> methods.
+        Pause is intended to be an advisory API meaning when you call it you are
+        telling the stream to stop emitting <code>data</code> events but you may
+        still receive some <code>data</code> events after you call pause because
+        certain things may already <em>in-flight</em>, or between states at the
+        moment you called pause.</p>
+      
+<h2 id="writable">Writable</h2>
+
+      <p>Writable streams must implement two functions: <code>write</code> and <code>end</code>.
+        When you write data to a writable stream it will return either <code>true</code> or <code>false</code>. <code>true</code> means <em>cool, keep sending more data with write</em> and <code>false</code> means <em>Uh-oh I am backed up -- don't write any more data until I emit drain</em>.</p>
+      <p>This is a form of <em>back pressure</em> which is a very powerful feature
+        as it lets stream communicate &quot;upstream&quot; to their writers. Most
+        of the back pressure related APIs are advisory so there is sort of a gentlemens
+        agreement to honor requests to start or stop writing as timely as possible.
+        However, since they are advisory it means a writable stream may still receive <code>write</code> calls
+        after it returns <code>false</code>.</p>
+      
+<h1 id="streams-on-the-client">Streams on the client</h1>
+
+      <p>After working with node for a while I came to love the Stream API (
+        <a href="https://gist.github.com/2401787">and I'm not the only one</a>) but sorely missed it when I had to deal
+          with the variety of I/O bound APIs in the client side realm. Some examples
+          of these are XHR, WebSockets, IndexedDB, WebWorkers, WebRTC, and DOM Events
+          (mouse, touch, etc). Wouldn't it be great if you could use the same node
+          style Stream semantics to interface with all of these things? Unfortunately
+          it seems that standards bodies have instead implemented their own (usually
+          inconsistent or poorly done) streaming semantics for the client.</p>
+      <p>I thought it would be useful to write something like <code data-language="javascript">fingerSwipe.pipe(webSocket)</code> (pseudo-code
+        for detecting swipe <code>touch</code> events and streaming them to the server
+        as they happen over a WebSocket connection) so I started a project called
+        <a href="https://github.com/maxogden/domnode/">domnode</a>which intends to wrap common I/O bound APIs in node style streams
+          so that you can render them into the DOM easily.</p>
+      <p>There is a magical project by <a href="http://twitter.com/substack">@substack</a> called
+        <a href="http://github.com/substack/node-browserify">browserify</a>that makes domnode possible. It lets you write code in client
+          side JS that looks like node code:</p>
+<pre><code data-language="javascript">var stream = require(&#39;stream&#39;)
+var util = require(&#39;util&#39;)
+   
+function XHRStream(xhr) {
+  stream.Stream.call(this)
+  xhr.onreadystatechange = function () { me.handle() }
+  xhr.send(null)
+}
+
+util.inherits(XHRStream, stream.Stream)</code></pre>
+
+      <p>The best part about browserify is that it avoids reinventing the wheel/not
+        invented here by letting you use the pure JavaScript parts of node or thousands
+        of third party modules while maintaining node's simplified require API.
+        Since browserify uses node's source code verbatim you get to use the
+        <a href="http://nodejs.org/api/">node documentation</a>as well as the multitude of related information
+          floating around on the internets to look up how these things work.</p>
+      <p><a href="http://twitter.com/dominictarr">@dominictarr</a> contributed a
+        Stream wrapper for Socket.io called <a href="https://github.com/dominictarr/browser-stream">browser-stream</a> that
+        nicely integrates with domnode so you can emit things from node and rest
+        assured that they will make their way into your web app.</p>
+      
+<h1 id="streams.next">Streams.next</h1>
+
+      <p>As wonderful as streams are today, they can definitely use some improvements.
+        <a href="http://twitter.com/izs">@izs</a>tells me node v0.9 is going to feature a major Stream overhaul
+          to make the API even more unified. When node started it created a few domain
+          specific evented I/O abstractions for things like the filesystem or TCP
+          and then later, around 0.4, it consolidated them into the Stream API we
+          have today, but there are still some vestigial phantoms lurking around.</p>
+      <p>One of the major blemishes is the collection of methods used end a stream. <code>destroy()</code> initiates
+        a forceful end to a stream, whereas <code>destroySoon()</code> and <code>end()</code> both
+        wait for the current data to finish buffering. <code>end()</code> and <code>destroySoon()</code> came
+        from different parts of node originally but after being consolidated into
+        Streams they have some overlap and can probably be redesigned.</p>
+      <p>There is also some confusion between the <code>close</code> and <code>end</code> events. <code>end</code> means <em>no more data will be emitted but if this stream is also writable it should stay open for more writes if they need to happen</em> and <code>close</code> means <em>whatever this thing was tied to, it's done now. you may dispose of it, it's gone</em>.
+        Close comes from the <code>fs.close()</code> method and end is tied to the <code>end()</code> function
+        on Streams and as you can see these can probably be refactored.</p>
+      <p>Another possibility is that streams will get automagic buffering. This
+        means that if you create a writable stream but haven't yet piped it anywhere
+        then it will buffer any data you write to it and then emit that data when
+        someone asks for it later. This same behavior will be available if you
+        pause a stream and then resume later. Currently you have to roll your own
+        buffered stream implementation or use a generic third party module like
+        <a href="https://github.com/mikeal/morestreams/blob/master/main.js">BufferedStream</a>by <a href="http://twitter.com/mikeal">@mikeal</a>.</p>
+      <h1 id="code-examples">Code examples</h1>
+        
+<h2 id="simplified-writable-stream">Simplified writable stream</h2>
+
+<pre><code data-language="javascript">var writestream = new stream.Stream()
+writestream.writable = true
+writestream.write = function (data) {
+  return true // true means &#39;yes i am ready for more data now&#39;
+  // OR return false and emit(&#39;drain&#39;) when ready later
+}
+writestream.end = function (data) {
+  // no more writes after end
+  // emit &quot;close&quot; (optional)
+}
+
+writestream.write({number: 1})
+// note: in node core data is always a buffer or string</code></pre>
+
+        <h2 id="simplified-stream.pipe-implementation">Simplified Stream.pipe() implementation</h2>
+<pre><code data-language="javascript">var readstream = new stream.Stream()
+readstream.readable = true
+
+readstream.on(&#39;data&#39;, function(data) {
+  var ready = writestream.write(data)
+  if (ready === false) {
+    this.pause()
+    writestream.once(&#39;drain&#39;, this.resume.bind(this))
+  }
+})
+
+readstream.on(&#39;end&#39;, function() {
+  writestream.end()
+})</code></pre>
+
+  </body>
+
+</html></div>
+    </div>
+  </div>  
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24933665-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body> 
+</html>

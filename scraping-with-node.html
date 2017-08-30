@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -179,7 +179,7 @@
 </a>
 
 <a class="load-document" href="scraping-with-node.html">
-  <div class="document" id="scraping-with-node">
+  <div class="document active" id="scraping-with-node">
     <div class="published" data-published="2012-10-24T20:48:11.493Z">October 2012</div>
     <div class="title">Scraping With Node</div>
     <div class="teaser">Useful modules and a tutorial on how to parse HTML with node.js</div>
@@ -226,34 +226,90 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Max Ogden">
+    <title>Scraping with Node</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      <h1 class="title">Scraping with Node</h1>
+      <h2 class="author">Max Ogden</h2>
+    </div>
+    <p>Modules and tutorial demonstrating HTML parsing with node.js</p>
+    <p>One of the the best parts about server side JavaScript is the lack of the DOM, but sometimes you need to parse HTML in your node programs. For a while JSDOM has been the most well known module for accomplishing this task, but it has a number of issues. The author, <a href="http://twitter.com/tmpvar">@tmpvar</a>, has been developing <a href="http://www.flickr.com/photos/gasi/7534134630/in/photostream/">super awesome node powered robots</a> instead of maintaining it. It also turns out that a full DOM level 3 implementation is super complex and crazy which means JSDOM suffers from some pretty bad memory leaks that leaves it unusable for a lot of complex use cases.</p>
+    <p>Instead of rewriting the DOM in pure JS, a more realistic approach is a nice and simple HTML parser that implements a CSS selector API. Enter <a href="http://npmjs.org/cheerio"><code>cheerio</code></a>, a module that can teach your server HTML.</p>
+    <p>Cheerio is built on top of the <a href="http://npmjs.org/htmlparser2"><code>htmlparser2</code></a> module, a sax-like parser for HTML/XML. The goal of Cheerio is to implement most of the jQuery API in pure JS, without the need for a DOM. There is a separate dependency called <a href="https://npmjs.org/package/cheerio-select"><code>cheerio-select</code></a> that implements the sizzle API. The <code>cheerio</code> module itself more or less implements the jQuery API.</p>
+    <h2>Using Cheerio</h2>
+    <p>Since there is no DOM in node you have to initialize a <code>cheerio</code> instance from an HTML string. (this example comes from the <a href="http://npmjs.org/cheerio#readme">cheerio readme</a>)</p>
+    
+<pre><code data-language="javascript">var cheerio = require(&#39;cheerio&#39;),
+    $ = cheerio.load(&#39;&lt;h2 class = &quot;title&quot;&gt;Hello world&lt;/h2&gt;&#39;);
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
+$(&#39;h2.title&#39;).text(&#39;Hello there!&#39;);
+$(&#39;h2&#39;).addClass(&#39;welcome&#39;);
 
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
+$.html();
+//=&gt; &lt;h2 class = &quot;title welcome&quot;&gt;Hello there!&lt;/h2&gt;
 </code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
-</div>
+<p>If you have an HTML file on disk that you want to load, you can use nodes <code>fs</code> module (warning: don't use sync calls inside an event loop, only use them when you don't care about performance):</p>
+
+<pre><code data-language="javascript">var $ = require('cheerio')
+var fs = require('fs')
+
+var htmlString = fs.readFileSync('index.html').toString()
+var parsedHTML = $.load(htmlString)
+
+// query for all elements with class 'foo' and loop over them
+parsedHTML('.foo').map(function(i, foo) {
+  // the foo html element into a cheerio object (same pattern as jQuery)
+  foo = $(foo)
+  console.log(foo.text())
+})
+</code></pre>
+
+<p>Similarly, you can use the popular <a href="http://npmjs.org/request">request</a> module to grab HTML from a remote server using HTTP and then pass it to <code>cheerio</code>:</p>
+
+<pre><code data-language="javascript">var $ = require('cheerio')
+var request = require('request')
+
+function gotHTML(err, resp, html) {
+  if (err) return console.error(err)
+  var parsedHTML = $.load(html)
+  // get all img tags and loop over them
+  var imageURLs = []
+  parsedHTML('a').map(function(i, link) {
+    var href = $(link).attr('href')
+    if (!href.match('.png')) return
+    imageURLs.push(domain + href)
+  })
+}
+
+var domain = 'http://substack.net/images/'
+request(domain, gotHTML)
+</code></pre>
+
+<p>Building on the last example, here is how to fetch the raw binary data of each <code>img</code> on the page and render the images in your terminal using <a href="http://npmjs.org/picture-tube">picture-tube</a> and the node <a href="https://github.com/substack/stream-handbook">Stream API</a>:</p>
+
+<pre><code data-language="javascript">var pictureTube = require('picture-tube')
+
+var randomIndex = Math.floor(Math.random() * imageURLs.length)
+var randomImage = imageURLs[randomIndex]
+request(randomImage).pipe(pictureTube()).pipe(process.stdout)
+</code></pre>
+
+<p><img src="media/picture-tube.png"></p>
+
+<p>Now, go forth and scrape!</p>
+</body>
+
+</html></div>
     </div>
   </div>  
   

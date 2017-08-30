@@ -59,7 +59,7 @@
     <div id="wrapper">
       <div id="browser">
         <div id="documents"><a class="load-document" href="node-distributed-systems.html">
-  <div class="document active" id="node-distributed-systems">
+  <div class="document" id="node-distributed-systems">
     <div class="published" data-published="2016-05-06T06:32:56.584Z">May 2016</div>
     <div class="title">Getting Started With Node For Distributed Systems</div>
     <div class="teaser">Where to get started with streams and peer to peer</div>
@@ -155,7 +155,7 @@
 </a>
 
 <a class="load-document" href="kindleberry-wireless.html">
-  <div class="document" id="kindleberry-wireless">
+  <div class="document active" id="kindleberry-wireless">
     <div class="published" data-published="2013-03-24T20:48:11.493Z">March 2013</div>
     <div class="title">Kindleberry Wireless</div>
     <div class="teaser">A Portable Outdoor Hackstation</div>
@@ -226,34 +226,66 @@
   </div>
 </a></div>
       </div>
-      <div id="document"><div id="header"><h1 class="title">Getting Started With Node For Distributed Systems</h1></div>
+      <div id="document"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="author" content="Max Ogden">
+    <title>Kindleberry Wireless</title>
+  </head>
+  
+  <body>
+    <div id="header">
+      
+      <h1 class="title">Kindleberry Wireless: A Portable Outdoor Hackstation</h1>
+      
+      <h2 class="author">Max Ogden</h2>
 
-<p>Where to get started with streams and peer to peer, May 2016</p>
-<p>The great thing about node (and it&#39;s streams) is that its easy to plug different modules together into powerful pipelines.</p>
-<p>For example in <a href="http://dat-data.com">Dat</a> we use <a href="https://github.com/maxogden/rabin">rabin</a> to chunk a file stream and then pipe into a merkle tree generator (<a href="https://www.npmjs.com/package/merkle-tree-stream">merkle-tree-stream</a>):</p>
-<pre><code class="lang-js">var merkle = require(&#39;merkle-tree-stream&#39;)
-var rabin = require(&#39;rabin&#39;)
-var fs = require(&#39;fs&#39;)
+    </div>
+      <p>An updated, wireless version of the <a href="http://www.ponnuki.net/2012/09/kindleberry-pi/">kindleberry</a> using the kindle paperwhite</p>
+      <p>
+        <img src="../media/kindleberry-sun.png">
+      </p>
+      <p>Recently I got to go down to Australia to attend an awesome conference called <a href="http://campjs.com">CampJS</a>. It isn't really a conference, actually, but instead a bunch of programmers in the woods for a few days hacking on side projects and learning new things. Getting out of the big city was really refreshing and at the same time made me realize how badly my glossy screened laptop works in the great outdoors.
+      </p>
+      <p>
+        It got me wondering if there existed a laptop that was designed for hacking in direct sunlight... something that had a ridiculously long battery life and was still readable in high brightness situations. Instead I stumbled upon a more awesome solution: the <a href="http://www.ponnuki.net/2012/09/kindleberry-pi/">kindleberry</a>, a combination of the <a href="http://www.raspberrypi.org/">Raspberry Pi</a> and the Amazon Kindle.
+      </p>
+      <p>The advantages of the kindleberry are pretty desirable for me:</p>
+      <ul>
+        <li>Week-long battery life: the pi and the kindle both have low power ARM processors so you can use any USB charger to power them</li>
+        <li>The kindle screen is designed for use in direct sunlight</li>
+        <li>The whole setup is small enough to carry around in a pouch inside my normal backpack along with my normal laptop. I work from coffee shops in Oakland and often move around by bicycle during the day -- now I can work from almost anywhere and still be at least a little productive.</li>
+      </ul>
+      <p><img src="../media/kindle-table.png"></p>
+      <p>The idea of the kindleberry is to have the kindle just act as screen and have it log into an ssh session on the pi. Then you can plug a keyboard into the pi and it when you type it will show up on the kindle screen. This approach pretty much only works for terminals so you can't do anything except edit code in vim. I like this limitation as it gives me an option that is free from distraction for writing long pieces of code or text.
+      <p>Since the screen on the kindle is e-ink it has a slower-than-normal refresh rate. If you are a touch typist this shouldn't be an issue, I would recon that between the wifi latency and the screen latency there is a ~200ms screen delay, but it doesn't bother me at all when typing.</p>
+      <p>
+        The first problem I ran into was that the kindleberry instructions only worked on Kindle 3 devices, and the newest generation of Kindles (e.g. the paperwhite) are Kindle 5's. While the end result is similar this just means that essentially all of the steps to set up and install the peripherals correctly were different, including the terminal software that runs on the kindle. The other issue was that I wanted a totally wireless version: no cords between the keyboard, kindle or pi.
+      </p>
+      <p>Here is a list of physical parts that I am using in my setup:</p>
+      <ul>
+        <li>Raspberry Pi Model B with a 3D printed fork of <a href="http://www.thingiverse.com/thing:24945">this case</a></li>
+        <li><a href="http://www.amazon.com/gp/product/B003VNKNEG/ref=oh_details_o03_s00_i01?ie=UTF8&psc=1">8gb SD card</a> to put the raspbian OS onto</li>
+        <li><a href="http://www.amazon.com/gp/product/B007OZNUCE/ref=oh_details_o05_s00_i00?ie=UTF8&psc=1">Kindle Paperwhite</a> cause it has the fastest e-ink refresh rate of all the kindles + a nice backlight</li>
+        <li><a href="http://www.amazon.com/gp/product/B005DLDO4U/ref=oh_details_o03_s00_i03?ie=UTF8&psc=1">Apple Wireless Keyboard</a> because I use a mac laptop and the layout is the same</li>
+        <li><a href="http://www.amazon.com/gp/product/B0018O9JIG/ref=oh_details_o04_s00_i00?ie=UTF8&psc=1">IOGEAR GBU421 bluetooth USB</a> because it is small and works on raspbian</li>
+        <li><a href="http://www.amazon.com/gp/product/B003MTTJOY/ref=oh_details_o06_s00_i00?ie=UTF8&psc=1&redirect=true">Edimax EW-7811Un wifi USB</a> because it is small and works on raspbian</li>
+        <li><a href="http://www.amazon.com/gp/product/B008YRG5JQ/ref=oh_details_o06_s00_i02?ie=UTF8&psc=1"></a></li>
+        <li><a href="http://www.amazon.com/gp/product/B008YRG5JQ/ref=oh_details_o06_s00_i02?ie=UTF8&psc=1">EasyAcc USB LiPo battery pack</a> a friend recommended this and said he ran a raspi off of it for a week</li>
+        <li><a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16833704134">TP-LINK TL-WR702N Travel Router</a> for establishing wireless connectivity between the kindle and the pi</li>
+        <li><a href="http://www.amazon.com/gp/product/B003M0NURK/ref=oh_details_o03_s00_i00?ie=UTF8&psc=1">4 port USB hub</a> just because it is useful to have around for cable management</li>
+      </ul>
+      <p><img src="../media/kindleberry-detail.png"></p>
+      <p>
+        For the software side of things, the best resource is <a href="https://gist.github.com/rvagg/5095506">this nice tutorial</a> that Rod Vagg has put together for getting the paperwhite set up with a terminal emulator. He even compiled node.js 0.10.0 for the kindle as well!
+      </p>
+      <p>My pi is configured to boot up and join the wifi hotspot that the TP-LINK router creates, then I can have the kindle communicate to the pi over wifi. There is probably a way to ad-hoc them together automatically but having a little hotspot is handy for other things like too like mobile web app development.
+  </p></p></body>
 
-fs.createReadStream(&#39;big.file&#39;)
-  .pipe(rabin())
-  .pipe(merkle())
-  .on(&#39;data&#39;, function (data) {
-    console.log(&#39;tree node&#39;, data)
-  })
-</code></pre>
-<p>It&#39;s basically unix pipes all over again. To work with streams in various ways, try out the <a href="http://github.com/maxogden/mississippi">mississippi</a> module. For node and streams skill building, <a href="http://nodeschool.io">NodeSchool</a> is great for an intro to most of the skills you will need.</p>
-<p>After getting through NodeSchool, <a href="https://p2p-workshop.mafintosh.com">this P2P workshop</a> by <a href="https://github.com/mafintosh">mafintosh</a> is a good challenge. It&#39;s doable once you have a basic knowledge of Node.</p>
-<p>In the workshop you build a peer to peer chat system piece by piece using network streams, DNS, LevelDB and append-only log based message replication. It&#39;s best to try with friends, so you can chat with each other as you go through the lessons.</p>
-<p>For some authors who write distributed systems modules, start with these (not an exhaustive list by any means):</p>
-<ul>
-<li><a href="https://github.com/substack?tab=repositories">https://github.com/substack?tab=repositories</a></li>
-<li><a href="https://github.com/mafintosh?tab=repositories">https://github.com/mafintosh?tab=repositories</a></li>
-<li><a href="https://github.com/maxogden?tab=repositories">https://github.com/maxogden?tab=repositories</a></li>
-<li><a href="https://github.com/feross?tab=repositories">https://github.com/feross?tab=repositories</a></li>
-<li><a href="https://github.com/dominictarr?tab=repositories">https://github.com/dominictarr?tab=repositories</a></li>
-</ul>
-</div>
+</html></div>
     </div>
   </div>  
   

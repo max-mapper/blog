@@ -29,6 +29,7 @@ loadPosts(function(files) {
 })
 
 function copyStatic() {
+  cpr('data', path.join(outputFolder, 'data'), {overwrite: true}, noop)
   cpr('script', path.join(outputFolder, 'script'), {overwrite: true}, noop)
   cpr('styles', path.join(outputFolder, 'styles'), {overwrite: true}, noop)
   cpr('media', path.join(outputFolder, 'media'), {overwrite: true}, noop)
